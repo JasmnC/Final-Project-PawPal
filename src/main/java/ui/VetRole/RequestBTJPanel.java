@@ -14,14 +14,14 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class RequestMedicationJPanel extends javax.swing.JPanel {
+public class RequestBTJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
 
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestMedicationJPanel(JPanel userProcessContainer) {
+    public RequestBTJPanel(JPanel userProcessContainer) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -65,7 +65,7 @@ public class RequestMedicationJPanel extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Send Medication Request");
+        lblTitle.setText("Send Behavior Therapy Request");
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,7 +102,7 @@ public class RequestMedicationJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(btnBack)
-                .addGap(269, 269, 269)
+                .addGap(225, 225, 225)
                 .addComponent(lblTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
