@@ -55,7 +55,7 @@ public class RequestMedicationJPanel extends javax.swing.JPanel {
         });
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMessage.setText("Message:");
+        lblMessage.setText("Message: ");
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -100,9 +100,9 @@ public class RequestMedicationJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(47, 47, 47)
                 .addComponent(btnBack)
-                .addGap(269, 269, 269)
+                .addGap(259, 259, 259)
                 .addComponent(lblTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
