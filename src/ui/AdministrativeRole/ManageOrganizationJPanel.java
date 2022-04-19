@@ -4,9 +4,9 @@
  */
 package ui.AdministrativeRole;
 
-import business.Organization.Organization;
-import business.Organization.Organization.Type;
-import business.Organization.OrganizationDirectory;
+import model.Organization.Organization;
+import model.Organization.Organization.Type;
+import model.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;

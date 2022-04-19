@@ -51,8 +51,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             row[1] = organization.getName();
             
             model.addRow(row);
-            
-            // tset
         }
     }
     /**

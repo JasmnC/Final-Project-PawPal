@@ -8,6 +8,8 @@ package ui.AdministrativeRole;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+import model.UserAccount.UserAccount;
 
 /**
  *
@@ -15,13 +17,15 @@ import javax.swing.JPanel;
  */
 public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
-    Business business;
+    private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
+    private UserAccount userAccount; 
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, Business business) {
+    
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.business = business;
+        this.ecoSystem = ecoSystem;
     }
     
     /** This method is called from within the constructor to
