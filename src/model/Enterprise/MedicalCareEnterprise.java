@@ -14,13 +14,10 @@ import java.util.ArrayList;
  */
 public class MedicalCareEnterprise extends Enterprise {
     
-    public MedicalCareEnterprise(String name){
-        super(name,Type.MedicalCare);
+    public MedicalCareEnterprise(){
+        super(Enterprise.Type.MedicalCare.getValue());
     }
-    @Override
-    public ArrayList<Role> getSupportedRole() {
-        return null;
-    }
+
     
     
 }
