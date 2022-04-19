@@ -44,7 +44,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRequestTest = new javax.swing.JButton();
+        btnRequestVet = new javax.swing.JButton();
         lblMessage = new javax.swing.JLabel();
         txtMessage = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
@@ -52,10 +52,10 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        btnRequestTest.setText("Request Vet");
-        btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
+        btnRequestVet.setText("Request Vet");
+        btnRequestVet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestTestActionPerformed(evt);
+                btnRequestVetActionPerformed(evt);
             }
         });
 
@@ -79,7 +79,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRequestTest)
+                    .addComponent(btnRequestVet)
                     .addComponent(lblMessage)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
@@ -100,12 +100,12 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnRequestTest)
+                .addComponent(btnRequestVet)
                 .addContainerGap(293, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
+    private void btnRequestVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestVetActionPerformed
 
         String message = txtMessage.getText();
         if(message.equals("") || message.isEmpty()){
@@ -132,14 +132,14 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Request message sent");
         txtMessage.setText("");
         
-    }//GEN-LAST:event_btnRequestTestActionPerformed
+    }//GEN-LAST:event_btnRequestVetActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        AnimalManagerWorkAreaJPanel dwjp = (AnimalManagerWorkAreaJPanel) component;
+        ManageAnimalJPanel dwjp = (ManageAnimalJPanel) component;
         dwjp.populateRequestTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -149,7 +149,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnRequestTest;
+    private javax.swing.JButton btnRequestVet;
     private javax.swing.JLabel lblMessage;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtMessage;

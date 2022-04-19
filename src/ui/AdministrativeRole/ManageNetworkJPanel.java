@@ -41,7 +41,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     }
     
       private void populateTable(Organization organization){
-        DefaultTableModel model = (DefaultTableModel) tblEmployees.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblNetwork.getModel();
         
         model.setRowCount(0);
         
@@ -63,14 +63,12 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        lblOrganizationPicker = new javax.swing.JLabel();
-        cmbOrganizationList = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblEmployees = new javax.swing.JTable();
+        tblNetwork = new javax.swing.JTable();
         lblEmployeeList = new javax.swing.JLabel();
         lblOrganizationList1 = new javax.swing.JLabel();
         lblEmployeeName = new javax.swing.JLabel();
-        txtEmployeeName = new javax.swing.JTextField();
+        txtNetworkName = new javax.swing.JTextField();
         btnCreateNetwork = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -85,16 +83,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblOrganizationPicker.setText("Select Network:");
-
-        cmbOrganizationList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbOrganizationList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbOrganizationListActionPerformed(evt);
-            }
-        });
-
-        tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
+        tblNetwork.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -120,11 +109,11 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblEmployees);
-        if (tblEmployees.getColumnModel().getColumnCount() > 0) {
-            tblEmployees.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblEmployees.getColumnModel().getColumn(0).setMaxWidth(50);
-            tblEmployees.getColumnModel().getColumn(1).setResizable(false);
+        jScrollPane1.setViewportView(tblNetwork);
+        if (tblNetwork.getColumnModel().getColumnCount() > 0) {
+            tblNetwork.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tblNetwork.getColumnModel().getColumn(0).setMaxWidth(50);
+            tblNetwork.getColumnModel().getColumn(1).setResizable(false);
         }
 
         lblEmployeeList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -149,27 +138,22 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblEmployeeList)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblOrganizationPicker)
-                            .addGap(18, 18, 18)
-                            .addComponent(cmbOrganizationList, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(lblOrganizationList1)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmployeeName)
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnCreateNetwork)
-                                .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(42, 42, 42)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmployeeList)
+                    .addComponent(lblOrganizationList1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEmployeeName)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCreateNetwork)
+                            .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(286, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTitle)))
-                .addContainerGap(435, Short.MAX_VALUE))
+                        .addComponent(lblTitle)
+                        .addContainerGap(344, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,28 +164,24 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                     .addComponent(lblTitle))
                 .addGap(26, 26, 26)
                 .addComponent(lblEmployeeList)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbOrganizationList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOrganizationPicker))
-                .addGap(18, 18, 18)
+                .addGap(57, 57, 57)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblOrganizationList1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmployeeName))
                 .addGap(18, 18, 18)
                 .addComponent(btnCreateNetwork)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNetworkActionPerformed
         
         Organization organization = (Organization) cmbOrganizationList.getSelectedItem();
-        String name = txtEmployeeName.getText();
+        String name = txtNetworkName.getText();
         
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Employee name cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -209,7 +189,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         }
         
         organization.getEmployeeDirectory().createEmployee(name);
-        txtEmployeeName.setText("");
+        txtNetworkName.setText("");
         populateTable(organization);
         
     }//GEN-LAST:event_btnCreateNetworkActionPerformed
@@ -221,24 +201,15 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void cmbOrganizationListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationListActionPerformed
-        Organization organization = (Organization) cmbOrganizationList.getSelectedItem();
-        if (organization != null){
-            populateTable(organization);
-        }
-    }//GEN-LAST:event_cmbOrganizationListActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateNetwork;
-    private javax.swing.JComboBox cmbOrganizationList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmployeeList;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblOrganizationList1;
-    private javax.swing.JLabel lblOrganizationPicker;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblEmployees;
-    private javax.swing.JTextField txtEmployeeName;
+    private javax.swing.JTable tblNetwork;
+    private javax.swing.JTextField txtNetworkName;
     // End of variables declaration//GEN-END:variables
 }

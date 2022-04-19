@@ -5,7 +5,6 @@
 package ui.AnimalRegistorRole;
 
 import model.EcoSystem.EcoSystem;
-import model.Organization.Organization;
 import model.UserAccount.UserAccount;
 import model.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -26,12 +25,12 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public AnimalRegistorWorkAreaJPanel(JPanel workArea, UserAccount account, DoctorOrganization organization, Business business) {
+    public AnimalRegistorWorkAreaJPanel(JPanel workArea, UserAccount account, AnimalRegisterOrganization organization, EcoSystem ecoSystem) {
         initComponents();
         
         this.workArea = workArea;
         this.organization = organization;
-        this.business = business;
+        this.ecoSystem = ecoSystem;
         this.userAccount = account;
         
         populateRequestTable();

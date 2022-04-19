@@ -14,13 +14,13 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import ui.AnimalManagerRole.AnimalManagerWorkAreaJPanel;
+import ui.AnimalManagerRole.ManageAnimalJPanel;
 
 /**
  *
  * @author raunak
  */
-public class RequestVolunteer extends javax.swing.JPanel {
+public class RequestVolunteerJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Business business;
@@ -28,7 +28,7 @@ public class RequestVolunteer extends javax.swing.JPanel {
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestVolunteer(JPanel userProcessContainer, UserAccount account, Business business) {
+    public RequestVolunteerJPanel(JPanel userProcessContainer, UserAccount account, Business business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -47,9 +47,11 @@ public class RequestVolunteer extends javax.swing.JPanel {
 
         btnRequestTest = new javax.swing.JButton();
         lblMessage = new javax.swing.JLabel();
-        txtMessage = new javax.swing.JTextField();
+        txtRequestVolunteerMessage = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblAnimalRegistorRequestVolunteer = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -73,21 +75,55 @@ public class RequestVolunteer extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Send Volunteer Request");
 
+        tblAnimalRegistorRequestVolunteer.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Message", "Volunteer", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblAnimalRegistorRequestVolunteer);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRequestTest)
-                    .addComponent(lblMessage)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addComponent(btnBack)
                         .addGap(18, 18, 18)
                         .addComponent(lblTitle))
-                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(511, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRequestTest)
+                            .addComponent(lblMessage)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(txtRequestVolunteerMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,19 +132,21 @@ public class RequestVolunteer extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lblTitle))
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(lblMessage)
-                .addGap(18, 18, 18)
-                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtRequestVolunteerMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRequestTest)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addGap(137, 137, 137))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
 
-        String message = txtMessage.getText();
+        String message = txtRequestVolunteerMessage.getText();
         if(message.equals("") || message.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter something to send.");
             return;
@@ -131,7 +169,7 @@ public class RequestVolunteer extends javax.swing.JPanel {
         }
         
         JOptionPane.showMessageDialog(null, "Request message sent");
-        txtMessage.setText("");
+        txtRequestVolunteerMessage.setText("");
         
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
@@ -140,7 +178,7 @@ public class RequestVolunteer extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        AnimalManagerWorkAreaJPanel dwjp = (AnimalManagerWorkAreaJPanel) component;
+        ManageAnimalJPanel dwjp = (ManageAnimalJPanel) component;
         dwjp.populateRequestTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -151,8 +189,10 @@ public class RequestVolunteer extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRequestTest;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMessage;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTextField txtMessage;
+    private javax.swing.JTable tblAnimalRegistorRequestVolunteer;
+    private javax.swing.JTextField txtRequestVolunteerMessage;
     // End of variables declaration//GEN-END:variables
 }
