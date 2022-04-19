@@ -15,7 +15,7 @@ import model.Organization.TreatmentOrganization;
 
 import model.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.Pharmacist.PharmacyWorkArea;
+import ui.Pharmacist.PharmacistWorkArea;
 
 
 /**
