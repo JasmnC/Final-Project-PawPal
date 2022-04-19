@@ -10,6 +10,9 @@ import model.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
 
 /**
  *
@@ -17,19 +20,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
-    private OrganizationDirectory directory;
     private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
+
     
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageEnterpriseJPanel(JPanel userProcessContainer,OrganizationDirectory directory) {
+    public ManageEnterpriseJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.directory = directory;
+        this.ecoSystem = ecosystem;
         
+        populateNetworkCombo();
         populateTable();
-        populateCombo();
+        
+        
+//        populateTable();
+//        populateCombo();
     }
     
     private void populateCombo(){
@@ -40,8 +48,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void populateTable(){
-        DefaultTableModel model = (DefaultTableModel) tblOrganizations.getModel();
+    private void populateTableOrg(){
+        DefaultTableModel model = (DefaultTableModel) tblEnterprises.getModel();
         
         model.setRowCount(0);
         
@@ -63,7 +71,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblOrganizations = new javax.swing.JTable();
+        tblEnterprises = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         cmbOrganizations = new javax.swing.JComboBox();
         lblSelectOrgType = new javax.swing.JLabel();
@@ -76,7 +84,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        tblOrganizations.setModel(new javax.swing.table.DefaultTableModel(
+        tblEnterprises.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -102,10 +110,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblOrganizations);
-        if (tblOrganizations.getColumnModel().getColumnCount() > 0) {
-            tblOrganizations.getColumnModel().getColumn(0).setResizable(false);
-            tblOrganizations.getColumnModel().getColumn(1).setResizable(false);
+        jScrollPane1.setViewportView(tblEnterprises);
+        if (tblEnterprises.getColumnModel().getColumnCount() > 0) {
+            tblEnterprises.getColumnModel().getColumn(0).setResizable(false);
+            tblEnterprises.getColumnModel().getColumn(1).setResizable(false);
         }
 
         btnAdd.setText("Add");
@@ -237,6 +245,29 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblOrganizationPicker;
     private javax.swing.JLabel lblSelectOrgType;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblOrganizations;
+    private javax.swing.JTable tblEnterprises;
     // End of variables declaration//GEN-END:variables
+
+    private void populateNetworkCombo() {
+
+        cmbNetworkList.removeAllItems();
+        
+        for (Network n : ecoSystem.getNetworkList()){
+                cmbNetworkList.addItem(n);
+            }
+        }
+    
+    private void populateTable(){
+        
+        DefaultTableModel model = (DefaultTableModel) tblEnterprises.getModel();
+        model.setRowCount(0);
+
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+
+        for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+            Object[] row = new Object[1];
+            row[0] = e;
+            model.addRow(row);
+        } 
+    }
 }

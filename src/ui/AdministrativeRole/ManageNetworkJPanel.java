@@ -4,13 +4,13 @@
  */
 package ui.AdministrativeRole;
 
-import business.Employee.Employee;
-import business.Organization.Organization;
-import business.Organization.OrganizationDirectory;
+
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.EcoSystem.EcoSystem;
+import model.Network.Network;
 
 /**
  *
@@ -18,40 +18,42 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageNetworkJPanel extends javax.swing.JPanel {
 
-    private OrganizationDirectory organizationDir;
     private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
     
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageNetworkJPanel(JPanel userProcessContainer,OrganizationDirectory organizationDir) {
+    public ManageNetworkJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.organizationDir = organizationDir;
+        this.ecoSystem = ecosystem;
         
-        populateOrganizationComboBox();
+        refreshNetworkList();
+        
+//        populateOrganizationComboBox();
     }
     
-    public void populateOrganizationComboBox(){
-        cmbOrganizationList.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrganizationList()){
-            cmbOrganizationList.addItem(organization);
-        }
-    }
-    
-      private void populateTable(Organization organization){
-        DefaultTableModel model = (DefaultTableModel) tblNetwork.getModel();
-        
-        model.setRowCount(0);
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
-            Object[] row = new Object[2];
-            row[0] = employee.getId();
-            row[1] = employee.getName();
-            model.addRow(row);
-        }
-    }
+//    public void populateOrganizationComboBox(){
+//        cmbOrganizationList.removeAllItems();
+//        
+//        for (Organization organization : organizationDir.getOrganizationList()){
+//            cmbOrganizationList.addItem(organization);
+//        }
+//    }
+//    
+//      private void populateTable(Organization organization){
+//        DefaultTableModel model = (DefaultTableModel) tblNetwork.getModel();
+//        
+//        model.setRowCount(0);
+//        
+//        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+//            Object[] row = new Object[2];
+//            row[0] = employee.getId();
+//            row[1] = employee.getName();
+//            model.addRow(row);
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,20 +87,20 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         tblNetwork.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "ID", "Name"
+                "Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -111,9 +113,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblNetwork);
         if (tblNetwork.getColumnModel().getColumnCount() > 0) {
-            tblNetwork.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblNetwork.getColumnModel().getColumn(0).setMaxWidth(50);
-            tblNetwork.getColumnModel().getColumn(1).setResizable(false);
+            tblNetwork.getColumnModel().getColumn(0).setResizable(false);
         }
 
         lblEmployeeList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -141,19 +141,18 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmployeeList)
                     .addComponent(lblOrganizationList1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblEmployeeName)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCreateNetwork)
-                            .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(286, Short.MAX_VALUE))
+                            .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTitle)
-                        .addContainerGap(344, Short.MAX_VALUE))))
+                        .addComponent(lblTitle)))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,8 +163,8 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                     .addComponent(lblTitle))
                 .addGap(26, 26, 26)
                 .addComponent(lblEmployeeList)
-                .addGap(57, 57, 57)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblOrganizationList1)
                 .addGap(18, 18, 18)
@@ -179,18 +178,38 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNetworkActionPerformed
-        
-        Organization organization = (Organization) cmbOrganizationList.getSelectedItem();
+
         String name = txtNetworkName.getText();
         
         if (name.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Employee name cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Network name cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+
+        for (Network n : ecoSystem.getNetworkList()){
+            if (n.getName().equals(name)){
+                JOptionPane.showMessageDialog(this, "Network already exist", "Warning", JOptionPane.WARNING_MESSAGE);
+                break;
+            } else {
+                Network newNetwork = ecoSystem.createNetwork(name);
+                ecoSystem.getNetworkList().add(newNetwork);
+                txtNetworkName.setText("");
+                refreshNetworkList();
+            }
+        }
         
-        organization.getEmployeeDirectory().createEmployee(name);
-        txtNetworkName.setText("");
-        populateTable(organization);
+
+//        
+//        Organization organization = (Organization) cmbOrganizationList.getSelectedItem();
+//        String name = txtNetworkName.getText();
+//        
+//        if (name.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Employee name cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//        
+//        organization.getEmployeeDirectory().createEmployee(name);
+//        populateTable(organization);
         
     }//GEN-LAST:event_btnCreateNetworkActionPerformed
 
@@ -199,6 +218,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -212,4 +232,19 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblNetwork;
     private javax.swing.JTextField txtNetworkName;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshNetworkList() {
+
+        DefaultTableModel model = (DefaultTableModel)tblNetwork.getModel();
+        model.setRowCount(0);
+
+        for (Network n : ecoSystem.getNetworkList()){
+
+            Object row[] = new Object[1];
+            row[0] = n;
+
+            model.addRow(row);
+        }
+        
+    }
 }

@@ -11,6 +11,7 @@ import model.EcoSystem.ConfigureASystem;
 import model.EcoSystem.EcoSystem;
 import model.Network.Network;
 import model.UserAccount.UserAccount;
+import model.EcoSystem.ConfigureASystem;
 
 /**
  *
@@ -18,6 +19,8 @@ import model.UserAccount.UserAccount;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    EcoSystem ecosystem = ConfigureASystem.configure();
+    
     /**
      * Creates new form MainJFrame
      */
@@ -25,10 +28,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
         initComponents();
-        ecoSystem = ConfigureASystem.configure();
-        setSize(800, 600);
-
-        initLoginScreen();
 
     }
 
@@ -90,14 +89,3 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
-
-    private void initLoginScreen() {
-
-        JPanel loginScreen = new ui.Basic.LoginScreen(mainWorkArea, ecoSystem);
-        mainWorkArea.add("LoginScreen", loginScreen);
-        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-        layout.next(mainWorkArea);
-
-    }
-
-}

@@ -10,6 +10,7 @@ import model.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.EcoSystem.EcoSystem;
 
 /**
  *
@@ -17,19 +18,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SysAdminDashboardJPanel extends javax.swing.JPanel {
 
-    private OrganizationDirectory directory;
     private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
     
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public SysAdminDashboardJPanel(JPanel userProcessContainer,OrganizationDirectory directory) {
+    public SysAdminDashboardJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.directory = directory;
+        this.ecoSystem = ecosystem;
         
-        populateTable();
-        populateCombo();
+//        populateTable();
+//        populateCombo();
     }
     
     private void populateCombo(){

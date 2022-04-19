@@ -22,9 +22,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount userAccount; 
     /** Creates new form AdminWorkAreaJPanel */
     
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
         this.ecoSystem = ecoSystem;
     }
     
@@ -118,19 +119,19 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserJButtonActionPerformed
-        // TODO add your handling code here:
-        ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, business);
+
+        ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, ecoSystem);
         userProcessContainer.add("ManageUserAccountJPanel", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_manageUserJButtonActionPerformed
 
     private void btnViewDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDashboardActionPerformed
 
-        ManageRoleJPanel manageEmployeeJPanel = new ManageRoleJPanel(userProcessContainer, business.getOrganizationDirectory());
-        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
-
+        SysAdminDashboardJPanel sadjp = new SysAdminDashboardJPanel(userProcessContainer, ecoSystem);
+        userProcessContainer.add("Dashboard", sadjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
@@ -138,19 +139,30 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseActionPerformed
 
-        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, business.getOrganizationDirectory());
-        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
+        ManageEnterpriseJPanel mejp = new ManageEnterpriseJPanel(userProcessContainer, ecoSystem);
+        userProcessContainer.add("ManageEnterpriseJPanel", mejp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
     private void manageOrganizationJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButton1ActionPerformed
-        // TODO add your handling code here:
+
+        ManageOrganizationJPanel mojp = new ManageOrganizationJPanel (userProcessContainer, ecoSystem);
+        userProcessContainer.add("ManageOrganizationJPanel", mojp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_manageOrganizationJButton1ActionPerformed
 
     private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
         // TODO add your handling code here:
-        ManageNetworkJPanel manageNetworkJPanel = new ManageNetworkJPanel(userProcessContainer, )
+
+        ManageNetworkJPanel mnjp = new ManageNetworkJPanel(userProcessContainer, ecoSystem);
+        userProcessContainer.add("ManageNetworkJPanel",mnjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_btnManageNetworkActionPerformed
     
     
