@@ -77,7 +77,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Manager", "Recipient", "Status"
+                "ID", "Name", "Manager", "Registor", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -119,7 +119,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Manager Animal");
+        lblTitle.setText("Manage Animal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -70,7 +70,7 @@
                 <Column editable="false" title="ID" type="java.lang.String"/>
                 <Column editable="false" title="Name" type="java.lang.String"/>
                 <Column editable="false" title="Manager" type="java.lang.String"/>
-                <Column editable="false" title="Recipient" type="java.lang.String"/>
+                <Column editable="false" title="Registor" type="java.lang.String"/>
                 <Column editable="false" title="Status" type="java.lang.String"/>
               </Table>
             </Property>
@@ -131,7 +131,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Manager Animal"/>
+        <Property name="text" type="java.lang.String" value="Manage Animal"/>
       </Properties>
     </Component>
   </SubComponents>
