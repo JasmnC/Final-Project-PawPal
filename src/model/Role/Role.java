@@ -5,6 +5,7 @@
 package model.Role;
 
 import model.EcoSystem.EcoSystem;
+import model.Network.Network;
 import model.Enterprise.Enterprise;
 import model.Organization.Organization;
 import model.UserAccount.UserAccount;
@@ -47,7 +48,7 @@ public abstract class Role {
 
     public RoleType type;
     
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem Ecosystem);
+    public abstract JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem Ecosystem);
 
     @Override
     public String toString() {
