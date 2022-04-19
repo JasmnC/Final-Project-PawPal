@@ -15,13 +15,13 @@ import java.util.ArrayList;
 public class AnimalManagementOrganization extends Organization{
 
     public AnimalManagementOrganization() {
-        super(Organization.Type.AnimalRegister.getValue());
+        super(Organization.Type.AnimalManagement.getValue());
     }
     
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new AnimalRegisterRole());
+        roles.add(new AnimalManagementRole());
         return roles;
     }
      

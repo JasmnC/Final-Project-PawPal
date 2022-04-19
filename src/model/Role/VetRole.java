@@ -4,16 +4,17 @@
  */
 package model.Role;
 
-import model.Adopter.AdopterDirectory;
-import model.Child.ChildDirectory;
-import model.Donor.DonorDirectory;
-import model.EcoSystem;
 import model.Enterprise.Enterprise;
 import model.Organization.VetOrganization;
 import model.Organization.Organization;
 import model.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.DoctorOrg.DoctorWorkArea;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.MedicalCareEnterprise;
+import model.Network.Network;
+import model.Organization.TreatmentOrganization;
+import ui.Pharmacist.PharmacistWorkArea;
+import ui.Vet.VetWorkArea;
 
 /**
  *
@@ -22,21 +23,14 @@ import userinterface.DoctorOrg.DoctorWorkArea;
 public class VetRole extends Role{
 
     
-        @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, 
-                                                                  Enterprise enterprise, model.EcoSystem.EcoSystem Ecosystem) { 
-            return null;        
-    }
-    /**
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
-        return new DoctorWorkArea(userProcessContainer, account, (DoctorOrganization) organization, enterprise, business, childdirectory);
-    }
-    **/
-    @Override
-    public String toString(){
-        return (RoleType.Vet.getValue());
+    public VetRole() {
+        this.type = RoleType.Vet;
     }
 
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem ecosystem) {
+        this.type = RoleType.Vet;
+        return new VetWorkArea(userProcessContainer, account, (VetOrganization) organization, (MedicalCareEnterprise) enterprise, network, ecosystem);
+    }
 
 }

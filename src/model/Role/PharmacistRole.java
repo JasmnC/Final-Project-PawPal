@@ -5,16 +5,18 @@
  */
 package model.Role;
 
-import model.Adopter.AdopterDirectory;
-import model.Child.ChildDirectory;
-import model.Donor.DonorDirectory;
-import model.EcoSystem;
+
 import model.Enterprise.Enterprise;
 import model.Organization.Organization;
 import model.Organization.TreatmentOrganization;
-
 import model.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
+import model.Enterprise.MedicalCareEnterprise;
+import model.Network.Network;
+import model.Organization.AnimalRegisterOrganization;
+import ui.AnimalRegistorRole.AnimalRegistorWorkAreaJPanel;
 import ui.Pharmacist.PharmacistWorkArea;
 
 
@@ -24,21 +26,14 @@ import ui.Pharmacist.PharmacistWorkArea;
  */
 public class PharmacistRole extends Role{
 
-        @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, model.EcoSystem.EcoSystem Ecosystem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    /**
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory,DonorDirectory donorDirectory) {
-       return new PharmacyWorkArea(userProcessContainer, account, (PharmacistOrganization)organization,enterprise, business,childdirectory);
-    }
-    **/
-    @Override
-    public String toString(){
-        return (RoleType.Pharmacist.getValue());
+    public PharmacistRole() {
+        this.type = RoleType.Pharmacist;
     }
 
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem ecosystem) {
+        this.type = RoleType.Pharmacist;
+        return new PharmacistWorkArea(userProcessContainer, account, (TreatmentOrganization) organization, (MedicalCareEnterprise) enterprise, network, ecosystem);
+    }
 
-    
 }

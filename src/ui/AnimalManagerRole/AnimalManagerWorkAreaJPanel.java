@@ -11,6 +11,9 @@ import model.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Enterprise.AnimalShelterEnterprise;
+import model.Network.Network;
+import model.Organization.AnimalManagementOrganization;
 import model.Organization.AnimalRegisterOrganization;
 
 /**
@@ -26,7 +29,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public AnimalManagerWorkAreaJPanel(JPanel workArea, UserAccount account, AnimalRegisterOrganization organization, EcoSystem ecoSystem) {
+    public AnimalManagerWorkAreaJPanel(userProcessContainer, account, (AnimalManagementOrganization) organization, (AnimalShelterEnterprise) enterprise, network, ecosystem) {
         initComponents();
         
         this.workArea = workArea;
@@ -35,6 +38,10 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         
         populateRequestTable();
+    }
+
+    public AnimalManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalManagementOrganization animalManagementOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void populateRequestTable(){

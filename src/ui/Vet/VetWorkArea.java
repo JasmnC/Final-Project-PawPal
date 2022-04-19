@@ -6,7 +6,11 @@ package ui.Vet;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.MedicalCareEnterprise;
+import model.Network.Network;
+import model.Organization.VetOrganization;
+import model.UserAccount.UserAccount;
 
 /**
  *
@@ -15,14 +19,25 @@ import javax.swing.table.DefaultTableModel;
 public class VetWorkArea extends javax.swing.JPanel {
 
     private JPanel workArea;
-
+    private VetOrganization organization;
+    private MedicalCareEnterprise enterprise;
+    private Network network;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    
     /**
-     * Creates new form DoctorWorkAreaJPanel
+     * Creates new form VolunteerWorkArea
      */
-    public VetWorkArea(JPanel workArea) {
+    public VetWorkArea(JPanel userProcessContainer, UserAccount account, VetOrganization organization, MedicalCareEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
         
-        this.workArea = workArea;
+        this.workArea = userProcessContainer;
+        this.userAccount = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
+        
     }
 
 

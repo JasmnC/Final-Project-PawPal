@@ -9,6 +9,9 @@ import model.Organization.AnimalRegisterOrganization;
 import model.Organization.Organization;
 import model.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import model.Enterprise.AnimalShelterEnterprise;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
 import ui.AnimalRegistorRole.AnimalRegistorWorkAreaJPanel;
 
 /**
@@ -22,9 +25,9 @@ public class AnimalRegisterRole extends Role {
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, ) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem ecosystem) {
         this.type = RoleType.AnimalRegister;
-        return new AnimalRegistorWorkAreaJPanel(userProcessContainer, account, (AnimalRegisterOrganization) organization, business);
+        return new AnimalRegistorWorkAreaJPanel(userProcessContainer, account, (AnimalRegisterOrganization) organization, (AnimalShelterEnterprise) enterprise, network, ecosystem);
     }
 
 }

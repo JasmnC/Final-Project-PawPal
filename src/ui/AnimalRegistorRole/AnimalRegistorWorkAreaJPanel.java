@@ -10,6 +10,8 @@ import model.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Enterprise.AnimalShelterEnterprise;
+import model.Network.Network;
 import model.Organization.AnimalRegisterOrganization;
 
 /**
@@ -34,6 +36,10 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         
         populateRequestTable();
+    }
+
+    public AnimalRegistorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalRegisterOrganization animalRegisterOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void populateRequestTable(){

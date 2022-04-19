@@ -8,6 +8,11 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.MedicalCareEnterprise;
+import model.Network.Network;
+import model.Organization.TreatmentOrganization;
+import model.UserAccount.UserAccount;
 
 /**
  *
@@ -15,18 +20,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PharmacistWorkArea extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-
-
-    /**
-     * Creates new form LabAssistantWorkAreaJPanel
-     */
-    public PharmacistWorkArea(JPanel userProcessContainer) {
+    private JPanel workArea;
+    private TreatmentOrganization organization;
+    private MedicalCareEnterprise enterprise;
+    private Network network;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;    
+    
+    /** Creates new form VolunteerManagerWorkArea */
+    public PharmacistWorkArea(JPanel userProcessContainer, UserAccount account, TreatmentOrganization organization, MedicalCareEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
-
-        this.userProcessContainer = userProcessContainer;
+        
+        this.workArea = userProcessContainer;
+        this.userAccount = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
+        
     }
-
 
 
     /**

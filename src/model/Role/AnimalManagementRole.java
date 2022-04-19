@@ -5,9 +5,14 @@
 package model.Role;
 
 import javax.swing.JPanel;
-import model.Organization.AnimalRegisterOrganization;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.AnimalManagementOrganization;
 import model.Organization.Organization;
 import model.UserAccount.UserAccount;
+import ui.AnimalManagerRole.AnimalManagerWorkAreaJPanel;
 import ui.AnimalRegistorRole.AnimalRegistorWorkAreaJPanel;
 
 /**
@@ -21,8 +26,8 @@ public class AnimalManagementRole extends Role {
     }
     
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization) {
-        this.type = RoleType.AdoptionManager;
-        return new AnimalRegistorWorkAreaJPanel(userProcessContainer, account, (AnimalRegisterOrganization) organization, business);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem ecosystem) {
+        this.type = RoleType.AnimalManager;
+        return new AnimalManagerWorkAreaJPanel(userProcessContainer, account, (AnimalManagementOrganization) organization, (AnimalShelterEnterprise) enterprise, network, ecosystem);
     }
 }

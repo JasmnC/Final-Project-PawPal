@@ -4,15 +4,15 @@
  */
 package model.Role;
 
-import model.Adopter.AdopterDirectory;
-import model.Child.ChildDirectory;
-import model.Donor.DonorDirectory;
-import model.EcoSystem;
+
 import model.Enterprise.Enterprise;
 import model.Organization.Organization;
 import model.UserAccount.UserAccount;
-
 import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.MedicalCareEnterprise;
+import model.Network.Network;
+import model.Organization.TreatmentOrganization;
 import ui.BehaviorTherapist.BTWorkArea;
 
 /**
@@ -21,22 +21,14 @@ import ui.BehaviorTherapist.BTWorkArea;
  */
 public class BehaviorTherapistRole extends Role {
 
-        @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, model.EcoSystem.EcoSystem Ecosystem) {
-
-            return null;
+    public BehaviorTherapistRole() {
+        this.type = RoleType.BehaviorTherapist;
     }
-    /**
+
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
-        return new LabWorkArea(userProcessContainer, account, organization, business);
-    }
-    **/
-    @Override
-    public String toString(){
-        return (RoleType.BehaviorTherapist.getValue());
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem ecosystem) {
+        this.type = RoleType.BehaviorTherapist;
+        return new BTWorkArea(userProcessContainer, account, (TreatmentOrganization) organization, (MedicalCareEnterprise) enterprise, network, ecosystem);
     }
 
-
-     
 }
