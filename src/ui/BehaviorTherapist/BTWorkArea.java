@@ -22,7 +22,7 @@ import model.UserAccount.UserAccount;
  */
 public class BTWorkArea extends javax.swing.JPanel {
 
-    private JPanel workArea;
+    private JPanel userProcessContainer;
     private TreatmentOrganization organization;
     private MedicalCareEnterprise enterprise;
     private Network network;
@@ -35,7 +35,7 @@ public class BTWorkArea extends javax.swing.JPanel {
     public BTWorkArea(JPanel userProcessContainer, UserAccount account, TreatmentOrganization organization, MedicalCareEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
         
-        this.workArea = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.organization = organization;
         this.enterprise = enterprise;

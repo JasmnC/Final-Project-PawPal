@@ -24,9 +24,8 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
     private AnimalRegisterOrganization organization;
     private EcoSystem ecoSystem;
     private UserAccount userAccount;
-    /**
-     * Creates new form DoctorWorkAreaJPanel
-     */
+    
+    
     public AnimalRegistorWorkAreaJPanel(JPanel workArea, UserAccount account, AnimalRegisterOrganization organization, EcoSystem ecoSystem) {
         initComponents();
         
@@ -35,28 +34,9 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         this.userAccount = account;
         
-        populateRequestTable();
+        
     }
 
-    public AnimalRegistorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalRegisterOrganization animalRegisterOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public void populateRequestTable(){
-        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
-        
-        model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((LabTestWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
-            
-            model.addRow(row);
-        }
-    }
 
     
     /**
@@ -142,20 +122,21 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void requestVolunteerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestVolunteerJButtonActionPerformed
 
-        ManageEmployeeJPanel manageEmployeeJPanel = new ManageEmployeeJPanel(userProcessContainer, business.getOrganizationDirectory());
-        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
+        RequestVolunteerJPanel requestVolunteerJPanel = new RequestVolunteerJPanel();
+        workArea.add("requestVolunteerJPanel", workArea);
 
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
 
     }//GEN-LAST:event_requestVolunteerJButtonActionPerformed
 
     private void registerAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerAnimalJButtonActionPerformed
 
-        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, business.getOrganizationDirectory());
-        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        RegistorAnimalJPanel registorAnimalJPanel = new RegistorAnimalJPanel(workArea, userAccount);
+        workArea.add("registorAnimalJPanel", registorAnimalJPanel);
+        
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
     }//GEN-LAST:event_registerAnimalJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
