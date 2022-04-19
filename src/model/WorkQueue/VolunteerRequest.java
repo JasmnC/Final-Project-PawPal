@@ -10,6 +10,6 @@ package model.WorkQueue;
  * @author yuujadz
  */
 public class VolunteerRequest extends WorkRequest {
-    
+    //manager, volunteer
     
 }

@@ -19,22 +19,24 @@ import model.Organization.AnimalRegisterOrganization;
  * @author raunak
  */
 public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
+    
+        private JPanel workArea;
+        private UserAccount account;
+        private AnimalRegisterOrganization organization;
+        private AnimalShelterEnterprise enterprise;
+        private Network network;
+        private EcoSystem ecosystem;
+    
 
-    private JPanel workArea;
-    private AnimalRegisterOrganization organization;
-    private EcoSystem ecoSystem;
-    private UserAccount userAccount;
-    
-    
-    public AnimalRegistorWorkAreaJPanel(JPanel workArea, UserAccount account, AnimalRegisterOrganization organization, EcoSystem ecoSystem) {
+    public AnimalRegistorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalRegisterOrganization animalRegisterOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
         initComponents();
-        
+
         this.workArea = workArea;
+        this.account = account;
         this.organization = organization;
-        this.ecoSystem = ecoSystem;
-        this.userAccount = account;
-        
-        
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
     }
 
 
@@ -132,7 +134,7 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void registerAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerAnimalJButtonActionPerformed
 
-        RegistorAnimalJPanel registorAnimalJPanel = new RegistorAnimalJPanel(workArea, userAccount);
+        RegistorAnimalJPanel registorAnimalJPanel = new RegistorAnimalJPanel(workArea, account);
         workArea.add("registorAnimalJPanel", registorAnimalJPanel);
         
         CardLayout layout = (CardLayout) workArea.getLayout();

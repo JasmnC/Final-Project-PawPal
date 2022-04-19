@@ -17,16 +17,7 @@ import model.UserAccount.UserAccount;
  */
 public class RegistorAnimalJPanel extends javax.swing.JPanel {
     
-    Animal animal;
     
-    /**
-     * Creates new form RequestLabTestJPanel
-     */
-    public RegistorAnimalJPanel(Animal animal) {
-        initComponents();
-        this.animal = animal;
-    }
-
     public RegistorAnimalJPanel(JPanel workArea, UserAccount userAccount) {
         initComponents();
     }
