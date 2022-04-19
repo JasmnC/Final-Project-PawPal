@@ -65,7 +65,7 @@ public class RequestBT extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Send Behavior Therapy Request");
+        lblTitle.setText("Send Behavioral Therapy Request");
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -90,7 +90,7 @@ public class VetWorkArea extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Vet's Work Area");
+        lblTitle.setText("Vet Work Area");
 
         btnRequestPharmacy1.setText("Assign To Me");
         btnRequestPharmacy1.addActionListener(new java.awt.event.ActionListener() {

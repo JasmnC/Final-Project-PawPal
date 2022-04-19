@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class PharmacyWorkArea extends javax.swing.JPanel {
+public class PharmacistWorkArea extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
 
@@ -21,7 +21,7 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public PharmacyWorkArea(JPanel userProcessContainer) {
+    public PharmacistWorkArea(JPanel userProcessContainer) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
@@ -105,7 +105,6 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 0, 51));
         lblTitle.setText("Pharmacist Work Area");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -153,7 +152,7 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
 
-            PharmacyProcessRequest pharmacyProcessRequestJPanel = new PharmacyProcessRequest(userProcessContainer);
+            PharmacistProcessRequest pharmacyProcessRequestJPanel = new PharmacistProcessRequest(userProcessContainer);
             userProcessContainer.add("pharmacyProcessRequestJPanel", pharmacyProcessRequestJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
