@@ -6,7 +6,7 @@
 package model.Organization;
 
 import model.Role.PharmacistRole;
-import model.Role.PharmacistRole;
+import model.Role.BehaviorTherapistRole;
 import model.Role.Role;
 import java.util.ArrayList;
 
@@ -15,10 +15,10 @@ import java.util.ArrayList;
  * @author Kunjan
  */
 public class TreatmentOrganization extends Organization{
-    String name;
-    public TreatmentOrganization(String name) {
-        super(name);
-        this.name=name;
+
+    public TreatmentOrganization() {
+        super(Organization.Type.Treatment.getValue());
+       
     }
     
     @Override
@@ -27,9 +27,6 @@ public class TreatmentOrganization extends Organization{
         roles.add(new PharmacistRole());
         return roles;
     }
-    @Override
-    public Type getType() {
-        return  Organization.Type.Treatment;
-    }
-     
+
+    
 }
