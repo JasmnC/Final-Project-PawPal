@@ -5,17 +5,37 @@
  */
 package ui.Basic;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.Organization;
+import model.UserAccount.UserAccount;
+
 /**
  *
  * @author anitachen
  */
 public class MainScreen extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MainScreen
-     */
-    public MainScreen() {
+    JPanel mainWorkArea;
+    UserAccount userAccount;
+    Organization organization;
+    Enterprise enterprise;
+    Network network;
+    EcoSystem ecoSystem;
+
+    public MainScreen(JPanel mainWorkArea, UserAccount userAccount, Organization organization, Enterprise enterprise,Network network, EcoSystem ecoSystem) {
         initComponents();
+        this.mainWorkArea = mainWorkArea;
+        this.userAccount = userAccount;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecoSystem = ecoSystem;
+
+        initUserWorkArea();
     }
 
     /**
@@ -99,6 +119,9 @@ public class MainScreen extends javax.swing.JPanel {
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
 
+        mainWorkArea.remove(this);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.previous(mainWorkArea);
 
     }//GEN-LAST:event_btnLogOutActionPerformed
 
@@ -110,4 +133,14 @@ public class MainScreen extends javax.swing.JPanel {
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables
+
+    private void initUserWorkArea() {
+        
+        lblWelcome.setText("Welcome " + ((userAccount.getUsername()!= null) ? userAccount.getUsername() : userAccount.getUsername()) + "!");
+        
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        workArea.add("workArea", userAccount.getRole().createWorkArea(menuPanel, userAccount, organization, enterprise, network, ecoSystem));
+        layout.next(workArea);
+    }
+
 }

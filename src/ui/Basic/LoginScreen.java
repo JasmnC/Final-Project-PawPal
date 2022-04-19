@@ -5,17 +5,27 @@
  */
 package ui.Basic;
 
+import model.Network.Network;
+import model.Enterprise.Enterprise;
+import model.Organization.Organization;
+import model.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+
 /**
  *
  * @author anitachen
  */
 public class LoginScreen extends javax.swing.JPanel {
-
-    /**
-     * Creates new form LoginJPanel
-     */
-    public LoginScreen() {
+    JPanel mainWorkArea;
+    EcoSystem ecoSystem;
+    
+    public LoginScreen(JPanel mainWorkArea, EcoSystem ecoSystem) {
         initComponents();
+        this.mainWorkArea = mainWorkArea;
+        this.ecoSystem = ecoSystem;
     }
 
     /**
@@ -173,7 +183,31 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+   String userName = txtUserName.getText();
+        // Get Password
+        char[] passwordCharArray = pwdPassword.getPassword();
+        String password = String.valueOf(passwordCharArray);
+        boolean flag = false;
 
+        UserAccount userAccount = null;
+        for (Organization organization : ecoSystem.getOrganizationDirectory().getOrganizationList()){
+            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+            if (userAccount != null){
+                
+                JPanel mainScreen = new ui.Basic.MainScreen(mainWorkArea, userAccount, organization, enterprise, network,ecoSystem);
+                mainWorkArea.add("MainScreen", mainScreen);
+                CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+                layout.next(mainWorkArea);
+                
+                flag = true;
+                break;
+            }
+        }
+
+        if (flag == false) {
+            JOptionPane.showMessageDialog(null, "Invalid User Name/ Password.");
+            return;
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
