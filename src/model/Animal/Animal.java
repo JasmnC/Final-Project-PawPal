@@ -5,7 +5,7 @@
  */
 package model.Animal;
 
-import model.UserAccount.UserAccount;
+import model.UserAccount.UserAccount; 
 
 /**
  *

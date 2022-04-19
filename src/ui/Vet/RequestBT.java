@@ -14,14 +14,14 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class RequestBTJPanel extends javax.swing.JPanel {
+public class RequestBT extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
 
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestBTJPanel(JPanel userProcessContainer) {
+    public RequestBT(JPanel userProcessContainer) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -65,7 +65,7 @@ public class RequestBTJPanel extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Send Behavior Therapy Request");
+        lblTitle.setText("Send Behavioral Therapy Request");
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

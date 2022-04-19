@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class BTWorkAreaJPanel extends javax.swing.JPanel {
+public class BTWorkArea extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
 
@@ -21,7 +21,7 @@ public class BTWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public BTWorkAreaJPanel(JPanel userProcessContainer) {
+    public BTWorkArea(JPanel userProcessContainer) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
@@ -155,7 +155,7 @@ public class BTWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
 
-        BTProcessRequestJPanel bTProcessRequestJPanel = new BTProcessRequestJPanel(userProcessContainer);
+        BTProcessRequest bTProcessRequestJPanel = new BTProcessRequest(userProcessContainer);
         userProcessContainer.add("bTProcessRequestJPanel", bTProcessRequestJPanel);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

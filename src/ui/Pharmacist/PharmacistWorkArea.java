@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.Vet;
+package ui.Pharmacist;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,21 +13,22 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class VetWorkAreaJPanel extends javax.swing.JPanel {
+public class PharmacistWorkArea extends javax.swing.JPanel {
 
-    private JPanel workArea;
+    private JPanel userProcessContainer;
+
 
     /**
-     * Creates new form DoctorWorkAreaJPanel
+     * Creates new form LabAssistantWorkAreaJPanel
      */
-    public VetWorkAreaJPanel(JPanel workArea) {
+    public PharmacistWorkArea(JPanel userProcessContainer) {
         initComponents();
-        
-        this.workArea = workArea;
+
+        this.userProcessContainer = userProcessContainer;
     }
 
 
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,29 +40,29 @@ public class VetWorkAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
+        btnAssign = new javax.swing.JButton();
+        btnProcess = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        btnRequestPharmacy1 = new javax.swing.JButton();
-        btnViewDetial = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Animal ID", "Animal Name", "Sender", "Receiver", "Status", "Result"
+                "Message", "Animal ID", "Animal Name", "Sender", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -79,8 +81,21 @@ public class VetWorkAreaJPanel extends javax.swing.JPanel {
             tblWorkRequests.getColumnModel().getColumn(3).setResizable(false);
             tblWorkRequests.getColumnModel().getColumn(4).setResizable(false);
             tblWorkRequests.getColumnModel().getColumn(5).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(6).setResizable(false);
         }
+
+        btnAssign.setText("Assign to me");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
+
+        btnProcess.setText("Process");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
 
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -90,83 +105,67 @@ public class VetWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Vet's Work Area");
-
-        btnRequestPharmacy1.setText("Assign To Me");
-        btnRequestPharmacy1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestPharmacy1ActionPerformed(evt);
-            }
-        });
-
-        btnViewDetial.setText("View Animal Detail");
-        btnViewDetial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewDetialActionPerformed(evt);
-            }
-        });
+        lblTitle.setText("Pharmacist Work Area");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTitle)
-                                .addGap(210, 210, 210)
-                                .addComponent(btnRefresh))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                        .addComponent(lblTitle)
+                        .addGap(174, 174, 174)
+                        .addComponent(btnRefresh))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 405, Short.MAX_VALUE)
-                        .addComponent(btnRequestPharmacy1)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnViewDetial)
-                        .addGap(98, 98, 98))))
+                        .addComponent(btnAssign)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnProcess)))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAssign, btnProcess});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle)
                     .addComponent(btnRefresh))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewDetial)
-                    .addComponent(btnRequestPharmacy1))
-                .addGap(311, 311, 311))
+                    .addComponent(btnAssign)
+                    .addComponent(btnProcess))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+
+
+    }//GEN-LAST:event_btnAssignActionPerformed
+
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+
+            PharmacistProcessRequest pharmacyProcessRequestJPanel = new PharmacistProcessRequest(userProcessContainer);
+            userProcessContainer.add("pharmacyProcessRequestJPanel", pharmacyProcessRequestJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnProcessActionPerformed
+
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
 
-   
-        
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-    private void btnRequestPharmacy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestPharmacy1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRequestPharmacy1ActionPerformed
-
-    private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
-        // TODO add your handling code here:
-            VetAnimalDetailJPanel vetAnimalDetailJPanel = new VetAnimalDetailJPanel(workArea);
-            workArea.add("vetAnimalDetailJPanel", vetAnimalDetailJPanel);
-            CardLayout layout = (CardLayout) workArea.getLayout();
-            layout.next(workArea);
-    }//GEN-LAST:event_btnViewDetialActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnRefresh;
-    private javax.swing.JButton btnRequestPharmacy1;
-    private javax.swing.JButton btnViewDetial;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;

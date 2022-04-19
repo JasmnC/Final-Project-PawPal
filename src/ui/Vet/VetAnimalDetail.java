@@ -12,14 +12,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class VetAnimalDetailJPanel extends javax.swing.JPanel {
+public class VetAnimalDetail extends javax.swing.JPanel {
 
     private JPanel workArea;
 
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public VetAnimalDetailJPanel(JPanel workArea) {
+    public VetAnimalDetail(JPanel workArea) {
         initComponents();
         
         this.workArea = workArea;
@@ -45,7 +45,7 @@ public class VetAnimalDetailJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        btnRequestBT.setText("Request Behavior Therapy");
+        btnRequestBT.setText("Request Behavioral Therapy");
         btnRequestBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestBTActionPerformed(evt);
@@ -55,7 +55,7 @@ public class VetAnimalDetailJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Animal Detail");
 
-        btnRequestPharmacy.setText("Request Medication Therapy");
+        btnRequestPharmacy.setText("Request Pharmaceutical  Therapy");
         btnRequestPharmacy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestPharmacyActionPerformed(evt);
@@ -124,7 +124,7 @@ public class VetAnimalDetailJPanel extends javax.swing.JPanel {
     private void btnRequestPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestPharmacyActionPerformed
         // TODO add your handling code here:
         
-            RequestMedicationJPanel requestMedicationJPanel = new RequestMedicationJPanel(workArea);
+            RequestPharmacist requestMedicationJPanel = new RequestPharmacist(workArea);
             workArea.add("requestMedicationJPanel", requestMedicationJPanel);
             CardLayout layout = (CardLayout) workArea.getLayout();
             layout.next(workArea);
