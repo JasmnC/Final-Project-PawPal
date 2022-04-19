@@ -1,9 +1,11 @@
+package ui.Basic;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.Basic;
+
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -11,7 +13,6 @@ import model.EcoSystem.ConfigureASystem;
 import model.EcoSystem.EcoSystem;
 import model.Network.Network;
 import model.UserAccount.UserAccount;
-import model.EcoSystem.ConfigureASystem;
 
 /**
  *
@@ -19,8 +20,6 @@ import model.EcoSystem.ConfigureASystem;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-    EcoSystem ecosystem = ConfigureASystem.configure();
-    
     /**
      * Creates new form MainJFrame
      */
@@ -28,6 +27,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
         initComponents();
+        ecoSystem = ConfigureASystem.configure();
+        setSize(800, 600);
+
+        initLoginScreen();
 
     }
 
@@ -77,6 +80,7 @@ public class MainJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -89,4 +93,14 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
+
+    private void initLoginScreen() {
+
+        JPanel loginScreen = new ui.Basic.LoginScreen(mainWorkArea, ecoSystem);
+        mainWorkArea.add("LoginScreen", loginScreen);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+
+    }
+
 }
