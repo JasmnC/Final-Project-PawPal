@@ -4,17 +4,13 @@
  */
 package ui.AnimalManagerRole;
 
-import ui.AnimalRegistorRole.*;
 import model.EcoSystem.EcoSystem;
 import model.UserAccount.UserAccount;
-import model.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 import model.Enterprise.AnimalShelterEnterprise;
 import model.Network.Network;
 import model.Organization.AnimalManagementOrganization;
-import model.Organization.AnimalRegisterOrganization;
 
 /**
  *
@@ -23,42 +19,42 @@ import model.Organization.AnimalRegisterOrganization;
 public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
-    private AnimalRegisterOrganization organization;
-    private EcoSystem ecoSystem;
+    private AnimalManagementOrganization organization;
+    private AnimalShelterEnterprise enterprise;
+    private Network network;
+    private EcoSystem ecosystem;
     private UserAccount userAccount;
+    
     /**
-     * Creates new form DoctorWorkAreaJPanel
+     * Creates new form VolunteerWorkArea
      */
-    public AnimalManagerWorkAreaJPanel(userProcessContainer, account, (AnimalManagementOrganization) organization, (AnimalShelterEnterprise) enterprise, network, ecosystem) {
+    public AnimalManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalManagementOrganization organization, AnimalShelterEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
         
-        this.workArea = workArea;
-        this.organization = organization;
-        this.ecoSystem = ecoSystem;
+        this.workArea = userProcessContainer;
         this.userAccount = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
         
-        populateRequestTable();
-    }
-
-    public AnimalManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalManagementOrganization animalManagementOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void populateRequestTable(){
-        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
-        
-        model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((LabTestWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
-            
-            model.addRow(row);
-        }
-    }
+//    public void populateRequestTable(){
+//        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+//        
+//        model.setRowCount(0);
+//        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+//            Object[] row = new Object[4];
+//            row[0] = request.getMessage();
+//            row[1] = request.getReceiver();
+//            row[2] = request.getStatus();
+//            String result = ((LabTestWorkRequest) request).getTestResult();
+//            row[3] = result == null ? "Waiting" : result;
+//            
+//            model.addRow(row);
+//        }
+//    }
 
     
     /**
@@ -158,8 +154,8 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewOngoingAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOngoingAnimalJButtonActionPerformed
 
-        ManageEmployeeJPanel manageEmployeeJPanel = new ManageEmployeeJPanel(userProcessContainer, business.getOrganizationDirectory());
-        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
+        ViewOngoingAnimal viewOngoingAnimalJPanel = new ViewOngoingAnimal();
+        userProcessContainer.add("viewOngoingAnimalJPanel", viewOngoingAnimalJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -176,6 +172,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewAdoptionRequestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAdoptionRequestJButtonActionPerformed
         // TODO add your handling code here:
+        ViewOngoingAnimalJPanel viewOngoingAnimalJPanel = 
     }//GEN-LAST:event_viewAdoptionRequestJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,34 +4,31 @@
  */
 package ui.AnimalRegistorRole;
 
-import business.Business;
-import business.Organization.LabOrganization;
-import business.Organization.Organization;
-import business.UserAccount.UserAccount;
-import business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Animal.Animal;
+import model.UserAccount.UserAccount;
 
 /**
  *
  * @author raunak
  */
 public class RegistorAnimalJPanel extends javax.swing.JPanel {
-
-    private JPanel userProcessContainer;
-    private Business business;
-    private UserAccount userAccount;
+    
+    Animal animal;
+    
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RegistorAnimalJPanel(JPanel userProcessContainer, UserAccount account, Business business) {
+    public RegistorAnimalJPanel(Animal animal) {
         initComponents();
-        
-        this.userProcessContainer = userProcessContainer;
-        this.business = business;
-        this.userAccount = account;
+        this.animal = animal;
+    }
+
+    public RegistorAnimalJPanel(JPanel workArea, UserAccount userAccount) {
+        initComponents();
     }
 
     /**
