@@ -5,6 +5,9 @@
  */
 package ui.Basic;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import model.EcoSystem.ConfigureASystem;
 import model.EcoSystem.EcoSystem;
 import model.Network.Network;
 import model.UserAccount.UserAccount;
@@ -18,9 +21,15 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    private EcoSystem ecoSystem;
+
     public MainJFrame() {
         initComponents();
-                
+        ecoSystem = ConfigureASystem.configure();
+        setSize(800, 600);
+
+        initLoginScreen();
+
     }
 
     /**
@@ -32,18 +41,13 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainWorkArea = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 825, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
+        mainWorkArea.setBackground(new java.awt.Color(255, 255, 255));
+        mainWorkArea.setLayout(new java.awt.CardLayout());
+        getContentPane().add(mainWorkArea, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -82,9 +86,18 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
-        
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
+
+    private void initLoginScreen() {
+
+        JPanel loginScreen = new ui.Basic.LoginScreen(mainWorkArea, ecoSystem);
+        mainWorkArea.add("LoginScreen", loginScreen);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+
+    }
+
 }
