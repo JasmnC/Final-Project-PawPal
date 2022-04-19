@@ -6,15 +6,40 @@
 
 package ui.AdoptionManager;
 
+import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.AdoptionEnterprise;
+import model.Network.Network;
+import model.Organization.AdoptionOperationOrganization;
+import model.UserAccount.UserAccount;
+
 /**
  *
  * @author anitachen
  */
 public class AdoptionManagerWorkArea extends javax.swing.JPanel {
 
+    private JPanel workArea;
+    private AdoptionOperationOrganization organization;
+    private AdoptionEnterprise enterprise;
+    private Network network;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;    
+    
+    
     /** Creates new form AdoptionManagerWorkArea */
-    public AdoptionManagerWorkArea() {
+
+    public AdoptionManagerWorkArea(JPanel userProcessContainer, UserAccount account, AdoptionOperationOrganization organization, AdoptionEnterprise enterprise, Network network, EcoSystem ecosystem) {
+        
         initComponents();
+        
+        this.workArea = userProcessContainer;
+        this.userAccount = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
+
     }
 
     /** This method is called from within the constructor to

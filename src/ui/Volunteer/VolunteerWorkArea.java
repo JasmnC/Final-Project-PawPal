@@ -5,17 +5,39 @@
  */
 package ui.Volunteer;
 
+import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.VolunteerEnterprise;
+import model.Network.Network;
+import model.Organization.VolunteerOrganization;
+import model.UserAccount.UserAccount;
+
 /**
  *
  * @author anitachen
  */
 public class VolunteerWorkArea extends javax.swing.JPanel {
 
+    private JPanel workArea;
+    private VolunteerOrganization organization;
+    private VolunteerEnterprise enterprise;
+    private Network network;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    
     /**
      * Creates new form VolunteerWorkArea
      */
-    public VolunteerWorkArea() {
+    public VolunteerWorkArea(JPanel userProcessContainer, UserAccount account, VolunteerOrganization organization, VolunteerEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
+        
+        this.workArea = userProcessContainer;
+        this.userAccount = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
+        
     }
 
     /**

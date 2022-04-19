@@ -5,17 +5,40 @@
  */
 package ui.Adpoter;
 
+import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.AdoptionEnterprise;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.AdopterOrganization;
+import model.Organization.Organization;
+import model.UserAccount.UserAccount;
+
 /**
  *
  * @author anitachen
  */
 public class AdopterWorkArea extends javax.swing.JPanel {
 
+    private JPanel workArea;
+    private AdopterOrganization organization;
+    private AdoptionEnterprise enterprise;
+    private Network network;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    
     /**
      * Creates new form AdopterWorkArea
      */
-    public AdopterWorkArea() {
+    public AdopterWorkArea(JPanel userProcessContainer, UserAccount account, AdopterOrganization organization, AdoptionEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
+        
+        this.workArea = userProcessContainer;
+        this.userAccount = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
     }
 
     /**
@@ -41,20 +64,20 @@ public class AdopterWorkArea extends javax.swing.JPanel {
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Name", "Status"
+                "ID", "Name", "Manager", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
