@@ -8,6 +8,7 @@ package ui.Basic;
 import model.EcoSystem.EcoSystem;
 import model.Network.Network;
 import model.UserAccount.UserAccount;
+import model.EcoSystem.ConfigureASystem;
 
 /**
  *
@@ -15,12 +16,18 @@ import model.UserAccount.UserAccount;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    EcoSystem ecosystem = ConfigureASystem.configure();
+    
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
                 
+        System.out.println("TEST");
+        System.out.println(ecosystem.getSystemAdmin());
+        System.out.println("END");
+        
     }
 
     /**
@@ -87,4 +94,4 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-}
+

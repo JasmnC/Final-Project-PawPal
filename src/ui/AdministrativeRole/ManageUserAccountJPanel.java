@@ -9,6 +9,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.EcoSystem.EcoSystem;
 
 /**
  *
@@ -19,23 +20,29 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageUserAccountJPanel
      */
-    private JPanel container;
-    private Business business;
+    private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
 
-    public ManageUserAccountJPanel(JPanel container, Business business) {
+    public ManageUserAccountJPanel(JPanel container, EcoSystem ecosystem) {
         initComponents();
-        this.business = business;
-        this.container = container;
-
-        popOrganizationComboBox();
         
-        Organization organization = (Organization) cmbEnterprise.getSelectedItem();
-        if (organization != null) {
-            populateEmployeeComboBox(organization);
-            populateRoleComboBox(organization);
-        }
-
-        popUserAccountsTable();
+        this.userProcessContainer = userProcessContainer;
+        this.ecoSystem = ecosystem;
+        
+        
+        
+//        this.business = business;
+//        this.container = container;
+//
+//        popOrganizationComboBox();
+//        
+//        Organization organization = (Organization) cmbEnterprise.getSelectedItem();
+//        if (organization != null) {
+//            populateEmployeeComboBox(organization);
+//            populateRoleComboBox(organization);
+//        }
+//
+//        popUserAccountsTable();
     }
 
     public void popOrganizationComboBox() {
