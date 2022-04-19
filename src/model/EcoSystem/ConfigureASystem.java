@@ -2,9 +2,9 @@ package model.EcoSystem;
 
 
 
-import Business.Employee.Employee;
-import Business.Role.SystemAdminRole;
-import Business.UserAccount.UserAccount;
+//import model.Employee.Employee;
+import model.Role.SystemAdminRole;
+import model.UserAccount.UserAccount;
 
 /**
  *
@@ -14,20 +14,20 @@ public class ConfigureASystem {
     
     public static EcoSystem configure(){
         
-        EcoSystem system = EcoSystem.getInstance();
+        EcoSystem ecoSystem = new EcoSystem();  
+
+     //   ecoSystem.getSystemAdmin();
         
-        //Create a network
-        //create an enterprise
-        //initialize some organizations
-        //have some employees 
-        //create user account
+        UserAccount account = new UserAccount();
+        account.setUsername("admin");
+        account.setPassword("admin");
+        account.setRole(new SystemAdminRole());
         
+        ecoSystem.setSystemAdmin(account);
+
+  //      adminOrganization.getUserAccountDirectory().getUserAccountList().add(account);
         
-        Employee employee = system.getEmployeeDirectory().createEmployee("sysadmin");
-        
-        UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
-        
-        return system;
+        return ecoSystem;
     }
     
 }
