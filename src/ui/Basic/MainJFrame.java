@@ -5,6 +5,10 @@
  */
 package ui.Basic;
 
+import model.EcoSystem.EcoSystem;
+import model.Network.Network;
+import model.UserAccount.UserAccount;
+
 /**
  *
  * @author anitachen
@@ -16,6 +20,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+                
     }
 
     /**
@@ -76,6 +81,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 new MainJFrame().setVisible(true);
             }
         });
+    }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
