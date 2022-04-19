@@ -13,14 +13,14 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class BTProcessRequestJPanel extends javax.swing.JPanel {
+public class BTProcessRequest extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
 
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public BTProcessRequestJPanel(JPanel userProcessContainer) {
+    public BTProcessRequest(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
 
@@ -105,7 +105,7 @@ public class BTProcessRequestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        BTWorkAreaJPanel lwjp = (BTWorkAreaJPanel) component;
+        BTWorkArea lwjp = (BTWorkArea) component;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 

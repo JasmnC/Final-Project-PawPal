@@ -13,14 +13,14 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class PharmacyProcessRequestJPanel extends javax.swing.JPanel {
+public class PharmacyProcessRequest extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
 
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public PharmacyProcessRequestJPanel(JPanel userProcessContainer) {
+    public PharmacyProcessRequest(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
 
@@ -103,7 +103,7 @@ public class PharmacyProcessRequestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        PharmacyWorkAreaJPanel lwjp = (PharmacyWorkAreaJPanel) component;
+        PharmacyWorkArea lwjp = (PharmacyWorkArea) component;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 

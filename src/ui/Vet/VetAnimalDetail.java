@@ -12,14 +12,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class VetAnimalDetailJPanel extends javax.swing.JPanel {
+public class VetAnimalDetail extends javax.swing.JPanel {
 
     private JPanel workArea;
 
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public VetAnimalDetailJPanel(JPanel workArea) {
+    public VetAnimalDetail(JPanel workArea) {
         initComponents();
         
         this.workArea = workArea;
@@ -124,7 +124,7 @@ public class VetAnimalDetailJPanel extends javax.swing.JPanel {
     private void btnRequestPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestPharmacyActionPerformed
         // TODO add your handling code here:
         
-            RequestMedicationJPanel requestMedicationJPanel = new RequestMedicationJPanel(workArea);
+            RequestMedication requestMedicationJPanel = new RequestMedication(workArea);
             workArea.add("requestMedicationJPanel", requestMedicationJPanel);
             CardLayout layout = (CardLayout) workArea.getLayout();
             layout.next(workArea);

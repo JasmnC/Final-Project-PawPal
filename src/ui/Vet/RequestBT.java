@@ -14,14 +14,14 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class RequestBTJPanel extends javax.swing.JPanel {
+public class RequestBT extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
 
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestBTJPanel(JPanel userProcessContainer) {
+    public RequestBT(JPanel userProcessContainer) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
