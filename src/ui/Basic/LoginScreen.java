@@ -24,10 +24,15 @@ public class LoginScreen extends javax.swing.JPanel {
     JPanel mainWorkArea;
     EcoSystem ecoSystem;
     
+    
     public LoginScreen(JPanel mainWorkArea, EcoSystem ecoSystem) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
         this.ecoSystem = ecoSystem;
+        
+        System.out.println(ecoSystem.getSystemAdmin().getUsername());
+        System.out.println(ecoSystem.getSystemAdmin().getPassword());
+
     }
 
     /**
@@ -185,31 +190,51 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-   String userName = txtUserName.getText();
+        
+//        JPanel mainScreen = new MainScreen(mainWorkArea, ecoSystem);
+//        mainWorkArea.add("MainScreen", mainScreen);
+//        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+//        layout.next(mainWorkArea);
+        
+        // Get userName
+        String userName = txtUserName.getText();
+       
         // Get Password
         char[] passwordCharArray = pwdPassword.getPassword();
         String password = String.valueOf(passwordCharArray);
-        boolean flag = false;
+//        boolean flag = false;
 
-        UserAccount userAccount = null;
-        for (Organization organization : ecoSystem.getOrganizationDirectory().getOrganizationList()){
-            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
-            if (userAccount != null){
-                
-                JPanel mainScreen = new ui.Basic.MainScreen(mainWorkArea, userAccount, organization, enterprise, network,ecoSystem);
-                mainWorkArea.add("MainScreen", mainScreen);
-                CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                layout.next(mainWorkArea);
-                
-                flag = true;
-                break;
-            }
+        if (userName.equals(ecoSystem.getSystemAdmin().getUsername()) &&
+                password.equals(ecoSystem.getSystemAdmin().getPassword())) {
+            JPanel mainScreen = new MainScreen(mainWorkArea, ecoSystem);
+            mainWorkArea.add("MainScreen", mainScreen);
+            CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+            layout.next(mainWorkArea);
+        } else {
+            System.out.println("FAIL");
         }
 
-        if (flag == false) {
-            JOptionPane.showMessageDialog(null, "Invalid User Name/ Password.");
-            return;
-        }
+//
+//        UserAccount userAccount = null;
+//
+//        for (Organization organization : ecoSystem.getOrganizationDirectory().getOrganizationList()){
+//            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+//            if (userAccount != null){
+//
+//                JPanel mainScreen = new ui.Basic.MainScreen(mainWorkArea, userAccount, organization, enterprise, network,ecoSystem);
+//                mainWorkArea.add("MainScreen", mainScreen);
+//                CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+//                layout.next(mainWorkArea);
+//
+//                flag = true;
+//                break;
+//            }
+//        }
+//
+//        if (flag == false) {
+//            JOptionPane.showMessageDialog(null, "Invalid User Name/ Password.");
+//            return;
+//        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
