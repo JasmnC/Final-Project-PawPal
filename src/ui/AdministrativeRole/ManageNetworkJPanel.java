@@ -31,29 +31,8 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         
         refreshNetworkList();
         
-//        populateOrganizationComboBox();
     }
     
-//    public void populateOrganizationComboBox(){
-//        cmbOrganizationList.removeAllItems();
-//        
-//        for (Organization organization : organizationDir.getOrganizationList()){
-//            cmbOrganizationList.addItem(organization);
-//        }
-//    }
-//    
-//      private void populateTable(Organization organization){
-//        DefaultTableModel model = (DefaultTableModel) tblNetwork.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
-//            Object[] row = new Object[2];
-//            row[0] = employee.getId();
-//            row[1] = employee.getName();
-//            model.addRow(row);
-//        }
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -179,38 +158,23 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
     private void btnCreateNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNetworkActionPerformed
 
-        String name = txtNetworkName.getText();
-        
+        String name = txtNetworkName.getText().toUpperCase();
+                
         if (name.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Network name cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Network name cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        for (Network n : ecoSystem.getNetworkList()){
-            if (n.getName().equals(name)){
-                JOptionPane.showMessageDialog(this, "Network already exist", "Warning", JOptionPane.WARNING_MESSAGE);
-                break;
-            } else {
-                Network newNetwork = ecoSystem.createNetwork(name);
-                ecoSystem.getNetworkList().add(newNetwork);
-                txtNetworkName.setText("");
-                refreshNetworkList();
-                System.out.println("ADDED");
-            }
+        if (ecoSystem.getNetworkList().isEmpty() || !ecoSystem.getNetworkNameList().contains(name)){
+            Network newNetwork = ecoSystem.createNetwork(name);
+            txtNetworkName.setText("");
+            refreshNetworkList();
+            JOptionPane.showMessageDialog(this, "New network added", "Information", JOptionPane.INFORMATION_MESSAGE);
+        } 
+        else {
+            JOptionPane.showMessageDialog(this, "Network existed", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        
 
-//        
-//        Organization organization = (Organization) cmbOrganizationList.getSelectedItem();
-//        String name = txtNetworkName.getText();
-//        
-//        if (name.isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Employee name cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        
-//        organization.getEmployeeDirectory().createEmployee(name);
-//        populateTable(organization);
         
     }//GEN-LAST:event_btnCreateNetworkActionPerformed
 
