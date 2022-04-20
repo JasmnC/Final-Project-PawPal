@@ -58,4 +58,11 @@ public class EnterpriseDirectory {
          }
         return true;
     }
+    
+    public Enterprise getEnterpriseByName(String name){
+        for (Enterprise e : enterpriseList){
+            if (name.equalsIgnoreCase(e.getName())) return e;
+        }
+        return null;
+    }
 }

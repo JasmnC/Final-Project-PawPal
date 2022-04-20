@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class AnimalManagementOrganization extends Organization{
 
-    public AnimalManagementOrganization() {
-        super(Organization.Type.AnimalManagement.getValue());
+    public AnimalManagementOrganization(String name) {
+        super(name, Organization.Type.AnimalManagement);
     }
     
     @Override

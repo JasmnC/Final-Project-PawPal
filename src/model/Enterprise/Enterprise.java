@@ -19,7 +19,7 @@ public abstract class Enterprise {
 
     public enum Type {
         AnimalShelter("Animal Shelter"), 
-        MedicalCare("MedicalCare"), 
+        MedicalCare("Medical Care"), 
         Adoption("Adoption"), 
         Volunteer("Volunteer");
 

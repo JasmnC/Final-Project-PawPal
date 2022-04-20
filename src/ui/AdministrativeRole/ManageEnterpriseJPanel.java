@@ -34,34 +34,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         this.ecoSystem = ecosystem;
         
         populateNetworkCombo();
-//        populateTable();
-        
-        
-//        populateTable();
-//        populateCombo();
+
     }
     
-//    private void populateCombo(){
-//        cmbOrganizations.removeAllItems();
-//        for (Type type : Organization.Type.values()){
-//            if (!type.getValue().equals(Type.Admin.getValue()))
-//                cmbOrganizations.addItem(type);
-//        }
-//    }
-//
-//    private void populateTableOrg(){
-//        DefaultTableModel model = (DefaultTableModel) tblEnterprises.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for (Organization organization : directory.getOrganizationList()){
-//            Object[] row = new Object[2];
-//            row[0] = organization.getOrganizationID();
-//            row[1] = organization.getName();
-//            
-//            model.addRow(row);
-//        }
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -235,6 +210,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             if (network.getEnterpriseDirectory().nameIsUnique(name)){
                 Enterprise.Type type = (Enterprise.Type) cmbEnterprise.getSelectedItem();
                 network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
+                JOptionPane.showMessageDialog(this, "new Enterprise added", "Information", JOptionPane.INFORMATION_MESSAGE);
+                txtName.setText("");
                 populateTable();
             } else {
                 JOptionPane.showMessageDialog(this, "Enterprise name alreay existed", "Warning", JOptionPane.WARNING_MESSAGE);
