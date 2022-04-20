@@ -195,6 +195,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 ecoSystem.getNetworkList().add(newNetwork);
                 txtNetworkName.setText("");
                 refreshNetworkList();
+                System.out.println("ADDED");
             }
         }
         

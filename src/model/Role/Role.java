@@ -10,6 +10,7 @@ import model.Enterprise.Enterprise;
 import model.Organization.Organization;
 import model.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.AdministrativeRole.AdminWorkAreaJPanel;
 
 /**
  *
@@ -50,6 +51,11 @@ public abstract class Role {
     
     public abstract JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem Ecosystem);
 
+    public JPanel createAdminWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
+        this.type = RoleType.SystemAdmin;
+        return new AdminWorkAreaJPanel(userProcessContainer, account, ecosystem);
+    }
+    
     @Override
     public String toString() {
         return this.getClass().getName();

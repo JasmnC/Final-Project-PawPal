@@ -32,5 +32,4 @@ public class SystemAdminRole extends Role {
         return new AdminWorkAreaJPanel(userProcessContainer, account, ecosystem);
     }
 
-
 }
