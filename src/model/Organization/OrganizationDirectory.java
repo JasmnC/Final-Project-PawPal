@@ -27,46 +27,46 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(Type type){
+    public Organization createOrganization(String name, Type type){
         Organization organization = null;
         if (type.getValue().equals(Type.AnimalRegister.getValue())){
-            organization = new AnimalRegisterOrganization();
+            organization = new AnimalRegisterOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.AnimalManagement.getValue())){
-            organization = new AnimalManagementOrganization();
+            organization = new AnimalManagementOrganization(name);
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.Vet.getValue())){
-            organization = new VetOrganization();
+            organization = new VetOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Treatment.getValue())){
-            organization = new TreatmentOrganization();
+            organization = new TreatmentOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Adopter.getValue())){
-            organization = new AdopterOrganization();
+            organization = new AdopterOrganization(name);
             organizationList.add(organization);
         }
        
         else if (type.getValue().equals(Type.AdoptionOperation.getValue())){
-            organization = new AdoptionOperationOrganization();
+            organization = new AdoptionOperationOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.VolunteerManagement.getValue())){
-            organization = new VolunteerManagementOrganization();
+            organization = new VolunteerManagementOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Volunteer.getValue())){
-            organization = new VolunteerOrganization();
+            organization = new VolunteerOrganization(name);
             organizationList.add(organization);
         }
         return organization;
     
 }
     
-     public boolean isUnique(String name){
+     public boolean nameIsUnique(String name){
         for(Organization organization : organizationList){
             if(name.equalsIgnoreCase(organization.getName())){
                 return false;

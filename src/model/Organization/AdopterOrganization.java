@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class AdopterOrganization extends Organization{
 
-    public AdopterOrganization() {
-        super(Organization.Type.Adopter.getValue());
+    public AdopterOrganization(String name) {
+        super(name, Organization.Type.Adopter);
     }
 
     @Override
