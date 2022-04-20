@@ -52,8 +52,6 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         txtNetworkName = new javax.swing.JTextField();
         btnCreateNetwork = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Manage Network");
 
@@ -165,7 +163,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             return;
         }
 
-        if (ecoSystem.getNetworkList().isEmpty() || !ecoSystem.getNetworkNameList().contains(name)){
+        if (ecoSystem.getNetworkList().isEmpty() || ecoSystem.nameIsUnique(name)){
             Network newNetwork = ecoSystem.createNetwork(name);
             txtNetworkName.setText("");
             refreshNetworkList();

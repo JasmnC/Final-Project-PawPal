@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class MedicalCareEnterprise extends Enterprise {
     
-    public MedicalCareEnterprise(){
-        super(Enterprise.Type.MedicalCare.getValue());
+    public MedicalCareEnterprise(String name){
+        super(name, Enterprise.Type.MedicalCare);
     }
 
     
