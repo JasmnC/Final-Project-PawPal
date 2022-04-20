@@ -33,12 +33,11 @@ public class EcoSystem {
         return networkList;
     }
     
-    public ArrayList<String> getNetworkNameList(){
-        ArrayList nameList = new ArrayList<String>();
+    public boolean nameIsUnique(String name){
         for (Network n : networkList){
-            nameList.add(n.getName());
+            if (name.equalsIgnoreCase(n.getName())) return false;
         }
-        return nameList;
+        return true;
     }
 
     public UserAccount getSystemAdmin() {
