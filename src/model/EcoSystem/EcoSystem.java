@@ -32,6 +32,14 @@ public class EcoSystem {
     public ArrayList<Network> getNetworkList() {
         return networkList;
     }
+    
+    public ArrayList<String> getNetworkNameList(){
+        ArrayList nameList = new ArrayList<String>();
+        for (Network n : networkList){
+            nameList.add(n.getName());
+        }
+        return nameList;
+    }
 
     public UserAccount getSystemAdmin() {
         return systemAdmin;
@@ -40,7 +48,6 @@ public class EcoSystem {
     public void setSystemAdmin(UserAccount systemAdmin) {
         this.systemAdmin = systemAdmin;
     }
-    
     
 //    
 //    
