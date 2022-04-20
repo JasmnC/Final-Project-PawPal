@@ -28,6 +28,16 @@ public class MainScreen extends javax.swing.JPanel {
     Network network;
     EcoSystem ecoSystem;
 
+    public MainScreen(JPanel mainWorkArea, EcoSystem ecoSystem) {
+        initComponents();
+        this.mainWorkArea = mainWorkArea;
+        this.ecoSystem = ecoSystem;
+
+//        initUserWorkArea();
+    }
+    
+    
+    
     public MainScreen(JPanel mainWorkArea, UserAccount userAccount, Organization organization, Enterprise enterprise,Network network, EcoSystem ecoSystem) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
