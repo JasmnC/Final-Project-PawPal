@@ -5,11 +5,6 @@
 package ui.AnimalRegistorRole;
 
 import ui.AnimalRegistorRole.*;
-import business.Business;
-import business.Organization.LabOrganization;
-import business.Organization.Organization;
-import business.UserAccount.UserAccount;
-import business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;

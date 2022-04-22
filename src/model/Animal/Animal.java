@@ -13,7 +13,6 @@ import model.UserAccount.UserAccount;
  */
 public class Animal {
   
-    // jasmine test4
     
     private static int idCounter = 0 ;
     

@@ -8,7 +8,10 @@ import model.EcoSystem.EcoSystem;
 import model.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.Animal.Animal;
+import model.Animal.AnimalDirectory;
 import model.Enterprise.AnimalShelterEnterprise;
+import model.Enterprise.Enterprise;
 import model.Network.Network;
 import model.Organization.AnimalManagementOrganization;
 
@@ -24,22 +27,19 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
     private Network network;
     private EcoSystem ecosystem;
     private UserAccount userAccount;
-    
-    /**
-     * Creates new form VolunteerWorkArea
-     */
+
     public AnimalManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalManagementOrganization organization, AnimalShelterEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
-        
+
         this.workArea = userProcessContainer;
         this.userAccount = account;
         this.organization = organization;
         this.enterprise = enterprise;
         this.network = network;
         this.ecosystem = ecosystem;
-        
+
     }
-    
+
 //    public void populateRequestTable(){
 //        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
 //        
@@ -55,8 +55,6 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 //            model.addRow(row);
 //        }
 //    }
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,25 +152,33 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewOngoingAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOngoingAnimalJButtonActionPerformed
 
-        ViewOngoingAnimal viewOngoingAnimalJPanel = new ViewOngoingAnimal();
-        userProcessContainer.add("viewOngoingAnimalJPanel", viewOngoingAnimalJPanel);
+        
+        
+        ViewOngingAnimalJPanel viewOngoingAnimalJPanel = new ViewOngingAnimalJPanel(workArea, userAccount, enterprise.getAnimalDirectory().getAnimalByManager(userAccount.toString()));
+        workArea.add("viewOngoingAnimalJPanel", viewOngoingAnimalJPanel);
 
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
 
     }//GEN-LAST:event_viewOngoingAnimalJButtonActionPerformed
 
     private void getAnAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAnAnimalJButtonActionPerformed
 
-        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, business.getOrganizationDirectory());
-        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        ManageAnimalJPanel manageAnimalJPanel = new ManageAnimalJPanel(workArea, userAccount, enterprise.getAnimalDirectory().getEnterprise());
+        workArea.add("manageAnimalJPanel", manageAnimalJPanel);
+
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
+
     }//GEN-LAST:event_getAnAnimalJButtonActionPerformed
 
     private void viewAdoptionRequestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAdoptionRequestJButtonActionPerformed
         // TODO add your handling code here:
-        ViewOngoingAnimalJPanel viewOngoingAnimalJPanel = 
+        AdoptionRequestJPanel adoptionRequestJPanel = new AdoptionRequestJPanel();
+        workArea.add("adoptionRequestJPanel", adoptionRequestJPanel);
+
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
     }//GEN-LAST:event_viewAdoptionRequestJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
