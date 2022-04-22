@@ -14,10 +14,9 @@ import java.util.ArrayList;
  */
 public class MedicalCareEnterprise extends Enterprise {
     
-    public MedicalCareEnterprise(String name){
-        super(name, Enterprise.Type.MedicalCare);
-    }
-
     
+    public MedicalCareEnterprise(String name) {
+        super(name, Enterprise.Type.MedicalCare);
+    }    
     
 }
