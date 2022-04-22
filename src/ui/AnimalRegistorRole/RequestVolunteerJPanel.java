@@ -9,6 +9,17 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.AnimalRegisterOrganization;
+import model.Organization.Organization;
+import model.Organization.VolunteerOrganization;
+import model.UserAccount.UserAccount;
+import model.WorkQueue.VolunteerRequest;
+import model.WorkQueue.WorkRequest;
 import ui.AnimalManagerRole.ManageAnimalJPanel;
 
 /**
@@ -17,23 +28,28 @@ import ui.AnimalManagerRole.ManageAnimalJPanel;
  */
 public class RequestVolunteerJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-    private Business business;
-    private UserAccount userAccount;
-    /**
-     * Creates new form RequestLabTestJPanel
-     */
-    public RequestVolunteerJPanel(JPanel userProcessContainer, UserAccount account, Business business) {
+        private JPanel workArea;
+        private UserAccount account;
+        private AnimalRegisterOrganization organization;
+        private AnimalShelterEnterprise enterprise;
+        private Network network;
+        private EcoSystem ecosystem;
+    
+
+    public RequestVolunteerJPanel(JPanel userProcessContainer, UserAccount account, AnimalRegisterOrganization animalRegisterOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
         initComponents();
+
+        this.workArea = workArea;
+        this.account = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
         
-        this.userProcessContainer = userProcessContainer;
-        this.business = business;
-        this.userAccount = account;
+        populateVolunteerRequestTable();
     }
 
-    RequestVolunteerJPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,20 +60,20 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRequestTest = new javax.swing.JButton();
+        btnRequestVolunteer = new javax.swing.JButton();
         lblMessage = new javax.swing.JLabel();
         txtRequestVolunteerMessage = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblSendVolunteerRequest = new javax.swing.JTable();
+        tblSentVolunteerRequest = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        btnRequestTest.setText("Request");
-        btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
+        btnRequestVolunteer.setText("Request");
+        btnRequestVolunteer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestTestActionPerformed(evt);
+                btnRequestVolunteerActionPerformed(evt);
             }
         });
 
@@ -74,7 +90,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Send Volunteer Request");
 
-        tblSendVolunteerRequest.setModel(new javax.swing.table.DefaultTableModel(
+        tblSentVolunteerRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -100,7 +116,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblSendVolunteerRequest);
+        jScrollPane2.setViewportView(tblSentVolunteerRequest);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,7 +132,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRequestTest)
+                            .addComponent(btnRequestVolunteer)
                             .addComponent(lblMessage)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -138,60 +154,79 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtRequestVolunteerMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRequestTest)
+                .addComponent(btnRequestVolunteer)
                 .addGap(137, 137, 137))
         );
     }// </editor-fold>//GEN-END:initComponents
+    public void populateVolunteerRequestTable(){
+        DefaultTableModel model = (DefaultTableModel) tblSentVolunteerRequest.getModel();
+        
+        model.setRowCount(0);
+        
+        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
+            if (request instanceof VolunteerRequest){
+            Object[] row = new Object[4];
+            row[0] = request.getMessage();
+            row[1] = request.getSender();
+            row[2] = request.getReceiver();
+            row[3] = ((VolunteerRequest) request).getAssignedVolunteer() == null ? null : ((VolunteerRequest) request).getAssignedVolunteer().getName();
+            row[4] = request.getStatus();
 
-    private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
+            model.addRow(row);
+            }
+        }
+    }
+    
+    private void btnRequestVolunteerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestVolunteerActionPerformed
 
-        String message = txtRequestVolunteerMessage.getText();
-        if(message.equals("") || message.isEmpty()){
+        String requestVolunteerMessage = txtRequestVolunteerMessage.getText();
+        if(requestVolunteerMessage.equals("") || requestVolunteerMessage.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter something to send.");
             return;
         }
-        LabTestWorkRequest request = new LabTestWorkRequest();
-        request.setMessage(message);
-        request.setSender(userAccount);
+        VolunteerRequest request = new VolunteerRequest();
+        request.setMessage(requestVolunteerMessage);
+        request.setSender(account);
         request.setStatus("Sent");
         
         Organization org = null;
-        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof LabOrganization){
+        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof VolunteerOrganization){
                 org = organization;
                 break;
+            }
             }
         }
         if (org!=null){
             org.getWorkQueue().getWorkRequestList().add(request);
-            userAccount.getWorkQueue().getWorkRequestList().add(request);
+            account.getWorkQueue().getWorkRequestList().add(request);
         }
         
         JOptionPane.showMessageDialog(null, "Request message sent");
         txtRequestVolunteerMessage.setText("");
         
-    }//GEN-LAST:event_btnRequestTestActionPerformed
+    }//GEN-LAST:event_btnRequestVolunteerActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
+        workArea.remove(this);
+        Component[] componentArray = workArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageAnimalJPanel dwjp = (ManageAnimalJPanel) component;
-        dwjp.populateRequestTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        AnimalRegistorWorkAreaJPanel arwajp = (AnimalRegistorWorkAreaJPanel) component;
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.previous(workArea);
 
 
     }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnRequestTest;
+    private javax.swing.JButton btnRequestVolunteer;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblMessage;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblSendVolunteerRequest;
+    private javax.swing.JTable tblSentVolunteerRequest;
     private javax.swing.JTextField txtRequestVolunteerMessage;
     // End of variables declaration//GEN-END:variables
 }

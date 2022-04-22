@@ -5,11 +5,22 @@
  */
 package model.WorkQueue;
 
+import model.UserAccount.UserAccount;
+
 /**
  *
  * @author yuujadz
  */
 public class VolunteerRequest extends WorkRequest {
     //manager, volunteer
+    private UserAccount assignedVolunteer;
+
+    public UserAccount getAssignedVolunteer() {
+        return assignedVolunteer;
+    }
+
+    public void setAssignedVolunteer(UserAccount assignedVolunteer) {
+        this.assignedVolunteer = assignedVolunteer;
+    }
     
 }
