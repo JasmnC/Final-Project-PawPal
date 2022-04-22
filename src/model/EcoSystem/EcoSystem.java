@@ -8,6 +8,7 @@ package model.EcoSystem;
 import model.Network.Network;
 import java.util.ArrayList;
 import model.UserAccount.UserAccount;
+import model.UserAccount.UserAccountDirectory;
 
 /**
  *
@@ -17,10 +18,11 @@ public class EcoSystem {
     
     private ArrayList<Network> networkList;
     private UserAccount systemAdmin;
-    
+    private UserAccountDirectory userAccountDirectory;
     
     public EcoSystem(){
-        networkList = new ArrayList<Network>();     
+        networkList = new ArrayList<Network>();
+        userAccountDirectory = new UserAccountDirectory();
     }
    
     public Network createNetwork(String name){
@@ -46,6 +48,10 @@ public class EcoSystem {
 
     public void setSystemAdmin(UserAccount systemAdmin) {
         this.systemAdmin = systemAdmin;
+    }
+    
+    public UserAccountDirectory getUserAccountDirectory() {
+        return userAccountDirectory;
     }
     
 //    
@@ -153,5 +159,7 @@ public class EcoSystem {
 //    public void setDonorDirectory(DonorDirectory donorDirectory) {
 //        this.donorDirectory = donorDirectory;
 //    }
+
+
     
 }

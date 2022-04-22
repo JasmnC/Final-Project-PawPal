@@ -10,6 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.Organization;
+import model.Role.Role;
+import model.UserAccount.UserAccount;
 
 /**
  *
@@ -23,13 +28,19 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem ecoSystem;
 
-    public ManageUserAccountJPanel(JPanel container, EcoSystem ecosystem) {
+    public ManageUserAccountJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecosystem;
         
+        cmbNetworkList.removeAllItems();
+        cmbEnterprise.removeAllItems();
+        cmbOrg.removeAllItems();
+        cmbRoles.removeAllItems();
         
+        populateNetworkCombo();
+
         
 //        this.business = business;
 //        this.container = container;
@@ -45,44 +56,44 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 //        popUserAccountsTable();
     }
 
-    public void popOrganizationComboBox() {
-        cmbEnterprise.removeAllItems();
-
-        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()) {
-            cmbEnterprise.addItem(organization);
-        }
-    }
-
-    public void populateEmployeeComboBox(Organization organization) {
-        cmbOrg.removeAllItems();
-
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
-            cmbOrg.addItem(employee);
-        }
-    }
-
-    private void populateRoleComboBox(Organization organization) {
-        cmbRoles.removeAllItems();
-        for (Role role : organization.getSupportedRole()) {
-            cmbRoles.addItem(role);
-        }
-    }
-
-    public void popUserAccountsTable() {
-
-        DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
-
-        model.setRowCount(0);
-
-        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()) {
-            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                Object row[] = new Object[2];
-                row[0] = ua;
-                row[1] = ua.getRole();
-                ((DefaultTableModel) tblUsers.getModel()).addRow(row);
-            }
-        }
-    }
+//    public void popOrganizationComboBox() {
+//        cmbEnterprise.removeAllItems();
+//
+//        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()) {
+//            cmbEnterprise.addItem(organization);
+//        }
+//    }
+//
+//    public void populateEmployeeComboBox(Organization organization) {
+//        cmbOrg.removeAllItems();
+//
+//        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+//            cmbOrg.addItem(employee);
+//        }
+//    }
+//
+//    private void populateRoleComboBox(Organization organization) {
+//        cmbRoles.removeAllItems();
+//        for (Role role : organization.getSupportedRole()) {
+//            cmbRoles.addItem(role);
+//        }
+//    }
+//
+//    public void popUserAccountsTable() {
+//
+//        DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
+//
+//        model.setRowCount(0);
+//
+//        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()) {
+//            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+//                Object row[] = new Object[2];
+//                row[0] = ua;
+//                row[1] = ua.getRole();
+//                ((DefaultTableModel) tblUsers.getModel()).addRow(row);
+//            }
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -197,37 +208,43 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         grpNewUserLayout.setHorizontalGroup(
             grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(grpNewUserLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(grpNewUserLayout.createSequentialGroup()
-                        .addComponent(lblOrganizationPicker)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblCreateUser)
-                        .addGroup(grpNewUserLayout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(grpNewUserLayout.createSequentialGroup()
-                                    .addComponent(lblOrganization)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(grpNewUserLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(grpNewUserLayout.createSequentialGroup()
+                        .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(grpNewUserLayout.createSequentialGroup()
+                                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblUserName)
+                                    .addComponent(lblPassword))
+                                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(grpNewUserLayout.createSequentialGroup()
+                                        .addGap(138, 138, 138)
+                                        .addComponent(btnCreateUser))
+                                    .addGroup(grpNewUserLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                                            .addComponent(txtUserName)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, grpNewUserLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblEmployee)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cmbOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(grpNewUserLayout.createSequentialGroup()
-                                    .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblUserName)
-                                        .addComponent(lblRole)
-                                        .addComponent(lblPassword))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cmbRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnCreateUser)))))))
-                .addContainerGap(110, Short.MAX_VALUE))
+                                    .addComponent(lblOrganization)
+                                    .addComponent(lblRole))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbRoles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbOrg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbEnterprise, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(grpNewUserLayout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(lblOrganizationPicker)
+                                .addGap(4, 4, 4)
+                                .addComponent(cmbNetworkList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(35, 35, 35))))
         );
         grpNewUserLayout.setVerticalGroup(
             grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,16 +300,20 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblUsersList)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(19, 19, 19)))
+                        .addComponent(grpNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUsersList)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(grpNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(lblTitle)
+                        .addContainerGap(575, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,43 +336,75 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
         String userName = txtUserName.getText();
         String password = txtPassword.getText();
-        Organization organization = (Organization) cmbEnterprise.getSelectedItem();
-        Employee employee = (Employee) cmbOrg.getSelectedItem();
-        Role role = (Role) cmbRoles.getSelectedItem();
+        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (cmbEnterprise.getSelectedItem() != null) {
+            String selectedEntOption = (String) cmbEnterprise.getSelectedItem();
+            String enterpriseName = selectedEntOption.replaceAll("\\s", "").split("\\|")[1];            
+            Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+        
+            if (cmbOrg.getSelectedItem()!= null) {
+                String selectedOrgOption = cmbOrg.getSelectedItem().toString();
+                String orgName = selectedOrgOption.split("\\|\\s")[1];
+                Organization organization = enterprise.getOrganizationDirectory().getOrganizationByName(orgName);
 
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                if (organization != null){
+                    if((!userName.equals("")) || (!userName.equals(""))){
+                        if(ecoSystem.getUserAccountDirectory().userNameIsUnique(userName)){
+                            Role role = (Role) cmbRoles.getSelectedItem();
+                            ecoSystem.getUserAccountDirectory().createUserAccount(userName, password, role, network, enterprise, organization);
+                            JOptionPane.showMessageDialog(null, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                            txtUserName.setText("");
+                            txtPassword.setText("");
+                            for (UserAccount ua : ecoSystem.getUserAccountDirectory().getUserAccountList()){
+                                System.out.println(ua);
+                            }
+                                } else {                            
+                                    JOptionPane.showMessageDialog(null, "Username already existed", "Warning", JOptionPane.WARNING_MESSAGE);
+                                } 
+                            } else {
+                            JOptionPane.showMessageDialog(null, "Username & Password cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
+                            }
+                    } else {
+                    JOptionPane.showMessageDialog(null, "Please select where you wish to add the account", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }       
+        
 
-        popUserAccountsTable();
+//        popUserAccountsTable();
 
-        JOptionPane.showMessageDialog(null, "User Account added successfully.");
-        txtUserName.setText("");
-        txtPassword.setText("");
+        
+        
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
+        
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void cmbEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseActionPerformed
-        Organization organization = (Organization) cmbEnterprise.getSelectedItem();
-        if (organization != null) {
-            populateEmployeeComboBox(organization);
-            populateRoleComboBox(organization);
-        }
+
+        populateOrgCombo();
+
     }//GEN-LAST:event_cmbEnterpriseActionPerformed
 
     private void cmbOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrgActionPerformed
         // TODO add your handling code here:
+
+        populateRoleCombo();
+
     }//GEN-LAST:event_cmbOrgActionPerformed
 
     private void cmbNetworkListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkListActionPerformed
-        Organization organization = (Organization) cmbOrganizationList.getSelectedItem();
-        if (organization != null){
-            populateTable(organization);
-        }
+
+        populateEnterpriseCombo();
+
     }//GEN-LAST:event_cmbNetworkListActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -376,4 +429,191 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+
+    private void populateNetworkCombo() {
+    
+        cmbNetworkList.removeAllItems();
+
+        if (!ecoSystem.getNetworkList().isEmpty()){
+            for (Network n : ecoSystem.getNetworkList()){
+                cmbNetworkList.addItem(n);
+            }
+        }
+    }
+
+    private void populateEnterpriseCombo() {
+        
+        cmbEnterprise.removeAllItems();
+        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (network != null ){
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+                cmbEnterprise.addItem(e.getType() + " | " + e);
+            }
+        }
+    }
+
+    private void populateOrgCombo() {
+        
+        cmbOrg.removeAllItems();
+        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+                
+        if (cmbEnterprise.getSelectedItem() != null) {
+            String selectedOption = (String) cmbEnterprise.getSelectedItem();
+            String enterpriseName = selectedOption.replaceAll("\\s", "").split("\\|")[1];            
+            Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+            
+            for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()){
+                cmbOrg.addItem(o.getType() + " | " + o);
+            }
+            
+            
+//            String type = enterprise.getType().getValue();
+//            
+//            switch (type) {
+//                case "Animal Shelter":
+//                    cmbOrg.removeAllItems();
+//                    for (Organization.Type organizationType : Organization.Type.values()){
+//                        if (organizationType.getValue().equals("Animal Register Organization")){
+//                            cmbOrg.addItem(organizationType);      
+//                        }
+//                        if (organizationType.getValue().equals("Animal Management Organization")){
+//                            cmbOrg.addItem(organizationType);      
+//                        }
+//                    }
+//                    break;
+//                case "Medical Care":
+//                    cmbOrg.removeAllItems();
+//                    for (Organization.Type organizationType : Organization.Type.values()){
+//                        if (organizationType.getValue().equals("Vet Organization")){
+//                            cmbOrg.addItem(organizationType);      
+//                        }
+//                        if (organizationType.getValue().equals("Treatment Organization")){
+//                            cmbOrg.addItem(organizationType);      
+//                        }
+//                    }
+//                    break;   
+//                case "Adoption":
+//                    cmbOrg.removeAllItems();
+//                    for (Organization.Type organizationType : Organization.Type.values()){
+//                        if (organizationType.getValue().equals("Adopter Organization")){
+//                            cmbOrg.addItem(organizationType);      
+//                        }
+//                        if (organizationType.getValue().equals("Adoption Operation Organization")){
+//                            cmbOrg.addItem(organizationType);      
+//                        }
+//                    }
+//                    break;
+//                case "Volunteer":
+//                    cmbOrg.removeAllItems();
+//                    for (Organization.Type organizationType : Organization.Type.values()){
+//                        if (organizationType.getValue().equals("Volunteer Management Organization")) {
+//                            cmbOrg.addItem(organizationType);      
+//                        }
+//                        if (organizationType.getValue().equals("Volunteer Organization")){
+//                            cmbOrg.addItem(organizationType);      
+//                        }
+//                    }
+//                    break;    
+//                default:
+//                    cmbOrg.removeAllItems();
+//            }
+        }
+        
+    }
+
+    private void populateRoleCombo() {
+
+        cmbRoles.removeAllItems();
+        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (cmbEnterprise.getSelectedItem() != null) {
+            String selectedEntOption = (String) cmbEnterprise.getSelectedItem();
+            String enterpriseName = selectedEntOption.replaceAll("\\s", "").split("\\|")[1];            
+            Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+        
+            if (cmbOrg.getSelectedItem()!= null) {
+                String selectedOrgOption = cmbOrg.getSelectedItem().toString();
+                String orgName = selectedOrgOption.split("\\|\\s")[1];
+                Organization organization = enterprise.getOrganizationDirectory().getOrganizationByName(orgName);
+
+                for (Role role : organization.getSupportedRole()) {
+                    cmbRoles.addItem(role);
+                }
+                
+                
+                
+//                
+//                String orgType = selectedOrgOption.split("\\|")[0];
+//
+//                switch (orgType) {
+//                    case "Animal Register Organization ":
+//                        for (Role.RoleType roleType : Role.RoleType.values()){
+//                            if (roleType.getValue().equals("Animal Register")){
+//                                cmbRoles.addItem(roleType);      
+//                            }                           
+//                        }
+//                        break;
+//                    case "Animal Management Organization ":
+//                        for (Role.RoleType roleType : Role.RoleType.values()){
+//                            if (roleType.getValue().equals("Animal Manager")){
+//                                cmbRoles.addItem(roleType);      
+//                            }
+//                        }
+//                        break;
+//                    case "Vet Organization ":
+//                        for (Role.RoleType roleType : Role.RoleType.values()){
+//                            if (roleType.getValue().equals("Vet")){
+//                                cmbRoles.addItem(roleType);      
+//                            }
+//                        }
+//                        break;
+//                    case "Treatment Organization ":
+//                        for (Role.RoleType roleType : Role.RoleType.values()){
+//                            if (roleType.getValue().equals("Pharmacist")){
+//                                cmbRoles.addItem(roleType);      
+//                            }
+//                            if (roleType.getValue().equals("Behavior Therapist")){
+//                                cmbRoles.addItem(roleType);      
+//                            }
+//                        }
+//                        break;
+//                    case "Adopter Organization ":
+//                        for (Role.RoleType roleType : Role.RoleType.values()){
+//                            if (roleType.getValue().equals("Adopter")){
+//                                cmbRoles.addItem(roleType);      
+//                            }
+//                        }
+//                        break;
+//                    case "Adoption Operation Organization ":
+//                        for (Role.RoleType roleType : Role.RoleType.values()){
+//                            if (roleType.getValue().equals("Adoption Manager")){
+//                                cmbRoles.addItem(roleType);      
+//                            }
+//                        }
+//                        break;
+//                    case "Volunteer Management Organization ":
+//                        for (Role.RoleType roleType : Role.RoleType.values()){
+//                            if (roleType.getValue().equals("Volunteer Manager")){
+//                                cmbRoles.addItem(roleType);      
+//                            }
+//                        }
+//                        break;
+//                    case "Volunteer Organization ":
+//                        for (Role.RoleType roleType : Role.RoleType.values()){
+//                            if (roleType.getValue().equals("Volunteer")){
+//                                cmbRoles.addItem(roleType);      
+//                            }
+//                        }
+//                        break;
+//
+//                    default:
+//                        cmbRoles.removeAllItems();
+//                }
+            }
+        }
+    }
 }

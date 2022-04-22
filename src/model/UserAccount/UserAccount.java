@@ -4,6 +4,9 @@
  */
 package model.UserAccount;
 
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.Organization;
 import model.Role.Role;
 import model.WorkQueue.WorkQueue;
 
@@ -17,6 +20,9 @@ public class UserAccount {
     private String password;
     private String name;
     private Role role;
+    private Network network;
+    private Enterprise enterprise;
+    private Organization orgainization;
     private WorkQueue workQueue;
 
     public UserAccount() {
@@ -55,6 +61,32 @@ public class UserAccount {
         this.role = role;
     }
 
+    public Network getNetwork() {
+        return network;
+    }
+
+    public void setNetwork(Network network) {
+        this.network = network;
+    }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    public Organization getOrgainization() {
+        return orgainization;
+    }
+
+    public void setOrgainization(Organization orgainization) {
+        this.orgainization = orgainization;
+    }
+
+    
+    
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
