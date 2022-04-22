@@ -6,6 +6,9 @@ package model.UserAccount;
 
 import model.Role.Role;
 import java.util.ArrayList;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.Organization;
 
 /**
  *
@@ -31,12 +34,22 @@ public class UserAccountDirectory {
         return null;
     }
     
-    public UserAccount createUserAccount(String username, String password, Role role){
-        UserAccount userAccount = new UserAccount();
+    public UserAccount createUserAccount(String username, String password, Role role, Network network, Enterprise enterprise, Organization organization){
+        UserAccount userAccount = new UserAccount();        
         userAccount.setUsername(username);
         userAccount.setPassword(password);
         userAccount.setRole(role);
+        userAccount.setNetwork(network);
+        userAccount.setEnterprise(enterprise);
+        userAccount.setOrgainization(organization);
         userAccountList.add(userAccount);
         return userAccount;
+    }
+    
+    public boolean userNameIsUnique(String username){
+        for (UserAccount ua : userAccountList){
+            if(username.equalsIgnoreCase(ua.getUsername())) return false;
+         }
+        return true;
     }
 }

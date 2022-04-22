@@ -85,8 +85,6 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         lblOrganizationName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
         tblOrganizations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -183,7 +181,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addGap(29, 29, 29)
@@ -205,12 +203,11 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                             .addComponent(lblSelectOrgType)
                             .addComponent(lblOrganizationName))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbOrganizations, 0, 167, Short.MAX_VALUE)
-                            .addComponent(txtName))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(275, 275, 275))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbOrganizations, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtName)))
+                    .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,9 +237,10 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOrganizationName)
-                    .addComponent(btnAdd))
-                .addContainerGap(159, Short.MAX_VALUE))
+                    .addComponent(lblOrganizationName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAdd)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -256,7 +254,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         
         String name = txtName.getText();
         
-        if (network != null && enterprise != null && !name.equals("")) {
+        if (enterprise != null && !name.equals("")) {
             if (enterprise.getOrganizationDirectory().nameIsUnique(name)){
                 Type type = (Organization.Type) cmbOrganizations.getSelectedItem();
                 enterprise.getOrganizationDirectory().createOrganization(name, type);
@@ -267,7 +265,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Organization name alreay existed", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Please select network and enterprise.\n Name of organization cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select an enterprise.\nName of organization cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_btnAddActionPerformed
@@ -366,12 +364,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     }
 
     private void populateOrganizationCombo() {
-        
-
-//        for (Organization.Type type : Organization.Type.values()){
-//                cmbOrganizations.addItem(type);      
-//        }
-//        
+               
         Network network = (Network) cmbNetworkList.getSelectedItem();
         
         if (cmbEnterpriseList.getSelectedItem() != null) {
@@ -428,9 +421,6 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                     break;    
                 default:
                     cmbOrganizations.removeAllItems();
-                    for (Organization.Type organizationType : Organization.Type.values()){
-                        cmbOrganizations.addItem(type);      
-                    }
             }
             
         }    

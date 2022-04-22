@@ -22,7 +22,7 @@ public abstract class Role {
             
         AnimalRegister("Animal Register"),
         AnimalManager("Animal Manager"),
-        Vet("vet"),
+        Vet("Vet"),
         Pharmacist("Pharmacist"),
         BehaviorTherapist("Behavior Therapist"),
         Adopter("Adopter"),
@@ -58,7 +58,7 @@ public abstract class Role {
     
     @Override
     public String toString() {
-        return this.getClass().getName();
+        return this.type.getValue();
     }    
     
 }

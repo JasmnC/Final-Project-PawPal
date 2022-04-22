@@ -75,4 +75,11 @@ public class OrganizationDirectory {
         return true;
     }
     
+    public Organization getOrganizationByName(String name){
+        for (Organization o : organizationList){
+            if (name.equalsIgnoreCase(o.getName())) return o;
+        }
+        return null;
+    } 
+     
 }

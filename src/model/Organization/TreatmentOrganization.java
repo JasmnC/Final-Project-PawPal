@@ -25,6 +25,7 @@ public class TreatmentOrganization extends Organization{
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
         roles.add(new PharmacistRole());
+        roles.add(new BehaviorTherapistRole());
         return roles;
     }
 
