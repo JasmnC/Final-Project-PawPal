@@ -4,16 +4,18 @@
  */
 package ui.AnimalManagerRole;
 
-import business.Business;
-import business.Organization.LabOrganization;
-import business.Organization.Organization;
-import business.UserAccount.UserAccount;
+
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
 import model.Organization.Organization;
+import model.Organization.VetOrganization;
 import model.UserAccount.UserAccount;
+import model.WorkQueue.MedCareRequest;
 
 /**
  *
@@ -21,16 +23,22 @@ import model.UserAccount.UserAccount;
  */
 public class RequestMedicalCareJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-    private Business business;
-    private UserAccount userAccount;
+    private JPanel workArea;
+    private UserAccount account;
+    private Organization organization;
+    private Enterprise enterprise;
+    private Network network;
+    private EcoSystem ecoSystem;
     
-    public RequestMedicalCareJPanel(JPanel userProcessContainer, UserAccount account, Business business) {
+    public RequestMedicalCareJPanel(JPanel workArea, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem ecoSystem) {
         initComponents();
         
-        this.userProcessContainer = userProcessContainer;
-        this.business = business;
-        this.userAccount = account;
+        this.workArea = workArea;
+        this.account = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
+        this.ecoSystem = ecoSystem;
     }
 
     /**
@@ -44,7 +52,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
 
         btnRequestVet = new javax.swing.JButton();
         lblMessage = new javax.swing.JLabel();
-        txtMessage = new javax.swing.JTextField();
+        txtSendMedicalCareMessage = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
@@ -83,7 +91,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                         .addComponent(btnBack)
                         .addGap(18, 18, 18)
                         .addComponent(lblTitle))
-                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSendMedicalCareMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(446, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,7 +104,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                 .addGap(55, 55, 55)
                 .addComponent(lblMessage)
                 .addGap(18, 18, 18)
-                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSendMedicalCareMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRequestVet)
                 .addContainerGap(293, Short.MAX_VALUE))
@@ -105,42 +113,44 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
 
     private void btnRequestVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestVetActionPerformed
 
-        String message = txtMessage.getText();
-        if(message.equals("") || message.isEmpty()){
+        
+        String requestVetMessage = txtSendMedicalCareMessage.getText();
+        if(requestVetMessage.equals("") || requestVetMessage.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter something to send.");
             return;
         }
-        LabTestWorkRequest request = new LabTestWorkRequest();
-        request.setMessage(message);
-        request.setSender(userAccount);
+        MedCareRequest request = new MedCareRequest();
+        request.setMessage(requestVetMessage);
+        request.setSender(account);
         request.setStatus("Sent");
         
         Organization org = null;
-        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof LabOrganization){
+        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof VetOrganization){
                 org = organization;
                 break;
+            }
             }
         }
         if (org!=null){
             org.getWorkQueue().getWorkRequestList().add(request);
-            userAccount.getWorkQueue().getWorkRequestList().add(request);
+            account.getWorkQueue().getWorkRequestList().add(request);
         }
         
         JOptionPane.showMessageDialog(null, "Request message sent");
-        txtMessage.setText("");
+        txtSendMedicalCareMessage.setText("");
         
     }//GEN-LAST:event_btnRequestVetActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
+        workArea.remove(this);
+        Component[] componentArray = workArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
         ManageAnimalJPanel dwjp = (ManageAnimalJPanel) component;
-        dwjp.populateRequestTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.previous(workArea);
 
 
     }//GEN-LAST:event_btnBackActionPerformed
@@ -150,6 +160,6 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRequestVet;
     private javax.swing.JLabel lblMessage;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTextField txtMessage;
+    private javax.swing.JTextField txtSendMedicalCareMessage;
     // End of variables declaration//GEN-END:variables
 }
