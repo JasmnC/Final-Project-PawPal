@@ -69,8 +69,8 @@
               <Table columnCount="5" rowCount="4">
                 <Column editable="false" title="ID" type="java.lang.String"/>
                 <Column editable="false" title="Name" type="java.lang.String"/>
-                <Column editable="false" title="Manager" type="java.lang.String"/>
                 <Column editable="false" title="Registor" type="java.lang.String"/>
+                <Column editable="false" title="Manager" type="java.lang.String"/>
                 <Column editable="false" title="Status" type="java.lang.String"/>
               </Table>
             </Property>

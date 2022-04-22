@@ -6,9 +6,15 @@ package ui.AnimalRegistorRole;
 
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.event.KeyEvent;
+import javax.security.auth.login.AccountException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Animal.Animal;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
+import model.Network.Network;
+import model.Organization.AnimalRegisterOrganization;
 import model.UserAccount.UserAccount;
 
 /**
@@ -17,9 +23,20 @@ import model.UserAccount.UserAccount;
  */
 public class RegistorAnimalJPanel extends javax.swing.JPanel {
     
+    private JPanel workArea;
+    private AnimalRegisterOrganization organization;
+    private AnimalShelterEnterprise enterprise;
+    private Network network;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
     
-    public RegistorAnimalJPanel(JPanel workArea, UserAccount userAccount) {
+    public RegistorAnimalJPanel(JPanel workArea, UserAccount userAccount, AnimalShelterEnterprise enterprise) {
         initComponents();
+        
+        this.workArea = workArea;
+        this.userAccount = userAccount;
+        this.enterprise = enterprise;
+        
     }
 
     /**
@@ -42,12 +59,6 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         lblMessage7 = new javax.swing.JLabel();
         txtAnimalWeight = new javax.swing.JTextField();
         lblMessage8 = new javax.swing.JLabel();
-        txtAnimalMessageFromBehaviorTharapipst = new javax.swing.JTextField();
-        lblMessage9 = new javax.swing.JLabel();
-        txtAnimalMessageFromVet = new javax.swing.JTextField();
-        lblMessage10 = new javax.swing.JLabel();
-        txtAnimalMessageFromPharmacy = new javax.swing.JTextField();
-        lblMessage11 = new javax.swing.JLabel();
         lblMessage12 = new javax.swing.JLabel();
         btnUploadAnimalPhoto = new javax.swing.JButton();
         txtAnimalPhoto = new javax.swing.JTextField();
@@ -80,17 +91,19 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         lblMessage7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage7.setText("Sex:");
 
+        txtAnimalWeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnimalWeightActionPerformed(evt);
+            }
+        });
+        txtAnimalWeight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAnimalWeightKeyPressed(evt);
+            }
+        });
+
         lblMessage8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage8.setText("Weight:");
-
-        lblMessage9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMessage9.setText("Message from Behavior Check:");
-
-        lblMessage10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMessage10.setText("Message from Vet:");
-
-        lblMessage11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMessage11.setText("Message from Pharmacy:");
 
         lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage12.setText("Photo:");
@@ -106,149 +119,121 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMessage5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMessage6)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMessage7)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtAnimalSex, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMessage8)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(44, 44, 44)
+                .addComponent(lblMessage12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUploadAnimalPhoto)
+                    .addComponent(btnSaveAnimal))
+                .addGap(69, 69, 69))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblMessage11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtAnimalMessageFromPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblMessage9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(54, 54, 54)
-                        .addComponent(btnSaveAnimal))
+                        .addGap(94, 94, 94)
+                        .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(btnBack)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblTitle)
-                                .addGap(88, 88, 88))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblMessage5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblMessage6)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblMessage7)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAnimalSex, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblMessage8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblMessage10)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAnimalMessageFromVet, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(44, 44, 44)
-                        .addComponent(lblMessage12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUploadAnimalPhoto))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addGap(202, 202, 202)
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(btnBack)
+                .addGap(8, 8, 8)
+                .addComponent(lblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMessage5)
+                    .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMessage12)
+                    .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSaveAnimal))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBack)
-                            .addComponent(lblTitle))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                            .addComponent(lblMessage6)
+                            .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMessage5)
-                            .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMessage12)
-                            .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblMessage6)
-                                    .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblMessage7)
-                                    .addComponent(txtAnimalSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(btnUploadAnimalPhoto)))
+                            .addComponent(lblMessage7)
+                            .addComponent(txtAnimalSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMessage8)
-                            .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAnimalMessageFromVet, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMessage10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAnimalMessageFromPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMessage11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMessage9))))
-                .addGap(125, 125, 125))
+                            .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btnUploadAnimalPhoto)
+                        .addGap(16, 16, 16)
+                        .addComponent(btnSaveAnimal)))
+                .addGap(338, 338, 338))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAnimalActionPerformed
 
-        String message = txtMessage.getText();
-        if(message.equals("") || message.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter something to send.");
+        String name = txtAnimalName.getText();
+        String area = txtAnimalArea.getText();
+        String sex = txtAnimalSex.getText();
+        String weight = txtAnimalWeight.getText();
+        
+        if(name.equals("") || name.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter Animal Name.");
             return;
-        }
-        LabTestWorkRequest request = new LabTestWorkRequest();
-        request.setMessage(message);
-        request.setSender(userAccount);
-        request.setStatus("Sent");
-        
-        Organization org = null;
-        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof LabOrganization){
-                org = organization;
-                break;
-            }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(request);
-            userAccount.getWorkQueue().getWorkRequestList().add(request);
+        }else if(area.equals("")||area.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter animal's area.");
+            return;
+        }else if(!sex.equals('F')||!area.equals('M')){
+            JOptionPane.showMessageDialog(null, "Please enter animal's sex by F/M.");
+            return;
+        }else{
+            Animal animal = new Animal(txtAnimalName.getText());
+            animal.setArea(area);
+            animal.setSex(sex);
+            animal.setWeight(weight);
         }
         
-        JOptionPane.showMessageDialog(null, "Request message sent");
-        txtMessage.setText("");
+        
+        
+        JOptionPane.showMessageDialog(null, "New Animal Saved.");
+        txtAnimalArea.setText("");
+        txtAnimalName.setText("");
+        txtAnimalSex.setText("");
+        txtAnimalWeight.setText("");
+        txtAnimalArea.setText("");
         
     }//GEN-LAST:event_btnSaveAnimalActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
+        workArea.remove(this);
+        Component[] componentArray = workArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        AnimalRegistorWorkAreaJPanel dwjp = (AnimalRegistorWorkAreaJPanel) component;
-        dwjp.populateRequestTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        AnimalRegistorWorkAreaJPanel arwajp = (AnimalRegistorWorkAreaJPanel) component;
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.previous(workArea);
 
 
     }//GEN-LAST:event_btnBackActionPerformed
@@ -257,23 +242,29 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUploadAnimalPhotoActionPerformed
 
+    private void txtAnimalWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnimalWeightActionPerformed
+
+    }//GEN-LAST:event_txtAnimalWeightActionPerformed
+
+    private void txtAnimalWeightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnimalWeightKeyPressed
+        // TODO add your handling code here:
+        char C = evt.getKeyChar();
+        if(!(Character.isDigit(C))||(C==KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtAnimalWeightKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSaveAnimal;
     private javax.swing.JButton btnUploadAnimalPhoto;
-    private javax.swing.JLabel lblMessage10;
-    private javax.swing.JLabel lblMessage11;
     private javax.swing.JLabel lblMessage12;
     private javax.swing.JLabel lblMessage5;
     private javax.swing.JLabel lblMessage6;
     private javax.swing.JLabel lblMessage7;
     private javax.swing.JLabel lblMessage8;
-    private javax.swing.JLabel lblMessage9;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtAnimalArea;
-    private javax.swing.JTextField txtAnimalMessageFromBehaviorTharapipst;
-    private javax.swing.JTextField txtAnimalMessageFromPharmacy;
-    private javax.swing.JTextField txtAnimalMessageFromVet;
     private javax.swing.JTextField txtAnimalName;
     private javax.swing.JTextField txtAnimalPhoto;
     private javax.swing.JTextField txtAnimalSex;

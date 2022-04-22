@@ -8,8 +8,16 @@ package ui.AnimalManagerRole;
 import model.UserAccount.UserAccount;
 import model.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Animal.Animal;
+import model.Animal.AnimalDirectory;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.AnimalManagementOrganization;
+import model.Organization.Organization;
 
 /**
  *
@@ -18,35 +26,36 @@ import javax.swing.table.DefaultTableModel;
 public class ManageAnimalJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
-    private DoctorOrganization organization;
-    private Business business;
+    private Enterprise enterprise;
+    private Animal animal;
+    private Organization organization;
     private UserAccount userAccount;
-    /**
-     * Creates new form DoctorWorkAreaJPanel
-     */
-    public ManageAnimalJPanel(JPanel workArea, UserAccount account, DoctorOrganization organization, Business business) {
+    
+    public ManageAnimalJPanel(JPanel userProcessContainer, UserAccount account ,  Enterprise enterprise) {
         initComponents();
         
-        this.workArea = workArea;
+        this.workArea = userProcessContainer;
+        this.enterprise = enterprise;
         this.organization = organization;
-        this.business = business;
         this.userAccount = account;
         
-        populateRequestTable();
+        populateAssingAnimalToMeRequestTable();
     }
+
     
-    public void populateRequestTable(){
+    public void populateAssingAnimalToMeRequestTable(){
         DefaultTableModel model = (DefaultTableModel) tblAnimalManagerWorkArea.getModel();
         
         model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+        
+        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((LabTestWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
-            
+            row[0] = request.getAnimal().getId();
+            row[1] = request.getAnimal().getName();
+            row[2] = request.getSender().getName();
+            row[3] = request.getReceiver() == null ? null : request.getReceiver().getName();
+            row[4] = request.getStatus();
+
             model.addRow(row);
         }
     }
@@ -77,7 +86,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Manager", "Registor", "Status"
+                "ID", "Name", "Registor", "Manager", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -154,15 +163,32 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
 
     private void btnAssignAnimalToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignAnimalToMeActionPerformed
         
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        workArea.add("RequestLabTestJPanel", new RequestMedicalCareJPanel(workArea, userAccount, business));
-        layout.next(workArea);
+        int selectedRow = tblAnimalManagerWorkArea.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) tblAnimalManagerWorkArea.getValueAt(selectedRow, 0);
+            if (request.getMessage().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request already processed.");
+                return;
+            } else {
+                //把自己變成reciver, 把animal的manager變成自己
+                request.setReceiver(userAccount);
+                request.getAnimal().setManager(userAccount);
+                request.setStatus("Pending");
+                populateAssingAnimalToMeRequestTable();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Choose a reuest to process.");
+            return;
+        }
+        
         
     }//GEN-LAST:event_btnAssignAnimalToMeActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
 
-        populateRequestTable();
+        populateAssingAnimalToMeRequestTable();
         
     }//GEN-LAST:event_btnRefreshActionPerformed
 

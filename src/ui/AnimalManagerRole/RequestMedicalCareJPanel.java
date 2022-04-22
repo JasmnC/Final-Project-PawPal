@@ -24,9 +24,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Business business;
     private UserAccount userAccount;
-    /**
-     * Creates new form RequestLabTestJPanel
-     */
+    
     public RequestMedicalCareJPanel(JPanel userProcessContainer, UserAccount account, Business business) {
         initComponents();
         

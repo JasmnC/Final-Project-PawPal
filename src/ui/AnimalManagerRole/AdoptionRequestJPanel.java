@@ -34,6 +34,10 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         
         populateRequestTable();
     }
+
+    AdoptionRequestJPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) tblAnimalAdoptionWorkQueue.getModel();
