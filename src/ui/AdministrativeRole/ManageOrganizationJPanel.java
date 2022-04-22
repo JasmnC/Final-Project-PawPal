@@ -31,10 +31,9 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecosystem;
-        
-        populateNetworkCombo();
-        populateOrganizationCombo();
 
+        cmbOrganizations.removeAllItems();        
+        populateNetworkCombo();
         
 //        populateTable();
 //        populateCombo();
@@ -282,6 +281,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
     private void cmbOrganizationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationsActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbOrganizationsActionPerformed
 
     private void cmbNetworkListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkListActionPerformed
@@ -293,6 +293,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private void cmbEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseListActionPerformed
 
         populateTable();
+        populateOrganizationCombo();
         
     }//GEN-LAST:event_cmbEnterpriseListActionPerformed
 
@@ -317,30 +318,6 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblOrganizations;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
-
-    private void populateNetworkCombo() {
-
-        cmbNetworkList.removeAllItems();
-
-        if (!ecoSystem.getNetworkList().isEmpty()){
-            for (Network n : ecoSystem.getNetworkList()){
-                cmbNetworkList.addItem(n);
-            }
-        }
-    }
-
-    private void populateEnterpriseCombo() {
-
-        cmbEnterpriseList.removeAllItems();
-        
-        Network network = (Network) cmbNetworkList.getSelectedItem();
-        
-        if (network != null ){
-            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
-                cmbEnterpriseList.addItem(e.getType() + " | " + e.getName());
-            }
-        }
-    }
     
     private void populateTable(){
         
@@ -363,13 +340,135 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         }
         
     }
+    
+    private void populateNetworkCombo() {
+
+        cmbNetworkList.removeAllItems();
+
+        if (!ecoSystem.getNetworkList().isEmpty()){
+            for (Network n : ecoSystem.getNetworkList()){
+                cmbNetworkList.addItem(n);
+            }
+        }
+    }
+
+    private void populateEnterpriseCombo() {
+
+        cmbEnterpriseList.removeAllItems();
+        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (network != null ){
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+                cmbEnterpriseList.addItem(e.getType() + " | " + e);
+            }
+        }
+    }
 
     private void populateOrganizationCombo() {
-        cmbOrganizations.removeAllItems();
         
-        for (Organization.Type type : Organization.Type.values()){
-                cmbOrganizations.addItem(type);      
-        }
+
+//        for (Organization.Type type : Organization.Type.values()){
+//                cmbOrganizations.addItem(type);      
+//        }
+//        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (cmbEnterpriseList.getSelectedItem() != null) {
+            String selectedOption = (String) cmbEnterpriseList.getSelectedItem();
+            String enterpriseName = selectedOption.replaceAll("\\s", "").split("\\|")[1];            
+            Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+            
+            String type = enterprise.getType().getValue();
+            
+            switch (type) {
+                case "Animal Shelter":
+                    cmbOrganizations.removeAllItems();
+                    for (Organization.Type organizationType : Organization.Type.values()){
+                        if (organizationType.getValue().equals("Animal Register Organization")){
+                            cmbOrganizations.addItem(organizationType);      
+                        }
+                        if (organizationType.getValue().equals("Animal Management Organization")){
+                            cmbOrganizations.addItem(organizationType);      
+                        }
+                    }
+                    break;
+                case "Medical Care":
+                    cmbOrganizations.removeAllItems();
+                    for (Organization.Type organizationType : Organization.Type.values()){
+                        if (organizationType.getValue().equals("Vet Organization")){
+                            cmbOrganizations.addItem(organizationType);      
+                        }
+                        if (organizationType.getValue().equals("Treatment Organization")){
+                            cmbOrganizations.addItem(organizationType);      
+                        }
+                    }
+                    break;   
+                case "Adoption":
+                    cmbOrganizations.removeAllItems();
+                    for (Organization.Type organizationType : Organization.Type.values()){
+                        if (organizationType.getValue().equals("Adopter Organization")){
+                            cmbOrganizations.addItem(organizationType);      
+                        }
+                        if (organizationType.getValue().equals("Adoption Operation Organization")){
+                            cmbOrganizations.addItem(organizationType);      
+                        }
+                    }
+                    break;
+                case "Volunteer":
+                    cmbOrganizations.removeAllItems();
+                    for (Organization.Type organizationType : Organization.Type.values()){
+                        if (organizationType.getValue().equals("Volunteer Management Organization")) {
+                            cmbOrganizations.addItem(organizationType);      
+                        }
+                        if (organizationType.getValue().equals("Volunteer Organization")){
+                            cmbOrganizations.addItem(organizationType);      
+                        }
+                    }
+                    break;    
+                default:
+                    cmbOrganizations.removeAllItems();
+                    for (Organization.Type organizationType : Organization.Type.values()){
+                        cmbOrganizations.addItem(type);      
+                    }
+            }
+            
+        }    
+//            
+//            
+            
+//            
+//            
+//        }
+        
+
+//        }
+//        
+//        if (enterprise == null) {
+//            System.out.println("NULL");
+//        } else {
+//            );
+//        }
+            
+            
+//        Organization selectedOrganization = (Organization) cmbOrganizations.getSelectedItem();
+//
+//        
+//            for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()){
+//                Object[] row = new Object[2];
+//                row[0] = o.getType();
+//                row[1] = o;
+//                model.addRow(row);
+//        
+//        
+//        
+//        System.out.println(selectedOrganization.getType().getValue());
+        
+        
+//        NEED TO FIX THE COMBO
+//        for (Organization.Type type : Organization.Type.values()){
+//                cmbOrganizations.addItem(type);      
+//        }
 
     }
 }
