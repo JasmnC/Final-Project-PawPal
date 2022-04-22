@@ -154,7 +154,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         
         
-        ViewOngingAnimalJPanel viewOngoingAnimalJPanel = new ViewOngingAnimalJPanel(workArea, userAccount, enterprise.getAnimalDirectory().getAnimalByManager(userAccount.toString()));
+        ViewOngingAnimalJPanel viewOngoingAnimalJPanel = new ViewOngingAnimalJPanel(workArea, userAccount, enterprise);
         workArea.add("viewOngoingAnimalJPanel", viewOngoingAnimalJPanel);
 
         CardLayout layout = (CardLayout) workArea.getLayout();
@@ -164,7 +164,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void getAnAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAnAnimalJButtonActionPerformed
 
-        ManageAnimalJPanel manageAnimalJPanel = new ManageAnimalJPanel(workArea, userAccount, enterprise.getAnimalDirectory().getEnterprise());
+        ManageAnimalJPanel manageAnimalJPanel = new ManageAnimalJPanel(workArea, userAccount, enterprise);
         workArea.add("manageAnimalJPanel", manageAnimalJPanel);
 
         CardLayout layout = (CardLayout) workArea.getLayout();

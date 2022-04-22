@@ -9,7 +9,7 @@ package model.WorkQueue;
  *
  * @author yuujadz
  */
-public class AnimalManagerRequest extends WorkRequest {
+public class MedCareRequest extends WorkRequest {
     
     
 }

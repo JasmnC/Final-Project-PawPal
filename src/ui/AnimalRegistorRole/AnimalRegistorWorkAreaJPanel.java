@@ -124,7 +124,7 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void requestVolunteerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestVolunteerJButtonActionPerformed
 
-        RequestVolunteerJPanel requestVolunteerJPanel = new RequestVolunteerJPanel();
+        RequestVolunteerJPanel requestVolunteerJPanel = new RequestVolunteerJPanel(workArea, account, organization, enterprise , network, ecosystem);
         workArea.add("requestVolunteerJPanel", requestVolunteerJPanel);
 
         CardLayout layout = (CardLayout) workArea.getLayout();

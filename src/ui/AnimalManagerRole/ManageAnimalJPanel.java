@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Animal.Animal;
 import model.Animal.AnimalDirectory;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
 import model.Enterprise.Enterprise;
 import model.Network.Network;
 import model.Organization.AnimalManagementOrganization;
@@ -26,17 +27,16 @@ import model.Organization.Organization;
 public class ManageAnimalJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
-    private Enterprise enterprise;
-    private Animal animal;
+    private AnimalShelterEnterprise enterprise;
+    private AnimalDirectory animalDirectory = enterprise.getAnimalDirectory();
     private Organization organization;
     private UserAccount userAccount;
     
-    public ManageAnimalJPanel(JPanel userProcessContainer, UserAccount account ,  Enterprise enterprise) {
+    public ManageAnimalJPanel(JPanel userProcessContainer, UserAccount account , AnimalShelterEnterprise enterprise) {
         initComponents();
         
         this.workArea = userProcessContainer;
         this.enterprise = enterprise;
-        this.organization = organization;
         this.userAccount = account;
         
         populateAssingAnimalToMeRequestTable();
