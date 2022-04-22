@@ -28,27 +28,27 @@ public class MainScreen extends javax.swing.JPanel {
     Network network;
     EcoSystem ecoSystem;
 
-    public MainScreen(JPanel mainWorkArea, EcoSystem ecoSystem) {
+    public MainScreen(JPanel mainWorkArea, UserAccount account, EcoSystem ecoSystem) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
+        this.userAccount = account;
         this.ecoSystem = ecoSystem;
-
+        
+        initSystemAdminWorkArea();
+    }
+   
+    
+//    public MainScreen(JPanel mainWorkArea, UserAccount userAccount, Organization organization, Enterprise enterprise,Network network, EcoSystem ecoSystem) {
+//        initComponents();
+//        this.mainWorkArea = mainWorkArea;
+//        this.userAccount = userAccount;
+//        this.organization = organization;
+//        this.enterprise = enterprise;
+//        this.network = network;
+//        this.ecoSystem = ecoSystem;
+//
 //        initUserWorkArea();
-    }
-    
-    
-    
-    public MainScreen(JPanel mainWorkArea, UserAccount userAccount, Organization organization, Enterprise enterprise,Network network, EcoSystem ecoSystem) {
-        initComponents();
-        this.mainWorkArea = mainWorkArea;
-        this.userAccount = userAccount;
-        this.organization = organization;
-        this.enterprise = enterprise;
-        this.network = network;
-        this.ecoSystem = ecoSystem;
-
-        initUserWorkArea();
-    }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,8 +66,6 @@ public class MainScreen extends javax.swing.JPanel {
         workArea = new javax.swing.JPanel();
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-
-        menuPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         lblWelcome.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblWelcome.setText("<WelcomeMsg>");
@@ -102,7 +100,6 @@ public class MainScreen extends javax.swing.JPanel {
 
         splitPane.setTopComponent(menuPanel);
 
-        workArea.setBackground(new java.awt.Color(255, 255, 255));
         workArea.setLayout(new java.awt.CardLayout());
         splitPane.setRightComponent(workArea);
 
@@ -153,6 +150,17 @@ public class MainScreen extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) workArea.getLayout();
         workArea.add("workArea", userAccount.getRole().createWorkArea(menuPanel, userAccount, organization, enterprise, network, ecoSystem));
         layout.next(workArea);
+    }
+    
+    private void initSystemAdminWorkArea(){
+        
+        lblWelcome.setText("Welcome, " + ecoSystem.getSystemAdmin().getUsername() + "!");
+        
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        workArea.add("workArea", userAccount.getRole().createAdminWorkArea(workArea, userAccount, ecoSystem));
+        layout.next(workArea);
+        
+        
     }
 
 }

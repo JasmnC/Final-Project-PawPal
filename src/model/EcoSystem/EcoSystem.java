@@ -32,6 +32,13 @@ public class EcoSystem {
     public ArrayList<Network> getNetworkList() {
         return networkList;
     }
+    
+    public boolean nameIsUnique(String name){
+        for (Network n : networkList){
+            if (name.equalsIgnoreCase(n.getName())) return false;
+        }
+        return true;
+    }
 
     public UserAccount getSystemAdmin() {
         return systemAdmin;
@@ -40,7 +47,6 @@ public class EcoSystem {
     public void setSystemAdmin(UserAccount systemAdmin) {
         this.systemAdmin = systemAdmin;
     }
-    
     
 //    
 //    

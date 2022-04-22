@@ -13,12 +13,13 @@ import model.Organization.OrganizationDirectory;
  */
 public abstract class Enterprise {
 
+    private Type type;
     private String name;
     private OrganizationDirectory organizationDirectory;
 
     public enum Type {
         AnimalShelter("Animal Shelter"), 
-        MedicalCare("MedicalCare"), 
+        MedicalCare("Medical Care"), 
         Adoption("Adoption"), 
         Volunteer("Volunteer");
 
@@ -38,9 +39,14 @@ public abstract class Enterprise {
         }
     }
 
-    public Enterprise(String name) {
+    public Enterprise(String name, Type type) {
         this.name = name;
+        this.type = type;
         organizationDirectory = new OrganizationDirectory();        
+    }
+
+    public Type getType() {
+        return type;
     }
 
     public String getName() {

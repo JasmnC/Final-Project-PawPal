@@ -8,9 +8,12 @@ import model.Organization.Organization;
 import model.Organization.Organization.Type;
 import model.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
 
 /**
  *
@@ -29,31 +32,35 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecosystem;
         
+        populateNetworkCombo();
+        populateOrganizationCombo();
+
+        
 //        populateTable();
 //        populateCombo();
     }
     
-    private void populateCombo(){
-        cmbOrganizations.removeAllItems();
-        for (Type type : Organization.Type.values()){
-            if (!type.getValue().equals(Type.Admin.getValue()))
-                cmbOrganizations.addItem(type);
-        }
-    }
+//    private void populateCombo(){
+//        cmbOrganizations.removeAllItems();
+//        for (Type type : Organization.Type.values()){
+//            if (!type.getValue().equals(Type.Admin.getValue()))
+//                cmbOrganizations.addItem(type);
+//        }
+//    }
 
-    private void populateTable(){
-        DefaultTableModel model = (DefaultTableModel) tblOrganizations.getModel();
-        
-        model.setRowCount(0);
-        
-        for (Organization organization : directory.getOrganizationList()){
-            Object[] row = new Object[2];
-            row[0] = organization.getOrganizationID();
-            row[1] = organization.getName();
-            
-            model.addRow(row);
-        }
-    }
+//    private void populateTable(){
+//        DefaultTableModel model = (DefaultTableModel) tblOrganizations.getModel();
+//        
+//        model.setRowCount(0);
+//        
+//        for (Organization organization : directory.getOrganizationList()){
+//            Object[] row = new Object[2];
+//            row[0] = organization.getOrganizationID();
+//            row[1] = organization.getName();
+//            
+//            model.addRow(row);
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,6 +83,8 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         cmbNetworkList = new javax.swing.JComboBox();
         cmbEnterpriseList = new javax.swing.JComboBox();
         lblOrganizationPicker1 = new javax.swing.JLabel();
+        lblOrganizationName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -87,7 +96,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "ID", "Name"
+                "Type", "Name"
             }
         ) {
             Class[] types = new Class [] {
@@ -161,6 +170,14 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
         lblOrganizationPicker1.setText("Select Enterprise:");
 
+        lblOrganizationName.setText("Organization Name:");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,12 +192,6 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                     .addComponent(lblOrganizationAdd)
                     .addComponent(lblOrganizationList)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSelectOrgType)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(lblOrganizationPicker1)
@@ -189,8 +200,18 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(lblOrganizationPicker)
                             .addGap(18, 18, 18)
-                            .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(275, Short.MAX_VALUE))
+                            .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblSelectOrgType)
+                            .addComponent(lblOrganizationName))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbOrganizations, 0, 167, Short.MAX_VALUE)
+                            .addComponent(txtName))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(275, 275, 275))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,17 +237,40 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSelectOrgType)
-                    .addComponent(cmbOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOrganizationName)
                     .addComponent(btnAdd))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
-        Type type = (Type) cmbOrganizations.getSelectedItem();
-        directory.createOrganization(type);
-        populateTable();
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        String selectedOption = (String) cmbEnterpriseList.getSelectedItem();
+        String enterpriseName = selectedOption.replaceAll("\\s", "").split("\\|")[1];            
+        Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+        
+        String name = txtName.getText();
+        
+        if (network != null && enterprise != null && !name.equals("")) {
+            if (enterprise.getOrganizationDirectory().nameIsUnique(name)){
+                Type type = (Organization.Type) cmbOrganizations.getSelectedItem();
+                enterprise.getOrganizationDirectory().createOrganization(name, type);
+                JOptionPane.showMessageDialog(this, "new Organization added", "Information", JOptionPane.INFORMATION_MESSAGE);
+                txtName.setText("");
+                populateTable();
+            } else {
+                JOptionPane.showMessageDialog(this, "Organization name alreay existed", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select network and enterprise.\n Name of organization cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -241,15 +285,20 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbOrganizationsActionPerformed
 
     private void cmbNetworkListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkListActionPerformed
-        Organization organization = (Organization) cmbOrganizationList.getSelectedItem();
-        if (organization != null){
-            populateTable(organization);
-        }
+
+        populateEnterpriseCombo();
+
     }//GEN-LAST:event_cmbNetworkListActionPerformed
 
     private void cmbEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseListActionPerformed
-        // TODO add your handling code here:
+
+        populateTable();
+        
     }//GEN-LAST:event_cmbEnterpriseListActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -260,10 +309,67 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblOrganizationAdd;
     private javax.swing.JLabel lblOrganizationList;
+    private javax.swing.JLabel lblOrganizationName;
     private javax.swing.JLabel lblOrganizationPicker;
     private javax.swing.JLabel lblOrganizationPicker1;
     private javax.swing.JLabel lblSelectOrgType;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblOrganizations;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
+
+    private void populateNetworkCombo() {
+
+        cmbNetworkList.removeAllItems();
+
+        if (!ecoSystem.getNetworkList().isEmpty()){
+            for (Network n : ecoSystem.getNetworkList()){
+                cmbNetworkList.addItem(n);
+            }
+        }
+    }
+
+    private void populateEnterpriseCombo() {
+
+        cmbEnterpriseList.removeAllItems();
+        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (network != null ){
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+                cmbEnterpriseList.addItem(e.getType() + " | " + e.getName());
+            }
+        }
+    }
+    
+    private void populateTable(){
+        
+        DefaultTableModel model = (DefaultTableModel) tblOrganizations.getModel();
+        model.setRowCount(0);
+
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (cmbEnterpriseList.getSelectedItem() != null) {
+            String selectedOption = (String) cmbEnterpriseList.getSelectedItem();
+            String enterpriseName = selectedOption.replaceAll("\\s", "").split("\\|")[1];            
+            Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+        
+            for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()){
+                Object[] row = new Object[2];
+                row[0] = o.getType();
+                row[1] = o;
+                model.addRow(row);
+            }
+        }
+        
+    }
+
+    private void populateOrganizationCombo() {
+        cmbOrganizations.removeAllItems();
+        
+        for (Organization.Type type : Organization.Type.values()){
+                cmbOrganizations.addItem(type);      
+        }
+
+    }
 }

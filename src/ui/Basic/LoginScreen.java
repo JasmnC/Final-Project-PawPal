@@ -30,8 +30,8 @@ public class LoginScreen extends javax.swing.JPanel {
         this.mainWorkArea = mainWorkArea;
         this.ecoSystem = ecoSystem;
         
-        System.out.println(ecoSystem.getSystemAdmin().getUsername());
-        System.out.println(ecoSystem.getSystemAdmin().getPassword());
+//        System.out.println(ecoSystem.getSystemAdmin().getUsername());
+//        System.out.println(ecoSystem.getSystemAdmin().getPassword());
 
     }
 
@@ -135,10 +135,10 @@ public class LoginScreen extends javax.swing.JPanel {
                             .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblUser, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pwdPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLogin)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(btnLogin)
+                            .addComponent(pwdPassword)))
                     .addComponent(lblLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(107, Short.MAX_VALUE))
             .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -206,12 +206,12 @@ public class LoginScreen extends javax.swing.JPanel {
 
         if (userName.equals(ecoSystem.getSystemAdmin().getUsername()) &&
                 password.equals(ecoSystem.getSystemAdmin().getPassword())) {
-            JPanel mainScreen = new MainScreen(mainWorkArea, ecoSystem);
+            JPanel mainScreen = new MainScreen(mainWorkArea, ecoSystem.getSystemAdmin(), ecoSystem);
             mainWorkArea.add("MainScreen", mainScreen);
             CardLayout layout = (CardLayout) mainWorkArea.getLayout();
             layout.next(mainWorkArea);
         } else {
-            System.out.println("FAIL");
+            JOptionPane.showMessageDialog(this, "Invalid login.", "Warning", JOptionPane.WARNING_MESSAGE);            
         }
 
 //

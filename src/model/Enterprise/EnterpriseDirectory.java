@@ -28,36 +28,41 @@ public class EnterpriseDirectory {
     }
     
     //Create enterprise
-    public Enterprise createAndAddEnterprise(Type type){
+    public Enterprise createAndAddEnterprise(String name, Type type){
         
         Enterprise enterprise = null;
 
         if (type.getValue().equals(Type.AnimalShelter.getValue())) {
-            enterprise = new AnimalShelterEnterprise();
+            enterprise = new AnimalShelterEnterprise(name);
             enterpriseList.add(enterprise);
         } 
         else if (type.getValue().equals(Type.MedicalCare.getValue())) {
-            enterprise = new MedicalCareEnterprise();
+            enterprise = new MedicalCareEnterprise(name);
             enterpriseList.add(enterprise);
         } 
         else if (type.getValue().equals(Type.Adoption.getValue())) {
-            enterprise = new AdoptionEnterprise();
+            enterprise = new AdoptionEnterprise(name);
             enterpriseList.add(enterprise);
         }
         else if (type.getValue().equals(Type.Volunteer.getValue())) {
-            enterprise = new VolunteerEnterprise();
+            enterprise = new VolunteerEnterprise(name);
             enterpriseList.add(enterprise);
         }
 
         return enterprise;
     }
 
-    public boolean isUnique(String name){
+    public boolean nameIsUnique(String name){
         for(Enterprise enterprise : enterpriseList){
-            if(name.equalsIgnoreCase(enterprise.getName())){
-                return false;
-            }
-        }
+            if(name.equalsIgnoreCase(enterprise.getName())) return false;
+         }
         return true;
+    }
+    
+    public Enterprise getEnterpriseByName(String name){
+        for (Enterprise e : enterpriseList){
+            if (name.equalsIgnoreCase(e.getName())) return e;
+        }
+        return null;
     }
 }

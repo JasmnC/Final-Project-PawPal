@@ -10,8 +10,8 @@ package model.Enterprise;
  */
 public class VolunteerEnterprise extends Enterprise{
 
-    public VolunteerEnterprise() {
-        super(Enterprise.Type.Volunteer.getValue());
+    public VolunteerEnterprise(String name) {
+        super(name, Enterprise.Type.Volunteer);
     }
     
 }

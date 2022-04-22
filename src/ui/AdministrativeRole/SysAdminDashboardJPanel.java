@@ -29,31 +29,8 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecosystem;
         
-//        populateTable();
-//        populateCombo();
     }
     
-    private void populateCombo(){
-        cmbOrganizations.removeAllItems();
-        for (Type type : Organization.Type.values()){
-            if (!type.getValue().equals(Type.Admin.getValue()))
-                cmbOrganizations.addItem(type);
-        }
-    }
-
-    private void populateTable(){
-        DefaultTableModel model = (DefaultTableModel) tblOrganizations.getModel();
-        
-        model.setRowCount(0);
-        
-        for (Organization organization : directory.getOrganizationList()){
-            Object[] row = new Object[2];
-            row[0] = organization.getOrganizationID();
-            row[1] = organization.getName();
-            
-            model.addRow(row);
-        }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

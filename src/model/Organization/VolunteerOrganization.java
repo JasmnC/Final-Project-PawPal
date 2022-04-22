@@ -14,8 +14,8 @@ import model.Role.VolunteerRole;
  */
 public class VolunteerOrganization extends Organization{
 
-    public VolunteerOrganization() {
-        super(Organization.Type.Volunteer.getValue());
+    public VolunteerOrganization(String name) {
+        super(name, Organization.Type.Volunteer);
     }
 
     @Override

@@ -37,26 +37,20 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        manageUserJButton = new javax.swing.JButton();
-        btnViewDashboard = new javax.swing.JButton();
-        btnManageEnterprise = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        manageOrganizationJButton1 = new javax.swing.JButton();
         btnManageNetwork = new javax.swing.JButton();
+        btnManageEnterprise = new javax.swing.JButton();
+        btnManageOrganization = new javax.swing.JButton();
+        btnManageUsers = new javax.swing.JButton();
+        btnViewDashboard = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setText("System Admin Work Area");
 
-        manageUserJButton.setText("Manage Users");
-        manageUserJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnManageNetwork.setText("Manage Network");
+        btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageUserJButtonActionPerformed(evt);
-            }
-        });
-
-        btnViewDashboard.setText("Dashboard");
-        btnViewDashboard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewDashboardActionPerformed(evt);
+                btnManageNetworkActionPerformed(evt);
             }
         });
 
@@ -67,20 +61,24 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Administrative Work Area");
-
-        manageOrganizationJButton1.setText("Manage Organizations");
-        manageOrganizationJButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnManageOrganization.setText("Manage Organizations");
+        btnManageOrganization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageOrganizationJButton1ActionPerformed(evt);
+                btnManageOrganizationActionPerformed(evt);
             }
         });
 
-        btnManageNetwork.setText("Manage Network");
-        btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
+        btnManageUsers.setText("Manage Users");
+        btnManageUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageNetworkActionPerformed(evt);
+                btnManageUsersActionPerformed(evt);
+            }
+        });
+
+        btnViewDashboard.setText("Dashboard");
+        btnViewDashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDashboardActionPerformed(evt);
             }
         });
 
@@ -91,34 +89,34 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(manageUserJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTitle)
-                    .addComponent(manageOrganizationJButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageOrganization, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnManageNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnManageEnterprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnViewDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(579, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGap(60, 60, 60)
                 .addComponent(btnManageNetwork)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnManageEnterprise)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageOrganizationJButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageUserJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageOrganization)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageUsers)
+                .addGap(18, 18, 18)
                 .addComponent(btnViewDashboard)
-                .addGap(35, 35, 35))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void manageUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserJButtonActionPerformed
+    private void btnManageUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUsersActionPerformed
 
         ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, ecoSystem);
         userProcessContainer.add("ManageUserAccountJPanel", muajp);
@@ -126,7 +124,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
-    }//GEN-LAST:event_manageUserJButtonActionPerformed
+    }//GEN-LAST:event_btnManageUsersActionPerformed
 
     private void btnViewDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDashboardActionPerformed
 
@@ -146,14 +144,14 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
-    private void manageOrganizationJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButton1ActionPerformed
+    private void btnManageOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageOrganizationActionPerformed
 
         ManageOrganizationJPanel mojp = new ManageOrganizationJPanel (userProcessContainer, ecoSystem);
         userProcessContainer.add("ManageOrganizationJPanel", mojp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
-    }//GEN-LAST:event_manageOrganizationJButton1ActionPerformed
+    }//GEN-LAST:event_btnManageOrganizationActionPerformed
 
     private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
         // TODO add your handling code here:
@@ -169,10 +167,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageEnterprise;
     private javax.swing.JButton btnManageNetwork;
+    private javax.swing.JButton btnManageOrganization;
+    private javax.swing.JButton btnManageUsers;
     private javax.swing.JButton btnViewDashboard;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JButton manageOrganizationJButton1;
-    private javax.swing.JButton manageUserJButton;
     // End of variables declaration//GEN-END:variables
     
 }
