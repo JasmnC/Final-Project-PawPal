@@ -8,8 +8,15 @@ package ui.AnimalManagerRole;
 import model.UserAccount.UserAccount;
 import model.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Animal.Animal;
+import model.Animal.AnimalDirectory;
+import model.Enterprise.AnimalShelterEnterprise;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.WorkQueue.AdoptionRequest;
 
 /**
  *
@@ -18,40 +25,41 @@ import javax.swing.table.DefaultTableModel;
 public class AdoptionRequestJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
-    private DoctorOrganization organization;
-    private Business business;
     private UserAccount userAccount;
+    private AnimalShelterEnterprise enterprise;
+    private Animal animalRequestAdoption = enterprise.getAnimalDirectory().getAnimalByAdoptionRequested(Boolean.TRUE);
+    
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public AdoptionRequestJPanel(JPanel workArea, UserAccount account, DoctorOrganization organization, Business business) {
+    public AdoptionRequestJPanel(JPanel workArea, UserAccount account, AnimalShelterEnterprise enterprise) {
         initComponents();
         
         this.workArea = workArea;
-        this.organization = organization;
-        this.business = business;
         this.userAccount = account;
+        this.enterprise = enterprise;
+        
         
         populateRequestTable();
     }
 
-    AdoptionRequestJPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) tblAnimalAdoptionWorkQueue.getModel();
         
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+            if(request instanceof AdoptionRequest){
+            Object[] row = new Object[5];
             row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((LabTestWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
+            row[1] = request.getAnimal().getId();
+            row[2] = request.getAnimal().getName();
+            row[3] = request.getSender();
+            row[4] = ((AdoptionRequest) request).getAdoptor();
+            row[5] = request.getStatus();
             
             model.addRow(row);
+            }
         }
     }
 
@@ -82,7 +90,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "ID", "Name", "Manager", "Adoptor", "Status"
+                "Message", "ID", "Name", "Sender", "Adoptor", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -171,9 +179,6 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
 
     private void btnApproveAnimalAdoptionRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveAnimalAdoptionRequestActionPerformed
         
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        workArea.add("RequestLabTestJPanel", new RequestMedicalCareJPanel(workArea, userAccount, business));
-        layout.next(workArea);
         
     }//GEN-LAST:event_btnApproveAnimalAdoptionRequestActionPerformed
 
@@ -184,7 +189,8 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnRejectAnimalAdoptionRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectAnimalAdoptionRequestActionPerformed
-        // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_btnRejectAnimalAdoptionRequestActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
