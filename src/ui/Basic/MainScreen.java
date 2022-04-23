@@ -45,7 +45,7 @@ public class MainScreen extends javax.swing.JPanel {
         this.organization = userAccount.getOrgainization();
         this.enterprise = userAccount.getEnterprise();
         this.network = userAccount.getNetwork();
-//        this.ecoSystem = ecoSystem;
+        this.ecoSystem = userAccount.getNetwork().getEcosystem();
 
         initUserWorkArea();
     }
@@ -153,7 +153,7 @@ public class MainScreen extends javax.swing.JPanel {
                 + userAccount);
 
         CardLayout layout = (CardLayout) workArea.getLayout();
-        workArea.add("workArea", userAccount.getRole().createWorkArea(menuPanel, userAccount, organization, enterprise, network, null));
+        workArea.add("workArea", userAccount.getRole().createWorkArea(menuPanel, userAccount, organization, enterprise, network, ecoSystem));
         layout.next(workArea);
     }
     
