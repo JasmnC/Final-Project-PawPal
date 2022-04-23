@@ -9,6 +9,9 @@ package ui.AdministrativeRole;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.Organization;
 import model.UserAccount.UserAccount;
 
 /**
@@ -27,6 +30,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.ecoSystem = ecoSystem;
+        
     }
     
     /** This method is called from within the constructor to
@@ -154,7 +158,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManageOrganizationActionPerformed
 
     private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
-        // TODO add your handling code here:
 
         ManageNetworkJPanel mnjp = new ManageNetworkJPanel(userProcessContainer, ecoSystem);
         userProcessContainer.add("ManageNetworkJPanel",mnjp);

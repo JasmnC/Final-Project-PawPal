@@ -156,7 +156,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
     private void btnCreateNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNetworkActionPerformed
 
-        String name = txtNetworkName.getText().toUpperCase();
+        String name = txtNetworkName.getText();
                 
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Network name cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);

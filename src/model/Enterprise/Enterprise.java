@@ -5,6 +5,8 @@
  */
 package model.Enterprise;
 
+import java.util.ArrayList;
+import model.Organization.Organization;
 import model.Organization.OrganizationDirectory;
 
 /**
@@ -60,7 +62,7 @@ public abstract class Enterprise {
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
-
+    
     @Override
     public String toString() {
         return name;

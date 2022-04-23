@@ -35,31 +35,8 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         cmbOrganizations.removeAllItems();        
         populateNetworkCombo();
         
-//        populateTable();
-//        populateCombo();
     }
     
-//    private void populateCombo(){
-//        cmbOrganizations.removeAllItems();
-//        for (Type type : Organization.Type.values()){
-//            if (!type.getValue().equals(Type.Admin.getValue()))
-//                cmbOrganizations.addItem(type);
-//        }
-//    }
-
-//    private void populateTable(){
-//        DefaultTableModel model = (DefaultTableModel) tblOrganizations.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for (Organization organization : directory.getOrganizationList()){
-//            Object[] row = new Object[2];
-//            row[0] = organization.getOrganizationID();
-//            row[1] = organization.getName();
-//            
-//            model.addRow(row);
-//        }
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -246,28 +223,77 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
-        Network network = (Network) cmbNetworkList.getSelectedItem();
-        
-        String selectedOption = (String) cmbEnterpriseList.getSelectedItem();
-        String enterpriseName = selectedOption.replaceAll("\\s", "").split("\\|")[1];            
-        Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
-        
-        String name = txtName.getText();
-        
-        if (enterprise != null && !name.equals("")) {
-            if (enterprise.getOrganizationDirectory().nameIsUnique(name)){
-                Type type = (Organization.Type) cmbOrganizations.getSelectedItem();
-                enterprise.getOrganizationDirectory().createOrganization(name, type);
-                JOptionPane.showMessageDialog(this, "new Organization added", "Information", JOptionPane.INFORMATION_MESSAGE);
-                txtName.setText("");
-                populateTable();
+        try {
+
+            Network network = (Network) cmbNetworkList.getSelectedItem();
+
+            String selectedOption = (String) cmbEnterpriseList.getSelectedItem();
+            String enterpriseName = selectedOption.split("\\s\\|\\s")[1];
+            Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+
+            String name = txtName.getText();
+
+            if (!name.isEmpty()) {
+                if (enterprise.getOrganizationDirectory().nameIsUnique(name)) {
+                    Type type = (Organization.Type) cmbOrganizations.getSelectedItem();
+                    enterprise.getOrganizationDirectory().createOrganization(name, type);
+                    JOptionPane.showMessageDialog(this, "new Organization added", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    txtName.setText("");
+                    populateTable();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Organization name alreay existed", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Organization name alreay existed", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Name cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select an enterprise.\nName of organization cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Network / Enterprise cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+
         }
-        
+     
+     
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Enterprise cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Network cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+//
+//            }
+
+
+
+//
+//        Network network = (Network) cmbNetworkList.getSelectedItem();
+//        
+//        if (network != null) {
+//            String selectedOption = (String) cmbEnterpriseList.getSelectedItem();
+//            String enterpriseName = selectedOption.split("\\s\\|\\s")[1];
+//            Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+//
+//            String name = txtName.getText();
+//
+//            if (enterprise != null) {
+//                if (!name.isEmpty()) {
+//                    if (enterprise.getOrganizationDirectory().nameIsUnique(name)) {
+//                        Type type = (Organization.Type) cmbOrganizations.getSelectedItem();
+//                        enterprise.getOrganizationDirectory().createOrganization(name, type);
+//                        JOptionPane.showMessageDialog(this, "new Organization added", "Information", JOptionPane.INFORMATION_MESSAGE);
+//                        txtName.setText("");
+//                        populateTable();
+//                    } else {
+//                        JOptionPane.showMessageDialog(this, "Organization name alreay existed", "Warning", JOptionPane.WARNING_MESSAGE);
+//                    }
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Name cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Enterprise cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Network cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+//
+//        }
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -326,7 +352,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         
         if (cmbEnterpriseList.getSelectedItem() != null) {
             String selectedOption = (String) cmbEnterpriseList.getSelectedItem();
-            String enterpriseName = selectedOption.replaceAll("\\s", "").split("\\|")[1];            
+            String enterpriseName = selectedOption.split("\\s\\|\\s")[1];            
             Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
         
             for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()){
@@ -369,9 +395,9 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         
         if (cmbEnterpriseList.getSelectedItem() != null) {
             String selectedOption = (String) cmbEnterpriseList.getSelectedItem();
-            String enterpriseName = selectedOption.replaceAll("\\s", "").split("\\|")[1];            
+            String enterpriseName = selectedOption.split("\\s\\|\\s")[1];            
             Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
-            
+
             String type = enterprise.getType().getValue();
             
             switch (type) {
@@ -422,43 +448,6 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 default:
                     cmbOrganizations.removeAllItems();
             }
-            
-        }    
-//            
-//            
-            
-//            
-//            
-//        }
-        
-
-//        }
-//        
-//        if (enterprise == null) {
-//            System.out.println("NULL");
-//        } else {
-//            );
-//        }
-            
-            
-//        Organization selectedOrganization = (Organization) cmbOrganizations.getSelectedItem();
-//
-//        
-//            for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()){
-//                Object[] row = new Object[2];
-//                row[0] = o.getType();
-//                row[1] = o;
-//                model.addRow(row);
-//        
-//        
-//        
-//        System.out.println(selectedOrganization.getType().getValue());
-        
-        
-//        NEED TO FIX THE COMBO
-//        for (Organization.Type type : Organization.Type.values()){
-//                cmbOrganizations.addItem(type);      
-//        }
-
+        }
     }
 }
