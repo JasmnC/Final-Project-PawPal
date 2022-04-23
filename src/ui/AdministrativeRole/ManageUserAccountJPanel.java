@@ -40,6 +40,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         cmbRoles.removeAllItems();
         
         populateNetworkCombo();
+        populateUserAccountsTable();
 
         
 //        this.business = business;
@@ -79,20 +80,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 //        }
 //    }
 //
-//    public void popUserAccountsTable() {
-//
-//        DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
-//
-//        model.setRowCount(0);
-//
-//        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()) {
-//            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-//                Object row[] = new Object[2];
-//                row[0] = ua;
-//                row[1] = ua.getRole();
-//                ((DefaultTableModel) tblUsers.getModel()).addRow(row);
-//            }
-//        }
+    
 //    }
 
     /**
@@ -106,40 +94,37 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
-        grpNewUser = new javax.swing.JPanel();
-        btnCreateUser = new javax.swing.JButton();
-        txtUserName = new javax.swing.JTextField();
-        lblUserName = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
-        lblEmployee = new javax.swing.JLabel();
-        cmbOrg = new javax.swing.JComboBox();
-        lblOrganization = new javax.swing.JLabel();
-        cmbEnterprise = new javax.swing.JComboBox();
-        lblRole = new javax.swing.JLabel();
-        cmbRoles = new javax.swing.JComboBox();
-        lblCreateUser = new javax.swing.JLabel();
-        cmbNetworkList = new javax.swing.JComboBox();
-        lblOrganizationPicker = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         lblUsersList = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(255, 255, 255));
+        cmbOrg = new javax.swing.JComboBox();
+        lblEmployee = new javax.swing.JLabel();
+        lblRole = new javax.swing.JLabel();
+        cmbRoles = new javax.swing.JComboBox();
+        lblCreateUser = new javax.swing.JLabel();
+        lblOrganizationPicker = new javax.swing.JLabel();
+        lblOrganization = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        cmbNetworkList = new javax.swing.JComboBox();
+        cmbEnterprise = new javax.swing.JComboBox();
+        txtUserName = new javax.swing.JTextField();
+        pwdUser = new javax.swing.JPasswordField();
+        btnCreateUser = new javax.swing.JButton();
+        lblPassword = new javax.swing.JLabel();
 
         tblUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "User Name", "Role"
+                "User Name", "Role", "Organization", "Enterprise", "Network"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -154,130 +139,10 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         if (tblUsers.getColumnModel().getColumnCount() > 0) {
             tblUsers.getColumnModel().getColumn(0).setResizable(false);
             tblUsers.getColumnModel().getColumn(1).setResizable(false);
+            tblUsers.getColumnModel().getColumn(2).setResizable(false);
+            tblUsers.getColumnModel().getColumn(3).setResizable(false);
+            tblUsers.getColumnModel().getColumn(4).setResizable(false);
         }
-
-        grpNewUser.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnCreateUser.setText("Create");
-        btnCreateUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateUserActionPerformed(evt);
-            }
-        });
-
-        lblUserName.setText("User Name:");
-
-        lblPassword.setText("Password:");
-
-        lblEmployee.setText("Organization:");
-
-        cmbOrg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbOrg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbOrgActionPerformed(evt);
-            }
-        });
-
-        lblOrganization.setText("Enterprise:");
-
-        cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbEnterprise.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbEnterpriseActionPerformed(evt);
-            }
-        });
-
-        lblRole.setText("Role:");
-
-        cmbRoles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lblCreateUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblCreateUser.setText("New User:");
-
-        cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbNetworkListActionPerformed(evt);
-            }
-        });
-
-        lblOrganizationPicker.setText("Network:");
-
-        javax.swing.GroupLayout grpNewUserLayout = new javax.swing.GroupLayout(grpNewUser);
-        grpNewUser.setLayout(grpNewUserLayout);
-        grpNewUserLayout.setHorizontalGroup(
-            grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(grpNewUserLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(grpNewUserLayout.createSequentialGroup()
-                        .addComponent(lblCreateUser)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(grpNewUserLayout.createSequentialGroup()
-                        .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(grpNewUserLayout.createSequentialGroup()
-                                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblUserName)
-                                    .addComponent(lblPassword))
-                                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(grpNewUserLayout.createSequentialGroup()
-                                        .addGap(138, 138, 138)
-                                        .addComponent(btnCreateUser))
-                                    .addGroup(grpNewUserLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                                            .addComponent(txtUserName)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, grpNewUserLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblEmployee)
-                                    .addComponent(lblOrganization)
-                                    .addComponent(lblRole))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbRoles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbOrg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbEnterprise, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(grpNewUserLayout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(lblOrganizationPicker)
-                                .addGap(4, 4, 4)
-                                .addComponent(cmbNetworkList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(35, 35, 35))))
-        );
-        grpNewUserLayout.setVerticalGroup(
-            grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, grpNewUserLayout.createSequentialGroup()
-                .addComponent(lblCreateUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOrganizationPicker))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOrganization)
-                    .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmployee)
-                    .addComponent(cmbOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRole)
-                    .addComponent(cmbRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUserName)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(grpNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnCreateUser)
-                .addGap(45, 45, 45))
-        );
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -292,28 +157,108 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         lblUsersList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblUsersList.setText("Users List:");
 
+        cmbOrg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbOrgActionPerformed(evt);
+            }
+        });
+
+        lblEmployee.setText("Organization:");
+
+        lblRole.setText("Role:");
+
+        cmbRoles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblCreateUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCreateUser.setText("New User:");
+
+        lblOrganizationPicker.setText("Network:");
+
+        lblOrganization.setText("Enterprise:");
+
+        lblUserName.setText("User Name:");
+
+        cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNetworkListActionPerformed(evt);
+            }
+        });
+
+        cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEnterpriseActionPerformed(evt);
+            }
+        });
+
+        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserNameActionPerformed(evt);
+            }
+        });
+
+        pwdUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdUserActionPerformed(evt);
+            }
+        });
+
+        btnCreateUser.setText("Create");
+        btnCreateUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateUserActionPerformed(evt);
+            }
+        });
+
+        lblPassword.setText("Password:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblUsersList)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(19, 19, 19)))
-                        .addComponent(grpNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblCreateUser)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsersList)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTitle)
-                        .addContainerGap(575, Short.MAX_VALUE))))
+                        .addComponent(lblTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblRole)
+                                    .addComponent(lblEmployee))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbOrg, 0, 242, Short.MAX_VALUE)
+                                    .addComponent(cmbRoles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblOrganization)
+                                    .addComponent(lblOrganizationPicker))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbEnterprise, 0, 242, Short.MAX_VALUE)
+                                    .addComponent(cmbNetworkList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCreateUser)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblPassword)
+                                    .addComponent(lblUserName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtUserName)
+                                    .addComponent(pwdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,58 +268,123 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                     .addComponent(btnBack)
                     .addComponent(lblTitle))
                 .addGap(18, 18, 18)
+                .addComponent(lblUsersList)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblUsersList)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(grpNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblCreateUser)
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblOrganizationPicker)
+                            .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblOrganization)
+                            .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmployee)
+                            .addComponent(cmbOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblRole)
+                            .addComponent(cmbRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUserName)
+                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPassword)
+                            .addComponent(pwdUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCreateUser)))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
-        String userName = txtUserName.getText();
-        String password = txtPassword.getText();
         
-        Network network = (Network) cmbNetworkList.getSelectedItem();
+//        String userName = txtUserName.getText();
+//        String password = txtPassword.getText();
+//        
+//        Network network = (Network) cmbNetworkList.getSelectedItem();
+//        
+//        if (network != null) {
+//            if (cmbEnterprise.getSelectedItem() != null) {
+//                String selectedEntOption = (String) cmbEnterprise.getSelectedItem();
+//                String enterpriseName = selectedEntOption.split("\\s\\|\\s")[1];            
+//                Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
+//
+//                if (cmbOrg.getSelectedItem()!= null) {
+//                    String selectedOrgOption = cmbOrg.getSelectedItem().toString();
+//                    String orgName = selectedOrgOption.split("\\s\\|\\s")[1];
+//                    Organization organization = enterprise.getOrganizationDirectory().getOrganizationByName(orgName);
+//
+//                    if (organization != null){
+//                        if((!userName.equals("")) || (!userName.equals(""))){
+//                            if(ecoSystem.getUserAccountDirectory().userNameIsUnique(userName)){
+//                                Role role = (Role) cmbRoles.getSelectedItem();
+//                                ecoSystem.getUserAccountDirectory().createUserAccount(userName, password, role, network, enterprise, organization);
+//                                JOptionPane.showMessageDialog(null, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+//                                txtUserName.setText("");
+//                                txtPassword.setText("");
+//                                for (UserAccount ua : ecoSystem.getUserAccountDirectory().getUserAccountList()){
+//                                    System.out.println(ua);
+//                                }
+//                                    } else {                            
+//                                        JOptionPane.showMessageDialog(null, "Username already existed", "Warning", JOptionPane.WARNING_MESSAGE);
+//                                    } 
+//                                } else {
+//                                JOptionPane.showMessageDialog(null, "Username & Password cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
+//                                }
+//                        } else {
+//                        JOptionPane.showMessageDialog(null, "Please select where you wish to add the account", "Warning", JOptionPane.WARNING_MESSAGE);
+//                    }
+//                } else {
+//                JOptionPane.showMessageDialog(null, "Network cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
+//            }  
+//        } 
+//    }
         
-        if (cmbEnterprise.getSelectedItem() != null) {
+
+        try{
+            
+            String userName = txtUserName.getText();
+            String password = String.valueOf(pwdUser.getPassword());
+
+            Network network = (Network) cmbNetworkList.getSelectedItem();
+
             String selectedEntOption = (String) cmbEnterprise.getSelectedItem();
-            String enterpriseName = selectedEntOption.replaceAll("\\s", "").split("\\|")[1];            
+            String enterpriseName = selectedEntOption.split("\\s\\|\\s")[1];            
             Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
-        
-            if (cmbOrg.getSelectedItem()!= null) {
-                String selectedOrgOption = cmbOrg.getSelectedItem().toString();
-                String orgName = selectedOrgOption.split("\\|\\s")[1];
-                Organization organization = enterprise.getOrganizationDirectory().getOrganizationByName(orgName);
 
-                if (organization != null){
-                    if((!userName.equals("")) || (!userName.equals(""))){
-                        if(ecoSystem.getUserAccountDirectory().userNameIsUnique(userName)){
-                            Role role = (Role) cmbRoles.getSelectedItem();
-                            ecoSystem.getUserAccountDirectory().createUserAccount(userName, password, role, network, enterprise, organization);
-                            JOptionPane.showMessageDialog(null, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
-                            txtUserName.setText("");
-                            txtPassword.setText("");
-                            for (UserAccount ua : ecoSystem.getUserAccountDirectory().getUserAccountList()){
-                                System.out.println(ua);
-                            }
-                                } else {                            
-                                    JOptionPane.showMessageDialog(null, "Username already existed", "Warning", JOptionPane.WARNING_MESSAGE);
-                                } 
-                            } else {
-                            JOptionPane.showMessageDialog(null, "Username & Password cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
-                            }
-                    } else {
-                    JOptionPane.showMessageDialog(null, "Please select where you wish to add the account", "Warning", JOptionPane.WARNING_MESSAGE);
-                }
+            String selectedOrgOption = cmbOrg.getSelectedItem().toString();
+            String orgName = selectedOrgOption.split("\\s\\|\\s")[1];
+            Organization organization = enterprise.getOrganizationDirectory().getOrganizationByName(orgName);
+
+            if((!userName.isEmpty()) && (!password.isEmpty())){
+                if(ecoSystem.getUserAccountDirectory().userNameIsUnique(userName)){
+                    Role role = (Role) cmbRoles.getSelectedItem();
+                    ecoSystem.getUserAccountDirectory().createUserAccount(userName, password, role, network, enterprise, organization);
+                    JOptionPane.showMessageDialog(null, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    txtUserName.setText("");
+                    pwdUser.setText("");
+                    populateUserAccountsTable();
+                } else {                            
+                    JOptionPane.showMessageDialog(null, "Username already existed", "Warning", JOptionPane.WARNING_MESSAGE);
+                } 
+            } else {
+                JOptionPane.showMessageDialog(null, "Username & Password cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
             }
-        }       
         
-
-//        popUserAccountsTable();
-
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Network / Enterprise / Organization cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
         
         
     }//GEN-LAST:event_btnCreateUserActionPerformed
@@ -407,6 +417,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_cmbNetworkListActionPerformed
 
+    private void pwdUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdUserActionPerformed
+
+    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNameActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateUser;
@@ -414,7 +432,6 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox cmbNetworkList;
     private javax.swing.JComboBox cmbOrg;
     private javax.swing.JComboBox cmbRoles;
-    private javax.swing.JPanel grpNewUser;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCreateUser;
     private javax.swing.JLabel lblEmployee;
@@ -425,8 +442,8 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JLabel lblUsersList;
+    private javax.swing.JPasswordField pwdUser;
     private javax.swing.JTable tblUsers;
-    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 
@@ -462,66 +479,13 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 
         if (cmbEnterprise.getSelectedItem() != null) {
             String selectedOption = (String) cmbEnterprise.getSelectedItem();
-            String enterpriseName = selectedOption.replaceAll("\\s", "").split("\\|")[1];            
+            String enterpriseName = selectedOption.split("\\s\\|\\s")[1];            
             Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
             
             for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()){
                 cmbOrg.addItem(o.getType() + " | " + o);
             }
-            
-            
-//            String type = enterprise.getType().getValue();
-//            
-//            switch (type) {
-//                case "Animal Shelter":
-//                    cmbOrg.removeAllItems();
-//                    for (Organization.Type organizationType : Organization.Type.values()){
-//                        if (organizationType.getValue().equals("Animal Register Organization")){
-//                            cmbOrg.addItem(organizationType);      
-//                        }
-//                        if (organizationType.getValue().equals("Animal Management Organization")){
-//                            cmbOrg.addItem(organizationType);      
-//                        }
-//                    }
-//                    break;
-//                case "Medical Care":
-//                    cmbOrg.removeAllItems();
-//                    for (Organization.Type organizationType : Organization.Type.values()){
-//                        if (organizationType.getValue().equals("Vet Organization")){
-//                            cmbOrg.addItem(organizationType);      
-//                        }
-//                        if (organizationType.getValue().equals("Treatment Organization")){
-//                            cmbOrg.addItem(organizationType);      
-//                        }
-//                    }
-//                    break;   
-//                case "Adoption":
-//                    cmbOrg.removeAllItems();
-//                    for (Organization.Type organizationType : Organization.Type.values()){
-//                        if (organizationType.getValue().equals("Adopter Organization")){
-//                            cmbOrg.addItem(organizationType);      
-//                        }
-//                        if (organizationType.getValue().equals("Adoption Operation Organization")){
-//                            cmbOrg.addItem(organizationType);      
-//                        }
-//                    }
-//                    break;
-//                case "Volunteer":
-//                    cmbOrg.removeAllItems();
-//                    for (Organization.Type organizationType : Organization.Type.values()){
-//                        if (organizationType.getValue().equals("Volunteer Management Organization")) {
-//                            cmbOrg.addItem(organizationType);      
-//                        }
-//                        if (organizationType.getValue().equals("Volunteer Organization")){
-//                            cmbOrg.addItem(organizationType);      
-//                        }
-//                    }
-//                    break;    
-//                default:
-//                    cmbOrg.removeAllItems();
-//            }
         }
-        
     }
 
     private void populateRoleCombo() {
@@ -532,7 +496,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         
         if (cmbEnterprise.getSelectedItem() != null) {
             String selectedEntOption = (String) cmbEnterprise.getSelectedItem();
-            String enterpriseName = selectedEntOption.replaceAll("\\s", "").split("\\|")[1];            
+            String enterpriseName = selectedEntOption.split("\\s\\|\\s")[1];            
             Enterprise enterprise = network.getEnterpriseDirectory().getEnterpriseByName(enterpriseName);
         
             if (cmbOrg.getSelectedItem()!= null) {
@@ -544,76 +508,23 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                     cmbRoles.addItem(role);
                 }
                 
-                
-                
-//                
-//                String orgType = selectedOrgOption.split("\\|")[0];
-//
-//                switch (orgType) {
-//                    case "Animal Register Organization ":
-//                        for (Role.RoleType roleType : Role.RoleType.values()){
-//                            if (roleType.getValue().equals("Animal Register")){
-//                                cmbRoles.addItem(roleType);      
-//                            }                           
-//                        }
-//                        break;
-//                    case "Animal Management Organization ":
-//                        for (Role.RoleType roleType : Role.RoleType.values()){
-//                            if (roleType.getValue().equals("Animal Manager")){
-//                                cmbRoles.addItem(roleType);      
-//                            }
-//                        }
-//                        break;
-//                    case "Vet Organization ":
-//                        for (Role.RoleType roleType : Role.RoleType.values()){
-//                            if (roleType.getValue().equals("Vet")){
-//                                cmbRoles.addItem(roleType);      
-//                            }
-//                        }
-//                        break;
-//                    case "Treatment Organization ":
-//                        for (Role.RoleType roleType : Role.RoleType.values()){
-//                            if (roleType.getValue().equals("Pharmacist")){
-//                                cmbRoles.addItem(roleType);      
-//                            }
-//                            if (roleType.getValue().equals("Behavior Therapist")){
-//                                cmbRoles.addItem(roleType);      
-//                            }
-//                        }
-//                        break;
-//                    case "Adopter Organization ":
-//                        for (Role.RoleType roleType : Role.RoleType.values()){
-//                            if (roleType.getValue().equals("Adopter")){
-//                                cmbRoles.addItem(roleType);      
-//                            }
-//                        }
-//                        break;
-//                    case "Adoption Operation Organization ":
-//                        for (Role.RoleType roleType : Role.RoleType.values()){
-//                            if (roleType.getValue().equals("Adoption Manager")){
-//                                cmbRoles.addItem(roleType);      
-//                            }
-//                        }
-//                        break;
-//                    case "Volunteer Management Organization ":
-//                        for (Role.RoleType roleType : Role.RoleType.values()){
-//                            if (roleType.getValue().equals("Volunteer Manager")){
-//                                cmbRoles.addItem(roleType);      
-//                            }
-//                        }
-//                        break;
-//                    case "Volunteer Organization ":
-//                        for (Role.RoleType roleType : Role.RoleType.values()){
-//                            if (roleType.getValue().equals("Volunteer")){
-//                                cmbRoles.addItem(roleType);      
-//                            }
-//                        }
-//                        break;
-//
-//                    default:
-//                        cmbRoles.removeAllItems();
-//                }
             }
         }
     }
+    
+    public void populateUserAccountsTable() {
+
+        DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
+        model.setRowCount(0);
+
+        for (UserAccount ua : ecoSystem.getUserAccountDirectory().getUserAccountList()){
+                Object row[] = new Object[5];
+                row[0] = ua;
+                row[1] = ua.getRole();
+                row[2] = ua.getOrgainization();
+                row[3] = ua.getEnterprise();
+                row[4] = ua.getNetwork();
+                model.addRow(row);
+            }
+        }
 }

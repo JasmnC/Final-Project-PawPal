@@ -4,6 +4,11 @@
  */
 package model.Enterprise;
 
+import java.util.ArrayList;
+import model.Organization.AdopterOrganization;
+import model.Organization.AdoptionOperationOrganization;
+import model.Organization.Organization;
+
 /**
  *
  * @author anitachen

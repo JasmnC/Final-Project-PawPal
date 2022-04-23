@@ -18,6 +18,7 @@ public class AdoptionOperationOrganization extends Organization{
         super(name, Organization.Type.AdoptionOperation);
     }
 
+
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();

@@ -23,6 +23,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem ecoSystem;
+    
+    private Network selectedNetwork;
 
     
     /**
@@ -203,23 +205,26 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
-        Network network = (Network) cmbNetworkList.getSelectedItem();
-        String name = txtName.getText();
+        String name = txtName.getText();    
         
-        if (network != null && !name.equals("")) {
-            if (network.getEnterpriseDirectory().nameIsUnique(name)){
-                Enterprise.Type type = (Enterprise.Type) cmbEnterprise.getSelectedItem();
-                network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
-                JOptionPane.showMessageDialog(this, "new Enterprise added", "Information", JOptionPane.INFORMATION_MESSAGE);
-                txtName.setText("");
-                populateTable();
+        if (selectedNetwork != null) {
+            if (!name.isEmpty()) {
+                if (selectedNetwork.getEnterpriseDirectory().nameIsUnique(name)) {
+                    Enterprise.Type type = (Enterprise.Type) cmbEnterprise.getSelectedItem();
+                    selectedNetwork.getEnterpriseDirectory().createAndAddEnterprise(name, type);
+                    JOptionPane.showMessageDialog(this, "new Enterprise added", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    txtName.setText("");
+                    populateTable();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Enterprise name alreay existed", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Enterprise name alreay existed", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Name cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Please select a network and name the enterprise", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Network cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        
+                
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -236,8 +241,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     private void cmbNetworkListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkListActionPerformed
         
+        selectedNetwork = (Network) cmbNetworkList.getSelectedItem();
         populateTable();
-        
         populateEnterpriseCombo();
 
     }//GEN-LAST:event_cmbNetworkListActionPerformed
@@ -278,11 +283,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblEnterprises.getModel();
         model.setRowCount(0);
         
-        Network network = (Network) cmbNetworkList.getSelectedItem();
         
-        if (network != null){
+        if (selectedNetwork != null){
             
-            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+            for (Enterprise e : selectedNetwork.getEnterpriseDirectory().getEnterpriseList()){
                 Object[] row = new Object[2];
                 row[0] = e.getType();
                 row[1] = e;
