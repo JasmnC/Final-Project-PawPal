@@ -26,7 +26,7 @@ public class EcoSystem {
     }
    
     public Network createNetwork(String name){
-        Network network = new Network(name);
+        Network network = new Network(name,this);
         networkList.add(network);
         return network;
     }

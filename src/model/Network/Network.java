@@ -6,6 +6,7 @@
 package model.Network;
 
 
+import model.EcoSystem.EcoSystem;
 import model.Enterprise.EnterpriseDirectory;
 
 /**
@@ -16,9 +17,11 @@ public class Network {
 
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
-
-    public Network(String name) {
+    private EcoSystem ecosystem;
+    
+    public Network(String name, EcoSystem ecoSystem) {
         this.name = name;
+        this.ecosystem = ecoSystem;
         enterpriseDirectory = new EnterpriseDirectory();
     }
 
@@ -32,6 +35,10 @@ public class Network {
 
     public EnterpriseDirectory getEnterpriseDirectory() {
         return enterpriseDirectory;
+    }
+
+    public EcoSystem getEcosystem() {
+        return ecosystem;
     }
 
     @Override
