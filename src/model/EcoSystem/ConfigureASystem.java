@@ -17,7 +17,7 @@ public class ConfigureASystem {
         EcoSystem ecoSystem = new EcoSystem();  
 
      //   ecoSystem.getSystemAdmin();
-        
+             
         UserAccount account = new UserAccount();
         account.setUsername("admin");
         account.setPassword("admin");

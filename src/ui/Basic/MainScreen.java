@@ -38,17 +38,17 @@ public class MainScreen extends javax.swing.JPanel {
     }
    
     
-//    public MainScreen(JPanel mainWorkArea, UserAccount userAccount, Organization organization, Enterprise enterprise,Network network, EcoSystem ecoSystem) {
-//        initComponents();
-//        this.mainWorkArea = mainWorkArea;
-//        this.userAccount = userAccount;
-//        this.organization = organization;
-//        this.enterprise = enterprise;
-//        this.network = network;
+    public MainScreen(JPanel mainWorkArea, UserAccount userAccount) {
+        initComponents();
+        this.mainWorkArea = mainWorkArea;
+        this.userAccount = userAccount;
+        this.organization = userAccount.getOrgainization();
+        this.enterprise = userAccount.getEnterprise();
+        this.network = userAccount.getNetwork();
 //        this.ecoSystem = ecoSystem;
-//
-//        initUserWorkArea();
-//    }
+
+        initUserWorkArea();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,10 +145,15 @@ public class MainScreen extends javax.swing.JPanel {
 
     private void initUserWorkArea() {
         
-        lblWelcome.setText("Welcome " + ((userAccount.getUsername()!= null) ? userAccount.getUsername() : userAccount.getUsername()) + "!");
-        
+//        lblWelcome.setText("Welcome " + ((userAccount.getUsername()!= null) ? userAccount.getUsername() : userAccount.getUsername()) + "!");
+        lblWelcome.setText(userAccount.getNetwork() + "/"
+                + userAccount.getEnterprise() + "/"
+                + userAccount.getOrgainization() + "/"
+                + userAccount.getRole() + "/"
+                + userAccount);
+
         CardLayout layout = (CardLayout) workArea.getLayout();
-        workArea.add("workArea", userAccount.getRole().createWorkArea(menuPanel, userAccount, organization, enterprise, network, ecoSystem));
+        workArea.add("workArea", userAccount.getRole().createWorkArea(menuPanel, userAccount, organization, enterprise, network, null));
         layout.next(workArea);
     }
     
