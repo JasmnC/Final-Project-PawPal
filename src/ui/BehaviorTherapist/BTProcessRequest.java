@@ -41,8 +41,6 @@ public class BTProcessRequest extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         lblResult = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,10 +101,7 @@ public class BTProcessRequest extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
         userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        BTWorkArea lwjp = (BTWorkArea) component;
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 
     }//GEN-LAST:event_btnBackActionPerformed

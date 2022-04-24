@@ -45,8 +45,6 @@ public class RequestPharmacist extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
         btnRequestTest.setText("Request");
         btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,8 +139,10 @@ public class RequestPharmacist extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-
+        
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
 
     }//GEN-LAST:event_btnBackActionPerformed
 

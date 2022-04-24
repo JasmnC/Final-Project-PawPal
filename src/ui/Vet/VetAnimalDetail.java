@@ -5,8 +5,10 @@
 package ui.Vet;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import ui.Pharmacist.PharmacistWorkArea;
 
 /**
  *
@@ -58,8 +60,6 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         lblMessage9 = new javax.swing.JLabel();
         txtAnimalMessageFromBehaviorTharapipst = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
-
-        setBackground(new java.awt.Color(255, 255, 255));
 
         btnRequestBT.setText("Request Behavioral Therapy");
         btnRequestBT.addActionListener(new java.awt.event.ActionListener() {
@@ -277,6 +277,9 @@ public class VetAnimalDetail extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
+        workArea.remove(this);
+        CardLayout layout = (CardLayout)workArea.getLayout();
+        layout.previous(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
