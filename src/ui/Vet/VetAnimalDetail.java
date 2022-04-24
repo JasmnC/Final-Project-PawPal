@@ -140,8 +140,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(251, 251, 251)
+                        .addGap(320, 320, 320)
                         .addComponent(lblTitle)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -192,14 +191,18 @@ public class VetAnimalDetail extends javax.swing.JPanel {
                                     .addComponent(btnRequestBT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnRequestPharmacy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(54, 54, 54))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTitle)
-                    .addComponent(btnBack))
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(6, 6, 6)
+                .addComponent(lblTitle)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
@@ -236,7 +239,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSubmit))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAnimalMessageFromVet, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMessage10))
@@ -249,16 +252,17 @@ public class VetAnimalDetail extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblMessage9)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))))
+                            .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))))
                 .addGap(60, 60, 60))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed
         
-        CardLayout layout = (CardLayout) workArea.getLayout();
-    //    workArea.add("RequestLabTestJPanel", new RequestLabTestJPanel(workArea));
-        layout.next(workArea);
+            RequestBT requestBT = new RequestBT(workArea);
+            workArea.add("requestBT", requestBT);
+            CardLayout layout = (CardLayout) workArea.getLayout();
+            layout.next(workArea);
         
     }//GEN-LAST:event_btnRequestBTActionPerformed
 
@@ -272,6 +276,11 @@ public class VetAnimalDetail extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRequestPharmacyActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+
+        
+        
+        
+        
 
     }//GEN-LAST:event_btnSubmitActionPerformed
 

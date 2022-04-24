@@ -196,8 +196,7 @@ public class VetWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-
-
+        populateRequestTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -229,6 +228,23 @@ public class VetWorkArea extends javax.swing.JPanel {
 
     private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
         // TODO add your handling code here:
+            int selectedRow = tblWorkRequests.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a request from table before proceeding");
+            return;
+        }
+        MedCareRequest request = (MedCareRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+        if (request.getStatus().equalsIgnoreCase("Completed")) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        }
+        request.setTestResult("Under Examination");
+        for (Animal a : animalDirectory.getAnimalList()) {
+            if (a.getId() == request.getAnimal().getId()) {
+                animal = a;
+            }
+        }
+     
         VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail(workArea);
         workArea.add("vetAnimalDetailJPanel", vetAnimalDetailJPanel);
         CardLayout layout = (CardLayout) workArea.getLayout();
