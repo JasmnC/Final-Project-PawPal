@@ -42,16 +42,17 @@ public class VetWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form VolunteerWorkArea
      */
-    public VetWorkArea(JPanel userProcessContainer, UserAccount account, AnimalDirectory animalDirectory,
+    public VetWorkArea(JPanel userProcessContainer, UserAccount account,
             VetOrganization vetOrganization, MedicalCareEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
         this.workArea = userProcessContainer;
         this.userAccount = account;
-        this.animalDirectory = animalDirectory;
+  //      this.animalDirectory = animalDirectory;
         this.vetOrganization = vetOrganization;
         this.enterprise = enterprise;
         this.network = network;
         this.ecosystem = ecosystem;
+        
         for (Network net : ecosystem.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.equals(enterprise)) {
@@ -62,6 +63,8 @@ public class VetWorkArea extends javax.swing.JPanel {
         btnViewDetial.setEnabled(false);
         populateRequestTable();
     }
+
+
 
     public void populateRequestTable() {
         DefaultTableModel table = (DefaultTableModel) tblWorkRequests.getModel();
