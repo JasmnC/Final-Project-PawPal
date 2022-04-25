@@ -39,6 +39,10 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.network = network;
         this.ecosystem = ecosystem;
+        
+        String status = userAccount.getWorkQueue().getWorkRequestList().get(0).getStatus();
+        txtAuthorizationStatus.setText(status);
+        
     }
 
     /**

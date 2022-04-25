@@ -6,12 +6,16 @@
 
 package ui.AdoptionManager;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.AdoptionEnterprise;
 import model.Network.Network;
 import model.Organization.AdoptionOperationOrganization;
 import model.UserAccount.UserAccount;
+import model.WorkQueue.AdopterAuthorizationRequest;
+import model.WorkQueue.WorkRequest;
 
 /**
  *
@@ -40,6 +44,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         this.network = network;
         this.ecosystem = ecosystem;
 
+        populateTable();
     }
 
     /** This method is called from within the constructor to
@@ -56,26 +61,27 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         tblWorkRequests = new javax.swing.JTable();
         btnApprove = new javax.swing.JButton();
         lblRequestOrigin = new javax.swing.JLabel();
+        btnAssign = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Process Adopter Account Authorization Request");
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Username", "Status"
+                "Message", "Name", "Sender", "Organization", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -97,6 +103,13 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
 
         lblRequestOrigin.setText("from: Adopter Origanization");
 
+        btnAssign.setText("Assign to Me");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,7 +117,10 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnApprove)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAssign)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnApprove))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(lblTitle)
@@ -123,22 +139,90 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnApprove)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnApprove)
+                    .addComponent(btnAssign))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        
+        int selectedRow = tblWorkRequests.getSelectedRow();
 
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+            if (request.getReceiver() == userAccount){
+                if (request.getStatus().equalsIgnoreCase("Approved")) {
+                    JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
+                    return;
+                } else {
+                    request.setStatus("Approved");
+                    JOptionPane.showMessageDialog(null, "Account approved");
+                    populateTable();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "This request is not assign to you.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please choose a request to assign to yourself", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }     
+        
     }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+
+        int selectedRow = tblWorkRequests.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+            if (request.getStatus().equalsIgnoreCase("Approved")) {
+                JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
+                return;
+            } else {
+                request.setReceiver(userAccount);
+                request.setStatus("Reviewing");
+                populateTable();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please choose a request to assign to yourself", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+    }//GEN-LAST:event_btnAssignActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
+    private javax.swing.JButton btnAssign;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRequestOrigin;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;
     // End of variables declaration//GEN-END:variables
 
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+        model.setRowCount(0);
+
+        for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (request instanceof AdopterAuthorizationRequest) {
+                
+                Object[] row = new Object[6];
+                row[0] = request;
+                row[1] = request.getSender().getName();
+                row[2] = request.getSender();
+                row[3] = request.getSender().getOrgainization();
+                row[4] = request.getReceiver() == null ? null : request.getReceiver();
+                row[5] = request.getStatus();
+
+                model.addRow(row);
+            }
+        }
+    }
 }

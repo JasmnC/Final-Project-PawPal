@@ -8,6 +8,7 @@ package model.Network;
 
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.EnterpriseDirectory;
+import model.WorkQueue.WorkQueue;
 
 /**
  *
@@ -18,10 +19,13 @@ public class Network {
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
     private EcoSystem ecosystem;
+    private WorkQueue workQueue;
+
     
     public Network(String name, EcoSystem ecoSystem) {
         this.name = name;
         this.ecosystem = ecoSystem;
+        this.workQueue = new WorkQueue();
         enterpriseDirectory = new EnterpriseDirectory();
     }
 
@@ -39,6 +43,14 @@ public class Network {
 
     public EcoSystem getEcosystem() {
         return ecosystem;
+    }
+
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
     }
 
     @Override
