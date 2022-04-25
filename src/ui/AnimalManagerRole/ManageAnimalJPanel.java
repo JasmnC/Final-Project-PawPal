@@ -28,16 +28,22 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
     private AnimalShelterEnterprise enterprise;
-    private AnimalDirectory animalDirectory = enterprise.getAnimalDirectory();
-    private Organization organization;
+    private AnimalDirectory animalDirectory;
+    private AnimalManagementOrganization organization;
     private UserAccount userAccount;
+    private Network network;
+    private EcoSystem ecosystem;
     
-    public ManageAnimalJPanel(JPanel userProcessContainer, UserAccount account , AnimalShelterEnterprise enterprise) {
+    public ManageAnimalJPanel(JPanel userProcessContainer, UserAccount account, AnimalManagementOrganization animalManagerOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
         initComponents();
         
         this.workArea = userProcessContainer;
-        this.enterprise = enterprise;
+        this.network = network;
+        this.ecosystem = ecosystem;
+        this.enterprise = animalShelterEnterprise;
+        this.organization = animalManagerOrganization;
         this.userAccount = account;
+        this.animalDirectory = enterprise.getAnimalDirectory();
         
         populateAssingAnimalToMeRequestTable();
     }

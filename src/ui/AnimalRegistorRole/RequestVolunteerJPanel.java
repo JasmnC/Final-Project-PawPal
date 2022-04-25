@@ -36,10 +36,10 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         private EcoSystem ecosystem;
     
 
-    public RequestVolunteerJPanel(JPanel userProcessContainer, UserAccount account, AnimalRegisterOrganization animalRegisterOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
+    public RequestVolunteerJPanel(JPanel userProcessContainer, UserAccount account, AnimalRegisterOrganization organization, AnimalShelterEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
 
-        this.workArea = workArea;
+        this.workArea = userProcessContainer;
         this.account = account;
         this.organization = organization;
         this.enterprise = enterprise;

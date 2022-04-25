@@ -60,5 +60,10 @@ public class AnimalDirectory {
         return null;
     }
     
-    
+    public Animal getAnimalByAdoptionRequested(Boolean b){
+        for(Animal a:animalList){
+            if(b==true) return a;
+        }
+        return null;
+    }
 }

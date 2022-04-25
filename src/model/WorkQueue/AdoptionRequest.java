@@ -5,11 +5,21 @@
  */
 package model.WorkQueue;
 
+import model.UserAccount.UserAccount;
+
 /**
  *
  * @author anitachen
  */
 public class AdoptionRequest extends WorkRequest {
-    
+    private UserAccount adoptor;
+
+    public UserAccount getAdoptor() {
+        return adoptor;
+    }
+
+    public void setAdoptor(UserAccount adoptor) {
+        this.adoptor = adoptor;
+    }
     
 }
