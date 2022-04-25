@@ -28,13 +28,13 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem ecosystem;
     private UserAccount userAccount;
 
-    public AnimalManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalManagementOrganization organization, AnimalShelterEnterprise enterprise, Network network, EcoSystem ecosystem) {
+    public AnimalManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalManagementOrganization animalManagementOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
         initComponents();
 
         this.workArea = userProcessContainer;
         this.userAccount = account;
-        this.organization = organization;
-        this.enterprise = enterprise;
+        this.organization = animalManagementOrganization;
+        this.enterprise = animalShelterEnterprise;
         this.network = network;
         this.ecosystem = ecosystem;
 
@@ -149,7 +149,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void getAnAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAnAnimalJButtonActionPerformed
 
-        ManageAnimalJPanel manageAnimalJPanel = new ManageAnimalJPanel(workArea, userAccount, enterprise);
+        ManageAnimalJPanel manageAnimalJPanel = new ManageAnimalJPanel(workArea, userAccount, organization, enterprise, network, ecosystem);
         workArea.add("manageAnimalJPanel", manageAnimalJPanel);
 
         CardLayout layout = (CardLayout) workArea.getLayout();

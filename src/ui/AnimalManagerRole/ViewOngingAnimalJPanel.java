@@ -23,7 +23,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount userAccount;
     private AnimalShelterEnterprise enterprise;
-    private Animal animal = enterprise.getAnimalDirectory().getAnimalByManager(userAccount.getName());
+    private Animal animal;
     
     public ViewOngingAnimalJPanel(JPanel userProcessContainer, UserAccount account, AnimalShelterEnterprise enterprise) {
         initComponents();
@@ -31,7 +31,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
-        
+        this.animal = enterprise.getAnimalDirectory().getAnimalByManager(userAccount.getName());
         
     }
 
@@ -252,7 +252,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        AnimalRegistorWorkAreaJPanel dwjp = (AnimalRegistorWorkAreaJPanel) component;
+        AnimalManagerWorkAreaJPanel amwajp = (AnimalManagerWorkAreaJPanel) component;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 

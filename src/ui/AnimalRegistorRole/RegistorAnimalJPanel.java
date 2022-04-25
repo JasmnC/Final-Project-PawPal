@@ -205,8 +205,8 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         }else if(area.equals("")||area.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter animal's area.");
             return;
-        }else if(!sex.equals('F')||!area.equals('M')){
-            JOptionPane.showMessageDialog(null, "Please enter animal's sex by F/M.");
+        }else if(sex.equals("")||sex.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter animal's sex.");
             return;
         }else{
             Animal animal = new Animal(txtAnimalName.getText());
@@ -248,10 +248,6 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
 
     private void txtAnimalWeightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnimalWeightKeyPressed
         // TODO add your handling code here:
-        char C = evt.getKeyChar();
-        if(!(Character.isDigit(C))||(C==KeyEvent.VK_BACK_SPACE)){
-            evt.consume();
-        }
     }//GEN-LAST:event_txtAnimalWeightKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

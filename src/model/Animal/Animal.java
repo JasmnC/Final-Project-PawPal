@@ -27,6 +27,7 @@ public class Animal {
 
     private UserAccount manager;
     private UserAccount adoptor;
+    private boolean adpotionRequested;
 
     
     public Animal(String name) {
@@ -123,6 +124,14 @@ public class Animal {
 
     public void setAdoptor(UserAccount adoptor) {
         this.adoptor = adoptor;
+    }
+
+    public boolean isAdpotionRequested() {
+        return adpotionRequested;
+    }
+
+    public void setAdpotionRequested(boolean adpotionRequested) {
+        this.adpotionRequested = adpotionRequested;
     }
     
     

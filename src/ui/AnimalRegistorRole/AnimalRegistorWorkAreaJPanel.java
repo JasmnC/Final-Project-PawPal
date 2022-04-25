@@ -28,13 +28,13 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
         private EcoSystem ecosystem;
     
 
-    public AnimalRegistorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AnimalRegisterOrganization animalRegisterOrganization, AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
+    public AnimalRegistorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,  AnimalRegisterOrganization animalRegisterOrganization,AnimalShelterEnterprise animalShelterEnterprise, Network network, EcoSystem ecosystem) {
         initComponents();
 
-        this.workArea = workArea;
+        this.workArea = userProcessContainer;
         this.account = account;
-        this.organization = organization;
-        this.enterprise = enterprise;
+        this.organization = animalRegisterOrganization;
+        this.enterprise = animalShelterEnterprise;
         this.network = network;
         this.ecosystem = ecosystem;
     }

@@ -27,7 +27,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
     private JPanel workArea;
     private UserAccount userAccount;
     private AnimalShelterEnterprise enterprise;
-    private Animal animalRequestAdoption = enterprise.getAnimalDirectory().getAnimalByAdoptionRequested(Boolean.TRUE);
+    private Animal animalRequestAdoption;
     
     /**
      * Creates new form DoctorWorkAreaJPanel
@@ -38,7 +38,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         this.workArea = workArea;
         this.userAccount = account;
         this.enterprise = enterprise;
-        
+        this.animalRequestAdoption = enterprise.getAnimalDirectory().getAnimalByAdoptionRequested(Boolean.TRUE);
         
         populateRequestTable();
     }
