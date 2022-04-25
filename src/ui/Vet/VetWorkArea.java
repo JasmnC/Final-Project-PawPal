@@ -241,7 +241,7 @@ public class VetWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         }
-        request.setTestResult("Under Examination");
+        request.setResult("Under Examination");
         for (Animal a : animalDirectory.getAnimalList()) {
             if (a.getId() == request.getAnimal().getId()) {
                 animal = a;
