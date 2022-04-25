@@ -14,6 +14,7 @@ import model.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.EcoSystem.DB4OUtil;
 import model.EcoSystem.EcoSystem;
 
 /**
@@ -23,12 +24,15 @@ import model.EcoSystem.EcoSystem;
 public class LoginScreen extends javax.swing.JPanel {
     JPanel mainWorkArea;
     EcoSystem ecoSystem;
+    DB4OUtil db4oUtil;
+
     
     
-    public LoginScreen(JPanel mainWorkArea, EcoSystem ecoSystem) {
+    public LoginScreen(JPanel mainWorkArea, EcoSystem ecoSystem, DB4OUtil dB4OUtil) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
         this.ecoSystem = ecoSystem;
+        this.db4oUtil = dB4OUtil;
         
 //        System.out.println(ecoSystem.getSystemAdmin().getUsername());
 //        System.out.println(ecoSystem.getSystemAdmin().getPassword());
@@ -206,7 +210,7 @@ public class LoginScreen extends javax.swing.JPanel {
 
         if (userName.equals(ecoSystem.getSystemAdmin().getUsername()) &&
             password.equals(ecoSystem.getSystemAdmin().getPassword())) {
-            JPanel mainScreen = new MainScreen(mainWorkArea, ecoSystem.getSystemAdmin(), ecoSystem);
+            JPanel mainScreen = new MainScreen(mainWorkArea, ecoSystem.getSystemAdmin(), ecoSystem, db4oUtil);
             mainWorkArea.add("MainScreen", mainScreen);
             CardLayout layout = (CardLayout) mainWorkArea.getLayout();
             layout.next(mainWorkArea);
@@ -214,7 +218,7 @@ public class LoginScreen extends javax.swing.JPanel {
             
             for (UserAccount ua : ecoSystem.getUserAccountDirectory().getUserAccountList()){
                 if (userName.equals(ua.getUsername()) && password.equals(ua.getPassword())) {
-                    JPanel mainScreen = new MainScreen(mainWorkArea, ua);
+                    JPanel mainScreen = new MainScreen(mainWorkArea, ua, db4oUtil);
                     mainWorkArea.add("MainScreen", mainScreen);
                     CardLayout layout = (CardLayout) mainWorkArea.getLayout();
                     layout.next(mainWorkArea);

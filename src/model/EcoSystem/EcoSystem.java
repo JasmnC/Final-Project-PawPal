@@ -19,6 +19,7 @@ public class EcoSystem {
     private ArrayList<Network> networkList;
     private UserAccount systemAdmin;
     private UserAccountDirectory userAccountDirectory;
+    private static DB4OUtil db4oUtil = DB4OUtil.getInstance();
     
     public EcoSystem(){
         networkList = new ArrayList<Network>();

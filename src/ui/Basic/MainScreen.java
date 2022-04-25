@@ -9,6 +9,7 @@ package ui.Basic;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.EcoSystem.DB4OUtil;
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.Enterprise;
 import model.Network.Network;
@@ -27,18 +28,20 @@ public class MainScreen extends javax.swing.JPanel {
     Enterprise enterprise;
     Network network;
     EcoSystem ecoSystem;
+    DB4OUtil dB4OUtil;
 
-    public MainScreen(JPanel mainWorkArea, UserAccount account, EcoSystem ecoSystem) {
+    public MainScreen(JPanel mainWorkArea, UserAccount account, EcoSystem ecoSystem, DB4OUtil dB4OUtil) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
         this.userAccount = account;
         this.ecoSystem = ecoSystem;
+        this.dB4OUtil = dB4OUtil;
         
         initSystemAdminWorkArea();
     }
    
     
-    public MainScreen(JPanel mainWorkArea, UserAccount userAccount) {
+    public MainScreen(JPanel mainWorkArea, UserAccount userAccount, DB4OUtil dB4OUtil) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
         this.userAccount = userAccount;
@@ -128,6 +131,8 @@ public class MainScreen extends javax.swing.JPanel {
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
 
+        dB4OUtil.storeEcoSystem(ecoSystem);
+       
         mainWorkArea.remove(this);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.previous(mainWorkArea);

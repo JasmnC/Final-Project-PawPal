@@ -10,6 +10,7 @@ package ui.Basic;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import model.EcoSystem.ConfigureASystem;
+import model.EcoSystem.DB4OUtil;
 import model.EcoSystem.EcoSystem;
 import model.Network.Network;
 import model.UserAccount.UserAccount;
@@ -24,10 +25,11 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     private EcoSystem ecoSystem;
+    private DB4OUtil db4oUtil = DB4OUtil.getInstance();
 
     public MainJFrame() {
         initComponents();
-        ecoSystem = ConfigureASystem.configure();
+        ecoSystem = db4oUtil.retrieveEcoSystem();
         setSize(800, 600);
 
         initLoginScreen();
@@ -96,7 +98,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void initLoginScreen() {
 
-        JPanel loginScreen = new ui.Basic.LoginScreen(mainWorkArea, ecoSystem);
+        JPanel loginScreen = new ui.Basic.LoginScreen(mainWorkArea, ecoSystem, db4oUtil);
         mainWorkArea.add("LoginScreen", loginScreen);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.next(mainWorkArea);
