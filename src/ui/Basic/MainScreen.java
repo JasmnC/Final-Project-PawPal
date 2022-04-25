@@ -153,7 +153,7 @@ public class MainScreen extends javax.swing.JPanel {
                 + userAccount);
 
         CardLayout layout = (CardLayout) workArea.getLayout();
-        workArea.add("workArea", userAccount.getRole().createWorkArea(menuPanel, userAccount, organization, enterprise, network, ecoSystem));
+        workArea.add("workArea", userAccount.getRole().createWorkArea(workArea, userAccount, organization, enterprise, network, ecoSystem));
         layout.next(workArea);
     }
     
