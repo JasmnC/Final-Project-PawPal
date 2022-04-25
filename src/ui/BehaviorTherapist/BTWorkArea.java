@@ -42,6 +42,8 @@ public class BTWorkArea extends javax.swing.JPanel {
         this.network = network;
         this.ecosystem = ecosystem;
         
+      //  btnProcess.setEnabled(false);
+        
     }
 
 

@@ -5,6 +5,7 @@
 package ui.Pharmacist;
 
 import java.awt.CardLayout;
+import javax.swing.GroupLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +17,7 @@ import model.UserAccount.UserAccount;
 
 /**
  *
- * @author raunak
+ * @author ariel
  */
 public class PharmacistWorkArea extends javax.swing.JPanel {
 
@@ -27,7 +28,7 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
     private EcoSystem ecosystem;
     private UserAccount userAccount;    
     
-    /** Creates new form VolunteerManagerWorkArea */
+  
     public PharmacistWorkArea(JPanel userProcessContainer, UserAccount account, TreatmentOrganization organization, MedicalCareEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
         
@@ -37,6 +38,8 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.network = network;
         this.ecosystem = ecosystem;
+        
+     //   btnProcess.setEnabled(false);
         
     }
 
@@ -152,21 +155,24 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssign)
                     .addComponent(btnProcess))
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+       
 
 
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
 
-            PharmacistProcessRequest pharmacyProcessRequestJPanel = new PharmacistProcessRequest(userProcessContainer);
-            userProcessContainer.add("pharmacyProcessRequestJPanel", pharmacyProcessRequestJPanel);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+        PharmacistProcessRequest ppr = new PharmacistProcessRequest(userProcessContainer);
+        userProcessContainer.add("PharmacistProcessRequest",ppr);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
