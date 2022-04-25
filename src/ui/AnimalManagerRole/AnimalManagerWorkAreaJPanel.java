@@ -40,21 +40,6 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     }
 
-//    public void populateRequestTable(){
-//        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
-//        
-//        model.setRowCount(0);
-//        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-//            Object[] row = new Object[4];
-//            row[0] = request.getMessage();
-//            row[1] = request.getReceiver();
-//            row[2] = request.getStatus();
-//            String result = ((LabTestWorkRequest) request).getTestResult();
-//            row[3] = result == null ? "Waiting" : result;
-//            
-//            model.addRow(row);
-//        }
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -174,10 +159,10 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewAdoptionRequestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAdoptionRequestJButtonActionPerformed
         // TODO add your handling code here:
-        AdoptionRequestJPanel adoptionRequestJPanel = new AdoptionRequestJPanel();
+        AdoptionRequestJPanel adoptionRequestJPanel = new AdoptionRequestJPanel(workArea, userAccount, enterprise);
         workArea.add("adoptionRequestJPanel", adoptionRequestJPanel);
 
-        CardLayout layout = (CardLayout) workArea.getLayout();
+        CardLayout layout = (CardLayout) (workArea.getLayout());
         layout.next(workArea);
     }//GEN-LAST:event_viewAdoptionRequestJButtonActionPerformed
 
