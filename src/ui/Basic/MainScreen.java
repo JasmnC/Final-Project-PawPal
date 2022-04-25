@@ -49,6 +49,7 @@ public class MainScreen extends javax.swing.JPanel {
         this.enterprise = userAccount.getEnterprise();
         this.network = userAccount.getNetwork();
         this.ecoSystem = userAccount.getNetwork().getEcosystem();
+        this.dB4OUtil = dB4OUtil;
 
         initUserWorkArea();
     }
@@ -86,8 +87,8 @@ public class MainScreen extends javax.swing.JPanel {
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(btnLogOut)
                 .addGap(26, 26, 26))
         );
@@ -131,6 +132,7 @@ public class MainScreen extends javax.swing.JPanel {
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
 
+//        System.out.println(ecoSystem);
         dB4OUtil.storeEcoSystem(ecoSystem);
        
         mainWorkArea.remove(this);
@@ -151,10 +153,10 @@ public class MainScreen extends javax.swing.JPanel {
     private void initUserWorkArea() {
         
 //        lblWelcome.setText("Welcome " + ((userAccount.getUsername()!= null) ? userAccount.getUsername() : userAccount.getUsername()) + "!");
-        lblWelcome.setText(userAccount.getNetwork() + "/"
-                + userAccount.getEnterprise() + "/"
-                + userAccount.getOrgainization() + "/"
-                + userAccount.getRole() + "/"
+        lblWelcome.setText(userAccount.getNetwork() + " / "
+                + userAccount.getEnterprise() + " / "
+                + userAccount.getOrgainization() + " / "
+                + userAccount.getRole() + " / "
                 + userAccount);
 
         CardLayout layout = (CardLayout) workArea.getLayout();
