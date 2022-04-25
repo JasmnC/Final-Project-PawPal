@@ -23,6 +23,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.WorkQueue.PharmacistWorkRequest;
 
 /**
  *
@@ -34,7 +35,7 @@ public class VetWorkArea extends javax.swing.JPanel {
     private VetOrganization vetOrganization;
     private MedicalCareEnterprise enterprise;
     private Network network;
-    private EcoSystem ecosystem;
+    private EcoSystem ecoSystem;
     private UserAccount userAccount;
     Animal animal;
     AnimalDirectory animalDirectory;
@@ -43,7 +44,7 @@ public class VetWorkArea extends javax.swing.JPanel {
      * Creates new form VolunteerWorkArea
      */
     public VetWorkArea(JPanel userProcessContainer, UserAccount account,
-            VetOrganization vetOrganization, MedicalCareEnterprise enterprise, Network network, EcoSystem ecosystem) {
+            VetOrganization vetOrganization, MedicalCareEnterprise enterprise, Network network, EcoSystem ecoSystem) {
         initComponents();
         this.workArea = userProcessContainer;
         this.userAccount = account;
@@ -51,21 +52,21 @@ public class VetWorkArea extends javax.swing.JPanel {
         this.vetOrganization = vetOrganization;
         this.enterprise = enterprise;
         this.network = network;
-        this.ecosystem = ecosystem;
+        this.ecoSystem = ecoSystem;
         
-        for (Network net : ecosystem.getNetworkList()) {
+        for (Network net : ecoSystem.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.equals(enterprise)) {
                     network = net;
                 }
             }
         }
-        btnViewDetial.setEnabled(false);
-        populateRequestTable();
+//        btnViewDetial.setEnabled(false);
+//        populateRequestTable();
     }
 
 
-
+/**
     public void populateRequestTable() {
         DefaultTableModel table = (DefaultTableModel) tblWorkRequests.getModel();
         table.setRowCount(0);
@@ -86,7 +87,7 @@ public class VetWorkArea extends javax.swing.JPanel {
             }
         }
     }
-
+**/
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -199,7 +200,7 @@ public class VetWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        populateRequestTable();
+  //      populateRequestTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -223,15 +224,16 @@ public class VetWorkArea extends javax.swing.JPanel {
             request.setReceiver(userAccount);
             request.setStatus("Pending");
             btnViewDetial.setEnabled(true);
-            populateRequestTable();
+//            populateRequestTable();
             JOptionPane.showMessageDialog(null, "Request has been assigned");
-            populateRequestTable();
+ //           populateRequestTable();
         }
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
+        MedCareRequest request = null;
         // TODO add your handling code here:
-            int selectedRow = tblWorkRequests.getSelectedRow();
+  /**          int selectedRow = tblWorkRequests.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a request from table before proceeding");
             return;
@@ -241,14 +243,15 @@ public class VetWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         }
-        request.setResult("Under Examination");
+//        request.setResult("Under Examination");
         for (Animal a : animalDirectory.getAnimalList()) {
             if (a.getId() == request.getAnimal().getId()) {
                 animal = a;
             }
         }
-     
-        VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail(workArea);
+     **/
+        VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail( workArea,  request,  userAccount,
+             enterprise,  animal,  animalDirectory, ecoSystem);
         workArea.add("vetAnimalDetailJPanel", vetAnimalDetailJPanel);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);

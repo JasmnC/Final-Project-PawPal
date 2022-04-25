@@ -12,7 +12,7 @@ package model.WorkQueue;
 public class PharmacistWorkRequest extends WorkRequest {
     
     private String result;
-    private String prescription;
+    private String prescription; //not used
 
     public String getPrescription() {
         return prescription;

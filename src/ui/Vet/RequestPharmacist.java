@@ -9,6 +9,17 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.WorkQueue.PharmacistWorkRequest;
+import model.UserAccount.UserAccount;
+import model.Animal.AnimalDirectory;
+import model.Animal.Animal;
+import model.Network.Network;
+import model.Enterprise.Enterprise;
+import model.EcoSystem.EcoSystem;
+import model.Organization.Organization;
+import model.Organization.TreatmentOrganization;
+import model.Organization.VetOrganization;
+import model.WorkQueue.MedCareRequest;
 
 /**
  *
@@ -17,14 +28,36 @@ import javax.swing.JPanel;
 public class RequestPharmacist extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Enterprise enterprise;
+    private EcoSystem ecoSystem;
+    MedCareRequest request;
+    private AnimalDirectory animalDirectory;
+    private Animal animal;
+    Network network;
 
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestPharmacist(JPanel userProcessContainer) {
+    public RequestPharmacist(JPanel userProcessContainer, MedCareRequest request, UserAccount userAccount,
+            Enterprise enterprise, Animal animal, AnimalDirectory animalDirectory, EcoSystem ecoSystem) {
+
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
+        this.request = request;
+        this.userAccount = userAccount;
+        this.enterprise = enterprise;
+        this.animal = animal;
+        this.animalDirectory = animalDirectory;
+        this.ecoSystem = ecoSystem;
+        for (Network net : ecoSystem.getNetworkList()) {
+            for (Enterprise e : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (e.equals(enterprise)) {
+                    network = net;
+                }
+            }
+        }
 
     }
 
@@ -63,7 +96,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Send Pharmaceutical  Therapy Request");
+        lblTitle.setText("Send Pharmaceutical Therapy Request");
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,13 +170,38 @@ public class RequestPharmacist extends javax.swing.JPanel {
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
 
-        
+       
+        String message = txtMessage.getText();
+        if (message.equals("") || message.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter something to send.", "information", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        PharmacistWorkRequest request = new PharmacistWorkRequest();
+        request.setMessage(message);
+        request.setSender(userAccount);
+        request.setStatus("Sent");
+
+        Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof TreatmentOrganization ) {
+                org = organization;
+                break;
+            }
+        }
+        if (org != null) {
+            org.getWorkQueue().getWorkRequestList().add(request);
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+        }
+
+        JOptionPane.showMessageDialog(null, "Request message sent");
+        txtMessage.setText("");
+
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        
+
         userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 
     }//GEN-LAST:event_btnBackActionPerformed
