@@ -16,6 +16,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.EcoSystem.DB4OUtil;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.AdoptionEnterprise;
+import model.Organization.AdopterOrganization;
+import model.Role.AdopterRole;
+import model.WorkQueue.AdopterAuthorizationRequest;
 
 /**
  *
@@ -33,6 +37,10 @@ public class LoginScreen extends javax.swing.JPanel {
         this.mainWorkArea = mainWorkArea;
         this.ecoSystem = ecoSystem;
         this.db4oUtil = dB4OUtil;
+        
+        populateNetworkCombo();
+        populateEnterpriseCombo();
+        populateOrganizationCombo();
         
 //        System.out.println(ecoSystem.getSystemAdmin().getUsername());
 //        System.out.println(ecoSystem.getSystemAdmin().getPassword());
@@ -62,8 +70,14 @@ public class LoginScreen extends javax.swing.JPanel {
         lblNewPassword = new javax.swing.JLabel();
         pwdNewPassword = new javax.swing.JPasswordField();
         lblName = new javax.swing.JLabel();
-        txtName = new javax.swing.JPasswordField();
         btnRegister = new javax.swing.JButton();
+        lblNetwork = new javax.swing.JLabel();
+        cmbNetworkList = new javax.swing.JComboBox();
+        lblEnterprise = new javax.swing.JLabel();
+        cmbEnterpriseList = new javax.swing.JComboBox();
+        lblEnterprise1 = new javax.swing.JLabel();
+        cmbOrganizationList = new javax.swing.JComboBox();
+        txtName = new javax.swing.JTextField();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -108,43 +122,71 @@ public class LoginScreen extends javax.swing.JPanel {
             }
         });
 
+        lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNetwork.setText("Network:");
+
+        cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEnterprise.setText("Enterprise:");
+
+        cmbEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEnterpriseList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEnterpriseListActionPerformed(evt);
+            }
+        });
+
+        lblEnterprise1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEnterprise1.setText("Organization:");
+
+        cmbOrganizationList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbOrganizationList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbOrganizationListActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(lblRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNewPassword)
-                            .addComponent(lblNewUserName)
-                            .addComponent(lblName))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNewUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                                .addComponent(pwdNewPassword)
-                                .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(btnRegister))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblUser, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblNewPassword)
+                            .addComponent(lblNewUserName)
+                            .addComponent(lblName)
+                            .addComponent(lblEnterprise1)
+                            .addComponent(lblNetwork)
+                            .addComponent(lblEnterprise))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(txtNewUserName)
+                            .addComponent(pwdNewPassword)
+                            .addComponent(btnRegister)
+                            .addComponent(cmbOrganizationList, 0, 118, Short.MAX_VALUE)
+                            .addComponent(cmbNetworkList, 0, 118, Short.MAX_VALUE)
+                            .addComponent(cmbEnterpriseList, 0, 118, Short.MAX_VALUE)
+                            .addComponent(txtName)))
+                    .addComponent(lblRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblPassword)
+                            .addComponent(lblUser))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUserName)
                             .addComponent(btnLogin)
-                            .addComponent(pwdPassword)))
+                            .addComponent(pwdPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lblLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
             .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -153,18 +195,30 @@ public class LoginScreen extends javax.swing.JPanel {
                 .addGap(44, 44, 44)
                 .addComponent(lblTitle)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLogIn)
-                            .addComponent(lblRegister))
-                        .addGap(89, 89, 89)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(lblRegister)
+                                .addGap(30, 30, 30))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblLogIn)
+                                .addGap(29, 29, 29)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblNetwork)
+                                    .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblEnterprise)
+                                    .addComponent(cmbEnterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblEnterprise1)
+                                    .addComponent(cmbOrganizationList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblNewUserName)
                                     .addComponent(txtNewUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,8 +228,10 @@ public class LoginScreen extends javax.swing.JPanel {
                                     .addComponent(lblNewPassword))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblName)))
+                                    .addComponent(lblName)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRegister))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblUser)
@@ -184,11 +240,12 @@ public class LoginScreen extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblPassword)
                                     .addComponent(pwdPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLogin)))
+                                .addGap(62, 62, 62)
+                                .addComponent(btnLogin))))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnRegister)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -256,15 +313,68 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
+        
+        Network selectedNetwork = (Network) cmbNetworkList.getSelectedItem();
+        Enterprise selectedEnterprise = (AdoptionEnterprise) cmbEnterpriseList.getSelectedItem();
+        Organization selecOrganization = (AdopterOrganization) cmbOrganizationList.getSelectedItem();
+        
+        String newUser = txtName.getText();
+        String newUserName = txtNewUserName.getText();
+        String newUserPassword = String.valueOf(pwdNewPassword.getPassword());
+        
+        
+        if (selectedNetwork != null && selectedEnterprise != null && selectedEnterprise != null
+                && !newUser.isEmpty() && !newUserName.isEmpty() && !newUserPassword.isEmpty()){
+            
+            // create new account
+            if (ecoSystem.getUserAccountDirectory().userNameIsUnique(newUserName)){
+            UserAccount newUserAccount = ecoSystem.getUserAccountDirectory().createUserAccount(newUserName, newUserPassword, new AdopterRole(), selectedNetwork, selectedEnterprise, selecOrganization);
+            newUserAccount.setName(newUser);
+            JOptionPane.showMessageDialog(null, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            txtNewUserName.setText("");
+            pwdNewPassword.setText("");
+            txtName.setText("");
+                      
+            // create work request
+            AdopterAuthorizationRequest request = new AdopterAuthorizationRequest();
+            request.setMessage("New User");
+            request.setSender(newUserAccount);
+            request.setStatus("Pending review");
+            
+            selectedEnterprise.getWorkQueue().getWorkRequestList().add(request);
+            newUserAccount.getWorkQueue().getWorkRequestList().add(request);
+            
+            } else {
+                JOptionPane.showMessageDialog(null, "User Account already existed","Warning",JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "All fields cannot be blank","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void cmbEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEnterpriseListActionPerformed
+
+    private void cmbOrganizationListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbOrganizationListActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JComboBox cmbEnterpriseList;
+    private javax.swing.JComboBox cmbNetworkList;
+    private javax.swing.JComboBox cmbOrganizationList;
     private javax.swing.JSeparator jSeparator;
+    private javax.swing.JLabel lblEnterprise;
+    private javax.swing.JLabel lblEnterprise1;
     private javax.swing.JLabel lblLogIn;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblNewPassword;
     private javax.swing.JLabel lblNewUserName;
     private javax.swing.JLabel lblPassword;
@@ -273,8 +383,49 @@ public class LoginScreen extends javax.swing.JPanel {
     private javax.swing.JLabel lblUser;
     private javax.swing.JPasswordField pwdNewPassword;
     private javax.swing.JPasswordField pwdPassword;
-    private javax.swing.JPasswordField txtName;
+    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNewUserName;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+
+    private void populateNetworkCombo() {
+
+        cmbNetworkList.removeAllItems();
+
+        if (!ecoSystem.getNetworkList().isEmpty()){
+            for (Network n : ecoSystem.getNetworkList()){
+                cmbNetworkList.addItem(n);
+            }
+        }
+
+    }
+
+    private void populateEnterpriseCombo() {
+        
+        cmbEnterpriseList.removeAllItems();
+        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (network != null ){
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+                if (e instanceof AdoptionEnterprise) cmbEnterpriseList.addItem(e);
+            }
+        }
+    }
+
+    private void populateOrganizationCombo() {
+
+        cmbOrganizationList.removeAllItems();
+        
+        Network network = (Network) cmbNetworkList.getSelectedItem();
+        
+        if (network != null ){
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+                for (Organization o : e.getOrganizationDirectory().getOrganizationList()){
+                    if (o instanceof AdopterOrganization) cmbOrganizationList.addItem(o);
+                };
+            }
+        }
+       
+    }
 }

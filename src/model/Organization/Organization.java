@@ -17,7 +17,7 @@ public abstract class Organization {
 
     private Type type;
     private String name;
-    private WorkQueue workQueue;
+//    private WorkQueue workQueue;
 //    private UserAccountDirectory userAccountDirectory;
     private int organizationID;
     private static int idCounter;
@@ -52,7 +52,7 @@ public abstract class Organization {
     public Organization(String name, Type type) {
         this.name = name;
         this.type = type;
-        workQueue = new WorkQueue();
+//        workQueue = new WorkQueue();
 //        userAccountDirectory = new UserAccountDirectory();
         organizationID = idCounter;
         ++idCounter;
@@ -76,17 +76,17 @@ public abstract class Organization {
         return name;
     }
 
-    public WorkQueue getWorkQueue() {
-        return workQueue;
-    }
+//    public WorkQueue getWorkQueue() {
+//        return workQueue;
+//    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setWorkQueue(WorkQueue workQueue) {
-        this.workQueue = workQueue;
-    }
+//    public void setWorkQueue(WorkQueue workQueue) {
+//        this.workQueue = workQueue;
+//    }
 
     @Override
     public String toString() {

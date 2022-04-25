@@ -8,6 +8,7 @@ package model.Enterprise;
 import java.util.ArrayList;
 import model.Organization.Organization;
 import model.Organization.OrganizationDirectory;
+import model.WorkQueue.WorkQueue;
 
 /**
  *
@@ -18,6 +19,8 @@ public abstract class Enterprise {
     private Type type;
     private String name;
     private OrganizationDirectory organizationDirectory;
+    private WorkQueue workQueue;
+
 
     public enum Type {
         AnimalShelter("Animal Shelter"), 
@@ -44,6 +47,7 @@ public abstract class Enterprise {
     public Enterprise(String name, Type type) {
         this.name = name;
         this.type = type;
+        this.workQueue = new WorkQueue();
         organizationDirectory = new OrganizationDirectory();        
     }
 
@@ -61,6 +65,14 @@ public abstract class Enterprise {
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
+    }
+
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
     }
     
     @Override
