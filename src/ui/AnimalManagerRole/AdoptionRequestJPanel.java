@@ -79,6 +79,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnRejectAnimalAdoptionRequest = new javax.swing.JButton();
+        btnBack1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -141,6 +142,13 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack1.setText("<< Back");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,6 +160,8 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(lblTitle)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBack1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnRefresh))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -166,7 +176,8 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle)
-                    .addComponent(btnRefresh))
+                    .addComponent(btnRefresh)
+                    .addComponent(btnBack1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -193,8 +204,16 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnRejectAnimalAdoptionRequestActionPerformed
 
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+
+        workArea.remove(this);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.previous(workArea);
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApproveAnimalAdoptionRequest;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRejectAnimalAdoptionRequest;
     private javax.swing.JScrollPane jScrollPane1;

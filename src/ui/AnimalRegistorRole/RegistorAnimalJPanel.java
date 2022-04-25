@@ -210,6 +210,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             return;
         }else{
             Animal animal = new Animal(txtAnimalName.getText());
+            //創動物在directory，傳進work request
             animal.setArea(area);
             animal.setSex(sex);
             animal.setWeight(weight);
