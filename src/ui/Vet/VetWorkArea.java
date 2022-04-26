@@ -250,7 +250,7 @@ public class VetWorkArea extends javax.swing.JPanel {
             }
         }
      **/
-        VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail( workArea,  request,  userAccount,
+        VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail( workArea,  request,  userAccount, vetOrganization,
              enterprise,  animal,  animalDirectory, ecoSystem);
         workArea.add("vetAnimalDetailJPanel", vetAnimalDetailJPanel);
         CardLayout layout = (CardLayout) workArea.getLayout();

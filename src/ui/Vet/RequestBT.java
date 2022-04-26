@@ -9,6 +9,8 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.WorkQueue.WorkRequest;
 
 /**
  *
@@ -26,8 +28,34 @@ public class RequestBT extends javax.swing.JPanel {
         
         this.userProcessContainer = userProcessContainer;
 
+        populateBtTable();
     }
 
+    public void populateBtTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+        model.setRowCount(0);
+        for (WorkRequest labrequest : userAccount.getWorkQueue().getWorkRequestList()) {
+            if (labrequest instanceof MedicalHelpWorkRequest || labrequest instanceof LabProcessWorkRequest) {
+                if (labrequest.getChildId() == child.getChildId()) {
+                    Object[] row = new Object[model.getColumnCount()];
+                    row[0] = labrequest;
+                    row[1] = labrequest.getChildId();
+                    row[2] = labrequest.getChildName();
+                    row[3] = labrequest.getReceiver();
+                    row[4] = labrequest.getStatus();
+                    if (labrequest instanceof MedicalHelpWorkRequest) {
+                        String result = ((MedicalHelpWorkRequest) labrequest).getTestResult();
+                        row[5] = result == null ? "Waiting" : result;
+                    } else if (labrequest instanceof LabProcessWorkRequest) {
+                        String result = ((LabProcessWorkRequest) labrequest).getResult();
+                        row[5] = result == null ? "Waiting" : result;
+                    }
+                    model.addRow(row);
+                }
+            }
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

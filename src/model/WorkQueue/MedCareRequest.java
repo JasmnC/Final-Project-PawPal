@@ -10,6 +10,15 @@ package model.WorkQueue;
  * @author yuujadz
  */
 public class MedCareRequest extends WorkRequest {
-    
-    
+
+    private String vetResult;
+
+    public String getVetResult() {
+        return vetResult;
+    }
+
+    public void setVetResult(String vetResult) {
+        this.vetResult = vetResult;
+    }
+
 }
