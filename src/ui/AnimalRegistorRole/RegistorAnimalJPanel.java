@@ -58,6 +58,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupGender = new javax.swing.ButtonGroup();
         btnSaveAnimal = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
@@ -127,6 +128,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             }
         });
 
+        buttonGroupGender.add(rbtnMale);
         rbtnMale.setText("Male");
         rbtnMale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +136,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             }
         });
 
+        buttonGroupGender.add(rbtnFemale);
         rbtnFemale.setText("Female");
         rbtnFemale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,7 +228,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
 
         String name = txtAnimalName.getText();
         String area = txtAnimalArea.getText();
-        String sex = txtAnimalSex.getText();
+        String sex = buttonGroupGender.getSelection().getActionCommand();
         String weight = txtAnimalWeight.getText();
         String photo = txtAnimalPhoto.getText();
         
@@ -261,7 +264,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "New Animal Saved.");
         txtAnimalArea.setText("");
         txtAnimalName.setText("");
-        txtAnimalSex.setText("");
+        buttonGroupGender.clearSelection();
         txtAnimalWeight.setText("");
         txtAnimalArea.setText("");
         txtAnimalPhoto.setText("");
@@ -331,6 +334,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSaveAnimal;
     private javax.swing.JButton btnUploadAnimalPhoto;
+    private javax.swing.ButtonGroup buttonGroupGender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblMessage12;
     private javax.swing.JLabel lblMessage5;

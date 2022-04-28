@@ -93,20 +93,20 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
 
         tblSentVolunteerRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Volunteer Manager", "Volunteer Assigned", "Status"
+                "Message", "Sender", "Volunteer Manager", "Volunteer Assigned", "Enterprise", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -135,10 +135,8 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnRequestVolunteer)
                             .addComponent(lblMessage)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(txtRequestVolunteerMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRequestVolunteerMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,14 +162,15 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
+        for (WorkRequest request : account.getWorkQueue().getWorkRequestList()){
             if (request instanceof VolunteerRequest){
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0] = request.getMessage();
             row[1] = request.getSender();
             row[2] = request.getReceiver();
             row[3] = ((VolunteerRequest) request).getAssignedVolunteer() == null ? null : ((VolunteerRequest) request).getAssignedVolunteer().getName();
-            row[4] = request.getStatus();
+            row[4] = request.getReceiver() == null ? null : request.getReceiver().getEnterprise();
+            row[5] = request.getStatus();
 
             model.addRow(row);
             }
@@ -181,28 +180,19 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
     private void btnRequestVolunteerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestVolunteerActionPerformed
 
         String requestVolunteerMessage = txtRequestVolunteerMessage.getText();
+        
         if(requestVolunteerMessage.equals("") || requestVolunteerMessage.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter something to send.");
             return;
         }
+        
         VolunteerRequest request = new VolunteerRequest();
         request.setMessage(requestVolunteerMessage);
         request.setSender(account);
         request.setStatus("Pending");
         
-        Organization org = null;
-        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
-            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof VolunteerOrganization){
-                org = organization;
-                break;
-            }
-            }
-        }
-        if (org!=null){
-            network.getWorkQueue().getWorkRequestList().add(request);
-            account.getWorkQueue().getWorkRequestList().add(request);
-        }
+        network.getWorkQueue().getWorkRequestList().add(request);
+        account.getWorkQueue().getWorkRequestList().add(request);
         
         JOptionPane.showMessageDialog(null, "Request message sent");
         txtRequestVolunteerMessage.setText("");
