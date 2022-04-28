@@ -98,7 +98,6 @@ public class RequestBT extends javax.swing.JPanel {
         tblWorkRequests = new javax.swing.JTable();
         icon = new javax.swing.JLabel();
 
-        btnRequestBT.setBackground(new java.awt.Color(255, 204, 51));
         btnRequestBT.setFont(new java.awt.Font("新細明體", 1, 11)); // NOI18N
         btnRequestBT.setText("Request");
         btnRequestBT.addActionListener(new java.awt.event.ActionListener() {

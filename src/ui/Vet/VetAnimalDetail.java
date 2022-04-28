@@ -14,6 +14,7 @@ import model.Animal.AnimalDirectory;
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.AnimalShelterEnterprise;
 import model.Enterprise.Enterprise;
+import model.Enterprise.MedicalCareEnterprise;
 import model.Network.Network;
 import model.Organization.TreatmentOrganization;
 import model.Organization.VetOrganization;
@@ -28,7 +29,7 @@ import ui.Pharmacist.PharmacistWorkArea;
  * @author ariel
  */
 public class VetAnimalDetail extends javax.swing.JPanel {
-    
+
     private JPanel workArea;
     private UserAccount userAccount;
     private Enterprise enterprise;
@@ -39,11 +40,11 @@ public class VetAnimalDetail extends javax.swing.JPanel {
     MedCareRequest request;
     private AnimalDirectory animalDirectory;
     private Animal animal;
-    
+
     public VetAnimalDetail(JPanel workArea, MedCareRequest request, UserAccount userAccount, VetOrganization vetOrganization,
             Enterprise enterprise, Animal animal, AnimalDirectory animalDirectory, EcoSystem ecoSystem) {
         initComponents();
-        
+
         this.workArea = workArea;
         this.request = request;
         this.userAccount = userAccount;
@@ -59,11 +60,11 @@ public class VetAnimalDetail extends javax.swing.JPanel {
                 }
             }
         }
-        
+
         getAnimalDetails();
         //       displayImage();
     }
-    
+
     private void getAnimalDetails() {
         //      displayImage();
         txtAnimalName.setText(animal.getName());
@@ -75,7 +76,6 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         txtAnimalMessageFromBehaviorTharapipst.setText(animal.getBaviorCheckMessage());
         //      displayImage();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -129,7 +129,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         });
 
         lblResult.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblResult.setText("Result:");
+        lblResult.setText("Vet Message:");
 
         lblMessage5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage5.setText("Name:");
@@ -294,30 +294,35 @@ public class VetAnimalDetail extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed
-        
+
         CardLayout layout = (CardLayout) workArea.getLayout();
         workArea.add("requestBehaviorTherapy", new RequestBT(workArea, request, userAccount, enterprise, animal, animalDirectory, ecoSystem));
         layout.next(workArea);
     }//GEN-LAST:event_btnRequestBTActionPerformed
 
     private void btnRequestPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestPharmacyActionPerformed
-        
+
         CardLayout layout = (CardLayout) workArea.getLayout();
         workArea.add("requestPharmaceuticalTherapy", new RequestPharmacist(workArea, request, userAccount, enterprise, animal, animalDirectory, ecoSystem));
         layout.next(workArea);
     }//GEN-LAST:event_btnRequestPharmacyActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        
+
         if (txtResults.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter something...", "Information", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please enter something.", "Information", JOptionPane.WARNING_MESSAGE);
         } else {
             animal.setVetMessage(txtResults.getText());
             request.setStatus("Completed");
             request.setVetResult(txtResults.getText());
-            JOptionPane.showMessageDialog(null, "Message processed");
+            JOptionPane.showMessageDialog(this, " Vet Request is completed now!", "Thank you!", JOptionPane.INFORMATION_MESSAGE);
             txtAnimalMessageFromVet.setText(txtResults.getText());
             
+            CardLayout layout = (CardLayout) workArea.getLayout();
+            workArea.add("VetWorkArea", new VetWorkArea(workArea, userAccount,vetOrganization, (MedicalCareEnterprise) enterprise,network, ecoSystem));
+            layout.next(workArea);
+            
+
         }
 
     }//GEN-LAST:event_btnSubmitActionPerformed
