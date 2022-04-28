@@ -61,7 +61,7 @@ public class VetWorkArea extends javax.swing.JPanel {
                 }
             }
         }
-        //     btnViewDetial.setEnabled(false);
+        //      btnViewDetial.setEnabled(false);
         populateRequestTable();
     }
 
@@ -74,7 +74,7 @@ public class VetWorkArea extends javax.swing.JPanel {
                 row[0] = request;
                 row[1] = request.getAnimal().getId();
                 row[2] = request.getAnimal().getName();
-                row[3] = request.getSender().getName();
+                row[3] = request.getSender();
                 row[4] = request.getReceiver() == null ? null : request.getReceiver();
                 row[5] = request.getStatus();
                 String result = ((MedCareRequest) request).getVetResult();
@@ -123,15 +123,6 @@ public class VetWorkArea extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblWorkRequests);
-        if (tblWorkRequests.getColumnModel().getColumnCount() > 0) {
-            tblWorkRequests.getColumnModel().getColumn(0).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(1).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(2).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(3).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(4).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(5).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(6).setResizable(false);
-        }
 
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -211,17 +202,19 @@ public class VetWorkArea extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         int selectedRow = tblWorkRequests.getSelectedRow();
-
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
-            if (request.getStatus().equalsIgnoreCase("Under Processed")) {
+            if (request.getStatus().equalsIgnoreCase("Processed")) {
                 JOptionPane.showMessageDialog(null, "Request already processed.");
                 return;
+            } else if (request.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(this, "Request already closed.", "Thank you!", JOptionPane.INFORMATION_MESSAGE);
+                return;
             } else {
-                //把自己變成reciver, 把animal的manager變成自己
                 request.setReceiver(userAccount);
-                request.setStatus("Under Processed");
+                request.setStatus("Processed");
                 populateRequestTable();
+                //         btnViewDetial.setEnabled(true);
             }
 
         } else {
@@ -236,37 +229,41 @@ public class VetWorkArea extends javax.swing.JPanel {
          * tblWorkRequests.getValueAt(selectedRow, 0); if (request.getReceiver()
          * != null) { JOptionPane.showMessageDialog(null, "Request already
          * assigned."); return; } if
-         * (request.getStatus().equalsIgnoreCase("Under processed")) { //
+         * (request.getStatus().equalsIgnoreCase("Processed")) { //
          * request.getStatus().equalsIgnoreCase("Medicine Prescribed") ||
          * request.getStatus().equalsIgnoreCase("Medical Test Requested")) {
          *
          * JOptionPane.showMessageDialog(null, "Request already processed.");
          * return; } else { request.setReceiver(userAccount);
-         * request.setStatus("Under processed"); //
-         * btnViewDetial.setEnabled(true); populateRequestTable();
-         * JOptionPane.showMessageDialog(null, "Request has been assigned");
-         * populateRequestTable(); }     *
+         * request.setStatus("Processed"); // btnViewDetial.setEnabled(true);
+         * populateRequestTable(); JOptionPane.showMessageDialog(null, "Request
+         * has been assigned"); populateRequestTable(); } *
          */
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
         int selectedRow = tblWorkRequests.getSelectedRow();
+
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row first");
             return;
         }
+        WorkRequest wr = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+         if (wr.getReceiver() != userAccount) {
+            JOptionPane.showMessageDialog(null, "This request is not assign to you.");
+            return;
+        }
         MedCareRequest request = (MedCareRequest) tblWorkRequests.getValueAt(selectedRow, 0);
-        if (request.getStatus().equalsIgnoreCase("Medicine Prescribed")) {
+        if (request.getStatus().equalsIgnoreCase("Completed")) {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         }
         //     request.setVetResult("Under Examination");
-    /**    for (Animal a : animalDirectory.getAnimalList()) {
-            if (a.getId() == request.getAnimal().getId()) {
-                animal = a;
-            }
-        }     
-**/
+        /**
+         * for (Animal a : animalDirectory.getAnimalList()) { if (a.getId() ==
+         * request.getAnimal().getId()) { animal = a; } }
+         *
+         */
         VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail(workArea, request, userAccount, vetOrganization,
                 enterprise, animal, animalDirectory, ecoSystem);
         workArea.add("vetAnimalDetailJPanel", vetAnimalDetailJPanel);

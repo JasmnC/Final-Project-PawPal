@@ -56,27 +56,28 @@ public class RequestBT extends javax.swing.JPanel {
     }
 
     public void populateBtTable() {
+
         DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
         model.setRowCount(0);
-        for (WorkRequest bRequest : userAccount.getWorkQueue().getWorkRequestList()) {
-            if (bRequest instanceof MedCareRequest || bRequest instanceof  BTWorkRequest) {
-                if (bRequest.getAnimal().getId() == animal.getId()) {
+        for (WorkRequest btrequest : userAccount.getWorkQueue().getWorkRequestList()) {
+            if (btrequest instanceof MedCareRequest || btrequest instanceof BTWorkRequest) {
+                if (btrequest.getAnimal().getId() == animal.getId()) {
                     Object[] row = new Object[model.getColumnCount()];
-                    row[0] = bRequest;
-                    row[1] = bRequest.getAnimal().getId();
-                    row[2] = bRequest.getAnimal().getName();
-                    row[3] = bRequest.getReceiver();
-                    row[4] = bRequest.getStatus();
-                    if (bRequest instanceof MedCareRequest) {
-                        String result = ((MedCareRequest) bRequest).getVetResult();
-                        row[5] = result == null ? "Waiting" : result;
-                    } else if (bRequest instanceof BTWorkRequest) {
-                        String result = ((BTWorkRequest) bRequest).getResult();
-                        row[5] = result == null ? "Waiting" : result;
+                    row[0] = btrequest;
+                    row[1] = btrequest.getAnimal().getId();
+                    row[2] = btrequest.getReceiver();
+                    row[3] = btrequest.getStatus();
+                    if (btrequest instanceof MedCareRequest) {
+                        String result = ((MedCareRequest) btrequest).getVetResult();
+                        row[4] = result == null ? "Waiting" : result;
+                    } else if (btrequest instanceof BTWorkRequest) {
+                        String result = ((BTWorkRequest) btrequest).getResult();
+                        row[4] = result == null ? "Waiting" : result;
                     }
                     model.addRow(row);
                 }
             }
+        
         }
     }
 
@@ -98,7 +99,6 @@ public class RequestBT extends javax.swing.JPanel {
         tblWorkRequests = new javax.swing.JTable();
         icon = new javax.swing.JLabel();
 
-        btnRequestBT.setBackground(new java.awt.Color(255, 204, 51));
         btnRequestBT.setFont(new java.awt.Font("新細明體", 1, 11)); // NOI18N
         btnRequestBT.setText("Request");
         btnRequestBT.addActionListener(new java.awt.event.ActionListener() {
@@ -155,29 +155,28 @@ public class RequestBT extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnBack))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(86, 86, 86)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(icon)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnRequestBT, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblMessage)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(191, 191, 191)
                                     .addComponent(lblTitle)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(icon)
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRequestBT, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblMessage)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -187,59 +186,51 @@ public class RequestBT extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(18, 18, 18)
                 .addComponent(lblTitle)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(icon))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMessage)
                             .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRequestBT)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
-                        .addComponent(icon)
-                        .addGap(165, 165, 165))))
+                        .addComponent(btnRequestBT)))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed
-  String message = txtMessage.getText();
+
+        String message = txtMessage.getText();
         if (message.equals("") || message.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter something to send.", "information", JOptionPane.WARNING_MESSAGE);
-        } else {
-            BTWorkRequest request = new BTWorkRequest();
-            request.setMessage(request.getMessage());
-            request.setSender(userAccount);
-            request.getAnimal().setId(request.getAnimal().getId());
-            request.getAnimal().setName(request.getAnimal().getName());
-            request.setStatus("sent"); // sent to Behavior Therapist
-            JOptionPane.showMessageDialog(this, "Behavioral Therapy Request is sent! ");
-            txtMessage.setText("");
-
-            Organization org = null;
-            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                if (organization instanceof TreatmentOrganization && userAccount.getRole().type.equals("BehaviorTherapist")) {
-                    org = organization;
-                    break;
-                }
-            }
-            if (org != null && userAccount.getRole().type.equals("BehaviorTherapist")) {
-                enterprise.getWorkQueue().getWorkRequestList().add(request);
-                userAccount.getWorkQueue().getWorkRequestList().add(request);
-            }
+            return;
         }
-/**
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        VetAnimalDetail panel = (VetAnimalDetail) component;
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        BTWorkRequest request = new BTWorkRequest();
+        request.setMessage(message);
+        request.setSender(userAccount);
+        request.setStatus("Pending");
+        request.setAnimal(animal);
+
+        network.getWorkQueue().getWorkRequestList().add(request);
+        userAccount.getWorkQueue().getWorkRequestList().add(request);
+
+        JOptionPane.showMessageDialog(null, "Behavior Therapy Request sent");
         populateBtTable();
-**/
+        txtMessage.setText("");
+        /**
+         * userProcessContainer.remove(this); Component[] componentArray =
+         * userProcessContainer.getComponents(); Component component =
+         * componentArray[componentArray.length - 1]; VetAnimalDetail panel =
+         * (VetAnimalDetail) component; CardLayout layout = (CardLayout)
+         * userProcessContainer.getLayout();
+         * layout.previous(userProcessContainer); populateBtTable();
+         *
+         */
 
     }//GEN-LAST:event_btnRequestBTActionPerformed
 
