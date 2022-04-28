@@ -107,6 +107,12 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage12.setText("Photo:");
 
+        txtAnimalPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnimalPhotoActionPerformed(evt);
+            }
+        });
+
         btnAnimalManagerRequestMedicalCare.setText("Request Medical Care");
         btnAnimalManagerRequestMedicalCare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +225,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
                     .addComponent(lblMessage5)
                     .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMessage12)
-                    .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMessage6)
@@ -245,7 +251,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
                     .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblMessage9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblMessage13)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,6 +284,10 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnimalManagerRequestMedicalCareActionPerformed
+
+    private void txtAnimalPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnimalPhotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnimalPhotoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnimalManagerRequestMedicalCare;

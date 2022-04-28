@@ -113,7 +113,7 @@
                   <Component id="lblMessage5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtAnimalName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblMessage12" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAnimalPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAnimalPhoto" alignment="3" min="-2" pref="143" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -145,7 +145,7 @@
                   <Component id="txtAnimalMessageFromBehaviorTharapipst" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="lblMessage9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="63" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="lblMessage13" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -254,6 +254,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAnimalPhoto">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnimalPhotoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAnimalManagerRequestMedicalCare">
       <Properties>
