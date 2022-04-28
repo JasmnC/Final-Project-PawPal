@@ -204,12 +204,12 @@ public class RequestBT extends javax.swing.JPanel {
 
             Organization org = null;
             for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                if (organization instanceof TreatmentOrganization && userAccount.getRole().type.equals("Pharmacist")) {
+                if (organization instanceof TreatmentOrganization && userAccount.getRole().type.equals("BehaviorTherapist")) {
                     org = organization;
                     break;
                 }
             }
-            if (org != null && userAccount.getRole().type.equals("Pharmacist")) {
+            if (org != null && userAccount.getRole().type.equals("BehaviorTherapist")) {
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
                 userAccount.getWorkQueue().getWorkRequestList().add(request);
             }
