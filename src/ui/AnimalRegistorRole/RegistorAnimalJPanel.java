@@ -271,6 +271,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         txtAnimalWeight.setText("");
         txtAnimalArea.setText("");
         txtAnimalPhoto.setText("");
+        jLabel1.setIcon(null);
         
         
     }//GEN-LAST:event_btnSaveAnimalActionPerformed
