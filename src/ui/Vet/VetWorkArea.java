@@ -96,6 +96,9 @@ public class VetWorkArea extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         btnAssignToMe = new javax.swing.JButton();
         btnViewDetial = new javax.swing.JButton();
+        icon = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,15 +137,19 @@ public class VetWorkArea extends javax.swing.JPanel {
             tblWorkRequests.getColumnModel().getColumn(6).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 79, 659, 169));
+
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
             }
         });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Vet Work Area");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 38, -1, -1));
 
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +157,7 @@ public class VetWorkArea extends javax.swing.JPanel {
                 btnAssignToMeActionPerformed(evt);
             }
         });
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
 
         btnViewDetial.setText("View Animal Detail");
         btnViewDetial.addActionListener(new java.awt.event.ActionListener() {
@@ -157,44 +165,10 @@ public class VetWorkArea extends javax.swing.JPanel {
                 btnViewDetialActionPerformed(evt);
             }
         });
+        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTitle)
-                                .addGap(210, 210, 210)
-                                .addComponent(btnRefresh))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 405, Short.MAX_VALUE)
-                        .addComponent(btnAssignToMe)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnViewDetial)
-                        .addGap(98, 98, 98))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(btnRefresh))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewDetial)
-                    .addComponent(btnAssignToMe))
-                .addGap(311, 311, 311))
-        );
+        icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet.png"))); // NOI18N
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
@@ -256,6 +230,7 @@ public class VetWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewDetial;
+    private javax.swing.JLabel icon;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;
