@@ -33,8 +33,7 @@ public class AnimalDirectory {
     
     public Animal createAnimal(String name){
         Animal animal = new Animal(name);
-        animalList.add(animal);
-        
+        animalList.add(animal); 
         return animal;
     }
     
