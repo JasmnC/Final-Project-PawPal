@@ -65,7 +65,6 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         txtAnimalMessageFromPharmacy = new javax.swing.JTextField();
         lblMessage11 = new javax.swing.JLabel();
         lblMessage12 = new javax.swing.JLabel();
-        txtAnimalPhoto = new javax.swing.JTextField();
         btnAnimalManagerRequestMedicalCare = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAnimalManagerWorkArea = new javax.swing.JTable();
@@ -107,12 +106,6 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
 
         lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage12.setText("Photo:");
-
-        txtAnimalPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnimalPhotoActionPerformed(evt);
-            }
-        });
 
         btnAnimalManagerRequestMedicalCare.setText("Request Medical Care");
         btnAnimalManagerRequestMedicalCare.addActionListener(new java.awt.event.ActionListener() {
@@ -211,8 +204,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblMessage12)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(163, 163, 163))
                                 .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -223,12 +215,11 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lblTitle))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMessage5)
                     .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMessage12)
-                    .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMessage12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMessage6)
@@ -291,10 +282,6 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnimalManagerRequestMedicalCareActionPerformed
 
-    private void txtAnimalPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnimalPhotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnimalPhotoActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnimalManagerRequestMedicalCare;
     private javax.swing.JButton btnBack;
@@ -316,7 +303,6 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAnimalMessageFromPharmacy;
     private javax.swing.JTextField txtAnimalMessageFromVet;
     private javax.swing.JTextField txtAnimalName;
-    private javax.swing.JTextField txtAnimalPhoto;
     private javax.swing.JTextField txtAnimalSex;
     private javax.swing.JTextField txtAnimalWeight;
     // End of variables declaration//GEN-END:variables
@@ -324,6 +310,13 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     private void showAnimalDetails() {
 
         txtAnimalName.setText(animal.getName());
+        txtAnimalArea.setText(animal.getArea());
+        txtAnimalSex.setText(animal.getSex());
+        txtAnimalWeight.setText(animal.getWeight());
+        txtAnimalMessageFromBehaviorTharapipst.setText(animal.getBaviorCheckMessage());
+        txtAnimalMessageFromPharmacy.setText(animal.getPharmacyMessage());
+        txtAnimalMessageFromVet.setText(animal.getVetMessage());
+        
         lblPhoto.setIcon(animal.getPhotoIcon());
         
         populateTable();
