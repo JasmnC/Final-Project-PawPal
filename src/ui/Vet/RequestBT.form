@@ -25,7 +25,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnRequestTest" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRequestBT" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblMessage" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -59,19 +59,19 @@
                   <Component id="txtMessage" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnRequestTest" min="-2" max="-2" attributes="0"/>
+              <Component id="btnRequestBT" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="275" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnRequestTest">
+    <Component class="javax.swing.JButton" name="btnRequestBT">
       <Properties>
         <Property name="text" type="java.lang.String" value="Request"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRequestTestActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRequestBTActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMessage">

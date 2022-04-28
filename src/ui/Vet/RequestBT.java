@@ -1,31 +1,83 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui.Vet;
-
 
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Animal.Animal;
+import model.Animal.AnimalDirectory;
+import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
+import model.Network.Network;
+import model.Organization.Organization;
+import model.Organization.TreatmentOrganization;
+import model.UserAccount.UserAccount;
+import model.WorkQueue.BTWorkRequest;
+import model.WorkQueue.MedCareRequest;
+import model.WorkQueue.WorkRequest;
 
 /**
  *
- * @author raunak
+ * @author ariel
  */
 public class RequestBT extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Enterprise enterprise;
+    private EcoSystem ecoSystem;
+    private MedCareRequest request;
+    private AnimalDirectory animalDirectory;
+    private Animal animal;
+    Network network;
 
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestBT(JPanel userProcessContainer) {
+    public RequestBT(JPanel userProcessContainer, MedCareRequest request, UserAccount userAccount,
+            Enterprise enterprise, Animal animal, AnimalDirectory animalDirectory, EcoSystem ecoSystem) {
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
+        this.request = request;
+        this.userAccount = userAccount;
+        this.enterprise = enterprise;
+        this.animal = animal;
+        this.animalDirectory = animalDirectory;
+        this.ecoSystem = ecoSystem;
+        for (Network net : ecoSystem.getNetworkList()) {
+            for (Enterprise e : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (e.equals(enterprise)) {
+                    network = net;
+                }
+            }
+        }
+        populateBtTable();
+    }
 
+    public void populateBtTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+        model.setRowCount(0);
+        for (WorkRequest bRequest : userAccount.getWorkQueue().getWorkRequestList()) {
+            if (bRequest instanceof MedCareRequest || bRequest instanceof  BTWorkRequest) {
+                if (bRequest.getAnimal().getId() == animal.getId()) {
+                    Object[] row = new Object[model.getColumnCount()];
+                    row[0] = bRequest;
+                    row[1] = bRequest.getAnimal().getId();
+                    row[2] = bRequest.getAnimal().getName();
+                    row[3] = bRequest.getReceiver();
+                    row[4] = bRequest.getStatus();
+                    if (bRequest instanceof MedCareRequest) {
+                        String result = ((MedCareRequest) bRequest).getVetResult();
+                        row[5] = result == null ? "Waiting" : result;
+                    } else if (bRequest instanceof BTWorkRequest) {
+                        String result = ((BTWorkRequest) bRequest).getResult();
+                        row[5] = result == null ? "Waiting" : result;
+                    }
+                    model.addRow(row);
+                }
+            }
+        }
     }
 
     /**
@@ -37,7 +89,7 @@ public class RequestBT extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRequestTest = new javax.swing.JButton();
+        btnRequestBT = new javax.swing.JButton();
         lblMessage = new javax.swing.JLabel();
         txtMessage = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
@@ -45,10 +97,10 @@ public class RequestBT extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
 
-        btnRequestTest.setText("Request");
-        btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
+        btnRequestBT.setText("Request");
+        btnRequestBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestTestActionPerformed(evt);
+                btnRequestBTActionPerformed(evt);
             }
         });
 
@@ -105,7 +157,7 @@ public class RequestBT extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRequestTest, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRequestBT, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblMessage)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -131,27 +183,60 @@ public class RequestBT extends javax.swing.JPanel {
                     .addComponent(lblMessage)
                     .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRequestTest)
+                .addComponent(btnRequestBT)
                 .addContainerGap(275, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
+    private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed
+  String message = txtMessage.getText();
+        if (message.equals("") || message.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter something to send.", "information", JOptionPane.WARNING_MESSAGE);
+        } else {
+            BTWorkRequest request = new BTWorkRequest();
+            request.setMessage(request.getMessage());
+            request.setSender(userAccount);
+            request.getAnimal().setId(request.getAnimal().getId());
+            request.getAnimal().setName(request.getAnimal().getName());
+            request.setStatus("sent"); // sent to Behavior Therapist
+            JOptionPane.showMessageDialog(this, "Behavioral Therapy Request is sent! ");
+            txtMessage.setText("");
 
-        
-    }//GEN-LAST:event_btnRequestTestActionPerformed
+            Organization org = null;
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof TreatmentOrganization && userAccount.getRole().type.equals("Pharmacist")) {
+                    org = organization;
+                    break;
+                }
+            }
+            if (org != null && userAccount.getRole().type.equals("Pharmacist")) {
+                enterprise.getWorkQueue().getWorkRequestList().add(request);
+                userAccount.getWorkQueue().getWorkRequestList().add(request);
+            }
+        }
+/**
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        VetAnimalDetail panel = (VetAnimalDetail) component;
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        populateBtTable();
+**/
+
+    }//GEN-LAST:event_btnRequestBTActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
         userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 
     }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnRequestTest;
+    private javax.swing.JButton btnRequestBT;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMessage;
     private javax.swing.JLabel lblTitle;

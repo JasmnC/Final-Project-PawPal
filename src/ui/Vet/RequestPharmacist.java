@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui.Vet;
-
 
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.WorkQueue.PharmacistWorkRequest;
 import model.UserAccount.UserAccount;
 import model.Animal.AnimalDirectory;
@@ -20,10 +16,11 @@ import model.Organization.Organization;
 import model.Organization.TreatmentOrganization;
 import model.Organization.VetOrganization;
 import model.WorkQueue.MedCareRequest;
+import model.WorkQueue.WorkRequest;
 
 /**
  *
- * @author raunak
+ * @author ariel
  */
 public class RequestPharmacist extends javax.swing.JPanel {
 
@@ -31,7 +28,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
     private UserAccount userAccount;
     private Enterprise enterprise;
     private EcoSystem ecoSystem;
-    MedCareRequest request;
+    private MedCareRequest request;
     private AnimalDirectory animalDirectory;
     private Animal animal;
     Network network;
@@ -43,7 +40,6 @@ public class RequestPharmacist extends javax.swing.JPanel {
             Enterprise enterprise, Animal animal, AnimalDirectory animalDirectory, EcoSystem ecoSystem) {
 
         initComponents();
-
         this.userProcessContainer = userProcessContainer;
         this.request = request;
         this.userAccount = userAccount;
@@ -59,6 +55,32 @@ public class RequestPharmacist extends javax.swing.JPanel {
             }
         }
 
+        populatePtTable();
+    }
+
+    public void populatePtTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+        model.setRowCount(0);
+        for (WorkRequest pRequest : userAccount.getWorkQueue().getWorkRequestList()) {
+            if (pRequest instanceof PharmacistWorkRequest || pRequest instanceof MedCareRequest) {
+                if (pRequest.getAnimal().getId() == animal.getId()) {
+                    Object[] row = new Object[model.getColumnCount()];
+                    row[0] = pRequest;
+                    row[1] = pRequest.getAnimal().getId();
+                    row[2] = pRequest.getAnimal().getName();
+                    row[3] = pRequest.getReceiver();
+                    row[4] = pRequest.getStatus();
+                    if (pRequest instanceof MedCareRequest) {
+                        String result = ((MedCareRequest) pRequest).getVetResult();
+                        row[5] = result == null ? "Waiting" : result;
+                    } else if (pRequest instanceof PharmacistWorkRequest) {
+                        String result = ((PharmacistWorkRequest) pRequest).getResult();
+                        row[5] = result == null ? "Waiting" : result;
+                    }
+                    model.addRow(row);
+                }
+            }
+        }
     }
 
     /**
@@ -170,32 +192,41 @@ public class RequestPharmacist extends javax.swing.JPanel {
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
 
-       
         String message = txtMessage.getText();
         if (message.equals("") || message.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter something to send.", "information", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        PharmacistWorkRequest request = new PharmacistWorkRequest();
-        request.setMessage(message);
-        request.setSender(userAccount);
-        request.setStatus("Sent");
+        } else {
+            PharmacistWorkRequest request = new PharmacistWorkRequest();
+            request.setMessage(request.getMessage());
+            request.setSender(userAccount);
+            request.getAnimal().setId(request.getAnimal().getId());
+            request.getAnimal().setName(request.getAnimal().getName());
+            request.setStatus("sent"); // sent to pharmacist
+            //   request.setResult("");
+            JOptionPane.showMessageDialog(this, "Pharmaceutical Therapy Request is sent! ");
+            txtMessage.setText("");
 
-        Organization org = null;
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (organization instanceof TreatmentOrganization ) {
-                org = organization;
-                break;
+            Organization org = null;
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof TreatmentOrganization && userAccount.getRole().type.equals("Pharmacist")) {
+                    org = organization;
+                    break;
+                }
+            }
+            if (org != null && userAccount.getRole().type.equals("Pharmacist")) {
+                enterprise.getWorkQueue().getWorkRequestList().add(request);
+                userAccount.getWorkQueue().getWorkRequestList().add(request);
             }
         }
-        if (org != null) {
-            org.getWorkQueue().getWorkRequestList().add(request);
-            userAccount.getWorkQueue().getWorkRequestList().add(request);
-        }
-
-        JOptionPane.showMessageDialog(null, "Request message sent");
-        txtMessage.setText("");
-
+/**
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        VetAnimalDetail panel = (VetAnimalDetail) component;
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        populatePtTable();
+**/
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

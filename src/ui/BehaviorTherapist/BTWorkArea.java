@@ -8,44 +8,75 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Animal.Animal;
+import model.Animal.AnimalDirectory;
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.AnimalShelterEnterprise;
+import model.Enterprise.Enterprise;
 import model.Enterprise.MedicalCareEnterprise;
 import model.Network.Network;
 import model.Organization.AnimalManagementOrganization;
 import model.Organization.TreatmentOrganization;
 import model.UserAccount.UserAccount;
+import model.WorkQueue.BTWorkRequest;
+import model.WorkQueue.WorkRequest;
 
 /**
  *
- * @author raunak
+ * @author ariel
  */
 public class BTWorkArea extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private TreatmentOrganization organization;
-    private MedicalCareEnterprise enterprise;
-    private Network network;
+    private Enterprise enterprise;
     private EcoSystem ecosystem;
     private UserAccount userAccount;
-    
+    private Animal animal;
+    private AnimalDirectory animalDirectory;
+    Network network;
+
     /**
      * Creates new form BTWorkArea
      */
-    public BTWorkArea(JPanel userProcessContainer, UserAccount account, TreatmentOrganization organization, MedicalCareEnterprise enterprise, Network network, EcoSystem ecosystem) {
+    public BTWorkArea(JPanel userProcessContainer, UserAccount account, TreatmentOrganization organization,
+            MedicalCareEnterprise enterprise, Network network, EcoSystem ecosystem) {
+
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
-        this.organization = organization;
+        this.organization = (TreatmentOrganization) organization;
         this.enterprise = enterprise;
-        this.network = network;
         this.ecosystem = ecosystem;
-        
-      //  btnProcess.setEnabled(false);
-        
+        for (Network net : ecosystem.getNetworkList()) {
+            for (Enterprise e : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (e.equals(enterprise)) {
+                    network = net;
+                }
+            }
+        }
+
+        //   btnProcess.setEnabled(false);
+        populateTable();
     }
 
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+        model.setRowCount(0);
+        for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (request instanceof BTWorkRequest) {
+                BTWorkRequest btWorkRequest = (BTWorkRequest) request;
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = request;
+                row[1] = request.getAnimal().getId();
+                row[2] = request.getAnimal().getName();
+                row[3] = request.getSender().getName();
+                row[4] = request.getReceiver() == null ? null : request.getReceiver().getName();
+                row[5] = request.getStatus();
+                model.addRow(row);
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -165,20 +196,51 @@ public class BTWorkArea extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
 
+        int selectedRow = tblWorkRequests.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child from table to assign");
+            return;
+        }
+        WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+        //if (request.getStatus().equalsIgnoreCase("Delivered")) {
+        if ("Delivered".equalsIgnoreCase(request.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        } else {
+            request.setReceiver(userAccount);
+            request.setStatus("Pending");
+            btnProcess.setEnabled(true);
+        }
+        populateTable();
 
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
 
-        BTProcessRequest bTProcessRequestJPanel = new BTProcessRequest(userProcessContainer);
-        userProcessContainer.add("bTProcessRequestJPanel", bTProcessRequestJPanel);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        int selectedRow = tblWorkRequests.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child from table before proceeding");
+            return;
+        }
+        BTWorkRequest request = (BTWorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+        //if (request.getStatus().equalsIgnoreCase("Delivered")) {
+        if ("Delivered".equalsIgnoreCase(request.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        } else {
+            request.setStatus("Processing");
+        }
+
+        BTProcessRequest ppr = new BTProcessRequest(userProcessContainer, request, userAccount, enterprise, animal, animalDirectory, ecosystem, organization);
+        userProcessContainer.add("PharmacistProcessRequest", ppr);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
+
+
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-
+        populateTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

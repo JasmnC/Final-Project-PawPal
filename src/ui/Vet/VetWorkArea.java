@@ -232,7 +232,7 @@ public class VetWorkArea extends javax.swing.JPanel {
 
     private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
         MedCareRequest request = null;
-        // TODO add your handling code here:
+
   /**          int selectedRow = tblWorkRequests.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a request from table before proceeding");
@@ -243,14 +243,14 @@ public class VetWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         }
-//        request.setResult("Under Examination");
+        request.setResult("Under Examination");
         for (Animal a : animalDirectory.getAnimalList()) {
             if (a.getId() == request.getAnimal().getId()) {
                 animal = a;
             }
         }
      **/
-        VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail( workArea,  request,  userAccount,
+        VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail( workArea,  request,  userAccount, vetOrganization,
              enterprise,  animal,  animalDirectory, ecoSystem);
         workArea.add("vetAnimalDetailJPanel", vetAnimalDetailJPanel);
         CardLayout layout = (CardLayout) workArea.getLayout();
