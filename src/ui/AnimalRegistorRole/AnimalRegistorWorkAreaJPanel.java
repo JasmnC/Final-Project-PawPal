@@ -135,8 +135,7 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
     private void registerAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerAnimalJButtonActionPerformed
 
         RegistorAnimalJPanel registorAnimalJPanel = new RegistorAnimalJPanel(workArea, account, enterprise);
-        workArea.add("registorAnimalJPanel", registorAnimalJPanel);
-        
+        workArea.add("registorAnimalJPanel", registorAnimalJPanel);        
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);
     }//GEN-LAST:event_registerAnimalJButtonActionPerformed

@@ -45,6 +45,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
 
         populateTable();
+    
     }
 
     /** This method is called from within the constructor to
@@ -152,7 +153,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
 
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
-            if (request.getReceiver() == userAccount){
+            if (request.getReceiver() == userAccount) {
                 if (request.getStatus().equalsIgnoreCase("Approved")) {
                     JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
                     return;
@@ -167,9 +168,9 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please choose a request to assign to yourself", "Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose a request to assign to yourself", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
-        }     
+        }   
         
     }//GEN-LAST:event_btnApproveActionPerformed
 
@@ -190,7 +191,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please choose a request to assign to yourself", "Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose a request to assign to yourself", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -207,12 +208,13 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
+        
         DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
         model.setRowCount(0);
 
         for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()) {
             if (request instanceof AdopterAuthorizationRequest) {
-                
+
                 Object[] row = new Object[6];
                 row[0] = request;
                 row[1] = request.getSender().getName();

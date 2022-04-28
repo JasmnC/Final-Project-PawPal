@@ -152,7 +152,6 @@ public class MainScreen extends javax.swing.JPanel {
 
     private void initUserWorkArea() {
         
-//        lblWelcome.setText("Welcome " + ((userAccount.getUsername()!= null) ? userAccount.getUsername() : userAccount.getUsername()) + "!");
         lblWelcome.setText(userAccount.getNetwork() + " / "
                 + userAccount.getEnterprise() + " / "
                 + userAccount.getOrgainization() + " / "
@@ -162,6 +161,7 @@ public class MainScreen extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) workArea.getLayout();
         workArea.add("workArea", userAccount.getRole().createWorkArea(workArea, userAccount, organization, enterprise, network, ecoSystem));
         layout.next(workArea);
+        
     }
     
     private void initSystemAdminWorkArea(){
@@ -171,7 +171,6 @@ public class MainScreen extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) workArea.getLayout();
         workArea.add("workArea", userAccount.getRole().createAdminWorkArea(workArea, userAccount, ecoSystem));
         layout.next(workArea);
-        
         
     }
 
