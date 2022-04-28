@@ -9,7 +9,9 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Animal.Animal;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
 import model.Enterprise.Enterprise;
 import model.Network.Network;
 import model.Organization.Organization;
@@ -25,20 +27,18 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
     private UserAccount account;
-    private Organization organization;
     private Enterprise enterprise;
     private Network network;
-    private EcoSystem ecoSystem;
+    private Animal animal;
     
-    public RequestMedicalCareJPanel(JPanel workArea, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem ecoSystem) {
+    public RequestMedicalCareJPanel(JPanel workArea, UserAccount account, AnimalShelterEnterprise enterprise, Network network, Animal animal) {
         initComponents();
         
         this.workArea = workArea;
         this.account = account;
-        this.organization = organization;
         this.enterprise = enterprise;
         this.network = network;
-        this.ecoSystem = ecoSystem;
+        this.animal = animal;
     }
 
     /**
@@ -115,31 +115,39 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
 
         
         String requestVetMessage = txtSendMedicalCareMessage.getText();
-        if(requestVetMessage.equals("") || requestVetMessage.isEmpty()){
+        if(requestVetMessage.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter something to send.");
             return;
         }
+        
         MedCareRequest request = new MedCareRequest();
         request.setMessage(requestVetMessage);
         request.setSender(account);
-        request.setStatus("Sent");
+        request.setStatus("Pending for Vet");
+        request.setAnimal(animal);
         
-        Organization org = null;
-        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
-            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof VetOrganization){
-                org = organization;
-                break;
-            }
-            }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(request);
-            account.getWorkQueue().getWorkRequestList().add(request);
-        }
+        network.getWorkQueue().getWorkRequestList().add(request);
+        animal.getWorkQueue().getWorkRequestList().add(request);
         
-        JOptionPane.showMessageDialog(null, "Request message sent");
+        JOptionPane.showMessageDialog(null, "Medical Request sent");
         txtSendMedicalCareMessage.setText("");
+        
+//        Organization org = null;
+//        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+//            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+//            if (organization instanceof VetOrganization){
+//                org = organization;
+//                break;
+//            }
+//            }
+//        }
+//        if (org!=null){
+//            org.getWorkQueue().getWorkRequestList().add(request);
+//            account.getWorkQueue().getWorkRequestList().add(request);
+//        }
+//        
+//        JOptionPane.showMessageDialog(null, "Request message sent");
+//        txtSendMedicalCareMessage.setText("");
         
     }//GEN-LAST:event_btnRequestVetActionPerformed
 

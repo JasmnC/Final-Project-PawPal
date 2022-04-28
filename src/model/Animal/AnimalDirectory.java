@@ -56,7 +56,7 @@ public class AnimalDirectory {
     
     public Animal getAnimalByManager(UserAccount manager){
         for (Animal a : animalList) {
-            if (a.getManager() == manager) return a;
+            if (a.getManager() == manager && a.getAdoptor() == null) return a;
         }
         return null;
     }

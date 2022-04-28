@@ -9,10 +9,14 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.Animal.Animal;
 import model.Animal.AnimalDirectory;
 import model.Enterprise.AnimalShelterEnterprise;
+import model.Network.Network;
 import model.UserAccount.UserAccount;
+import model.WorkQueue.MedCareRequest;
+import model.WorkQueue.WorkRequest;
 
 /**
  *
@@ -23,14 +27,16 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount userAccount;
     private AnimalShelterEnterprise enterprise;
+    private Network network;
     private Animal animal;
     
-    public ViewOngingAnimalJPanel(JPanel userProcessContainer, UserAccount account, AnimalShelterEnterprise enterprise) {
+    public ViewOngingAnimalJPanel(JPanel userProcessContainer, UserAccount account, AnimalShelterEnterprise enterprise, Network network) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.network = network;
         this.animal = enterprise.getAnimalDirectory().getAnimalByManager(userAccount);
         
         showAnimalDetails();
@@ -110,20 +116,20 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
 
         tblAnimalManagerWorkArea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Message", "ID", "Name", "Sender", "Recipient", "Status"
+                "Message", "Sender", "Recipient", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -262,6 +268,14 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAnimalManagerRequestMedicalCareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimalManagerRequestMedicalCareActionPerformed
+
+        // create work request
+        
+        RequestMedicalCareJPanel rmcjp = new RequestMedicalCareJPanel(userProcessContainer, userAccount, enterprise, network, animal);
+        userProcessContainer.add("eequestMedicalCareJPanel", rmcjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnimalManagerRequestMedicalCareActionPerformed
 
@@ -294,7 +308,28 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
 
         txtAnimalName.setText(animal.getName());
         
+        populateTable();
         
 
+    }
+
+    private void populateTable() {
+
+        DefaultTableModel model = (DefaultTableModel) tblAnimalManagerWorkArea.getModel();
+        model.setRowCount(0);
+        
+        if (!animal.getWorkQueue().getWorkRequestList().isEmpty()){
+            for (WorkRequest request : animal.getWorkQueue().getWorkRequestList()){
+                if (request instanceof MedCareRequest){
+                    Object[] row = new Object[4];
+                    row[0] = request;
+                    row[1] = animal.getManager();
+                    row[2] = request.getReceiver() == null ? null : request.getReceiver();
+                    row[3] = request.getStatus();
+                    model.addRow(row);
+                }   
+            }
+        }
+                
     }
 }
