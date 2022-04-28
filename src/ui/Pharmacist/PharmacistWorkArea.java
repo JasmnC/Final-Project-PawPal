@@ -234,7 +234,7 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-
+        populateTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
