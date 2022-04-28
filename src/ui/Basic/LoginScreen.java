@@ -80,27 +80,19 @@ public class LoginScreen extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         lblLogin2 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("<TITLE>");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 44, 771, -1));
 
         lblLogIn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblLogIn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogIn.setText("Log In");
-        add(lblLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 202, -1));
 
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUser.setText("Username:");
-        add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 118, -1));
 
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("Password:");
-        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
-        add(pwdPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 118, -1));
 
         btnLogin.setBackground(new java.awt.Color(0, 102, 153));
         btnLogin.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
@@ -111,29 +103,21 @@ public class LoginScreen extends javax.swing.JPanel {
                 btnLoginActionPerformed(evt);
             }
         });
-        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 90, -1));
 
         jSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        add(jSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 84, -1, 475));
 
         lblRegister.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRegister.setText("Register as Adoptor");
-        add(lblRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 116, 202, -1));
 
         lblNewUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNewUserName.setText("Username:");
-        add(lblNewUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 283, -1, -1));
-        add(txtNewUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 280, 118, -1));
 
         lblNewPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNewPassword.setText("Password:");
-        add(lblNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 321, -1, -1));
-        add(pwdNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 318, 118, -1));
 
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblName.setText("Name:");
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 359, -1, -1));
 
         btnRegister.setBackground(new java.awt.Color(0, 102, 0));
         btnRegister.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
@@ -144,18 +128,14 @@ public class LoginScreen extends javax.swing.JPanel {
                 btnRegisterActionPerformed(evt);
             }
         });
-        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 394, -1, -1));
 
         lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNetwork.setText("Network:");
-        add(lblNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 169, -1, -1));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 166, 118, -1));
 
         lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEnterprise.setText("Enterprise:");
-        add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 207, -1, -1));
 
         cmbEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEnterpriseList.addActionListener(new java.awt.event.ActionListener() {
@@ -163,11 +143,9 @@ public class LoginScreen extends javax.swing.JPanel {
                 cmbEnterpriseListActionPerformed(evt);
             }
         });
-        add(cmbEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 204, 118, -1));
 
         lblEnterprise1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEnterprise1.setText("Organization:");
-        add(lblEnterprise1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 245, -1, -1));
 
         cmbOrganizationList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbOrganizationList.addActionListener(new java.awt.event.ActionListener() {
@@ -175,11 +153,138 @@ public class LoginScreen extends javax.swing.JPanel {
                 cmbOrganizationListActionPerformed(evt);
             }
         });
-        add(cmbOrganizationList, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 242, 118, -1));
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 356, 118, -1));
 
         lblLogin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_login.png"))); // NOI18N
-        add(lblLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 100, 100));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblNetwork)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lblEnterprise)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbEnterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblEnterprise1)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbOrganizationList, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lblNewUserName)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNewUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(lblNewPassword)
+                        .addGap(18, 18, 18)
+                        .addComponent(pwdNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(lblName)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(btnRegister)))
+                .addGap(71, 71, 71)
+                .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(lblLogin2))
+                    .addComponent(lblLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblUser)
+                        .addGap(25, 25, 25)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPassword)
+                        .addGap(27, 27, 27)
+                        .addComponent(pwdPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(lblTitle)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(lblRegister)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(lblNetwork))
+                            .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(lblEnterprise))
+                            .addComponent(cmbEnterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(lblEnterprise1))
+                            .addComponent(cmbOrganizationList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(lblNewUserName))
+                            .addComponent(txtNewUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(lblNewPassword))
+                            .addComponent(pwdNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(lblName))
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRegister))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(lblLogIn)
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lblUser))
+                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPassword)
+                            .addComponent(pwdPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(btnLogin))))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
