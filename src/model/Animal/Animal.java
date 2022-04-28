@@ -37,8 +37,8 @@ public class Animal {
 
         this.name = name;
         idCounter++;
-        id = idCounter;
-        workQueue = new WorkQueue();
+        this.id = idCounter;
+        this.workQueue = new WorkQueue();
     }
 
     public static int getIdCounter() {

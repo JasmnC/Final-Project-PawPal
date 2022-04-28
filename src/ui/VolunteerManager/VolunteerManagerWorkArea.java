@@ -6,6 +6,7 @@
 
 package ui.VolunteerManager;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +16,8 @@ import model.Network.Network;
 import model.Organization.VolunteerManagementOrganization;
 import model.Role.VolunteerRole;
 import model.UserAccount.UserAccount;
+import model.WorkQueue.VolunteerRequest;
+import model.WorkQueue.WorkRequest;
 
 /**
  *
@@ -148,6 +151,42 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
 
+        UserAccount selectedVolunteer = (UserAccount) cmbVolunteer.getSelectedItem();
+        
+        int selectedRow = tblWorkRequests.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            
+            VolunteerRequest selectedRequest = (VolunteerRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+            if (selectedRequest.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
+                return;
+                
+            } else {
+                for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
+                    if (((VolunteerRequest) request).getAssignedVolunteer() == selectedVolunteer 
+                            && !request.getStatus().equals("Completed")){
+                        JOptionPane.showMessageDialog(null, "This volunteer is not available. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                }
+                if (selectedRequest.getStatus().equals("Assigned")){
+                    JOptionPane.showMessageDialog(null, "This request has assigned volunteer. Please select another request.", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    selectedRequest.setReceiver(userAccount);
+                    selectedRequest.setAssignedVolunteer(selectedVolunteer);
+                    selectedRequest.setStatus("Assigned");
+                    selectedVolunteer.getWorkQueue().getWorkRequestList().add(selectedRequest);
+                    JOptionPane.showMessageDialog(null, "Volunteer Assigned","Information",JOptionPane.INFORMATION_MESSAGE);
+                    populateTable();
+                    }   
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+        }  
+        
+        
     }//GEN-LAST:event_btnAssignActionPerformed
 
 
@@ -166,8 +205,20 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
         model.setRowCount(0);
         
-//        Object[] row = new Object[6];
-//        row[0] = 
+        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
+            if (request instanceof VolunteerRequest){
+                Object[] row = new Object[7];
+                row[0] = request;
+                row[1] = request.getSender();
+                row[2] = request.getSender().getEnterprise();
+                row[3] = request.getReceiver() == null ? null : request.getReceiver();
+                row[4] = ((VolunteerRequest) request).getAssignedVolunteer();
+                row[5] = request.getReceiver() == null ? null :request.getReceiver().getEnterprise();
+                row[6] = request.getStatus();
+                model.addRow(row);
+            }
+        }
+        
 
     }
 

@@ -5,12 +5,16 @@
  */
 package ui.Volunteer;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.VolunteerEnterprise;
 import model.Network.Network;
 import model.Organization.VolunteerOrganization;
 import model.UserAccount.UserAccount;
+import model.WorkQueue.VolunteerRequest;
+import model.WorkQueue.WorkRequest;
 
 /**
  *
@@ -38,6 +42,8 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
         this.network = network;
         this.ecosystem = ecosystem;
         
+        populateTable();
+        
     }
 
     /**
@@ -52,7 +58,7 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
-        btnDone = new javax.swing.JButton();
+        btnComplete = new javax.swing.JButton();
         lblRequestOrigin = new javax.swing.JLabel();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -60,20 +66,20 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Volunteer Manager", "Volunteer Assigned", "Status"
+                "Message", "Sender", "Animal Shelter", "Volunteer Manager", "Volunteer Assigned", "Enterprise", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -86,10 +92,10 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        btnDone.setText("Done");
-        btnDone.addActionListener(new java.awt.event.ActionListener() {
+        btnComplete.setText("Complete");
+        btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoneActionPerformed(evt);
+                btnCompleteActionPerformed(evt);
             }
         });
 
@@ -102,7 +108,7 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDone)
+                    .addComponent(btnComplete)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(lblTitle)
@@ -121,21 +127,60 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDone)
+                .addComponent(btnComplete)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneActionPerformed
+    private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
 
-    }//GEN-LAST:event_btnDoneActionPerformed
+        int selectedRow = tblWorkRequests.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            
+            VolunteerRequest selectedRequest = (VolunteerRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+            if (selectedRequest.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
+                return;
+            } else {
+                selectedRequest.setStatus("Completed");
+                JOptionPane.showMessageDialog(null, "Request completed!", "Information",JOptionPane.INFORMATION_MESSAGE);
+                populateTable();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
+    }//GEN-LAST:event_btnCompleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDone;
+    private javax.swing.JButton btnComplete;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRequestOrigin;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+        model.setRowCount(0);
+        
+        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+            if (request instanceof VolunteerRequest){
+                Object[] row = new Object[7];
+                row[0] = request;
+                row[1] = request.getSender();
+                row[2] = request.getSender().getEnterprise();
+                row[3] = request.getReceiver() == null ? null : request.getReceiver();
+                row[4] = ((VolunteerRequest) request).getAssignedVolunteer();
+                row[5] = request.getReceiver() == null ? null :request.getReceiver().getEnterprise();
+                row[6] = request.getStatus();
+                model.addRow(row);
+            }
+        }
+        
+    }
 }
