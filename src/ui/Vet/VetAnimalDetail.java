@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Animal.Animal;
 import model.Animal.AnimalDirectory;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
 import model.Enterprise.Enterprise;
 import model.Network.Network;
 import model.Organization.TreatmentOrganization;
@@ -48,7 +49,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.vetOrganization = vetOrganization;
         this.enterprise = enterprise;
-        this.animal = animal;
+        this.animal = request.getAnimal();
         this.animalDirectory = animalDirectory;
         this.ecoSystem = ecoSystem;
         for (Network net : ecoSystem.getNetworkList()) {
