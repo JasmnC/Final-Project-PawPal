@@ -166,7 +166,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         
         for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
             if (request instanceof VolunteerRequest){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = request.getMessage();
             row[1] = request.getSender();
             row[2] = request.getReceiver();
@@ -188,7 +188,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         VolunteerRequest request = new VolunteerRequest();
         request.setMessage(requestVolunteerMessage);
         request.setSender(account);
-        request.setStatus("Sent");
+        request.setStatus("Pending");
         
         Organization org = null;
         for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
@@ -207,6 +207,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Request message sent");
         txtRequestVolunteerMessage.setText("");
         
+        populateVolunteerRequestTable();
     }//GEN-LAST:event_btnRequestVolunteerActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
