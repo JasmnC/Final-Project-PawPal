@@ -339,7 +339,7 @@ public class LoginScreen extends javax.swing.JPanel {
             AdopterAuthorizationRequest request = new AdopterAuthorizationRequest();
             request.setMessage("New User");
             request.setSender(newUserAccount);
-            request.setStatus("Pending review");
+            request.setStatus("Pending Review");
             
             selectedEnterprise.getWorkQueue().getWorkRequestList().add(request);
             newUserAccount.getWorkQueue().getWorkRequestList().add(request);
