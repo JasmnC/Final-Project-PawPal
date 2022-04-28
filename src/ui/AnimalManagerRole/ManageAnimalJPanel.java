@@ -210,7 +210,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
 
-        populateAssingAnimalToMeRequestTable();
+//        populateAssingAnimalToMeRequestTable();
         
     }//GEN-LAST:event_btnRefreshActionPerformed
 
