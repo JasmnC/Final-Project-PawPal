@@ -214,7 +214,7 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
 
         int selectedRow = tblWorkRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a child from table before proceeding");
+            JOptionPane.showMessageDialog(null, "Please select a row from table before proceeding");
             return;
         }
         PharmacistWorkRequest request = (PharmacistWorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
