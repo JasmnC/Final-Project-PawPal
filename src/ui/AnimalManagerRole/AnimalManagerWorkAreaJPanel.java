@@ -139,7 +139,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         
         
-        ViewOngingAnimalJPanel viewOngoingAnimalJPanel = new ViewOngingAnimalJPanel(workArea, userAccount, enterprise);
+        ViewOngingAnimalJPanel viewOngoingAnimalJPanel = new ViewOngingAnimalJPanel(workArea, userAccount, enterprise, network);
         workArea.add("viewOngoingAnimalJPanel", viewOngoingAnimalJPanel);
 
         CardLayout layout = (CardLayout) workArea.getLayout();
