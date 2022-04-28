@@ -9,7 +9,10 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.Enumeration;
 import javax.security.auth.login.AccountException;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -228,7 +231,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
 
         String name = txtAnimalName.getText();
         String area = txtAnimalArea.getText();
-        String sex = buttonGroupGender.getSelection().getActionCommand();
+        String sex = getSelectedButtonText(buttonGroupGender);                
         String weight = txtAnimalWeight.getText();
         String photo = txtAnimalPhoto.getText();
         
@@ -311,6 +314,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
            String p = f.getAbsolutePath();
            txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
            jLabel1.setIcon(seticon(p, null));
+          
         }
 
     }//GEN-LAST:event_btnUploadAnimalPhotoActionPerformed
@@ -350,4 +354,15 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAnimalPhoto;
     private javax.swing.JTextField txtAnimalWeight;
     // End of variables declaration//GEN-END:variables
+
+
+    public String getSelectedButtonText(ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+        return null;
+    } 
 }

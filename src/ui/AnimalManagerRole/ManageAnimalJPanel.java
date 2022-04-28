@@ -66,8 +66,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 row[5] = request.getStatus();
 
                 model.addRow(row);
-            }
-            
+            }            
         }
     }
 
@@ -186,22 +185,26 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) tblAnimalManagerWorkArea.getValueAt(selectedRow, 0);
             if (request.getStatus().equalsIgnoreCase("Adopted")) {
-                JOptionPane.showMessageDialog(null, "Animal has been adopted.");
+                JOptionPane.showMessageDialog(null, "This animal has been adopted.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             } else {
-                //把自己變成reciver, 把animal的manager變成自己
-                request.setReceiver(userAccount);
-                request.getAnimal().setManager(userAccount);
-                request.setStatus("Managed");
-                populateAssignAnimalToMeRequestTable();
+                if (request.getReceiver() != null) {
+                    JOptionPane.showMessageDialog(null, "This animal has a manager. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                } else {
+                    //把自己變成reciver, 把animal的manager變成自己
+                    request.setReceiver(userAccount);
+                    request.getAnimal().setManager(userAccount);
+                    request.setStatus("Managed");
+                    populateAssignAnimalToMeRequestTable();
+                }
             }
-
         } else {
-            JOptionPane.showMessageDialog(null, "Choose a reuest to process.");
+            JOptionPane.showMessageDialog(null, "Select a row to process.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        
+
+
     }//GEN-LAST:event_btnAssignAnimalToMeActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
