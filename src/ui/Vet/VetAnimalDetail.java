@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui.Vet;
 
 import java.awt.CardLayout;
@@ -28,7 +24,7 @@ import ui.Pharmacist.PharmacistWorkArea;
 
 /**
  *
- * @author raunak
+ * @author ariel
  */
 public class VetAnimalDetail extends javax.swing.JPanel {
     
@@ -79,19 +75,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         //      displayImage();
     }
 
-    /**
-     * public void displayImage() { BufferedImage image = null; //Buffered image
-     * object String filename = animal.getImageDetails(); //Getting the filepath
-     * and storing into the string try { image = ImageIO.read(new
-     * File(filename)); //Reading the filename and storing it in image } catch
-     * (Exception e) { //Generic exception if something goes wrong while reading
-     * the image JOptionPane.showMessageDialog(null, "File not found");
-     * //Setting the image to the icon and then passing it ot he image JLabel }
-     * ImageIcon icon = new ImageIcon(image); lblAnimalPhoto.setIcon(icon);
-     *
-     * }
-     *
-     */
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -310,16 +294,15 @@ public class VetAnimalDetail extends javax.swing.JPanel {
 
     private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed
         
-        RequestBT requestBT = new RequestBT(workArea);
-        workArea.add("requestBT", requestBT);
         CardLayout layout = (CardLayout) workArea.getLayout();
+        workArea.add("requestBehaviorTherapy", new RequestBT(workArea, request, userAccount, enterprise, animal, animalDirectory, ecoSystem));
         layout.next(workArea);
     }//GEN-LAST:event_btnRequestBTActionPerformed
 
     private void btnRequestPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestPharmacyActionPerformed
         
         CardLayout layout = (CardLayout) workArea.getLayout();
-        workArea.add("requestMedicationJPanel", new RequestPharmacist(workArea, request, userAccount, enterprise, animal, animalDirectory, ecoSystem));
+        workArea.add("requestPharmaceuticalTherapy", new RequestPharmacist(workArea, request, userAccount, enterprise, animal, animalDirectory, ecoSystem));
         layout.next(workArea);
     }//GEN-LAST:event_btnRequestPharmacyActionPerformed
 
@@ -330,6 +313,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         } else {
             animal.setVetMessage(txtResults.getText());
             request.setStatus("Completed");
+            request.setVetResult(txtResults.getText());
             JOptionPane.showMessageDialog(null, "Message processed");
             txtAnimalMessageFromVet.setText(txtResults.getText());
             

@@ -20,7 +20,7 @@ import model.WorkQueue.WorkRequest;
 
 /**
  *
- * @author raunak
+ * @author ariel
  */
 public class RequestPharmacist extends javax.swing.JPanel {
 
@@ -70,11 +70,11 @@ public class RequestPharmacist extends javax.swing.JPanel {
                     row[2] = pRequest.getAnimal().getName();
                     row[3] = pRequest.getReceiver();
                     row[4] = pRequest.getStatus();
-                    if (pRequest instanceof MedicalHelpWorkRequest) {
-                        String result = ((MedicalHelpWorkRequest) pRequest).getTestResult();
+                    if (pRequest instanceof MedCareRequest) {
+                        String result = ((MedCareRequest) pRequest).getVetResult();
                         row[5] = result == null ? "Waiting" : result;
-                    } else if (pRequest instanceof LabProcessWorkRequest) {
-                        String result = ((LabProcessWorkRequest) pRequest).getResult();
+                    } else if (pRequest instanceof PharmacistWorkRequest) {
+                        String result = ((PharmacistWorkRequest) pRequest).getResult();
                         row[5] = result == null ? "Waiting" : result;
                     }
                     model.addRow(row);
@@ -201,10 +201,11 @@ public class RequestPharmacist extends javax.swing.JPanel {
             request.setSender(userAccount);
             request.getAnimal().setId(request.getAnimal().getId());
             request.getAnimal().setName(request.getAnimal().getName());
-            request.setStatus("sent");
-            request.setResult("");
+            request.setStatus("sent"); // sent to pharmacist
+            //   request.setResult("");
             JOptionPane.showMessageDialog(this, "Pharmaceutical Therapy Request is sent! ");
-          
+            txtMessage.setText("");
+
             Organization org = null;
             for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                 if (organization instanceof TreatmentOrganization && userAccount.getRole().type.equals("Pharmacist")) {
@@ -212,14 +213,12 @@ public class RequestPharmacist extends javax.swing.JPanel {
                     break;
                 }
             }
-            if (org != null && userAccount.getRole().type.equals("Pharmacist") ) {
-                org.getWorkQueue().getWorkRequestList().add(request);
+            if (org != null && userAccount.getRole().type.equals("Pharmacist")) {
+                enterprise.getWorkQueue().getWorkRequestList().add(request);
                 userAccount.getWorkQueue().getWorkRequestList().add(request);
             }
         }
-
-        JOptionPane.showMessageDialog(null, "Request message sent");
-        txtMessage.setText("");
+/**
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -227,7 +226,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
         populatePtTable();
-
+**/
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
