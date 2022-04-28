@@ -110,34 +110,33 @@ public class BTProcessRequest extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(114, 114, 114)
-                                    .addComponent(lblTitle)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(222, 222, 222)
-                                    .addComponent(btnSubmit)))
-                            .addComponent(txtResults, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblResult))))
-                .addContainerGap(299, Short.MAX_VALUE))
+                        .addGap(359, 359, 359)
+                        .addComponent(lblTitle)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 266, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblResult)
+                        .addGap(239, 239, 239))
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtResults, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(255, 255, 255))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
                 .addComponent(lblTitle)
-                .addGap(73, 73, 73)
+                .addGap(33, 33, 33)
                 .addComponent(lblResult)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtResults, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addComponent(btnSubmit)
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,12 +149,12 @@ public class BTProcessRequest extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-   if (txtResults.getText().isEmpty()) {
+        if (txtResults.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter message");
         } else {
             request.setResult(txtResults.getText());
             request.setStatus("Delivered");
-            MedCareRequest temp = new MedCareRequest(); 
+            MedCareRequest temp = new MedCareRequest();
             temp.setStatus("Medically Fit");
             temp.setMessage("Child has been medicated");
             temp.setSender(userAccount);
@@ -164,9 +163,9 @@ public class BTProcessRequest extends javax.swing.JPanel {
             temp.getAnimal().setName(request.getAnimal().getName());
             if (this.animalDirectory != null && this.animalDirectory.getAnimalList().size() > 0) {
                 for (Animal animal : this.animalDirectory.getAnimalList()) {
-          /**          if (request.getAnimal().getId() == animal.getId()) {
+                    /**          if (request.getAnimal().getId() == animal.getId()) {
                         if ("Acquired".equalsIgnoreCase(temp.getStatus())) {
-                          //  animal.setMedicalHelp(false);
+                            //  animal.setMedicalHelp(false);
                             temp.setIsAcquiredReq(false);
                         } else {
                             temp.setIsAcquiredReq(true);
@@ -190,7 +189,7 @@ public class BTProcessRequest extends javax.swing.JPanel {
             if (org != null) {
                 enterprise.getWorkQueue().getWorkRequestList().add(temp);
                 userAccount.getWorkQueue().getWorkRequestList().add(temp);
-            //    ecoSystem.getWorkQueue().getWorkRequestList().add(temp);
+                //    ecoSystem.getWorkQueue().getWorkRequestList().add(temp);
             }
         }
         userProcessContainer.remove(this);
