@@ -35,7 +35,7 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
     private AnimalDirectory animalDirectory;
     Network network;
 
-    public PharmacistWorkArea(JPanel userProcessContainer, UserAccount account, AnimalDirectory animalDirectory,
+    public PharmacistWorkArea(JPanel userProcessContainer, UserAccount account, 
             TreatmentOrganization organization, Enterprise enterprise, Network network, EcoSystem ecosystem) {
 
         initComponents();
