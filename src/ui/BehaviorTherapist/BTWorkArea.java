@@ -198,7 +198,7 @@ public class BTWorkArea extends javax.swing.JPanel {
 
         int selectedRow = tblWorkRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a child from table to assign");
+            JOptionPane.showMessageDialog(null, "Please select a row first");
             return;
         }
         WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
@@ -219,7 +219,7 @@ public class BTWorkArea extends javax.swing.JPanel {
 
         int selectedRow = tblWorkRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a child from table before proceeding");
+            JOptionPane.showMessageDialog(null, "Please select a row from table before proceeding");
             return;
         }
         BTWorkRequest request = (BTWorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);

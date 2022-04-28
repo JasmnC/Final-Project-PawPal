@@ -6,6 +6,7 @@
 package model.Animal;
 
 import model.UserAccount.UserAccount; 
+import model.WorkQueue.WorkQueue;
 
 /**
  *
@@ -28,6 +29,8 @@ public class Animal {
     private UserAccount manager;
     private UserAccount adoptor;
     private boolean adpotionRequested;
+    
+    private WorkQueue workQueue;
 
     
     public Animal(String name) {
@@ -35,7 +38,7 @@ public class Animal {
         this.name = name;
         idCounter++;
         id = idCounter;
-        
+        workQueue = new WorkQueue();
     }
 
     public static int getIdCounter() {
@@ -132,6 +135,10 @@ public class Animal {
 
     public void setAdpotionRequested(boolean adpotionRequested) {
         this.adpotionRequested = adpotionRequested;
+    }
+
+    public WorkQueue getWorkQueue() {
+        return workQueue;
     }
     
     @Override

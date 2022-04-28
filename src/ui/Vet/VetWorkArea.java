@@ -62,32 +62,30 @@ public class VetWorkArea extends javax.swing.JPanel {
             }
         }
 //        btnViewDetial.setEnabled(false);
-//        populateRequestTable();
+        populateRequestTable();
     }
 
 
-/**
+
     public void populateRequestTable() {
-        DefaultTableModel table = (DefaultTableModel) tblWorkRequests.getModel();
-        table.setRowCount(0);
-        for (WorkRequest req : vetOrganization.getWorkQueue().getWorkRequestList()) {
-            if (req instanceof MedCareRequest) {
-                MedCareRequest request = (MedCareRequest) req;
-                if (request instanceof MedCareRequest) {
-                    Object[] row = new Object[table.getColumnCount()];
-                    row[0] = req;
-                    row[1] = req.getAnimal().getId();
-                    row[2] = req.getAnimal().getName();
-                    row[3] = req.getSender();
-                    row[4] = req.getReceiver();
-                    row[5] = req.getStatus();
-                    row[6] = req.getVetResult();
-                    table.addRow(row);
-                }
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+        model.setRowCount(0);
+          for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (request instanceof MedCareRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = request;
+                row[1] = request.getAnimal().getId();
+                row[2] = request.getAnimal().getName();
+                row[3] = request.getSender().getName();
+                row[4] = request.getReceiver() == null ? null : request.getReceiver().getName();
+                String result = ((MedCareRequest) request).getVetResult();             
+                row[5] = request.getStatus();
+                row[6] = result == null ? "Waiting" : result;
+                model.addRow(row);
             }
         }
     }
-**/
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -98,6 +96,9 @@ public class VetWorkArea extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         btnAssignToMe = new javax.swing.JButton();
         btnViewDetial = new javax.swing.JButton();
+        icon = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,15 +137,19 @@ public class VetWorkArea extends javax.swing.JPanel {
             tblWorkRequests.getColumnModel().getColumn(6).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 79, 659, 169));
+
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
             }
         });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Vet Work Area");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 38, -1, -1));
 
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +157,7 @@ public class VetWorkArea extends javax.swing.JPanel {
                 btnAssignToMeActionPerformed(evt);
             }
         });
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
 
         btnViewDetial.setText("View Animal Detail");
         btnViewDetial.addActionListener(new java.awt.event.ActionListener() {
@@ -159,54 +165,20 @@ public class VetWorkArea extends javax.swing.JPanel {
                 btnViewDetialActionPerformed(evt);
             }
         });
+        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTitle)
-                                .addGap(210, 210, 210)
-                                .addComponent(btnRefresh))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 405, Short.MAX_VALUE)
-                        .addComponent(btnAssignToMe)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnViewDetial)
-                        .addGap(98, 98, 98))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(btnRefresh))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewDetial)
-                    .addComponent(btnAssignToMe))
-                .addGap(311, 311, 311))
-        );
+        icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet.png"))); // NOI18N
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-  //      populateRequestTable();
+        populateRequestTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblWorkRequests.getSelectedRow();
-        if (selectedRow < 0) {
+        if (selectedRow < 0 ) {
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
@@ -224,32 +196,29 @@ public class VetWorkArea extends javax.swing.JPanel {
             request.setReceiver(userAccount);
             request.setStatus("Pending");
             btnViewDetial.setEnabled(true);
-//            populateRequestTable();
+            populateRequestTable();
             JOptionPane.showMessageDialog(null, "Request has been assigned");
- //           populateRequestTable();
+            populateRequestTable();
         }
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
-        MedCareRequest request = null;
-
-  /**          int selectedRow = tblWorkRequests.getSelectedRow();
+              int selectedRow = tblWorkRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a request from table before proceeding");
+            JOptionPane.showMessageDialog(null, "Please select a row first");
             return;
         }
         MedCareRequest request = (MedCareRequest) tblWorkRequests.getValueAt(selectedRow, 0);
-        if (request.getStatus().equalsIgnoreCase("Completed")) {
+        if (request.getStatus().equalsIgnoreCase("Medicine Prescribed")) {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         }
-        request.setResult("Under Examination");
+        request.setVetResult("Under Examination");
         for (Animal a : animalDirectory.getAnimalList()) {
             if (a.getId() == request.getAnimal().getId()) {
                 animal = a;
             }
         }
-     **/
         VetAnimalDetail vetAnimalDetailJPanel = new VetAnimalDetail( workArea,  request,  userAccount, vetOrganization,
              enterprise,  animal,  animalDirectory, ecoSystem);
         workArea.add("vetAnimalDetailJPanel", vetAnimalDetailJPanel);
@@ -261,6 +230,7 @@ public class VetWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewDetial;
+    private javax.swing.JLabel icon;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;
