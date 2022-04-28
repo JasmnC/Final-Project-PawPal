@@ -9,10 +9,14 @@ package ui.Basic;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.Animal.Animal;
 import model.EcoSystem.ConfigureASystem;
 import model.EcoSystem.DB4OUtil;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
 import model.Network.Network;
+import model.Role.AnimalManagementRole;
+import model.Role.Role;
 import model.UserAccount.UserAccount;
 
 /**
@@ -104,5 +108,7 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.next(mainWorkArea);
 
     }
+
+    
 
 }

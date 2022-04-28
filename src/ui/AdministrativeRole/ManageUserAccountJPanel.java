@@ -136,13 +136,6 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblUsers);
-        if (tblUsers.getColumnModel().getColumnCount() > 0) {
-            tblUsers.getColumnModel().getColumn(0).setResizable(false);
-            tblUsers.getColumnModel().getColumn(1).setResizable(false);
-            tblUsers.getColumnModel().getColumn(2).setResizable(false);
-            tblUsers.getColumnModel().getColumn(3).setResizable(false);
-            tblUsers.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
