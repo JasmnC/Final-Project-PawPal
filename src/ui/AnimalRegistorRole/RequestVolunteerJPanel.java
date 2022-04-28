@@ -19,6 +19,7 @@ import model.Organization.Organization;
 import model.Organization.VolunteerOrganization;
 import model.UserAccount.UserAccount;
 import model.WorkQueue.VolunteerRequest;
+import model.WorkQueue.WorkQueue;
 import model.WorkQueue.WorkRequest;
 import ui.AnimalManagerRole.ManageAnimalJPanel;
 
@@ -34,7 +35,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         private AnimalShelterEnterprise enterprise;
         private Network network;
         private EcoSystem ecosystem;
-    
+    //test
 
     public RequestVolunteerJPanel(JPanel userProcessContainer, UserAccount account, AnimalRegisterOrganization organization, AnimalShelterEnterprise enterprise, Network network, EcoSystem ecosystem) {
         initComponents();
@@ -163,7 +164,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
+        for (WorkRequest request : getWorkRequestList()){
             if (request instanceof VolunteerRequest){
             Object[] row = new Object[4];
             row[0] = request.getMessage();
