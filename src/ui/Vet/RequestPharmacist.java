@@ -59,28 +59,29 @@ public class RequestPharmacist extends javax.swing.JPanel {
     }
 
     public void populatePtTable() {
+        
         DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
         model.setRowCount(0);
-        for (WorkRequest pRequest : userAccount.getWorkQueue().getWorkRequestList()) {
-            if (pRequest instanceof PharmacistWorkRequest || pRequest instanceof MedCareRequest) {
-                if (pRequest.getAnimal().getId() == animal.getId()) {
+        for (WorkRequest phrequest : userAccount.getWorkQueue().getWorkRequestList()) {
+            if (phrequest instanceof MedCareRequest || phrequest instanceof PharmacistWorkRequest) {
+                if (phrequest.getAnimal().getId() == animal.getId()) {
                     Object[] row = new Object[model.getColumnCount()];
-                    row[0] = pRequest;
-                    row[1] = pRequest.getAnimal().getId();
-                    row[2] = pRequest.getAnimal().getName();
-                    row[3] = pRequest.getReceiver();
-                    row[4] = pRequest.getStatus();
-                    if (pRequest instanceof MedCareRequest) {
-                        String result = ((MedCareRequest) pRequest).getVetResult();
-                        row[5] = result == null ? "Waiting" : result;
-                    } else if (pRequest instanceof PharmacistWorkRequest) {
-                        String result = ((PharmacistWorkRequest) pRequest).getResult();
-                        row[5] = result == null ? "Waiting" : result;
+                    row[0] = phrequest;
+                    row[1] = phrequest.getAnimal().getId();
+                    row[2] = phrequest.getReceiver();
+                    row[3] = phrequest.getStatus();
+                    if (phrequest instanceof MedCareRequest) {
+                        String result = ((MedCareRequest) phrequest).getVetResult();
+                        row[4] = result == null ? "Waiting" : result;
+                    } else if (phrequest instanceof PharmacistWorkRequest) {
+                        String result = ((PharmacistWorkRequest) phrequest).getResult();
+                        row[4] = result == null ? "Waiting" : result;
                     }
                     model.addRow(row);
                 }
             }
         }
+        
     }
 
     /**
@@ -165,36 +166,34 @@ public class RequestPharmacist extends javax.swing.JPanel {
                         .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(icon)
-                        .addGap(60, 60, 60)
-                        .addComponent(lblMessage)
-                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(152, 152, 152)
-                                .addComponent(btnRequestTest)))))
+                                .addComponent(icon)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblMessage)
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(152, 152, 152)
+                                        .addComponent(btnRequestTest))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addComponent(btnBack)
+                .addGap(18, 18, 18)
+                .addComponent(lblTitle)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(icon)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTitle)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(icon)
-                        .addContainerGap(186, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,48 +201,39 @@ public class RequestPharmacist extends javax.swing.JPanel {
                                 .addComponent(btnRequestTest))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(lblMessage)))
-                        .addGap(242, 242, 242))))
+                                .addComponent(lblMessage)))))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
 
-        String message = txtMessage.getText();
+          String message = txtMessage.getText();
         if (message.equals("") || message.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter something to send.", "information", JOptionPane.WARNING_MESSAGE);
-        } else {
-            PharmacistWorkRequest request = new PharmacistWorkRequest();
-            request.setMessage(request.getMessage());
-            request.setSender(userAccount);
-            request.getAnimal().setId(request.getAnimal().getId());
-            request.getAnimal().setName(request.getAnimal().getName());
-            request.setStatus("sent"); // sent to pharmacist
-            //   request.setResult("");
-            JOptionPane.showMessageDialog(this, "Pharmaceutical Therapy Request is sent! ");
-            txtMessage.setText("");
-
-            Organization org = null;
-            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                if (organization instanceof TreatmentOrganization && userAccount.getRole().type.equals("Pharmacist")) {
-                    org = organization;
-                    break;
-                }
-            }
-            if (org != null && userAccount.getRole().type.equals("Pharmacist")) {
-                enterprise.getWorkQueue().getWorkRequestList().add(request);
-                userAccount.getWorkQueue().getWorkRequestList().add(request);
-            }
+            return;
         }
-/**
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        VetAnimalDetail panel = (VetAnimalDetail) component;
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        PharmacistWorkRequest request = new PharmacistWorkRequest();
+        request.setMessage(message);
+        request.setSender(userAccount);
+        request.setStatus("Pending");
+        request.setAnimal(animal);
+
+        network.getWorkQueue().getWorkRequestList().add(request);
+        userAccount.getWorkQueue().getWorkRequestList().add(request);
+
+        JOptionPane.showMessageDialog(null, "Pharmaceutical Therapy Request sent");
         populatePtTable();
-**/
+        txtMessage.setText("");
+        /**
+         * userProcessContainer.remove(this); Component[] componentArray =
+         * userProcessContainer.getComponents(); Component component =
+         * componentArray[componentArray.length - 1]; VetAnimalDetail panel =
+         * (VetAnimalDetail) component; CardLayout layout = (CardLayout)
+         * userProcessContainer.getLayout();
+         * layout.previous(userProcessContainer); populatePtTable();
+*
+         */
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

@@ -202,8 +202,8 @@ public class VetWorkArea extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         int selectedRow = tblWorkRequests.getSelectedRow();
-        WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
-        if (selectedRow >= 0 ) {
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
             if (request.getStatus().equalsIgnoreCase("Processed")) {
                 JOptionPane.showMessageDialog(null, "Request already processed.");
                 return;
@@ -243,11 +243,13 @@ public class VetWorkArea extends javax.swing.JPanel {
 
     private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
         int selectedRow = tblWorkRequests.getSelectedRow();
-        WorkRequest wr = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row first");
             return;
-        } else if (wr.getReceiver() != userAccount) {
+        }
+        WorkRequest wr = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+         if (wr.getReceiver() != userAccount) {
             JOptionPane.showMessageDialog(null, "This request is not assign to you.");
             return;
         }
