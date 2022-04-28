@@ -23,9 +23,32 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                  <Component id="btnAnimalManagerRequestMedicalCare" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblMessage11" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtAnimalMessageFromPharmacy" min="-2" pref="217" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblMessage9" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblMessage13" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtAnimalMessageFromBehaviorTharapipst" min="-2" pref="217" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="669" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                                   <Component id="btnBack" min="-2" max="-2" attributes="0"/>
@@ -64,36 +87,15 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblMessage11" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtAnimalMessageFromPharmacy" min="-2" pref="217" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblMessage9" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblMessage13" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtAnimalMessageFromBehaviorTharapipst" min="-2" pref="217" max="-2" attributes="0"/>
-                                  </Group>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lblMessage12" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtAnimalPhoto" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="lblPhoto" min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="lblMessage12" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="164" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnAnimalManagerRequestMedicalCare" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="669" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -104,8 +106,6 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-<<<<<<< HEAD
-=======
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -124,36 +124,8 @@
                   <Component id="txtAnimalArea" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblMessage7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAnimalSex" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblMessage8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAnimalWeight" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
->>>>>>> 8c94c8b04cc00f5482d62c3d38ae9e128f213edd
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMessage5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAnimalName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblMessage12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMessage6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAnimalArea" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblMessage7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAnimalSex" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -168,34 +140,24 @@
                           <Component id="txtAnimalMessageFromVet" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                           <Component id="lblMessage10" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtAnimalMessageFromPharmacy" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
-                          <Component id="lblMessage11" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtAnimalMessageFromBehaviorTharapipst" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblMessage9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="63" max="32767" attributes="0"/>
-                              <Component id="lblMessage13" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Component id="lblPhoto" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtAnimalMessageFromPharmacy" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
+                  <Component id="lblMessage11" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtAnimalMessageFromBehaviorTharapipst" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-=======
                       <Component id="lblMessage9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="lblMessage13" min="-2" max="-2" attributes="0"/>
->>>>>>> 8c94c8b04cc00f5482d62c3d38ae9e128f213edd
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnAnimalManagerRequestMedicalCare" min="-2" max="-2" attributes="0"/>
@@ -299,14 +261,11 @@
         <Property name="text" type="java.lang.String" value="Photo:"/>
       </Properties>
     </Component>
-<<<<<<< HEAD
-=======
     <Component class="javax.swing.JTextField" name="txtAnimalPhoto">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnimalPhotoActionPerformed"/>
       </Events>
     </Component>
->>>>>>> 8c94c8b04cc00f5482d62c3d38ae9e128f213edd
     <Component class="javax.swing.JButton" name="btnAnimalManagerRequestMedicalCare">
       <Properties>
         <Property name="text" type="java.lang.String" value="Request Medical Care"/>
@@ -371,7 +330,7 @@
         <Property name="text" type="java.lang.String" value="Medical Care Status:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblPhoto">
     </Component>
   </SubComponents>
 </Form>
