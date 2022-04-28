@@ -22,6 +22,7 @@ public class Animal {
     private String area;
     private String sex;
     private String weight;
+    private String photo;
     private String vetMessage;
     private String pharmacyMessage;
     private String baviorCheckMessage;
@@ -87,6 +88,14 @@ public class Animal {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getVetMessage() {
