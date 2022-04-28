@@ -271,7 +271,7 @@ public class LoginScreen extends javax.swing.JPanel {
             mainWorkArea.add("MainScreen", mainScreen);
             CardLayout layout = (CardLayout) mainWorkArea.getLayout();
             layout.next(mainWorkArea);
-        } else {
+        } else  {
             
             for (UserAccount ua : ecoSystem.getUserAccountDirectory().getUserAccountList()){
                 if (userName.equals(ua.getUsername()) && password.equals(ua.getPassword())) {
@@ -279,9 +279,10 @@ public class LoginScreen extends javax.swing.JPanel {
                     mainWorkArea.add("MainScreen", mainScreen);
                     CardLayout layout = (CardLayout) mainWorkArea.getLayout();
                     layout.next(mainWorkArea);
+                    return;
                 }
             }
-            
+            JOptionPane.showMessageDialog(this, "Invalid login.", "Warning", JOptionPane.WARNING_MESSAGE);
         } 
 //        
 //        else {

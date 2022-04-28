@@ -151,7 +151,6 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         ManageAnimalJPanel manageAnimalJPanel = new ManageAnimalJPanel(workArea, userAccount, organization, enterprise, network, ecosystem);
         workArea.add("manageAnimalJPanel", manageAnimalJPanel);
-
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);
 

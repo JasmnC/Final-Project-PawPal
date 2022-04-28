@@ -195,7 +195,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAuthorizationStatus)
                     .addComponent(txtAuthorizationStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -204,7 +204,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(lblAnimalSelection)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSendRequest)
@@ -214,8 +214,8 @@ public class AdopterWorkArea extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(lblAdoptionRequest)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,10 +249,10 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             Animal selectedAnimal = (Animal) tblAnimalList.getValueAt(selectedRow, 0);
             
-            JPanel animalDetail = new MainScreen(mainWorkArea, ua, db4oUtil);
-            workArea.add("MainScreen", mainScreen);
-            CardLayout layout = (CardLayout) workArea.getLayout();
-            layout.next(workArea);
+//            JPanel animalDetail = new MainScreen(mainWorkArea, ua, db4oUtil);
+//            workArea.add("MainScreen", mainScreen);
+//            CardLayout layout = (CardLayout) workArea.getLayout();
+//            layout.next(workArea);
             
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row first", "Warning", JOptionPane.WARNING_MESSAGE);

@@ -31,7 +31,9 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
-        this.animal = enterprise.getAnimalDirectory().getAnimalByManager(userAccount.getName());
+        this.animal = enterprise.getAnimalDirectory().getAnimalByManager(userAccount);
+        
+        showAnimalDetails();
         
     }
 
@@ -287,4 +289,12 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAnimalSex;
     private javax.swing.JTextField txtAnimalWeight;
     // End of variables declaration//GEN-END:variables
+
+    private void showAnimalDetails() {
+
+        txtAnimalName.setText(animal.getName());
+        
+        
+
+    }
 }

@@ -16,6 +16,7 @@ import model.Enterprise.AnimalShelterEnterprise;
 import model.Network.Network;
 import model.Organization.AnimalRegisterOrganization;
 import model.UserAccount.UserAccount;
+import model.WorkQueue.AnimalManagerRequest;
 
 /**
  *
@@ -209,12 +210,24 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter animal's sex.");
             return;
         }else{
-            Animal animal = new Animal(txtAnimalName.getText());
+            // create Animal
+            Animal animal = enterprise.getAnimalDirectory().createAnimal(txtAnimalName.getText());
             //創動物在directory，傳進work request
             animal.setArea(area);
             animal.setSex(sex);
             animal.setWeight(weight);
-        }
+            
+            // create work request
+            AnimalManagerRequest request = new AnimalManagerRequest();
+            request.setMessage("New Animal");
+            request.setSender(userAccount);
+            request.setStatus("Wating for Manager");
+            request.setAnimal(animal);
+            
+            enterprise.getWorkQueue().getWorkRequestList().add(request);
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+            
+            } 
         
         
         

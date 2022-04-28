@@ -19,6 +19,7 @@ import model.Enterprise.Enterprise;
 import model.Network.Network;
 import model.Organization.AnimalManagementOrganization;
 import model.Organization.Organization;
+import model.WorkQueue.AnimalManagerRequest;
 
 /**
  *
@@ -45,24 +46,28 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.animalDirectory = enterprise.getAnimalDirectory();
         
-        populateAssingAnimalToMeRequestTable();
+        populateAssignAnimalToMeRequestTable();
     }
 
     
-    public void populateAssingAnimalToMeRequestTable(){
+    public void populateAssignAnimalToMeRequestTable(){
         DefaultTableModel model = (DefaultTableModel) tblAnimalManagerWorkArea.getModel();
         
         model.setRowCount(0);
         
-        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getAnimal().getId();
-            row[1] = request.getAnimal().getName();
-            row[2] = request.getSender().getName();
-            row[3] = request.getReceiver() == null ? null : request.getReceiver().getName();
-            row[4] = request.getStatus();
+        for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()){
+            if (request instanceof AnimalManagerRequest){
+                Object[] row = new Object[6];
+                row[0] = request;
+                row[1] = request.getAnimal().getId();
+                row[2] = request.getAnimal().getName();
+                row[3] = request.getSender();
+                row[4] = request.getReceiver() == null ? null : request.getReceiver();
+                row[5] = request.getStatus();
 
-            model.addRow(row);
+                model.addRow(row);
+            }
+            
         }
     }
 
@@ -90,20 +95,20 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
 
         tblAnimalManagerWorkArea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Registor", "Manager", "Status"
+                "Message", "ID", "Name", "Registor", "Manager", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -115,13 +120,6 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblAnimalManagerWorkArea);
-        if (tblAnimalManagerWorkArea.getColumnModel().getColumnCount() > 0) {
-            tblAnimalManagerWorkArea.getColumnModel().getColumn(0).setResizable(false);
-            tblAnimalManagerWorkArea.getColumnModel().getColumn(1).setResizable(false);
-            tblAnimalManagerWorkArea.getColumnModel().getColumn(2).setResizable(false);
-            tblAnimalManagerWorkArea.getColumnModel().getColumn(3).setResizable(false);
-            tblAnimalManagerWorkArea.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         btnAssignAnimalToMe.setText("Assign to me");
         btnAssignAnimalToMe.addActionListener(new java.awt.event.ActionListener() {
@@ -187,15 +185,15 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
 
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) tblAnimalManagerWorkArea.getValueAt(selectedRow, 0);
-            if (request.getMessage().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Request already processed.");
+            if (request.getStatus().equalsIgnoreCase("Adopted")) {
+                JOptionPane.showMessageDialog(null, "Animal has been adopted.");
                 return;
             } else {
                 //把自己變成reciver, 把animal的manager變成自己
                 request.setReceiver(userAccount);
                 request.getAnimal().setManager(userAccount);
-                request.setStatus("Pending");
-                populateAssingAnimalToMeRequestTable();
+                request.setStatus("Managed");
+                populateAssignAnimalToMeRequestTable();
             }
 
         } else {

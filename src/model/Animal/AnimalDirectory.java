@@ -7,6 +7,7 @@ package model.Animal;
 
 import java.util.ArrayList;
 import model.Enterprise.Enterprise;
+import model.UserAccount.UserAccount;
 
 /**
  *
@@ -53,9 +54,9 @@ public class AnimalDirectory {
         return null;
     }
     
-    public Animal getAnimalByManager(String manager){
-        for(Animal a:animalList){
-            if(manager.equalsIgnoreCase(manager)) return a;
+    public Animal getAnimalByManager(UserAccount manager){
+        for (Animal a : animalList) {
+            if (a.getManager() == manager) return a;
         }
         return null;
     }
