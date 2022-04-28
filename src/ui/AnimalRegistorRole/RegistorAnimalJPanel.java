@@ -245,7 +245,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             animal.setArea(area);
             animal.setSex(sex);
             animal.setWeight(weight);
-            animal.setPhoto(photo);
+            animal.setPhotoIcon(animalImage);
             
             // create work request
             AnimalManagerRequest request = new AnimalManagerRequest();
@@ -282,6 +282,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         Image img1=animalImage.getImage();
         Image img2=img1.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon i=new ImageIcon(img2);
+        animalImage=i;
         return i;
     }
     

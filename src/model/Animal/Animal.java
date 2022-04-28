@@ -5,6 +5,7 @@
  */
 package model.Animal;
 
+import javax.swing.ImageIcon;
 import model.UserAccount.UserAccount; 
 import model.WorkQueue.WorkQueue;
 
@@ -23,6 +24,7 @@ public class Animal {
     private String sex;
     private String weight;
     private String photo;
+    private ImageIcon photoIcon;
     private String vetMessage;
     private String pharmacyMessage;
     private String baviorCheckMessage;
@@ -96,6 +98,14 @@ public class Animal {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public ImageIcon getPhotoIcon() {
+        return photoIcon;
+    }
+
+    public void setPhotoIcon(ImageIcon photoIcon) {
+        this.photoIcon = photoIcon;
     }
 
     public String getVetMessage() {
