@@ -156,7 +156,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
         workArea.remove(this);
         Component[] componentArray = workArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageAnimalJPanel dwjp = (ManageAnimalJPanel) component;
+        ViewOngingAnimalJPanel voajp = (ViewOngingAnimalJPanel) component;
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
 
