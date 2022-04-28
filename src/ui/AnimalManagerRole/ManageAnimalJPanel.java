@@ -197,6 +197,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                     request.getAnimal().setManager(userAccount);
                     request.setStatus("Managed");
                     populateAssignAnimalToMeRequestTable();
+                    JOptionPane.showMessageDialog(null, "Animal assigned to you.","Information",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         } else {
