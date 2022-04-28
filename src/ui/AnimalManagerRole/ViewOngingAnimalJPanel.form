@@ -91,8 +91,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="lblMessage12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtAnimalPhoto" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                               </Group>
                               <Component id="lblPhoto" min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
@@ -111,12 +110,11 @@
                   <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTitle" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblMessage5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtAnimalName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblMessage12" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAnimalPhoto" alignment="3" min="-2" pref="143" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -260,11 +258,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Photo:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtAnimalPhoto">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnimalPhotoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAnimalManagerRequestMedicalCare">
       <Properties>
