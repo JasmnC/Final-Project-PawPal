@@ -164,7 +164,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for (WorkRequest request : getWorkRequestList()){
+        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
             if (request instanceof VolunteerRequest){
             Object[] row = new Object[4];
             row[0] = request.getMessage();
@@ -200,7 +200,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
             }
         }
         if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(request);
+            network.getWorkQueue().getWorkRequestList().add(request);
             account.getWorkQueue().getWorkRequestList().add(request);
         }
         
