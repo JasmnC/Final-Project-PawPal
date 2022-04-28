@@ -6,10 +6,15 @@ package ui.AnimalRegistorRole;
 
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import javax.security.auth.login.AccountException;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Animal.Animal;
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.AnimalShelterEnterprise;
@@ -30,6 +35,9 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
     private Network network;
     private EcoSystem ecosystem;
     private UserAccount userAccount;
+    byte[] image;
+    String imagepath="";
+    ImageIcon animalImage;
     
     public RegistorAnimalJPanel(JPanel workArea, UserAccount userAccount, AnimalShelterEnterprise enterprise) {
         initComponents();
@@ -39,6 +47,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,8 +71,8 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         lblMessage12 = new javax.swing.JLabel();
         btnUploadAnimalPhoto = new javax.swing.JButton();
         txtAnimalPhoto = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbtnMale = new javax.swing.JRadioButton();
+        rbtnFemale = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -118,14 +127,19 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             }
         });
 
-        jRadioButton1.setText("Male");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rbtnMale.setText("Male");
+        rbtnMale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rbtnMaleActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Female");
+        rbtnFemale.setText("Female");
+        rbtnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnFemaleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,8 +170,8 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAnimalArea, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
+                            .addComponent(rbtnMale)
+                            .addComponent(rbtnFemale)
                             .addComponent(txtAnimalWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .addComponent(txtAnimalPhoto))))
                 .addGap(29, 29, 29)
@@ -174,7 +188,6 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(18, 18, 18)
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -185,12 +198,12 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                             .addComponent(lblMessage6)
                             .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMessage7)
-                            .addComponent(jRadioButton1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnMale)
+                            .addComponent(lblMessage7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbtnFemale)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMessage8)
                             .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -214,15 +227,13 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         String area = txtAnimalArea.getText();
         String sex = txtAnimalSex.getText();
         String weight = txtAnimalWeight.getText();
+        String photo = txtAnimalPhoto.getText();
         
         if(name.equals("") || name.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter Animal Name.");
             return;
         }else if(area.equals("")||area.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter animal's area.");
-            return;
-        }else if(sex.equals("")||sex.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter animal's sex.");
             return;
         }else{
             // create Animal
@@ -231,6 +242,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             animal.setArea(area);
             animal.setSex(sex);
             animal.setWeight(weight);
+            animal.setPhoto(photo);
             
             // create work request
             AnimalManagerRequest request = new AnimalManagerRequest();
@@ -252,9 +264,24 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         txtAnimalSex.setText("");
         txtAnimalWeight.setText("");
         txtAnimalArea.setText("");
+        txtAnimalPhoto.setText("");
+        
         
     }//GEN-LAST:event_btnSaveAnimalActionPerformed
-
+    
+    public ImageIcon seticon(String m, byte[] image){
+        if(m!=null){
+            animalImage=new ImageIcon(m);
+        }else{
+            animalImage=new ImageIcon(image);
+        }
+        
+        Image img1=animalImage.getImage();
+        Image img2=img1.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon i=new ImageIcon(img2);
+        return i;
+    }
+    
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         
         workArea.remove(this);
@@ -268,7 +295,20 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnUploadAnimalPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadAnimalPhotoActionPerformed
-        // TODO add your handling code here:
+        JFileChooser pic = new JFileChooser();
+        pic.setCurrentDirectory(new File("animal photo"));
+        
+        FileNameExtensionFilter filer = new FileNameExtensionFilter("All pic", "png", "jpg", "jpeg");
+        pic.addChoosableFileFilter(filer);
+        
+        int a = pic.showOpenDialog(null);
+        if(a==JFileChooser.APPROVE_OPTION){
+           File f=pic.getSelectedFile();
+           String p = f.getAbsolutePath();
+           txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
+           jLabel1.setIcon(seticon(p, null));
+        }
+
     }//GEN-LAST:event_btnUploadAnimalPhotoActionPerformed
 
     private void txtAnimalWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnimalWeightActionPerformed
@@ -279,23 +319,27 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnimalWeightKeyPressed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rbtnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMaleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rbtnMaleActionPerformed
+
+    private void rbtnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFemaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnFemaleActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSaveAnimal;
     private javax.swing.JButton btnUploadAnimalPhoto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lblMessage12;
     private javax.swing.JLabel lblMessage5;
     private javax.swing.JLabel lblMessage6;
     private javax.swing.JLabel lblMessage7;
     private javax.swing.JLabel lblMessage8;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JRadioButton rbtnFemale;
+    private javax.swing.JRadioButton rbtnMale;
     private javax.swing.JTextField txtAnimalArea;
     private javax.swing.JTextField txtAnimalName;
     private javax.swing.JTextField txtAnimalPhoto;
