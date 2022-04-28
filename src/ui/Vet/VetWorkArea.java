@@ -206,7 +206,7 @@ public class VetWorkArea extends javax.swing.JPanel {
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblWorkRequests.getSelectedRow();
-        if (selectedRow < 0) {
+        if (selectedRow < 0 && ) {
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
@@ -233,7 +233,7 @@ public class VetWorkArea extends javax.swing.JPanel {
     private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
         MedCareRequest request = null;
 
-  /**          int selectedRow = tblWorkRequests.getSelectedRow();
+/**         int selectedRow = tblWorkRequests.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a request from table before proceeding");
             return;
