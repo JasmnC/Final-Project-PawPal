@@ -134,5 +134,9 @@ public class Animal {
         this.adpotionRequested = adpotionRequested;
     }
     
+    @Override
+    public String toString(){
+        return name;
+    }
     
 }

@@ -7,10 +7,13 @@
 package ui.VolunteerManager;
 
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.VolunteerEnterprise;
 import model.Network.Network;
 import model.Organization.VolunteerManagementOrganization;
+import model.Role.VolunteerRole;
 import model.UserAccount.UserAccount;
 
 /**
@@ -37,6 +40,9 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         this.network = network;
         this.ecosystem = ecosystem;
         
+        populateCombo();
+        populateTable();
+        
     }
 
 
@@ -55,7 +61,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         tblWorkRequests = new javax.swing.JTable();
         btnAssign = new javax.swing.JButton();
         lblVolunteer = new javax.swing.JLabel();
-        cmbVolunteer = new javax.swing.JComboBox<>();
+        cmbVolunteer = new javax.swing.JComboBox();
         lblRequestOrigin = new javax.swing.JLabel();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -63,20 +69,20 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Volunteer Manager", "Volunteer Assigned", "Status"
+                "Message", "Sender", "Animal Shelter", "Volunteer Manager", "Volunteer Assigned", "Enterprise", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -98,7 +104,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
 
         lblVolunteer.setText("Volunteer:");
 
-        cmbVolunteer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbVolunteer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblRequestOrigin.setText("from: Animal Register Organization");
 
@@ -147,12 +153,34 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
-    private javax.swing.JComboBox<String> cmbVolunteer;
+    private javax.swing.JComboBox cmbVolunteer;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRequestOrigin;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblVolunteer;
     private javax.swing.JTable tblWorkRequests;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+        model.setRowCount(0);
+        
+//        Object[] row = new Object[6];
+//        row[0] = 
+
+    }
+
+    private void populateCombo() {
+
+        cmbVolunteer.removeAllItems();
+        
+        for (UserAccount ua : ecosystem.getUserAccountDirectory().getUserAccountList()) {
+            if (ua.getRole() instanceof VolunteerRole && ua.getEnterprise() == enterprise) {
+                cmbVolunteer.addItem(ua);
+            }
+        }
+        
+    }
 
 }
