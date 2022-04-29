@@ -169,7 +169,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
             row[0] = request.getMessage();
             row[1] = request.getSender();
             row[2] = request.getReceiver();
-            row[3] = ((VolunteerRequest) request).getAssignedVolunteer() == null ? null : ((VolunteerRequest) request).getAssignedVolunteer().getName();
+            row[3] = ((VolunteerRequest) request).getAssignedVolunteer() == null ? null : ((VolunteerRequest) request).getAssignedVolunteer();
             row[4] = request.getReceiver() == null ? null : request.getReceiver().getEnterprise();
             row[5] = request.getStatus();
 
