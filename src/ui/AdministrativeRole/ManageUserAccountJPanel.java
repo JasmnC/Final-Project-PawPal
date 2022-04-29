@@ -145,6 +145,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_role.png"))); // NOI18N
         lblTitle.setText("Manage Users");
 
         lblUsersList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -198,6 +199,8 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnCreateUser.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
+        btnCreateUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnCreateUser.setText("Create");
         btnCreateUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
