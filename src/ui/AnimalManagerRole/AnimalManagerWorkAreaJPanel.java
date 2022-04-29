@@ -137,13 +137,13 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewOngoingAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOngoingAnimalJButtonActionPerformed
 
-        
-        
-        ViewOngingAnimalJPanel viewOngoingAnimalJPanel = new ViewOngingAnimalJPanel(workArea, userAccount, enterprise, network);
-        workArea.add("viewOngoingAnimalJPanel", viewOngoingAnimalJPanel);
-
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        layout.next(workArea);
+//        
+//        
+//        ViewOngingAnimalJPanel viewOngoingAnimalJPanel = new ViewOngingAnimalJPanel(workArea, userAccount, enterprise, network);
+//        workArea.add("viewOngoingAnimalJPanel", viewOngoingAnimalJPanel);
+//
+//        CardLayout layout = (CardLayout) workArea.getLayout();
+//        layout.next(workArea);
 
     }//GEN-LAST:event_viewOngoingAnimalJButtonActionPerformed
 
@@ -158,11 +158,11 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewAdoptionRequestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAdoptionRequestJButtonActionPerformed
         // TODO add your handling code here:
-        AdoptionRequestJPanel adoptionRequestJPanel = new AdoptionRequestJPanel(workArea, userAccount, enterprise);
-        workArea.add("adoptionRequestJPanel", adoptionRequestJPanel);
-
-        CardLayout layout = (CardLayout) (workArea.getLayout());
-        layout.next(workArea);
+//        AdoptionRequestJPanel adoptionRequestJPanel = new AdoptionRequestJPanel(workArea, userAccount, enterprise);
+//        workArea.add("adoptionRequestJPanel", adoptionRequestJPanel);
+//
+//        CardLayout layout = (CardLayout) (workArea.getLayout());
+//        layout.next(workArea);
     }//GEN-LAST:event_viewAdoptionRequestJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

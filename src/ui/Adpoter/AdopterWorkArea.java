@@ -232,7 +232,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
             request.setSender(userAccount);
             request.setStatus("Pending Review");
             
-            selectedAnimal.getManager().getWorkQueue().getWorkRequestList().add(request);
+            network.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);           
             
         } else {

@@ -27,18 +27,20 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
     private JPanel workArea;
     private UserAccount userAccount;
     private AnimalShelterEnterprise enterprise;
-    private Animal animalRequestAdoption;
+    private Network network;
+    private Animal animal;
     
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public AdoptionRequestJPanel(JPanel workArea, UserAccount account, AnimalShelterEnterprise enterprise) {
+    public AdoptionRequestJPanel(JPanel workArea, UserAccount account, Animal animal, AnimalShelterEnterprise enterprise, Network network) {
         initComponents();
         
         this.workArea = workArea;
         this.userAccount = account;
         this.enterprise = enterprise;
-        this.animalRequestAdoption = enterprise.getAnimalDirectory().getAnimalByAdoptionRequested(Boolean.TRUE);
+        this.network = network;
+        this.animal = animal;
         
         populateRequestTable();
     }
@@ -48,15 +50,14 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblAnimalAdoptionWorkQueue.getModel();
         
         model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            if(request instanceof AdoptionRequest){
+        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
+            if(request instanceof AdoptionRequest && request.getAnimal() == animal){
             Object[] row = new Object[5];
             row[0] = request.getMessage();
-            row[1] = request.getAnimal().getId();
-            row[2] = request.getAnimal().getName();
-            row[3] = request.getSender();
-            row[4] = ((AdoptionRequest) request).getAdoptor();
-            row[5] = request.getStatus();
+            row[1] = request.getSender();
+            row[2] = request.getSender().getName();
+            row[3] = request.getSender().getOrgainization();
+            row[4] = request.getStatus();
             
             model.addRow(row);
             }
@@ -76,7 +77,6 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAnimalAdoptionWorkQueue = new javax.swing.JTable();
         btnApproveAnimalAdoptionRequest = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnRejectAnimalAdoptionRequest = new javax.swing.JButton();
         btnBack1 = new javax.swing.JButton();
@@ -85,20 +85,20 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
 
         tblAnimalAdoptionWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Message", "ID", "Name", "Sender", "Adoptor", "Status"
+                "Message", "Applicant", "Applicant Name", "Organization", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -110,13 +110,6 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblAnimalAdoptionWorkQueue);
-        if (tblAnimalAdoptionWorkQueue.getColumnModel().getColumnCount() > 0) {
-            tblAnimalAdoptionWorkQueue.getColumnModel().getColumn(1).setResizable(false);
-            tblAnimalAdoptionWorkQueue.getColumnModel().getColumn(2).setResizable(false);
-            tblAnimalAdoptionWorkQueue.getColumnModel().getColumn(3).setResizable(false);
-            tblAnimalAdoptionWorkQueue.getColumnModel().getColumn(4).setResizable(false);
-            tblAnimalAdoptionWorkQueue.getColumnModel().getColumn(5).setResizable(false);
-        }
 
         btnApproveAnimalAdoptionRequest.setText("Approve");
         btnApproveAnimalAdoptionRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -125,15 +118,8 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Manage Animal");
+        lblTitle.setText("Adoption Request");
 
         btnRejectAnimalAdoptionRequest.setText("Reject");
         btnRejectAnimalAdoptionRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -155,32 +141,31 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblTitle)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBack1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnRefresh))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBack1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnApproveAnimalAdoptionRequest)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRejectAnimalAdoptionRequest)))
                 .addGap(80, 80, 80))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApproveAnimalAdoptionRequest, btnRejectAnimalAdoptionRequest});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle)
-                    .addComponent(btnRefresh)
                     .addComponent(btnBack1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApproveAnimalAdoptionRequest)
                     .addComponent(btnRejectAnimalAdoptionRequest))
@@ -190,17 +175,31 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
 
     private void btnApproveAnimalAdoptionRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveAnimalAdoptionRequestActionPerformed
         
+        int selectedRow = tblAnimalAdoptionWorkQueue.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first");
+            return;
+        }
+        
+        AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
+        request.setStatus("Rejected");
+        request.getAnimal().setAdoptor(request.getSender());
+        
         
     }//GEN-LAST:event_btnApproveAnimalAdoptionRequestActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-
-        populateRequestTable();
-        
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
     private void btnRejectAnimalAdoptionRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectAnimalAdoptionRequestActionPerformed
         
+        int selectedRow = tblAnimalAdoptionWorkQueue.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first");
+            return;
+        }
+        
+        AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
+        request.setStatus("Rejected");
         
     }//GEN-LAST:event_btnRejectAnimalAdoptionRequestActionPerformed
 
@@ -214,7 +213,6 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApproveAnimalAdoptionRequest;
     private javax.swing.JButton btnBack1;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRejectAnimalAdoptionRequest;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
