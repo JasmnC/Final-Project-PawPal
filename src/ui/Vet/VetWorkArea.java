@@ -61,7 +61,7 @@ public class VetWorkArea extends javax.swing.JPanel {
                 }
             }
         }
-        //      btnViewDetial.setEnabled(false);
+
         populateRequestTable();
     }
 

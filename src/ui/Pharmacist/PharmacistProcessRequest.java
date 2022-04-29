@@ -30,6 +30,7 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
     PharmacistWorkRequest request;
     private Animal animal;
     private AnimalDirectory animalDirectory;
+    private TreatmentOrganization treatmentOrganization;
     Network network;
 
     /**
@@ -38,11 +39,12 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
     public PharmacistProcessRequest(JPanel userProcessContainer, PharmacistWorkRequest request, UserAccount userAccount, Enterprise enterprise,
             Animal animal, AnimalDirectory animalDirectory, EcoSystem ecoSystem, TreatmentOrganization treatmentOrganization) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;
+          this.userProcessContainer = userProcessContainer;
         this.request = request;
         this.userAccount = userAccount;
+        this.treatmentOrganization = treatmentOrganization;
         this.enterprise = enterprise;
-        this.animal = animal;
+        this.animal = request.getAnimal();
         this.animalDirectory = animalDirectory;
         this.ecoSystem = ecoSystem;
         for (Network net : ecoSystem.getNetworkList()) {
@@ -52,7 +54,6 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
                 }
             }
         }
-
     }
 
     /**
@@ -136,56 +137,20 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
 
-      if (txtResults.getText().isEmpty()) {
+       if (txtResults.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter message");
         } else {
+            animal.setPharmacyMessage(txtResults.getText());
+            request.setStatus("Completed");
             request.setResult(txtResults.getText());
-            request.setStatus("Delivered");
-            MedCareRequest temp = new MedCareRequest(); 
-            temp.setStatus("Medically Fit");
-            temp.setMessage("Child has been medicated");
-            temp.setSender(userAccount);
-            temp.setVetResult("completed");
-            temp.getAnimal().setId(request.getAnimal().getId());
-            temp.getAnimal().setName(request.getAnimal().getName());
-            if (this.animalDirectory != null && this.animalDirectory.getAnimalList().size() > 0) {
-                for (Animal animal : this.animalDirectory.getAnimalList()) {
-          /**          if (request.getAnimal().getId() == animal.getId()) {
-                        if ("Acquired".equalsIgnoreCase(temp.getStatus())) {
-                          //  animal.setMedicalHelp(false);
-                            temp.setIsAcquiredReq(false);
-                        } else {
-                            temp.setIsAcquiredReq(true);
-                        }
-                        break;
-                    }     **/
-                }
-            }
-            Organization org = null;
-            for (Network network : ecoSystem.getNetworkList()) {
-                for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
-                        Role role = null;
-                        if (organization instanceof TreatmentOrganization && role instanceof PharmacistRole) {
-                            org = organization;
-                            break;
-                        }
-                    }
-                }
-            }
-            if (org != null) {
-                enterprise.getWorkQueue().getWorkRequestList().add(temp);
-                userAccount.getWorkQueue().getWorkRequestList().add(temp);
-            //    ecoSystem.getWorkQueue().getWorkRequestList().add(temp);
-            }
-        }
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        PharmacistWorkArea panel = (PharmacistWorkArea) component;
-        panel.populateTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+            JOptionPane.showMessageDialog(this, " Pharmaceutical Therapy Request is completed now!", "Thank you!", JOptionPane.INFORMATION_MESSAGE);
+            
+
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            userProcessContainer.add("BTWorkArea", new PharmacistWorkArea(userProcessContainer, userAccount, treatmentOrganization, enterprise, network, ecoSystem));
+            layout.next(userProcessContainer);
+            
+       }
         
     }//GEN-LAST:event_btnSubmitActionPerformed
 

@@ -12,6 +12,7 @@ import model.Animal.Animal;
 import model.Animal.AnimalDirectory;
 import model.EcoSystem.EcoSystem;
 import model.Enterprise.Enterprise;
+import model.Enterprise.MedicalCareEnterprise;
 import model.Network.Network;
 import model.Organization.Organization;
 import model.Organization.TreatmentOrganization;
@@ -28,13 +29,14 @@ import ui.BehaviorTherapist.BTWorkArea;
  */
 public class BTProcessRequest extends javax.swing.JPanel {
 
-   private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private UserAccount userAccount;
     private Enterprise enterprise;
     private EcoSystem ecoSystem;
     BTWorkRequest request;
     private Animal animal;
     private AnimalDirectory animalDirectory;
+    private TreatmentOrganization treatmentOrganization;
     Network network;
 
     /**
@@ -43,11 +45,12 @@ public class BTProcessRequest extends javax.swing.JPanel {
     public BTProcessRequest(JPanel userProcessContainer, BTWorkRequest request, UserAccount userAccount, Enterprise enterprise,
             Animal animal, AnimalDirectory animalDirectory, EcoSystem ecoSystem, TreatmentOrganization treatmentOrganization) {
         initComponents();
-          this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.request = request;
         this.userAccount = userAccount;
+        this.treatmentOrganization = treatmentOrganization;
         this.enterprise = enterprise;
-        this.animal = animal;
+        this.animal = request.getAnimal();
         this.animalDirectory = animalDirectory;
         this.ecoSystem = ecoSystem;
         for (Network net : ecoSystem.getNetworkList()) {
@@ -143,7 +146,7 @@ public class BTProcessRequest extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
         userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 
     }//GEN-LAST:event_btnBackActionPerformed
@@ -152,53 +155,18 @@ public class BTProcessRequest extends javax.swing.JPanel {
         if (txtResults.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter message");
         } else {
+            animal.setBaviorCheckMessage(txtResults.getText());
+            request.setStatus("Completed");
             request.setResult(txtResults.getText());
-            request.setStatus("Delivered");
-            MedCareRequest temp = new MedCareRequest();
-            temp.setStatus("Medically Fit");
-            temp.setMessage("Child has been medicated");
-            temp.setSender(userAccount);
-            temp.setVetResult("completed");
-            temp.getAnimal().setId(request.getAnimal().getId());
-            temp.getAnimal().setName(request.getAnimal().getName());
-            if (this.animalDirectory != null && this.animalDirectory.getAnimalList().size() > 0) {
-                for (Animal animal : this.animalDirectory.getAnimalList()) {
-                    /**          if (request.getAnimal().getId() == animal.getId()) {
-                        if ("Acquired".equalsIgnoreCase(temp.getStatus())) {
-                            //  animal.setMedicalHelp(false);
-                            temp.setIsAcquiredReq(false);
-                        } else {
-                            temp.setIsAcquiredReq(true);
-                        }
-                        break;
-                    }     **/
-                }
-            }
-            Organization org = null;
-            for (Network network : ecoSystem.getNetworkList()) {
-                for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
-                        Role role = null;
-                        if (organization instanceof TreatmentOrganization && role instanceof BehaviorTherapistRole) {
-                            org = organization;
-                            break;
-                        }
-                    }
-                }
-            }
-            if (org != null) {
-                enterprise.getWorkQueue().getWorkRequestList().add(temp);
-                userAccount.getWorkQueue().getWorkRequestList().add(temp);
-                //    ecoSystem.getWorkQueue().getWorkRequestList().add(temp);
-            }
+            JOptionPane.showMessageDialog(this, " Behavior Therapy Request is completed now!", "Thank you!", JOptionPane.INFORMATION_MESSAGE);
+            
+
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            userProcessContainer.add("BTWorkArea", new BTWorkArea(userProcessContainer, userAccount, treatmentOrganization, (MedicalCareEnterprise) enterprise, network, ecoSystem));
+            layout.next(userProcessContainer);
+
         }
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        BTWorkArea panel = (BTWorkArea) component;
-        panel.populateTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void txtResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultsActionPerformed
