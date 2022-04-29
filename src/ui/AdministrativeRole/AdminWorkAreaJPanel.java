@@ -48,10 +48,13 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageUsers = new javax.swing.JButton();
         btnViewDashboard = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(224, 227, 255));
+
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_admin.png"))); // NOI18N
         lblTitle.setText("System Admin Work Area");
 
+        btnManageNetwork.setBackground(new java.awt.Color(245, 245, 255));
         btnManageNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_network.png"))); // NOI18N
         btnManageNetwork.setText("Manage Network");
         btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +63,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageEnterprise.setBackground(new java.awt.Color(245, 245, 255));
         btnManageEnterprise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_enterprise.png"))); // NOI18N
         btnManageEnterprise.setText("Manage Enterprise");
         btnManageEnterprise.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +72,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageOrganization.setBackground(new java.awt.Color(245, 245, 255));
         btnManageOrganization.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_organization.png"))); // NOI18N
         btnManageOrganization.setText("Manage Organizations");
         btnManageOrganization.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +81,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageUsers.setBackground(new java.awt.Color(245, 245, 255));
         btnManageUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_role.png"))); // NOI18N
         btnManageUsers.setText("Manage Users");
         btnManageUsers.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +90,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewDashboard.setBackground(new java.awt.Color(245, 245, 255));
         btnViewDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_dashboard.png"))); // NOI18N
         btnViewDashboard.setText("Dashboard");
         btnViewDashboard.addActionListener(new java.awt.event.ActionListener() {

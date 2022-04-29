@@ -82,9 +82,12 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAdoptionRequests = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(254, 236, 236));
+
         lblAuthorizationStatus.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAuthorizationStatus.setText("Authorization Status:");
 
+        tblAnimalList.setBackground(new java.awt.Color(255, 238, 238));
         tblAnimalList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -116,6 +119,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         lblAnimalSelection.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAnimalSelection.setText("Animal Selection");
 
+        btnViewDetails.setBackground(new java.awt.Color(255, 153, 153));
         btnViewDetails.setText("View Animal Details");
         btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +127,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
             }
         });
 
+        btnSendRequest.setBackground(new java.awt.Color(255, 153, 153));
         btnSendRequest.setText("Send Adoption Request");
         btnSendRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +138,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         lblAdoptionRequest.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAdoptionRequest.setText("Your Adoption Request");
 
+        tblAdoptionRequests.setBackground(new java.awt.Color(255, 238, 238));
         tblAdoptionRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -215,7 +221,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
                 .addComponent(lblAdoptionRequest)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(503, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
