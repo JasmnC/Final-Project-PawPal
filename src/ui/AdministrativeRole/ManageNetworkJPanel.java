@@ -52,10 +52,13 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         txtNetworkName = new javax.swing.JTextField();
         btnCreateNetwork = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(224, 227, 255));
+
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_network.png"))); // NOI18N
         lblTitle.setText("Manage Network");
 
+        btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +105,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         lblEmployeeName.setText("Name:");
 
+        btnCreateNetwork.setBackground(new java.awt.Color(245, 245, 255));
         btnCreateNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         btnCreateNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnCreateNetwork.setText("Create Network");

@@ -112,6 +112,8 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         btnCreateUser = new javax.swing.JButton();
         lblPassword = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(224, 227, 255));
+
         tblUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -137,6 +139,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblUsers);
 
+        btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,6 +202,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnCreateUser.setBackground(new java.awt.Color(245, 245, 255));
         btnCreateUser.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         btnCreateUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnCreateUser.setText("Create");

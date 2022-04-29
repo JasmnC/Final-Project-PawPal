@@ -125,7 +125,6 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
                         .addComponent(lblTitle)
                         .addGap(406, 406, 406))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addComponent(lblRequestOrigin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblVolunteer)

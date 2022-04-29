@@ -64,8 +64,12 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         lblRequestOrigin = new javax.swing.JLabel();
         btnAssign = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 237, 252));
+
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Process Adopter Account Authorization Request");
+
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,6 +99,8 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
+        btnApprove.setBackground(new java.awt.Color(204, 255, 204));
+        btnApprove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_approved.png"))); // NOI18N
         btnApprove.setText("Approve");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +110,8 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
 
         lblRequestOrigin.setText("from: Adopter Origanization");
 
+        btnAssign.setBackground(new java.awt.Color(204, 255, 204));
+        btnAssign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_assign.png"))); // NOI18N
         btnAssign.setText("Assign to Me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

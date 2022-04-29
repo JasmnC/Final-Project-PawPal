@@ -62,6 +62,8 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         lblOrganizationName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(224, 227, 255));
+
         tblOrganizations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -94,6 +96,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             tblOrganizations.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        btnAdd.setBackground(new java.awt.Color(245, 245, 255));
         btnAdd.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnAdd.setText("Create Organization");
@@ -112,6 +115,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
         lblSelectOrgType.setText("Select Organization Type:");
 
+        btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

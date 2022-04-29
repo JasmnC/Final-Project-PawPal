@@ -62,6 +62,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         lblEnterpriseName = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(224, 227, 255));
+
+        btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +132,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         lblSelectEnterpriseType.setText("Select Enterprise Type:");
 
+        btnAdd.setBackground(new java.awt.Color(245, 245, 255));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnAdd.setText("Create Enterprise");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +141,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtName.setBackground(new java.awt.Color(245, 245, 255));
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
