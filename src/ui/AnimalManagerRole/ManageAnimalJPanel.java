@@ -23,7 +23,7 @@ import model.WorkQueue.AnimalManagerRequest;
 
 /**
  *
- * @author raunak
+ * @author anitachen
  */
 public class ManageAnimalJPanel extends javax.swing.JPanel {
 
@@ -63,7 +63,6 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         tblAnimalManagerWorkArea = new javax.swing.JTable();
         btnAssignAnimalToMe = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         btnViewDetial = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -106,13 +105,6 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Manage Animal");
 
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
         btnViewDetial.setText("View Animal Detail");
         btnViewDetial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,8 +123,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(lblTitle)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 469, Short.MAX_VALUE)
-                            .addComponent(btnBack))
+                            .addGap(0, 566, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(btnAssignAnimalToMe)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -142,11 +133,9 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(lblTitle)
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(btnBack))
-                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -187,14 +176,6 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnAssignAnimalToMeActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-        workArea.remove(this);
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        layout.previous(workArea);
-
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
         
         
@@ -226,7 +207,6 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignAnimalToMe;
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnViewDetial;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;

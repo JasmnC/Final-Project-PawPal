@@ -184,6 +184,12 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         }
         
         AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
+        
+        if (request.getStatus().equals("Rejected")){
+            JOptionPane.showMessageDialog(null, "This request has been rejected", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         request.setStatus("Approved");
         request.getAnimal().setAdoptor(request.getSender());
         
