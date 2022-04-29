@@ -66,6 +66,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         lblVolunteer = new javax.swing.JLabel();
         cmbVolunteer = new javax.swing.JComboBox();
         lblRequestOrigin = new javax.swing.JLabel();
+        lblRequestOrigin1 = new javax.swing.JLabel();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Assign Volunteer to Volunteer Request");
@@ -109,7 +110,9 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
 
         cmbVolunteer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lblRequestOrigin.setText("from: Animal Register Organization");
+        lblRequestOrigin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_volunteer.png"))); // NOI18N
+
+        lblRequestOrigin1.setText("from: Animal Register Organization");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -117,35 +120,47 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTitle)
-                        .addGap(184, 184, 184)
-                        .addComponent(lblRequestOrigin))
+                        .addGap(406, 406, 406))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblRequestOrigin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblVolunteer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbVolunteer, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAssign))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(373, Short.MAX_VALUE)
+                    .addComponent(lblRequestOrigin1)
+                    .addGap(130, 130, 130)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(lblRequestOrigin))
+                .addComponent(lblTitle)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssign)
-                    .addComponent(lblVolunteer)
-                    .addComponent(cmbVolunteer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAssign)
+                        .addComponent(lblVolunteer)
+                        .addComponent(cmbVolunteer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRequestOrigin))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(53, 53, 53)
+                    .addComponent(lblRequestOrigin1)
+                    .addContainerGap(329, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,6 +210,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
     private javax.swing.JComboBox cmbVolunteer;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRequestOrigin;
+    private javax.swing.JLabel lblRequestOrigin1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblVolunteer;
     private javax.swing.JTable tblWorkRequests;

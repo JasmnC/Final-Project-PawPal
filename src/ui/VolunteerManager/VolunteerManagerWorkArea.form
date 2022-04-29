@@ -18,13 +18,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
-                      <Component id="lblRequestOrigin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="406" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Component id="lblRequestOrigin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="lblVolunteer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="cmbVolunteer" min="-2" pref="174" max="-2" attributes="0"/>
@@ -33,7 +35,14 @@
                   </Group>
                   <Component id="jScrollPane1" alignment="1" min="-2" pref="659" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="373" max="32767" attributes="0"/>
+                  <Component id="lblRequestOrigin1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -41,19 +50,26 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblRequestOrigin" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="169" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAssign" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblVolunteer" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbVolunteer" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnAssign" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblVolunteer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbVolunteer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lblRequestOrigin" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <Component id="lblRequestOrigin1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="329" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,6 +178,13 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRequestOrigin">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/icon_volunteer.png"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRequestOrigin1">
       <Properties>
         <Property name="text" type="java.lang.String" value="from: Animal Register Organization"/>
       </Properties>

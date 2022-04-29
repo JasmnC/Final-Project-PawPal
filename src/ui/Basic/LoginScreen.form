@@ -45,23 +45,26 @@
                       <Component id="txtNewUserName" min="-2" pref="118" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-                      <Component id="lblNewPassword" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="pwdNewPassword" min="-2" pref="118" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Component id="lblName" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="txtName" min="-2" pref="118" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace min="75" pref="75" max="-2" attributes="0"/>
                       <Component id="btnRegister" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="lblRegister1" min="-2" pref="202" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                          <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtName" min="-2" pref="118" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                          <Component id="lblNewPassword" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="pwdNewPassword" min="-2" pref="118" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="71" pref="71" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
               <Component id="jSeparator" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="125" pref="125" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -93,12 +96,42 @@
           <Group type="102" attributes="0">
               <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                              <Component id="jSeparator" min="-2" pref="475" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="lblLogin2" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                              <Component id="lblLogIn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Component id="lblUser" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtUserName" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pwdPassword" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                              <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="lblRegister1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lblRegister" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
@@ -148,30 +181,6 @@
                       </Group>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                       <Component id="btnRegister" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      <Component id="jSeparator" min="-2" pref="475" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="lblLogin2" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                      <Component id="lblLogIn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblUser" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="txtUserName" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
-                          <Component id="pwdPassword" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -359,6 +368,18 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Icon/icon_login.png"/>
         </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRegister1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="13" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/icon_adopt.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Register as Adoptor"/>
       </Properties>
     </Component>
   </SubComponents>
