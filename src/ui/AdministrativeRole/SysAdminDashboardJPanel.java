@@ -8,23 +8,9 @@ import model.Organization.Organization;
 import model.Organization.Organization.Type;
 import model.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.EcoSystem.EcoSystem;
-import model.Network.Network;
-import model.WorkQueue.AdoptionRequest;
-import model.WorkQueue.AnimalManagerRequest;
-import model.WorkQueue.MedCareRequest;
-import model.WorkQueue.VolunteerRequest;
-import model.WorkQueue.WorkRequest;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
 
 /**
  *
@@ -32,23 +18,19 @@ import org.jfree.data.general.PieDataset;
  */
 public class SysAdminDashboardJPanel extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
-    EcoSystem ecoSystem;
-    Network network;
-    JFreeChart barChart;
-
+    private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
+    
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public SysAdminDashboardJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Network network) {
+    public SysAdminDashboardJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecosystem;
-        this.network = network;
-        populateBar();
-
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,10 +42,8 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
 
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        jPanel_ourService = new javax.swing.JPanel();
-        jLabel_ourService = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -75,56 +55,16 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Dashboard");
 
-        javax.swing.GroupLayout jPanel_ourServiceLayout = new javax.swing.GroupLayout(jPanel_ourService);
-        jPanel_ourService.setLayout(jPanel_ourServiceLayout);
-        jPanel_ourServiceLayout.setHorizontalGroup(
-            jPanel_ourServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
-        );
-        jPanel_ourServiceLayout.setVerticalGroup(
-            jPanel_ourServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jLabel_ourService.setText("Our Service:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 205, Short.MAX_VALUE)
-        );
-
-        jLabel2.setText("???????????");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jPanel_ourService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel_ourService)
-                            .addComponent(btnBack))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(lblTitle))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(306, 306, 306)
-                                .addComponent(jLabel2)))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(btnBack)
+                .addGap(29, 29, 29)
+                .addComponent(lblTitle)
+                .addContainerGap(558, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,15 +73,7 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lblTitle))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_ourService)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_ourService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(446, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,49 +86,6 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel_ourService;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel_ourService;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
-
-    private void populateBar() {
-        ArrayList<AdoptionRequest> adoptionRequests = new ArrayList<>();
-        ArrayList<MedCareRequest> medCareRequests = new ArrayList<>();
-        ArrayList<VolunteerRequest> volunteerRequests = new ArrayList<>();
-        ArrayList<AnimalManagerRequest> animalManagerRequests = new ArrayList<>();
-
-        Map<String, Integer> workReqMap = new HashMap<>();
-        for (WorkRequest workQRequest : network.getWorkQueue().getWorkRequestList()) {
-           
-            if (workQRequest instanceof AdoptionRequest) {
-                adoptionRequests.add((AdoptionRequest) workQRequest);
-            }
-            else if (workQRequest instanceof MedCareRequest) {
-                medCareRequests.add((MedCareRequest) workQRequest);
-            }
-            else if (workQRequest instanceof VolunteerRequest){
-                volunteerRequests.add((VolunteerRequest) workQRequest);
-            }
-            else if (workQRequest instanceof AnimalManagerRequest){
-                animalManagerRequests.add((AnimalManagerRequest) workQRequest);
-            }
-        }
-        
-        workReqMap.put("Adoption Services", adoptionRequests.size());
-        workReqMap.put("Medical Care Services", medCareRequests.size());
-        workReqMap.put("Volunteer Services", volunteerRequests.size());
-        workReqMap.put("Animal Shelter Services", animalManagerRequests.size());
-        
-        barChart = ChartFactory.createPieChart("Our Services", createDataset(workReqMap), true, true, false);
-
-        ChartPanel chartPanel = new ChartPanel(barChart);
-        jPanel_ourService.removeAll();
-        jPanel_ourService.add(chartPanel);
-        jPanel_ourService.validate();
-    }
-    
-       
-    
 }
