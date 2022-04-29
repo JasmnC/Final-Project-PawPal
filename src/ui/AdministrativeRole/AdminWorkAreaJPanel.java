@@ -49,8 +49,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         btnViewDashboard = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_admin.png"))); // NOI18N
         lblTitle.setText("System Admin Work Area");
 
+        btnManageNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_network.png"))); // NOI18N
         btnManageNetwork.setText("Manage Network");
         btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +60,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageEnterprise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_enterprise.png"))); // NOI18N
         btnManageEnterprise.setText("Manage Enterprise");
         btnManageEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +68,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageOrganization.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_organization.png"))); // NOI18N
         btnManageOrganization.setText("Manage Organizations");
         btnManageOrganization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +76,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_role.png"))); // NOI18N
         btnManageUsers.setText("Manage Users");
         btnManageUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +84,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_dashboard.png"))); // NOI18N
         btnViewDashboard.setText("Dashboard");
         btnViewDashboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,22 +97,23 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnManageUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTitle)
-                    .addComponent(btnManageOrganization, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageEnterprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnViewDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(591, Short.MAX_VALUE))
+                .addGap(85, 85, 85)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnManageUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageOrganization, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageEnterprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnViewDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTitle))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(lblTitle)
-                .addGap(60, 60, 60)
+                .addGap(28, 28, 28)
                 .addComponent(btnManageNetwork)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageEnterprise)
@@ -116,7 +123,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageUsers)
                 .addGap(18, 18, 18)
                 .addComponent(btnViewDashboard)
-                .addContainerGap())
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
