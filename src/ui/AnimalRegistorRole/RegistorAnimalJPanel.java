@@ -81,6 +81,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        btnSaveAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnSaveAnimal.setText("Save");
         btnSaveAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +125,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage12.setText("Photo:");
 
+        btnUploadAnimalPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_addPhoto.png"))); // NOI18N
         btnUploadAnimalPhoto.setText("Upload");
         btnUploadAnimalPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +211,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                             .addComponent(lblMessage7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbtnFemale)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMessage8)
                             .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -221,9 +223,9 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                     .addComponent(lblMessage12)
                     .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUploadAnimalPhoto))
-                .addGap(64, 64, 64)
+                .addGap(46, 46, 46)
                 .addComponent(btnSaveAnimal)
-                .addGap(200, 200, 200))
+                .addGap(218, 218, 218))
         );
     }// </editor-fold>//GEN-END:initComponents
 
