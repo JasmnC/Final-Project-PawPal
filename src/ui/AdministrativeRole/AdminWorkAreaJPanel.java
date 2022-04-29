@@ -139,7 +139,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDashboardActionPerformed
 
-        SysAdminDashboardJPanel sadjp = new SysAdminDashboardJPanel(userProcessContainer, ecoSystem);
+        SysAdminDashboardJPanel sadjp = new SysAdminDashboardJPanel(userProcessContainer , ecoSystem,  userAccount.getNetwork());
         userProcessContainer.add("Dashboard", sadjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
