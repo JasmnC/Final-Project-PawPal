@@ -101,6 +101,7 @@ public class RequestBT extends javax.swing.JPanel {
         lblMessageTitle = new javax.swing.JLabel();
 
         btnRequestBT.setFont(new java.awt.Font("新細明體", 1, 11)); // NOI18N
+        btnRequestBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N
         btnRequestBT.setText("Request");
         btnRequestBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -145,6 +145,7 @@ public class BTWorkArea extends javax.swing.JPanel {
             }
         });
 
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_refresh2.png"))); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,7 +192,7 @@ public class BTWorkArea extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssign)
                     .addComponent(btnProcess))
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -124,6 +124,7 @@ public class VetWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_refresh2.png"))); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,15 +185,12 @@ public class VetWorkArea extends javax.swing.JPanel {
                         .addComponent(btnRefresh)))
                 .addGap(6, 6, 6)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(icon))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnViewDetial)
-                            .addComponent(btnAssignToMe))))
+                    .addComponent(icon)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnViewDetial)
+                        .addComponent(btnAssignToMe)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

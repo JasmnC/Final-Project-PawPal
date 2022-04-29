@@ -58,6 +58,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        btnRequestVet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N
         btnRequestVet.setText("Request Vet");
         btnRequestVet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +108,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                 .addComponent(txtSendMedicalCareMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRequestVet)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

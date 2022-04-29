@@ -53,6 +53,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         btnCreateNetwork = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_network.png"))); // NOI18N
         lblTitle.setText("Manage Network");
 
         btnBack.setText("<< Back");
@@ -101,6 +102,8 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         lblEmployeeName.setText("Name:");
 
+        btnCreateNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
+        btnCreateNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnCreateNetwork.setText("Create Network");
         btnCreateNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,16 +122,17 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                     .addComponent(lblEmployeeList)
                     .addComponent(lblOrganizationList1)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblEmployeeName)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCreateNetwork)
-                            .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTitle)))
+                        .addComponent(lblTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCreateNetwork)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblEmployeeName)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,9 +152,9 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmployeeName))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCreateNetwork)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

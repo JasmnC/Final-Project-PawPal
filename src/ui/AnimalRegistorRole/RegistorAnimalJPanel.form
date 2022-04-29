@@ -98,7 +98,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="rbtnFemale" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblMessage8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAnimalWeight" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -115,9 +115,9 @@
                   <Component id="txtAnimalPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUploadAnimalPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Component id="btnSaveAnimal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -125,6 +125,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnSaveAnimal">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/icon_add.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
       <Events>
@@ -199,6 +202,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUploadAnimalPhoto">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/icon_addPhoto.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Upload"/>
       </Properties>
       <Events>
