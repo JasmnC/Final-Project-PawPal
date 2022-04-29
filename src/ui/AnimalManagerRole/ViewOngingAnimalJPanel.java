@@ -30,14 +30,14 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     private Network network;
     private Animal animal;
     
-    public ViewOngingAnimalJPanel(JPanel userProcessContainer, UserAccount account, AnimalShelterEnterprise enterprise, Network network) {
+    public ViewOngingAnimalJPanel(JPanel userProcessContainer, UserAccount account, Animal animal, AnimalShelterEnterprise enterprise, Network network) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
         this.network = network;
-        this.animal = enterprise.getAnimalDirectory().getAnimalByManager(userAccount);
+        this.animal = animal;
         
         showAnimalDetails();
         
@@ -70,6 +70,9 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         tblAnimalManagerWorkArea = new javax.swing.JTable();
         lblMessage13 = new javax.swing.JLabel();
         lblPhoto = new javax.swing.JLabel();
+        lblMedicalCareMessage = new javax.swing.JLabel();
+        txtSendMedicalCareMessage = new javax.swing.JTextField();
+        viewAdoptionRequestJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -96,13 +99,13 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         lblMessage8.setText("Weight:");
 
         lblMessage9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMessage9.setText("Message from Behavior Check:");
+        lblMessage9.setText("Behavior Check:");
 
         lblMessage10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMessage10.setText("Message from Vet:");
+        lblMessage10.setText("Vet Feedback:");
 
         lblMessage11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMessage11.setText("Message from Pharmacy:");
+        lblMessage11.setText("Pharmacy Feedback:");
 
         lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage12.setText("Photo:");
@@ -145,69 +148,79 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         lblMessage13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage13.setText("Medical Care Status:");
 
+        lblMedicalCareMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMedicalCareMessage.setText("Message:");
+
+        viewAdoptionRequestJButton.setText("View Adoption Request");
+        viewAdoptionRequestJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAdoptionRequestJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAnimalManagerRequestMedicalCare)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(lblMessage11)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtAnimalMessageFromPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblMessage9)
-                                        .addComponent(lblMessage13))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(94, 94, 94)
-                                    .addComponent(btnBack)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lblTitle)
-                                    .addGap(88, 88, 88))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblMessage5)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblMessage6)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblMessage7)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtAnimalSex, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblMessage8)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
+                    .addComponent(viewAdoptionRequestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(lblTitle)
+                                .addGap(88, 88, 88))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblMessage5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblMessage6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblMessage7)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAnimalSex, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblMessage8)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblMessage10)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtAnimalMessageFromVet, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGap(44, 44, 44)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblMessage12)
-                                    .addGap(163, 163, 163))
-                                .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                            .addComponent(lblMessage9)
+                                            .addComponent(lblMessage13)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnBack)
+                                                .addGap(44, 44, 44))
+                                            .addComponent(lblMessage11))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtAnimalMessageFromVet, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtAnimalMessageFromPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(28, 28, 28)
+                        .addComponent(lblMessage12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMedicalCareMessage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSendMedicalCareMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAnimalManagerRequestMedicalCare)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAnimalManagerRequestMedicalCare, viewAdoptionRequestJButton});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -215,18 +228,18 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lblTitle))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMessage5)
-                    .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMessage12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMessage6)
-                    .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMessage5)
+                            .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMessage12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMessage6)
+                            .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMessage7)
                             .addComponent(txtAnimalSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -235,26 +248,30 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
                             .addComponent(lblMessage8)
                             .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAnimalMessageFromVet, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMessage10)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAnimalMessageFromVet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMessage10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAnimalMessageFromPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMessage11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMessage9)))
                     .addComponent(lblPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAnimalMessageFromPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMessage11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAnimalMessageFromBehaviorTharapipst, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblMessage9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblMessage13)))
+                .addGap(18, 18, 18)
+                .addComponent(lblMessage13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAnimalManagerRequestMedicalCare)
+                    .addComponent(lblMedicalCareMessage)
+                    .addComponent(txtSendMedicalCareMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAnimalManagerRequestMedicalCare)
-                .addGap(44, 44, 44))
+                .addComponent(viewAdoptionRequestJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(95, 95, 95))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -263,29 +280,54 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        AnimalManagerWorkAreaJPanel amwajp = (AnimalManagerWorkAreaJPanel) component;
+        ManageAnimalJPanel majp = (ManageAnimalJPanel) component;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-
 
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAnimalManagerRequestMedicalCareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimalManagerRequestMedicalCareActionPerformed
 
-        // create work request
+        String requestVetMessage = txtSendMedicalCareMessage.getText();
+        if(requestVetMessage.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter something to send.");
+            return;
+        }
         
-        RequestMedicalCareJPanel rmcjp = new RequestMedicalCareJPanel(userProcessContainer, userAccount, enterprise, network, animal);
-        userProcessContainer.add("eequestMedicalCareJPanel", rmcjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        MedCareRequest request = new MedCareRequest();
+        request.setMessage(requestVetMessage);
+        request.setSender(userAccount);
+        request.setStatus("Pending for Vet");
+        request.setAnimal(animal);
+        
+        network.getWorkQueue().getWorkRequestList().add(request);
+        animal.getWorkQueue().getWorkRequestList().add(request);
+        
+        JOptionPane.showMessageDialog(null, "Medical Request sent");
+        txtSendMedicalCareMessage.setText("");
+        
+//        RequestMedicalCareJPanel rmcjp = new RequestMedicalCareJPanel(userProcessContainer, userAccount, enterprise, network, animal);
+//        userProcessContainer.add("requestMedicalCareJPanel", rmcjp);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnimalManagerRequestMedicalCareActionPerformed
+
+    private void viewAdoptionRequestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAdoptionRequestJButtonActionPerformed
+        // TODO add your handling code here:
+        AdoptionRequestJPanel adoptionRequestJPanel = new AdoptionRequestJPanel(userProcessContainer, userAccount, animal, enterprise, network);
+        userProcessContainer.add("adoptionRequestJPanel", adoptionRequestJPanel);
+
+        CardLayout layout = (CardLayout) (userProcessContainer.getLayout());
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewAdoptionRequestJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnimalManagerRequestMedicalCare;
     private javax.swing.JButton btnBack;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMedicalCareMessage;
     private javax.swing.JLabel lblMessage10;
     private javax.swing.JLabel lblMessage11;
     private javax.swing.JLabel lblMessage12;
@@ -305,6 +347,8 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAnimalName;
     private javax.swing.JTextField txtAnimalSex;
     private javax.swing.JTextField txtAnimalWeight;
+    private javax.swing.JTextField txtSendMedicalCareMessage;
+    private javax.swing.JButton viewAdoptionRequestJButton;
     // End of variables declaration//GEN-END:variables
 
     private void showAnimalDetails() {

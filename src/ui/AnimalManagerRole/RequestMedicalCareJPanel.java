@@ -112,7 +112,6 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestVetActionPerformed
-
         
         String requestVetMessage = txtSendMedicalCareMessage.getText();
         if(requestVetMessage.isEmpty()){
@@ -131,23 +130,6 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(null, "Medical Request sent");
         txtSendMedicalCareMessage.setText("");
-        
-//        Organization org = null;
-//        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
-//            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-//            if (organization instanceof VetOrganization){
-//                org = organization;
-//                break;
-//            }
-//            }
-//        }
-//        if (org!=null){
-//            org.getWorkQueue().getWorkRequestList().add(request);
-//            account.getWorkQueue().getWorkRequestList().add(request);
-//        }
-//        
-//        JOptionPane.showMessageDialog(null, "Request message sent");
-//        txtSendMedicalCareMessage.setText("");
         
     }//GEN-LAST:event_btnRequestVetActionPerformed
 

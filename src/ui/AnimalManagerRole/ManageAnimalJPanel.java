@@ -50,27 +50,6 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
     }
 
     
-    public void populateAssignAnimalToMeRequestTable(){
-        DefaultTableModel model = (DefaultTableModel) tblAnimalManagerWorkArea.getModel();
-        
-        model.setRowCount(0);
-        
-        for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()){
-            if (request instanceof AnimalManagerRequest){
-                Object[] row = new Object[6];
-                row[0] = request;
-                row[1] = request.getAnimal().getId();
-                row[2] = request.getAnimal().getName();
-                row[3] = request.getSender();
-                row[4] = request.getReceiver() == null ? null : request.getReceiver();
-                row[5] = request.getStatus();
-
-                model.addRow(row);
-            }            
-        }
-    }
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -80,15 +59,12 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAnimalManagerWorkArea = new javax.swing.JTable();
         btnAssignAnimalToMe = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        btnBack1 = new javax.swing.JButton();
-
-        btnBack.setText("<< Back");
+        btnBack = new javax.swing.JButton();
+        btnViewDetial = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -127,20 +103,20 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Manage Animal");
 
-        btnBack1.setText("<< Back");
-        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        btnViewDetial.setText("View Animal Detail");
+        btnViewDetial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetialActionPerformed(evt);
             }
         });
 
@@ -155,11 +131,12 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(lblTitle)
-                            .addGap(372, 372, 372)
-                            .addComponent(btnBack1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 469, Short.MAX_VALUE)
+                            .addComponent(btnBack))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(btnAssignAnimalToMe)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnRefresh))
-                        .addComponent(btnAssignAnimalToMe)))
+                            .addComponent(btnViewDetial))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -168,12 +145,13 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle)
-                    .addComponent(btnRefresh)
-                    .addComponent(btnBack1))
+                    .addComponent(btnBack))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAssignAnimalToMe)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAssignAnimalToMe)
+                    .addComponent(btnViewDetial))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -208,27 +186,69 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnAssignAnimalToMeActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-
-//        populateAssingAnimalToMeRequestTable();
-        
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
-    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
         workArea.remove(this);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
 
-    }//GEN-LAST:event_btnBack1ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnViewDetialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetialActionPerformed
+        
+        
+        int selectedRow = tblAnimalManagerWorkArea.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first");
+            return;
+        }
+        
+        WorkRequest wr = (WorkRequest) tblAnimalManagerWorkArea.getValueAt(selectedRow, 0);
+        if (wr.getReceiver() != userAccount) {
+            JOptionPane.showMessageDialog(null, "This animal is not assigned to you.");
+            return;
+        }
+        
+        if (wr.getAnimal().getAdoptor() != null){
+            JOptionPane.showMessageDialog(null, "This animal is adopted.");
+            return;
+        }
+        
+        AnimalManagerRequest request = (AnimalManagerRequest) wr;
+        ViewOngingAnimalJPanel viewOngoingAnimalJPanel = new ViewOngingAnimalJPanel(workArea, userAccount, request.getAnimal(), enterprise, network);
+        workArea.add("viewOngoingAnimalJPanel", viewOngoingAnimalJPanel);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
+        
+    }//GEN-LAST:event_btnViewDetialActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignAnimalToMe;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnBack1;
-    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnViewDetial;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblAnimalManagerWorkArea;
     // End of variables declaration//GEN-END:variables
+
+    public void populateAssignAnimalToMeRequestTable(){
+        DefaultTableModel model = (DefaultTableModel) tblAnimalManagerWorkArea.getModel();
+        
+        model.setRowCount(0);
+        
+        for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()){
+            if (request instanceof AnimalManagerRequest){
+                Object[] row = new Object[6];
+                row[0] = request;
+                row[1] = request.getAnimal().getId();
+                row[2] = request.getAnimal();
+                row[3] = request.getSender();
+                row[4] = request.getReceiver() == null ? null : request.getReceiver();
+                row[5] = request.getStatus();
+
+                model.addRow(row);
+            }            
+        }
+    }
 }
