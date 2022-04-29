@@ -304,6 +304,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         animal.getWorkQueue().getWorkRequestList().add(request);
         
         JOptionPane.showMessageDialog(null, "Medical Request sent");
+        populateTable();
         txtSendMedicalCareMessage.setText("");
         
 //        RequestMedicalCareJPanel rmcjp = new RequestMedicalCareJPanel(userProcessContainer, userAccount, enterprise, network, animal);

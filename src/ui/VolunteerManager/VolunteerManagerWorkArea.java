@@ -170,38 +170,40 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         
         int selectedRow = tblWorkRequests.getSelectedRow();
 
-        if (selectedRow >= 0) {
-            
-            VolunteerRequest selectedRequest = (VolunteerRequest) tblWorkRequests.getValueAt(selectedRow, 0);
-            if (selectedRequest.getStatus().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
-                return;
-                
-            } else {
-                for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
-                    if (((VolunteerRequest) request).getAssignedVolunteer() == selectedVolunteer 
-                            && !request.getStatus().equals("Completed")){
-                        JOptionPane.showMessageDialog(null, "This volunteer is not available. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-                }
-                if (selectedRequest.getStatus().equals("Assigned")){
-                    JOptionPane.showMessageDialog(null, "This request has assigned volunteer. Please select another request.", "Warning", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    selectedRequest.setReceiver(userAccount);
-                    selectedRequest.setAssignedVolunteer(selectedVolunteer);
-                    selectedRequest.setStatus("Assigned");
-                    selectedVolunteer.getWorkQueue().getWorkRequestList().add(selectedRequest);
-                    JOptionPane.showMessageDialog(null, "Volunteer Assigned","Information",JOptionPane.INFORMATION_MESSAGE);
-                    populateTable();
-                    }   
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;
-        }  
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
+        VolunteerRequest selectedRequest = (VolunteerRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+        if (selectedRequest.getStatus().equals("Completed")) {
+            JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
+        if (selectedRequest.getStatus().equals("Assigned")) {
+            JOptionPane.showMessageDialog(null, "This request has assigned volunteer. Please select another request.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
+            if (request instanceof VolunteerRequest) {
+                VolunteerRequest vr = (VolunteerRequest)request;
+                if (vr.getAssignedVolunteer() == selectedVolunteer 
+                && !request.getStatus().equals("Completed")){
+                JOptionPane.showMessageDialog(null, "This volunteer is not available. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+                }
+            }
+        }
+
+        selectedRequest.setReceiver(userAccount);
+        selectedRequest.setAssignedVolunteer(selectedVolunteer);
+        selectedRequest.setStatus("Assigned");
+        selectedVolunteer.getWorkQueue().getWorkRequestList().add(selectedRequest);
+        JOptionPane.showMessageDialog(null, "Volunteer Assigned","Information",JOptionPane.INFORMATION_MESSAGE);
+        populateTable();
+                         
     }//GEN-LAST:event_btnAssignActionPerformed
 
 
