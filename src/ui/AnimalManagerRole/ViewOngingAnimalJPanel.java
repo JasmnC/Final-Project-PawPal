@@ -87,23 +87,37 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("On Going Animal");
 
+        txtAnimalName.setEnabled(false);
+
         lblMessage5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage5.setText("Name:");
+
+        txtAnimalArea.setEnabled(false);
 
         lblMessage6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage6.setText("Area:");
 
+        txtAnimalSex.setEnabled(false);
+
         lblMessage7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage7.setText("Sex:");
+
+        txtAnimalWeight.setEnabled(false);
 
         lblMessage8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage8.setText("Weight:");
 
+        txtAnimalMessageFromBehaviorTharapipst.setEnabled(false);
+
         lblMessage9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage9.setText("Behavior Check:");
 
+        txtAnimalMessageFromVet.setEnabled(false);
+
         lblMessage10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage10.setText("Vet Feedback:");
+
+        txtAnimalMessageFromPharmacy.setEnabled(false);
 
         lblMessage11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage11.setText("Pharmacy Feedback:");
