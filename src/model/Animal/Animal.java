@@ -14,10 +14,7 @@ import model.WorkQueue.WorkQueue;
  * @author anitachen
  */
 public class Animal {
-  
-    
-    private static int idCounter = 0 ;
-    
+      
     private int id;
     private String name;
     private String area;
@@ -37,19 +34,8 @@ public class Animal {
 
     
     public Animal(String name) {
-
         this.name = name;
-        idCounter++;
-        this.id = idCounter;
         this.workQueue = new WorkQueue();
-    }
-
-    public static int getIdCounter() {
-        return idCounter;
-    }
-
-    public static void setIdCounter(int idCounter) {
-        Animal.idCounter = idCounter;
     }
 
     public int getId() {
