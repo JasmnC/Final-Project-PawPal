@@ -90,7 +90,6 @@ public class VetWorkArea extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
-        btnRefresh = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnAssignToMe = new javax.swing.JButton();
         btnViewDetial = new javax.swing.JButton();
@@ -124,13 +123,6 @@ public class VetWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Vet Work Area");
 
@@ -158,9 +150,7 @@ public class VetWorkArea extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(346, 346, 346)
-                        .addComponent(lblTitle)
-                        .addGap(196, 196, 196)
-                        .addComponent(btnRefresh))
+                        .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -177,29 +167,18 @@ public class VetWorkArea extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(btnRefresh)))
-                .addGap(6, 6, 6)
+                .addComponent(lblTitle)
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(icon))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnViewDetial)
-                            .addComponent(btnAssignToMe))))
+                    .addComponent(icon)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnViewDetial)
+                        .addComponent(btnAssignToMe)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        populateRequestTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
@@ -276,7 +255,6 @@ public class VetWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToMe;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewDetial;
     private javax.swing.JLabel icon;
     private javax.swing.JScrollPane jScrollPane1;
