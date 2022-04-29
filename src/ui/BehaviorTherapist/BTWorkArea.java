@@ -47,6 +47,7 @@ public class BTWorkArea extends javax.swing.JPanel {
         this.userAccount = account;
         this.organization = (TreatmentOrganization) organization;
         this.enterprise = enterprise;
+        this.network = network;
         this.ecosystem = ecosystem;
         for (Network net : ecosystem.getNetworkList()) {
             for (Enterprise e : net.getEnterpriseDirectory().getEnterpriseList()) {
@@ -56,23 +57,23 @@ public class BTWorkArea extends javax.swing.JPanel {
             }
         }
 
-        //   btnProcess.setEnabled(false);
         populateTable();
     }
 
     public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
         model.setRowCount(0);
-        for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()) {
             if (request instanceof BTWorkRequest) {
-                BTWorkRequest btWorkRequest = (BTWorkRequest) request;
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = request;
                 row[1] = request.getAnimal().getId();
                 row[2] = request.getAnimal().getName();
-                row[3] = request.getSender().getName();
-                row[4] = request.getReceiver() == null ? null : request.getReceiver().getName();
+                row[3] = request.getSender();
+                row[4] = request.getReceiver() == null ? null : request.getReceiver();
                 row[5] = request.getStatus();
+                String result = ((BTWorkRequest) request).getResult();
+                row[6] = result == null ? "Waiting" : result;
                 model.addRow(row);
             }
         }
@@ -96,20 +97,20 @@ public class BTWorkArea extends javax.swing.JPanel {
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Animal ID", "Animal Name", "Sender", "Receiver", "Status"
+                "Message", "Animal ID", "Animal Name", "Sender", "Receiver", "Status", "Result"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -197,21 +198,24 @@ public class BTWorkArea extends javax.swing.JPanel {
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
 
         int selectedRow = tblWorkRequests.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first");
-            return;
-        }
-        WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
-        //if (request.getStatus().equalsIgnoreCase("Delivered")) {
-        if ("Delivered".equalsIgnoreCase(request.getStatus())) {
-            JOptionPane.showMessageDialog(null, "Request already completed.");
-            return;
+        if (selectedRow >= 0) {
+            WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+            if (request.getStatus().equalsIgnoreCase("Processed")) {
+                JOptionPane.showMessageDialog(null, "Request already processed.");
+                return;
+            } else if (request.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(this, "Request already closed.", "Thank you!", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            } else {
+                request.setReceiver(userAccount);
+                request.setStatus("Processed");
+                populateTable();
+            }
+
         } else {
-            request.setReceiver(userAccount);
-            request.setStatus("Pending");
-            btnProcess.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Please select a request.");
+            return;
         }
-        populateTable();
 
     }//GEN-LAST:event_btnAssignActionPerformed
 
@@ -223,12 +227,14 @@ public class BTWorkArea extends javax.swing.JPanel {
             return;
         }
         BTWorkRequest request = (BTWorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
-        //if (request.getStatus().equalsIgnoreCase("Delivered")) {
-        if ("Delivered".equalsIgnoreCase(request.getStatus())) {
+         if (request.getReceiver() != userAccount) {
+            JOptionPane.showMessageDialog(null, "This request is not assign to you.");
+            return;
+        }
+        BTWorkRequest btwr = (BTWorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
+        if (btwr.getStatus().equalsIgnoreCase("Completed")) {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
-        } else {
-            request.setStatus("Processing");
         }
 
         BTProcessRequest ppr = new BTProcessRequest(userProcessContainer, request, userAccount, enterprise, animal, animalDirectory, ecosystem, organization);

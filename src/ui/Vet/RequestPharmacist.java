@@ -2,6 +2,9 @@ package ui.Vet;
 
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
+import static java.awt.image.ImageObserver.WIDTH;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -101,6 +104,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
         icon = new javax.swing.JLabel();
+        lblMessageTitle = new javax.swing.JLabel();
 
         btnRequestTest.setText("Request");
         btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +156,9 @@ public class RequestPharmacist extends javax.swing.JPanel {
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet2Ph.png"))); // NOI18N
 
+        lblMessageTitle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessageTitle.setText("Create New Request");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,14 +176,19 @@ public class RequestPharmacist extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(icon)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblMessage)
-                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(152, 152, 152)
-                                        .addComponent(btnRequestTest))))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblMessage)
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(152, 152, 152)
+                                                .addComponent(btnRequestTest))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addComponent(lblMessageTitle))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(85, 85, 85))
         );
@@ -193,7 +205,9 @@ public class RequestPharmacist extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(icon)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(42, 42, 42)
+                        .addComponent(lblMessageTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,6 +264,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
     private javax.swing.JLabel icon;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMessage;
+    private javax.swing.JLabel lblMessageTitle;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;
     private javax.swing.JTextField txtMessage;
