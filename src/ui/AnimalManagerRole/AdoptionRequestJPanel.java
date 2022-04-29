@@ -17,6 +17,7 @@ import model.Enterprise.AnimalShelterEnterprise;
 import model.Enterprise.Enterprise;
 import model.Network.Network;
 import model.WorkQueue.AdoptionRequest;
+import model.WorkQueue.AnimalManagerRequest;
 
 /**
  *
@@ -53,7 +54,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
             if(request instanceof AdoptionRequest && request.getAnimal() == animal){
             Object[] row = new Object[5];
-            row[0] = request.getMessage();
+            row[0] = request;
             row[1] = request.getSender();
             row[2] = request.getSender().getName();
             row[3] = request.getSender().getOrgainization();
@@ -183,9 +184,15 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         }
         
         AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
-        request.setStatus("Rejected");
+        request.setStatus("Approved");
         request.getAnimal().setAdoptor(request.getSender());
         
+        for (WorkRequest wr : userAccount.getWorkQueue().getWorkRequestList()){
+            if (wr instanceof AnimalManagerRequest && wr.getAnimal() == request.getAnimal()){
+                wr.setStatus("Adopted");
+            }
+        }
+        populateRequestTable();        
         
     }//GEN-LAST:event_btnApproveAnimalAdoptionRequestActionPerformed
 
@@ -200,6 +207,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         
         AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
         request.setStatus("Rejected");
+        populateRequestTable();
         
     }//GEN-LAST:event_btnRejectAnimalAdoptionRequestActionPerformed
 
