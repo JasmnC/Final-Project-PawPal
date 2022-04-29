@@ -26,7 +26,7 @@
                   <Component id="btnManageEnterprise" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnViewDashboard" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="579" max="32767" attributes="0"/>
+              <EmptySpace pref="591" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
