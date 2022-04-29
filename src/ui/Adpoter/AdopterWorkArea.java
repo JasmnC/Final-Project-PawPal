@@ -232,6 +232,14 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             
             Animal selectedAnimal = (Animal) tblAnimalList.getValueAt(selectedRow, 0);
+            
+            for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+                if (request.getAnimal() == selectedAnimal){
+                    JOptionPane.showMessageDialog(null, "Your have sent requst for this animal.\nPlease refer to request history for application result.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
+            
             AdoptionRequest request = new AdoptionRequest();
             request.setMessage("Adoption Request");
             request.setAnimal(selectedAnimal);
@@ -239,10 +247,13 @@ public class AdopterWorkArea extends javax.swing.JPanel {
             request.setStatus("Pending Review");
             
             network.getWorkQueue().getWorkRequestList().add(request);
-            userAccount.getWorkQueue().getWorkRequestList().add(request);           
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+            JOptionPane.showMessageDialog(null, "Adotion request has been sent. Please wait for the result.");
+            populateRequestTable();
             
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
         }
                 
         
@@ -255,10 +266,10 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             Animal selectedAnimal = (Animal) tblAnimalList.getValueAt(selectedRow, 0);
             
-//            JPanel animalDetail = new MainScreen(mainWorkArea, ua, db4oUtil);
-//            workArea.add("MainScreen", mainScreen);
-//            CardLayout layout = (CardLayout) workArea.getLayout();
-//            layout.next(workArea);
+            JPanel viewAnimalDetailJPanel = new ViewAnimalDetailJPanel(workArea, selectedAnimal);
+            workArea.add("viewAnimalDetailJPanel", viewAnimalDetailJPanel);
+            CardLayout layout = (CardLayout) workArea.getLayout();
+            layout.next(workArea);
             
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row first", "Warning", JOptionPane.WARNING_MESSAGE);

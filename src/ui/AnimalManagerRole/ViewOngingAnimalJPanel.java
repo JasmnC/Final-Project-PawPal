@@ -14,6 +14,7 @@ import model.Animal.Animal;
 import model.Animal.AnimalDirectory;
 import model.Enterprise.AnimalShelterEnterprise;
 import model.Network.Network;
+import model.Organization.AnimalManagementOrganization;
 import model.UserAccount.UserAccount;
 import model.WorkQueue.MedCareRequest;
 import model.WorkQueue.WorkRequest;
@@ -273,13 +274,11 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ManageAnimalJPanel majp = (ManageAnimalJPanel) component;
+
+
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        userProcessContainer.add("ManagerWorkArea", new ManageAnimalJPanel(userProcessContainer, userAccount, (AnimalManagementOrganization) userAccount.getOrgainization(), enterprise, network, network.getEcosystem()));
+        layout.next(userProcessContainer);
 
     }//GEN-LAST:event_btnBackActionPerformed
 

@@ -176,7 +176,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please choose a request to assign to yourself", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }   
         
