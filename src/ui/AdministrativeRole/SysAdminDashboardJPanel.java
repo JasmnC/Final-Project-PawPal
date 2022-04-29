@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.Enterprise;
 import model.Network.Network;
 import model.WorkQueue.AdoptionRequest;
 import model.WorkQueue.AnimalManagerRequest;
@@ -36,6 +37,7 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecoSystem;
     Network network;
+    Enterprise enterprise;
     JFreeChart barChart;
 
     /**
@@ -45,7 +47,7 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecosystem;
-//        this.network = network;
+
         populateBar();
 
     }
@@ -129,18 +131,23 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
 
                 if (workQRequest instanceof AdoptionRequest) {
                     adoptionRequests.add((AdoptionRequest) workQRequest);
-                }
-                   else if (workQRequest instanceof MedCareRequest) {
+                } else if (workQRequest instanceof MedCareRequest) {
                     medCareRequests.add((MedCareRequest) workQRequest);
-                }
-                  else if (workQRequest instanceof VolunteerRequest) {
+                } else if (workQRequest instanceof VolunteerRequest) {
                     volunteerRequests.add((VolunteerRequest) workQRequest);
-                }
-                   else if (workQRequest instanceof AnimalManagerRequest) {
-                    animalManagerRequests.add((AnimalManagerRequest) workQRequest);
                 }
             }
         }
+                for (Network nw : ecoSystem.getNetworkList()) {
+        for(Enterprise e: nw.getEnterpriseDirectory().getEnterpriseList()){
+            for(WorkRequest wr : e.getWorkQueue().getWorkRequestList()){
+                        if (wr instanceof AnimalManagerRequest) {
+            animalManagerRequests.add((AnimalManagerRequest) wr);
+        }
+            }
+        }
+        //  network> Enterprise > = animal shelter > request = amreq
+                }
 
         workReqMap.put("Adoption Services", adoptionRequests.size());
         workReqMap.put("Medical Care Services", medCareRequests.size());
