@@ -176,10 +176,10 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         String photo = txtAnimalPhoto.getText();
         
         if(name.equals("") || name.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter Animal Name.");
+            JOptionPane.showMessageDialog(this, "Please enter Animal Name.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }else if(area.equals("")||area.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter animal's area.");
+            JOptionPane.showMessageDialog(this, "Please enter animal's area.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }else{
             // create Animal
@@ -203,7 +203,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         
         
         
-        JOptionPane.showMessageDialog(this, "New Animal Saved.");
+        JOptionPane.showMessageDialog(this, "New Animal Saved.","Information",JOptionPane.INFORMATION_MESSAGE);
         txtAnimalArea.setText("");
         txtAnimalName.setText("");
         buttonGroupGender.clearSelection();

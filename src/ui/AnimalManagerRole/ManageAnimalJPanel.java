@@ -126,11 +126,11 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) tblAnimalManagerWorkArea.getValueAt(selectedRow, 0);
             if (request.getStatus().equalsIgnoreCase("Adopted")) {
-                JOptionPane.showMessageDialog(null, "This animal has been adopted.", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "This animal has been adopted.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             } else {
                 if (request.getReceiver() != null) {
-                    JOptionPane.showMessageDialog(null, "This animal has a manager. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "This animal has a manager. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
                     return;
                 } else {
                     //把自己變成reciver, 把animal的manager變成自己
@@ -139,11 +139,11 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                     request.setStatus("Managed");
                     userAccount.getWorkQueue().getWorkRequestList().add(request);
                     populateAssignAnimalToMeRequestTable();
-                    JOptionPane.showMessageDialog(null, "Animal assigned to you.","Information",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Animal assigned to you.","Information",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Select a row to process.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Select a row to process.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -156,18 +156,18 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         int selectedRow = tblAnimalManagerWorkArea.getSelectedRow();
 
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first");
+            JOptionPane.showMessageDialog(this, "Please select a row first","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         WorkRequest wr = (WorkRequest) tblAnimalManagerWorkArea.getValueAt(selectedRow, 0);
         if (wr.getReceiver() != userAccount) {
-            JOptionPane.showMessageDialog(null, "This animal is not assigned to you.");
+            JOptionPane.showMessageDialog(this, "This animal is not assigned to you.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         if (wr.getAnimal().getAdoptor() != null){
-            JOptionPane.showMessageDialog(null, "This animal is adopted.");
+            JOptionPane.showMessageDialog(this, "This animal has been adopted.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         
