@@ -10,7 +10,7 @@ import model.Animal.Animal;
 
 /**
  *
- * @author anitachen
+ * @author ariel
  */
 public abstract class WorkRequest {
 
