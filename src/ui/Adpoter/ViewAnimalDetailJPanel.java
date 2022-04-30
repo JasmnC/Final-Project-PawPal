@@ -63,7 +63,7 @@ public class ViewAnimalDetailJPanel extends javax.swing.JPanel {
         lblMessage12 = new javax.swing.JLabel();
         lblPhoto = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(254, 236, 236));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

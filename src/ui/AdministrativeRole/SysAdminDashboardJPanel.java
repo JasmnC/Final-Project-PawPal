@@ -65,6 +65,9 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         jPanel_ourService = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(224, 227, 255));
+
+        btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +78,7 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Dashboard");
 
+        jPanel_ourService.setBackground(new java.awt.Color(224, 227, 255));
         jPanel_ourService.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

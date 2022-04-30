@@ -34,7 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         ecoSystem = db4oUtil.retrieveEcoSystem();
-        setSize(800, 600);
+        setSize(1000, 1000);
 
         initLoginScreen();
 
@@ -52,6 +52,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mainWorkArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         mainWorkArea.setBackground(new java.awt.Color(255, 255, 255));
         mainWorkArea.setLayout(new java.awt.CardLayout());
