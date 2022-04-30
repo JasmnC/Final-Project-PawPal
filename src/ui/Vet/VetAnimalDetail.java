@@ -2,8 +2,10 @@ package ui.Vet;
 
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.file.Paths;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -74,7 +76,30 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         txtAnimalMessageFromVet.setText(animal.getVetMessage());
         txtAnimalMessageFromPharmacy.setText(animal.getPharmacyMessage());
         txtAnimalMessageFromBehaviorTharapipst.setText(animal.getBaviorCheckMessage());
+        
+        if (animal.getPhoto()!=null){
+            String path = Paths.get(animal.getPhoto()).toAbsolutePath().toString();
+            ImageIcon icon = seticon(path, null);
+            lblAnimalPhoto.setIcon(icon);
+        }
+        
         //      displayImage();
+    }
+    
+    public ImageIcon seticon(String m, byte[] image){
+        
+        ImageIcon i = null;
+        
+        if (m != null) {
+            i = new ImageIcon(m);
+        } else {
+            i = new ImageIcon(image);
+        }
+
+        Image img1 = i.getImage();
+        Image img2 = img1.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        ImageIcon img = new ImageIcon(img2);
+        return img;
     }
 
     @SuppressWarnings("unchecked")
@@ -204,7 +229,9 @@ public class VetAnimalDetail extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
-        add(lblAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 160, 150));
+
+        lblAnimalPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_noimage.png"))); // NOI18N
+        add(lblAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 200, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed
