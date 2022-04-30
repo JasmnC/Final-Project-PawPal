@@ -95,6 +95,7 @@ public class VetWorkArea extends javax.swing.JPanel {
         btnViewDetial = new javax.swing.JButton();
         icon = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(212, 238, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(

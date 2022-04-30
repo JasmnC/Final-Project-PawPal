@@ -69,7 +69,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSentVolunteerRequest = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(212, 255, 224));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRequestVolunteer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N

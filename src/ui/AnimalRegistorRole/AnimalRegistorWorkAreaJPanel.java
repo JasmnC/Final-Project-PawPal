@@ -54,7 +54,7 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
         registerAnimalJButton = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(212, 255, 224));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         requestVolunteerJButton.setText("Request Volunteer");

@@ -54,7 +54,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         viewAdoptionRequestJButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(218, 255, 199));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         viewOngoingAnimalJButton.setText("View On Going Animal");

@@ -75,7 +75,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         txtSendMedicalCareMessage = new javax.swing.JTextField();
         viewAdoptionRequestJButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(218, 255, 199));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBack.setText("<< Back");

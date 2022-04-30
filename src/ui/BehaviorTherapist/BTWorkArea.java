@@ -94,6 +94,7 @@ public class BTWorkArea extends javax.swing.JPanel {
         btnProcess = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(181, 255, 232));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(

@@ -71,6 +71,7 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(181, 198, 232));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_reply.png"))); // NOI18N

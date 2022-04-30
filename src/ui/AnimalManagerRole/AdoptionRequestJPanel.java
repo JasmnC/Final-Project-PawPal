@@ -82,7 +82,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         btnRejectAnimalAdoptionRequest = new javax.swing.JButton();
         btnBack1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(218, 255, 199));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblAnimalAdoptionWorkQueue.setModel(new javax.swing.table.DefaultTableModel(

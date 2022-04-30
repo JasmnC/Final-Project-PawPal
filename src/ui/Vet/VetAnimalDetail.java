@@ -104,6 +104,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         lblAnimalPhoto = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(212, 238, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRequestBT.setText("Request Behavioral Therapy");

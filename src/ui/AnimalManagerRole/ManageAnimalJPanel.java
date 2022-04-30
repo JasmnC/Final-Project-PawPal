@@ -65,7 +65,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         btnViewDetial = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(218, 255, 199));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblAnimalManagerWorkArea.setModel(new javax.swing.table.DefaultTableModel(
