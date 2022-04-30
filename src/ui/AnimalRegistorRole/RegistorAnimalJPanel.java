@@ -196,11 +196,11 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             animal.setWeight(weight);
             animal.setPhotoIcon(animalImage);
 
-            Path path = copyImageAndReturnPath(animal);
-//            System.out.println(path);
+            if (!txtAnimalPhoto.getText().isEmpty()){
+                Path path = copyImageAndReturnPath(animal);
+                animal.setPhoto(path.toString());
+            }
             
-            animal.setPhoto(path.toString());
-            System.out.println(animal.getPhoto());
             
 //            Path from = Paths.get(imageFile.toURI());
 //            System.out.println(from);

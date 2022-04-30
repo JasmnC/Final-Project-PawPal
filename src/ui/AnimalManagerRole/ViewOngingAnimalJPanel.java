@@ -188,6 +188,8 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         lblMessage13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage13.setText("Medical Care Status:");
         add(lblMessage13, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 316, -1, -1));
+
+        lblPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_noimage.png"))); // NOI18N
         add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 80, 200, 200));
 
         lblMedicalCareMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -289,13 +291,12 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         txtAnimalMessageFromPharmacy.setText(animal.getPharmacyMessage());
         txtAnimalMessageFromVet.setText(animal.getVetMessage());
         
-//        lblPhoto.setIcon(animal.getPhotoIcon());
-        
-        String path = Paths.get(animal.getPhoto()).toAbsolutePath().toString();
-        System.out.println(path);
-        ImageIcon icon = seticon(path, null);
-        lblPhoto.setIcon(icon);
-//        
+        if (animal.getPhoto()!=null){
+            String path = Paths.get(animal.getPhoto()).toAbsolutePath().toString();
+            ImageIcon icon = seticon(path, null);
+            lblPhoto.setIcon(icon);
+        }
+
         populateTable();
         
     }
@@ -311,7 +312,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         }
 
         Image img1 = i.getImage();
-        Image img2 = img1.getScaledInstance(lblPhoto.getWidth(), lblPhoto.getHeight(), Image.SCALE_SMOOTH);
+        Image img2 = img1.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         ImageIcon img = new ImageIcon(img2);
         return img;
     }
