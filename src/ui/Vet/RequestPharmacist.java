@@ -106,6 +106,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         icon = new javax.swing.JLabel();
         lblMessageTitle = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(212, 238, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRequestTest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N
@@ -115,12 +116,12 @@ public class RequestPharmacist extends javax.swing.JPanel {
                 btnRequestTestActionPerformed(evt);
             }
         });
-        add(btnRequestTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 379, -1, -1));
+        add(btnRequestTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 455, -1, -1));
 
-        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessage.setText("Message: ");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 342, -1, -1));
-        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 341, 217, -1));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 400, 40));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -128,11 +129,11 @@ public class RequestPharmacist extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 9, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Send Pharmaceutical Therapy Request");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 56, -1, -1));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setText("Request Pharmaceutical Therapy");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,14 +163,14 @@ public class RequestPharmacist extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 90, 623, 171));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 250));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet2Ph.png"))); // NOI18N
-        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 273, -1, -1));
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, -1, -1));
 
-        lblMessageTitle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessageTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessageTitle.setText("Create New Request");
-        add(lblMessageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 315, -1, -1));
+        add(lblMessageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed

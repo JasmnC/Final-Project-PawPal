@@ -61,15 +61,14 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
         btnApprove = new javax.swing.JButton();
-        lblRequestOrigin = new javax.swing.JLabel();
         btnAssign = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 237, 252));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Process Adopter Account Authorization Request");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 43, -1, -1));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setText("Adopter Authorization");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
 
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -101,7 +100,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 77, 659, 169));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
 
         btnApprove.setBackground(new java.awt.Color(204, 255, 204));
         btnApprove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_approved.png"))); // NOI18N
@@ -111,10 +110,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
                 btnApproveActionPerformed(evt);
             }
         });
-        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(629, 264, -1, -1));
-
-        lblRequestOrigin.setText("from: Adopter Origanization");
-        add(lblRequestOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 43, -1, -1));
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 500, -1, -1));
 
         btnAssign.setBackground(new java.awt.Color(204, 255, 204));
         btnAssign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_assign.png"))); // NOI18N
@@ -124,7 +120,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 264, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
@@ -182,7 +178,6 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnAssign;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblRequestOrigin;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;
     // End of variables declaration//GEN-END:variables

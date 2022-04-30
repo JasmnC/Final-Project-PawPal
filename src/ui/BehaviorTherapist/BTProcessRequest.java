@@ -77,6 +77,7 @@ public class BTProcessRequest extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         lblResult = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(181, 255, 232));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBack.setText("<< Back");
@@ -85,18 +86,18 @@ public class BTProcessRequest extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         txtResults.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtResultsActionPerformed(evt);
             }
         });
-        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 118, 279, 56));
+        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 450, 50));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Result Submission");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 49, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
 
         btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_reply.png"))); // NOI18N
         btnSubmit.setText("Submit Result");
@@ -105,11 +106,11 @@ public class BTProcessRequest extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 192, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
 
-        lblResult.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblResult.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblResult.setText("Result:");
-        add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 98, -1, -1));
+        add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

@@ -94,6 +94,7 @@ public class BTWorkArea extends javax.swing.JPanel {
         btnProcess = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(181, 255, 232));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
@@ -132,27 +133,29 @@ public class BTWorkArea extends javax.swing.JPanel {
             tblWorkRequests.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 81, 623, 171));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
 
+        btnAssign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_assign.png"))); // NOI18N
         btnAssign.setText("Assign to me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 270, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 500, -1, -1));
 
+        btnProcess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_process.png"))); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 270, 127, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 500, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Behavior Therapist Work Area");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 47, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed

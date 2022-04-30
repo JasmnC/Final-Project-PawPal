@@ -71,6 +71,7 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(181, 198, 232));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_reply.png"))); // NOI18N
@@ -80,12 +81,12 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 185, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
 
-        lblResult.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblResult.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblResult.setText("Result:");
-        add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 100, -1, -1));
-        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 123, 294, 56));
+        add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 450, 50));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -93,11 +94,11 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 9, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Result Submission");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 49, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
