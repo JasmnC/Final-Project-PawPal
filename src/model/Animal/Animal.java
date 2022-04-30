@@ -6,6 +6,7 @@
 package model.Animal;
 
 import javax.swing.ImageIcon;
+import model.Enterprise.AnimalShelterEnterprise;
 import model.UserAccount.UserAccount; 
 import model.WorkQueue.WorkQueue;
 
@@ -15,6 +16,7 @@ import model.WorkQueue.WorkQueue;
  */
 public class Animal {
       
+    private AnimalShelterEnterprise enterprise;
     private int id;
     private String name;
     private String area;
@@ -38,6 +40,14 @@ public class Animal {
         this.workQueue = new WorkQueue();
     }
 
+    public AnimalShelterEnterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(AnimalShelterEnterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+    
     public int getId() {
         return id;
     }

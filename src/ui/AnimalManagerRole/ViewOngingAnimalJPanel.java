@@ -7,6 +7,10 @@ package ui.AnimalManagerRole;
 import ui.AnimalRegistorRole.*;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
+import java.io.File;
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -184,7 +188,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         lblMessage13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage13.setText("Medical Care Status:");
         add(lblMessage13, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 316, -1, -1));
-        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 80, 209, 218));
+        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 80, 200, 200));
 
         lblMedicalCareMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMedicalCareMessage.setText("Message:");
@@ -285,12 +289,33 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         txtAnimalMessageFromPharmacy.setText(animal.getPharmacyMessage());
         txtAnimalMessageFromVet.setText(animal.getVetMessage());
         
-        lblPhoto.setIcon(animal.getPhotoIcon());
+//        lblPhoto.setIcon(animal.getPhotoIcon());
         
+        String path = Paths.get(animal.getPhoto()).toAbsolutePath().toString();
+        System.out.println(path);
+        ImageIcon icon = seticon(path, null);
+        lblPhoto.setIcon(icon);
+//        
         populateTable();
         
-
     }
+    
+    public ImageIcon seticon(String m, byte[] image){
+        
+        ImageIcon i = null;
+        
+        if (m != null) {
+            i = new ImageIcon(m);
+        } else {
+            i = new ImageIcon(image);
+        }
+
+        Image img1 = i.getImage();
+        Image img2 = img1.getScaledInstance(lblPhoto.getWidth(), lblPhoto.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon img = new ImageIcon(img2);
+        return img;
+    }
+    
 
     private void populateTable() {
 
