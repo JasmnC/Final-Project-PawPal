@@ -273,7 +273,7 @@ public class LoginScreen extends javax.swing.JPanel {
             if (ecoSystem.getUserAccountDirectory().userNameIsUnique(newUserName)){
             UserAccount newUserAccount = ecoSystem.getUserAccountDirectory().createUserAccount(newUserName, newUserPassword, new AdopterRole(), selectedNetwork, selectedEnterprise, selecOrganization);
             newUserAccount.setName(newUser);
-            JOptionPane.showMessageDialog(null, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
             txtNewUserName.setText("");
             pwdNewPassword.setText("");
             txtName.setText("");
@@ -288,10 +288,10 @@ public class LoginScreen extends javax.swing.JPanel {
             newUserAccount.getWorkQueue().getWorkRequestList().add(request);
             
             } else {
-                JOptionPane.showMessageDialog(null, "User Account already existed","Warning",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "User Account already existed","Warning",JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "All fields cannot be blank","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "All fields cannot be blank","Warning",JOptionPane.WARNING_MESSAGE);
         }
         
         

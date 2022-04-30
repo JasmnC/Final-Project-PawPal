@@ -221,7 +221,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
             animal.setVetMessage(txtResults.getText());
             request.setStatus("Completed");
             request.setVetResult(txtResults.getText());
-            JOptionPane.showMessageDialog(this, " Vet Request is completed now!", "Thank you!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Vet Request is completed now!", "Thank you!", JOptionPane.INFORMATION_MESSAGE);
             txtAnimalMessageFromVet.setText(txtResults.getText());
             
             CardLayout layout = (CardLayout) workArea.getLayout();

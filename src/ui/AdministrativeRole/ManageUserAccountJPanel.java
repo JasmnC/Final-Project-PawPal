@@ -299,19 +299,19 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 if(ecoSystem.getUserAccountDirectory().userNameIsUnique(userName)){
                     Role role = (Role) cmbRoles.getSelectedItem();
                     ecoSystem.getUserAccountDirectory().createUserAccount(userName, password, role, network, enterprise, organization);
-                    JOptionPane.showMessageDialog(null, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
                     txtUserName.setText("");
                     pwdUser.setText("");
                     populateUserAccountsTable();
                 } else {                            
-                    JOptionPane.showMessageDialog(null, "Username already existed", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Username already existed", "Warning", JOptionPane.WARNING_MESSAGE);
                 } 
             } else {
-                JOptionPane.showMessageDialog(null, "Username & Password cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Username & Password cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
             }
         
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Network / Enterprise / Organization cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Network / Enterprise / Organization cannot be empty","Warning",JOptionPane.WARNING_MESSAGE);
         }
         
         

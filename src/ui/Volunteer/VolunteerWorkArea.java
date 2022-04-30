@@ -123,15 +123,15 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
             
             VolunteerRequest selectedRequest = (VolunteerRequest) tblWorkRequests.getValueAt(selectedRow, 0);
             if (selectedRequest.getStatus().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
+                JOptionPane.showMessageDialog(this, "Request already completed. Please select another one.","Warning",JOptionPane.WARNING_MESSAGE);
                 return;
             } else {
                 selectedRequest.setStatus("Completed");
-                JOptionPane.showMessageDialog(null, "Request completed!", "Information",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Request completed!", "Information",JOptionPane.INFORMATION_MESSAGE);
                 populateTable();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }  
         

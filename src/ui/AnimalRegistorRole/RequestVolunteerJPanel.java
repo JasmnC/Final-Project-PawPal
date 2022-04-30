@@ -153,7 +153,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         String requestVolunteerMessage = txtRequestVolunteerMessage.getText();
         
         if(requestVolunteerMessage.equals("") || requestVolunteerMessage.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter something to send.");
+            JOptionPane.showMessageDialog(this, "Please enter something to send.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -165,7 +165,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         network.getWorkQueue().getWorkRequestList().add(request);
         account.getWorkQueue().getWorkRequestList().add(request);
         
-        JOptionPane.showMessageDialog(null, "Request message sent");
+        JOptionPane.showMessageDialog(this, "Request message sent","Information",JOptionPane.INFORMATION_MESSAGE);
         txtRequestVolunteerMessage.setText("");
         
         populateVolunteerRequestTable();

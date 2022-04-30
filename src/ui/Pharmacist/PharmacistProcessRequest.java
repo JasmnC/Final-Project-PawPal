@@ -111,7 +111,7 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
 
        if (txtResults.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter message");
+            JOptionPane.showMessageDialog(this, "Please enter message","Warning",JOptionPane.WARNING_MESSAGE);
         } else {
             animal.setPharmacyMessage(txtResults.getText());
             request.setStatus("Completed");
