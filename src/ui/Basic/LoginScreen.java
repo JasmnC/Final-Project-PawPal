@@ -89,22 +89,22 @@ public class LoginScreen extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_title.png"))); // NOI18N
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 783, 133));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1000, 133));
 
         lblLogIn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblLogIn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogIn.setText("Log In");
-        add(lblLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 306, 202, -1));
+        add(lblLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 202, -1));
 
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUser.setText("Username:");
-        add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 352, -1, -1));
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 342, 118, -1));
+        add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, -1, -1));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, 118, -1));
 
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("Password:");
-        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 384, -1, -1));
-        add(pwdPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 384, 118, -1));
+        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, -1, -1));
+        add(pwdPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 360, 118, -1));
 
         btnLogin.setBackground(new java.awt.Color(0, 102, 153));
         btnLogin.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
@@ -115,29 +115,35 @@ public class LoginScreen extends javax.swing.JPanel {
                 btnLoginActionPerformed(evt);
             }
         });
-        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, 90, -1));
+        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 90, -1));
 
         jSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        add(jSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 183, -1, 475));
+        add(jSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, 475));
 
         lblRegister.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRegister.setText("Register as Adoptor");
-        add(lblRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 276, 202, -1));
+        add(lblRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 202, -1));
 
         lblNewUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNewUserName.setText("Username:");
-        add(lblNewUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 448, -1, -1));
-        add(txtNewUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 445, 118, -1));
+        add(lblNewUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
+
+        txtNewUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewUserNameActionPerformed(evt);
+            }
+        });
+        add(txtNewUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 118, -1));
 
         lblNewPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNewPassword.setText("Password:");
-        add(lblNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 492, -1, -1));
-        add(pwdNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 489, 118, -1));
+        add(lblNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, -1, -1));
+        add(pwdNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 118, -1));
 
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblName.setText("Name:");
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 538, -1, -1));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, -1, -1));
 
         btnRegister.setBackground(new java.awt.Color(0, 102, 0));
         btnRegister.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
@@ -148,18 +154,18 @@ public class LoginScreen extends javax.swing.JPanel {
                 btnRegisterActionPerformed(evt);
             }
         });
-        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 577, -1, -1));
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, -1, -1));
 
         lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNetwork.setText("Network:");
-        add(lblNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 314, -1, -1));
+        add(lblNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 310, 118, -1));
+        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 118, -1));
 
         lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEnterprise.setText("Enterprise:");
-        add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 358, -1, -1));
+        add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
 
         cmbEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEnterpriseList.addActionListener(new java.awt.event.ActionListener() {
@@ -167,11 +173,11 @@ public class LoginScreen extends javax.swing.JPanel {
                 cmbEnterpriseListActionPerformed(evt);
             }
         });
-        add(cmbEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 354, 118, -1));
+        add(cmbEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 118, -1));
 
         lblEnterprise1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEnterprise1.setText("Organization:");
-        add(lblEnterprise1, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 403, -1, -1));
+        add(lblEnterprise1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
 
         cmbOrganizationList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbOrganizationList.addActionListener(new java.awt.event.ActionListener() {
@@ -179,16 +185,16 @@ public class LoginScreen extends javax.swing.JPanel {
                 cmbOrganizationListActionPerformed(evt);
             }
         });
-        add(cmbOrganizationList, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 399, 118, -1));
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 533, 118, -1));
+        add(cmbOrganizationList, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 118, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 118, -1));
 
         lblLogin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_login.png"))); // NOI18N
-        add(lblLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 183, -1, 100));
+        add(lblLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, -1, 100));
 
         lblRegister1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblRegister1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRegister1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_adopt.png"))); // NOI18N
-        add(lblRegister1, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 193, 202, -1));
+        add(lblRegister1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 202, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -304,6 +310,10 @@ public class LoginScreen extends javax.swing.JPanel {
     private void cmbOrganizationListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationListActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbOrganizationListActionPerformed
+
+    private void txtNewUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewUserNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

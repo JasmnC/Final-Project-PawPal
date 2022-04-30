@@ -63,7 +63,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
                 viewOngoingAnimalJButtonActionPerformed(evt);
             }
         });
-        add(viewOngoingAnimalJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 138, 173, -1));
+        add(viewOngoingAnimalJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 173, -1));
 
         getAnAnimalJButton.setText("Get An Animal");
         getAnAnimalJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -71,11 +71,11 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
                 getAnAnimalJButtonActionPerformed(evt);
             }
         });
-        add(getAnAnimalJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 91, 173, -1));
+        add(getAnAnimalJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 173, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Animal Manager Work Area");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 44, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
 
         viewAdoptionRequestJButton.setText("View Adoption Request");
         viewAdoptionRequestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +83,7 @@ public class AnimalManagerWorkAreaJPanel extends javax.swing.JPanel {
                 viewAdoptionRequestJButtonActionPerformed(evt);
             }
         });
-        add(viewAdoptionRequestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 185, 173, -1));
+        add(viewAdoptionRequestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 173, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewOngoingAnimalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOngoingAnimalJButtonActionPerformed

@@ -125,30 +125,32 @@ public class VetWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 89, 659, 169));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Vet Work Area");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 38, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
+        btnAssignToMe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_assign.png"))); // NOI18N
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignToMeActionPerformed(evt);
             }
         });
-        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 264, -1, -1));
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, -1, -1));
 
-        btnViewDetial.setText("View Animal Detail");
+        btnViewDetial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_view.PNG"))); // NOI18N
+        btnViewDetial.setText("View Detail");
         btnViewDetial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewDetialActionPerformed(evt);
             }
         });
-        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(557, 264, -1, -1));
+        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 500, -1, -1));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet.png"))); // NOI18N
-        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 264, -1, -1));
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed

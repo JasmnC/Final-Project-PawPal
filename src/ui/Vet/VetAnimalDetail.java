@@ -114,9 +114,9 @@ public class VetAnimalDetail extends javax.swing.JPanel {
         });
         add(btnRequestBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 179, 247, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Animal Detail");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 41, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         btnRequestPharmacy.setText("Request Pharmaceutical Therapy");
         btnRequestPharmacy.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +195,7 @@ public class VetAnimalDetail extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
         add(lblAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 101, 114, 114));
     }// </editor-fold>//GEN-END:initComponents
 

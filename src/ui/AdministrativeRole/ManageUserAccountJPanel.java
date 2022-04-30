@@ -140,7 +140,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblUsers);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 107, 720, 139));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 250));
 
         btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
@@ -149,12 +149,12 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 34, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_role.png"))); // NOI18N
         lblTitle.setText("Manage Users");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 35, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
         lblUsersList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblUsersList.setText("Users List:");
@@ -166,29 +166,29 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 cmbOrgActionPerformed(evt);
             }
         });
-        add(cmbOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 402, 242, -1));
+        add(cmbOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, 242, -1));
 
         lblEmployee.setText("Organization:");
-        add(lblEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 406, -1, -1));
+        add(lblEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
 
         lblRole.setText("Role:");
-        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 451, -1, -1));
+        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, -1, -1));
 
         cmbRoles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 447, 242, -1));
+        add(cmbRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 242, -1));
 
         lblCreateUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCreateUser.setText("New User:");
-        add(lblCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 276, -1, -1));
+        add(lblCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
         lblOrganizationPicker.setText("Network:");
-        add(lblOrganizationPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 316, -1, -1));
+        add(lblOrganizationPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
 
         lblOrganization.setText("Enterprise:");
-        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 361, -1, -1));
+        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, -1, -1));
 
         lblUserName.setText("User Name:");
-        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 355, -1, -1));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +196,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 cmbNetworkListActionPerformed(evt);
             }
         });
-        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 312, 242, -1));
+        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 242, -1));
 
         cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEnterprise.addActionListener(new java.awt.event.ActionListener() {
@@ -204,21 +204,21 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 cmbEnterpriseActionPerformed(evt);
             }
         });
-        add(cmbEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 357, 242, -1));
+        add(cmbEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 242, -1));
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);
             }
         });
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 350, 255, -1));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 255, -1));
 
         pwdUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwdUserActionPerformed(evt);
             }
         });
-        add(pwdUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 394, 255, -1));
+        add(pwdUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 255, -1));
 
         btnCreateUser.setBackground(new java.awt.Color(245, 245, 255));
         btnCreateUser.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -229,10 +229,10 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 btnCreateUserActionPerformed(evt);
             }
         });
-        add(btnCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 438, -1, -1));
+        add(btnCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, -1, -1));
 
         lblPassword.setText("Password:");
-        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 399, -1, -1));
+        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed

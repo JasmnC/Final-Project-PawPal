@@ -97,11 +97,11 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 33, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Register Animal");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 112, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
         add(txtAnimalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 96, 217, -1));
 
         lblMessage5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
