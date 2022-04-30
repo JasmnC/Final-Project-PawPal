@@ -67,7 +67,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         model.setRowCount(0);
         for (WorkRequest phrequest : userAccount.getWorkQueue().getWorkRequestList()) {
             if (phrequest instanceof MedCareRequest || phrequest instanceof PharmacistWorkRequest) {
-                if (phrequest.getAnimal().getId() == animal.getId()) {
+                if (phrequest.getAnimal() == animal) {
                     Object[] row = new Object[model.getColumnCount()];
                     row[0] = phrequest;
                     row[1] = phrequest.getAnimal().getId();
@@ -186,7 +186,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         request.setStatus("Pending");
         request.setAnimal(animal);
 
-        network.getWorkQueue().getWorkRequestList().add(request);
+        enterprise.getWorkQueue().getWorkRequestList().add(request);
         userAccount.getWorkQueue().getWorkRequestList().add(request);
 
         JOptionPane.showMessageDialog(this, "Pharmaceutical Therapy Request sent","Information",JOptionPane.INFORMATION_MESSAGE);

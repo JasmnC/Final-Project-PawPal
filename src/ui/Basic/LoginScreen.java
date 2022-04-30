@@ -5,8 +5,6 @@ package ui.Basic;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import model.Network.Network;
 import model.Enterprise.Enterprise;
 import model.Organization.Organization;
@@ -20,33 +18,32 @@ import model.Enterprise.AdoptionEnterprise;
 import model.Organization.AdopterOrganization;
 import model.Role.AdopterRole;
 import model.WorkQueue.AdopterAuthorizationRequest;
+import model.EcoSystem.EmailValidator;
 
 /**
  *
  * @author anitachen
  */
 public class LoginScreen extends javax.swing.JPanel {
+
     JPanel mainWorkArea;
     EcoSystem ecoSystem;
     DB4OUtil db4oUtil;
 
-    
-    
     public LoginScreen(JPanel mainWorkArea, EcoSystem ecoSystem, DB4OUtil dB4OUtil) {
         initComponents();
 
-        this.setSize(1000,630);
+        this.setSize(1000, 630);
         this.mainWorkArea = mainWorkArea;
         this.ecoSystem = ecoSystem;
         this.db4oUtil = dB4OUtil;
-        
+
         populateNetworkCombo();
         populateEnterpriseCombo();
         populateOrganizationCombo();
-        
+
 //        System.out.println(ecoSystem.getSystemAdmin().getUsername());
 //        System.out.println(ecoSystem.getSystemAdmin().getPassword());
-
     }
 
     /**
@@ -79,7 +76,7 @@ public class LoginScreen extends javax.swing.JPanel {
         cmbEnterpriseList = new javax.swing.JComboBox();
         lblEnterprise1 = new javax.swing.JLabel();
         cmbOrganizationList = new javax.swing.JComboBox();
-        txtName = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         lblLogin2 = new javax.swing.JLabel();
         lblRegister1 = new javax.swing.JLabel();
 
@@ -186,7 +183,13 @@ public class LoginScreen extends javax.swing.JPanel {
             }
         });
         add(cmbOrganizationList, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 118, -1));
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 118, -1));
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 118, -1));
 
         lblLogin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_login.png"))); // NOI18N
         add(lblLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, -1, 100));
@@ -199,29 +202,28 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        
+
 //        JPanel mainScreen = new MainScreen(mainWorkArea, ecoSystem);
 //        mainWorkArea.add("MainScreen", mainScreen);
 //        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
 //        layout.next(mainWorkArea);
-        
         // Get userName
         String userName = txtUserName.getText();
-       
+
         // Get Password
         char[] passwordCharArray = pwdPassword.getPassword();
         String password = String.valueOf(passwordCharArray);
 //        boolean flag = false;
 
-        if (userName.equals(ecoSystem.getSystemAdmin().getUsername()) &&
-            password.equals(ecoSystem.getSystemAdmin().getPassword())) {
+        if (userName.equals(ecoSystem.getSystemAdmin().getUsername())
+                && password.equals(ecoSystem.getSystemAdmin().getPassword())) {
             JPanel mainScreen = new MainScreen(mainWorkArea, ecoSystem.getSystemAdmin(), ecoSystem, db4oUtil);
             mainWorkArea.add("MainScreen", mainScreen);
             CardLayout layout = (CardLayout) mainWorkArea.getLayout();
             layout.next(mainWorkArea);
-        } else  {
-            
-            for (UserAccount ua : ecoSystem.getUserAccountDirectory().getUserAccountList()){
+        } else {
+
+            for (UserAccount ua : ecoSystem.getUserAccountDirectory().getUserAccountList()) {
                 if (userName.equals(ua.getUsername()) && password.equals(ua.getPassword())) {
                     JPanel mainScreen = new MainScreen(mainWorkArea, ua, db4oUtil);
                     mainWorkArea.add("MainScreen", mainScreen);
@@ -231,7 +233,7 @@ public class LoginScreen extends javax.swing.JPanel {
                 }
             }
             JOptionPane.showMessageDialog(this, "Invalid login.", "Warning", JOptionPane.WARNING_MESSAGE);
-        } 
+        }
 //        
 //        else {
 //            JOptionPane.showMessageDialog(this, "Invalid login.", "Warning", JOptionPane.WARNING_MESSAGE);            
@@ -262,45 +264,55 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        
+
         Network selectedNetwork = (Network) cmbNetworkList.getSelectedItem();
         Enterprise selectedEnterprise = (AdoptionEnterprise) cmbEnterpriseList.getSelectedItem();
         Organization selecOrganization = (AdopterOrganization) cmbOrganizationList.getSelectedItem();
-        
-        String newUser = txtName.getText();
+
+        String newUser = txtEmail.getText();
         String newUserName = txtNewUserName.getText();
         String newUserPassword = String.valueOf(pwdNewPassword.getPassword());
-        
-        
+
+        EmailValidator emailValidator = new EmailValidator();
+//        if (!emailValidator.validate(txtEmail.getText().trim())) {
+//            System.out.print("Invalid Email ID");
+//            JOptionPane.showMessageDialog(this, "Invalid Email ID", "Warning", JOptionPane.WARNING_MESSAGE);
+//        }
+
         if (selectedNetwork != null && selectedEnterprise != null && selectedEnterprise != null
-                && !newUser.isEmpty() && !newUserName.isEmpty() && !newUserPassword.isEmpty()){
-            
-            // create new account
-            if (ecoSystem.getUserAccountDirectory().userNameIsUnique(newUserName)){
-            UserAccount newUserAccount = ecoSystem.getUserAccountDirectory().createUserAccount(newUserName, newUserPassword, new AdopterRole(), selectedNetwork, selectedEnterprise, selecOrganization);
-            newUserAccount.setEmailId(newUser);
-            JOptionPane.showMessageDialog(this, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
-            txtNewUserName.setText("");
-            pwdNewPassword.setText("");
-            txtName.setText("");
-                      
-            // create work request
-            AdopterAuthorizationRequest request = new AdopterAuthorizationRequest();
-            request.setMessage("New User");
-            request.setSender(newUserAccount);
-            request.setStatus("Pending Review");
-            
-            selectedEnterprise.getWorkQueue().getWorkRequestList().add(request);
-            newUserAccount.getWorkQueue().getWorkRequestList().add(request);
-            
+                && !newUser.isEmpty() && !newUserName.isEmpty() && !newUserPassword.isEmpty()) {
+
+            if (emailValidator.validate(txtEmail.getText().trim())) {
+
+                // create new account
+                if (ecoSystem.getUserAccountDirectory().userNameIsUnique(newUserName) ) {
+                    UserAccount newUserAccount = ecoSystem.getUserAccountDirectory().createUserAccount(newUserName, newUserPassword, new AdopterRole(), selectedNetwork, selectedEnterprise, selecOrganization);
+                    newUserAccount.setEmailId(newUser);
+                    JOptionPane.showMessageDialog(this, "User Account added successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    txtNewUserName.setText("");
+                    pwdNewPassword.setText("");
+                    txtEmail.setText("");
+
+                    // create work request
+                    AdopterAuthorizationRequest request = new AdopterAuthorizationRequest();
+                    request.setMessage("New User");
+                    request.setSender(newUserAccount);
+                    request.setStatus("Pending Review");
+
+                    selectedEnterprise.getWorkQueue().getWorkRequestList().add(request);
+                    newUserAccount.getWorkQueue().getWorkRequestList().add(request);
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "User Account already existed", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "User Account already existed","Warning",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Invalid Email ID", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "All fields cannot be blank","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "All fields cannot be blank", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
+
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void cmbEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseListActionPerformed
@@ -314,6 +326,10 @@ public class LoginScreen extends javax.swing.JPanel {
     private void txtNewUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNewUserNameActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -338,7 +354,7 @@ public class LoginScreen extends javax.swing.JPanel {
     private javax.swing.JLabel lblUser;
     private javax.swing.JPasswordField pwdNewPassword;
     private javax.swing.JPasswordField pwdPassword;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNewUserName;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
@@ -347,8 +363,8 @@ public class LoginScreen extends javax.swing.JPanel {
 
         cmbNetworkList.removeAllItems();
 
-        if (!ecoSystem.getNetworkList().isEmpty()){
-            for (Network n : ecoSystem.getNetworkList()){
+        if (!ecoSystem.getNetworkList().isEmpty()) {
+            for (Network n : ecoSystem.getNetworkList()) {
                 cmbNetworkList.addItem(n);
             }
         }
@@ -356,14 +372,16 @@ public class LoginScreen extends javax.swing.JPanel {
     }
 
     private void populateEnterpriseCombo() {
-        
+
         cmbEnterpriseList.removeAllItems();
-        
+
         Network network = (Network) cmbNetworkList.getSelectedItem();
-        
-        if (network != null ){
-            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
-                if (e instanceof AdoptionEnterprise) cmbEnterpriseList.addItem(e);
+
+        if (network != null) {
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (e instanceof AdoptionEnterprise) {
+                    cmbEnterpriseList.addItem(e);
+                }
             }
         }
     }
@@ -371,16 +389,18 @@ public class LoginScreen extends javax.swing.JPanel {
     private void populateOrganizationCombo() {
 
         cmbOrganizationList.removeAllItems();
-        
+
         Network network = (Network) cmbNetworkList.getSelectedItem();
-        
-        if (network != null ){
-            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
-                for (Organization o : e.getOrganizationDirectory().getOrganizationList()){
-                    if (o instanceof AdopterOrganization) cmbOrganizationList.addItem(o);
+
+        if (network != null) {
+            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
+                    if (o instanceof AdopterOrganization) {
+                        cmbOrganizationList.addItem(o);
+                    }
                 };
             }
         }
-       
+
     }
 }
