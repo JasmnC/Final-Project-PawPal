@@ -71,6 +71,8 @@ public class MainScreen extends javax.swing.JPanel {
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        menuPanel.setBackground(new java.awt.Color(254, 236, 236));
+
         lblWelcome.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_titleSmall.png"))); // NOI18N
         lblWelcome.setText("<WelcomeMsg>");
