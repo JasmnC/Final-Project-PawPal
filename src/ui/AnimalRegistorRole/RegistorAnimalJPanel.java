@@ -96,7 +96,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnSaveAnimalActionPerformed(evt);
             }
         });
-        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 88, -1));
+        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 100, 40));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -114,15 +114,15 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         lblMessage5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage5.setText("Name:");
         add(lblMessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
-        add(txtAnimalArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 217, -1));
+        add(txtAnimalArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 217, -1));
 
         lblMessage6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage6.setText("Area:");
-        add(lblMessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 240, -1, -1));
+        add(lblMessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
         lblMessage7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage7.setText("Sex:");
-        add(lblMessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
+        add(lblMessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
 
         txtAnimalWeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,11 +134,11 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 txtAnimalWeightKeyPressed(evt);
             }
         });
-        add(txtAnimalWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 217, -1));
+        add(txtAnimalWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 217, -1));
 
         lblMessage8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage8.setText("Weight:");
-        add(lblMessage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 325, -1, -1));
+        add(lblMessage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, -1, -1));
 
         lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage12.setText("Photo:");
@@ -151,7 +151,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnUploadAnimalPhotoActionPerformed(evt);
             }
         });
-        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, -1, -1));
+        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 100, 40));
         add(txtAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 217, -1));
 
         buttonGroupGender.add(rbtnMale);
@@ -161,7 +161,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 rbtnMaleActionPerformed(evt);
             }
         });
-        add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
+        add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
 
         buttonGroupGender.add(rbtnFemale);
         rbtnFemale.setText("Female");
@@ -170,7 +170,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 rbtnFemaleActionPerformed(evt);
             }
         });
-        add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
+        add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 200, 200));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -265,16 +265,16 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         pic.addChoosableFileFilter(filer);
 
         int a = pic.showOpenDialog(this);
-//        if (a == JFileChooser.APPROVE_OPTION) {
-//            File file = pic.getSelectedFile();
-//            String path = file.getAbsolutePath();
-//            imageFile = file;
-//            
-//            txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
-//            ImageIcon i = seticon(path, null);
-//            animalImage = i;
-//            jLabel1.setIcon(animalImage);
-//        }
+        if (a == JFileChooser.APPROVE_OPTION) {
+            File file = pic.getSelectedFile();
+            String path = file.getAbsolutePath();
+            imageFile = file;
+            
+            txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
+            ImageIcon i = seticon(path, null);
+            animalImage = i;
+            jLabel1.setIcon(animalImage);
+        }
 
     }//GEN-LAST:event_btnUploadAnimalPhotoActionPerformed
 

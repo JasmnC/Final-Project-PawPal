@@ -63,7 +63,7 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
                 requestVolunteerJButtonActionPerformed(evt);
             }
         });
-        add(requestVolunteerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 140, -1));
+        add(requestVolunteerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 240, 35));
 
         registerAnimalJButton.setText("Register Animal");
         registerAnimalJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
                 registerAnimalJButtonActionPerformed(evt);
             }
         });
-        add(registerAnimalJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
+        add(registerAnimalJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 240, 35));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Animal Registor Work Area");
