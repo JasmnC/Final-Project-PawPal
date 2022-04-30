@@ -6,6 +6,7 @@
 package model.Animal;
 
 import java.util.ArrayList;
+import model.Enterprise.AnimalShelterEnterprise;
 import model.Enterprise.Enterprise;
 import model.UserAccount.UserAccount;
 
@@ -33,6 +34,7 @@ public class AnimalDirectory {
     
     public Animal createAnimal(String name){
         Animal animal = new Animal(name);
+        animal.setEnterprise((AnimalShelterEnterprise) enterprise);
         animal.setId(animalList.size()+1);
         animalList.add(animal); 
         return animal;

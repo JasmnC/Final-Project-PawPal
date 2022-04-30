@@ -7,6 +7,10 @@ package ui.AnimalManagerRole;
 import ui.AnimalRegistorRole.*;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
+import java.io.File;
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -65,7 +69,6 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         lblMessage10 = new javax.swing.JLabel();
         txtAnimalMessageFromPharmacy = new javax.swing.JTextField();
         lblMessage11 = new javax.swing.JLabel();
-        lblMessage12 = new javax.swing.JLabel();
         btnAnimalManagerRequestMedicalCare = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAnimalManagerWorkArea = new javax.swing.JTable();
@@ -123,7 +126,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         add(lblMessage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 50, -1));
 
         txtAnimalMessageFromBehaviorTharapipst.setEnabled(false);
-        add(txtAnimalMessageFromBehaviorTharapipst, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 245, 200, 40));
+        add(txtAnimalMessageFromBehaviorTharapipst, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 240, 200, 40));
 
         lblMessage9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -131,7 +134,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         add(lblMessage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 120, -1));
 
         txtAnimalMessageFromVet.setEnabled(false);
-        add(txtAnimalMessageFromVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 145, 200, 40));
+        add(txtAnimalMessageFromVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 200, 40));
 
         lblMessage10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -139,16 +142,12 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         add(lblMessage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 120, -1));
 
         txtAnimalMessageFromPharmacy.setEnabled(false);
-        add(txtAnimalMessageFromPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, 200, 40));
+        add(txtAnimalMessageFromPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 190, 200, 40));
 
         lblMessage11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage11.setText("Pharmacy Feedback:");
         add(lblMessage11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 195, 120, -1));
-
-        lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMessage12.setText("Photo:");
-        add(lblMessage12, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 87, -1, -1));
 
         btnAnimalManagerRequestMedicalCare.setText("Request Medical Care");
         btnAnimalManagerRequestMedicalCare.addActionListener(new java.awt.event.ActionListener() {
@@ -186,12 +185,14 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblAnimalManagerWorkArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 890, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 890, 110));
 
         lblMessage13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage13.setText("Medical Care Status:");
-        add(lblMessage13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 274, -1, 30));
-        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 150, 150));
+        add(lblMessage13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, 30));
+
+        lblPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_noimage.png"))); // NOI18N
+        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 200, 200));
 
         lblMedicalCareMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMedicalCareMessage.setText("Message:");
@@ -261,7 +262,6 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblMedicalCareMessage;
     private javax.swing.JLabel lblMessage10;
     private javax.swing.JLabel lblMessage11;
-    private javax.swing.JLabel lblMessage12;
     private javax.swing.JLabel lblMessage13;
     private javax.swing.JLabel lblMessage5;
     private javax.swing.JLabel lblMessage6;
@@ -292,12 +292,32 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
         txtAnimalMessageFromPharmacy.setText(animal.getPharmacyMessage());
         txtAnimalMessageFromVet.setText(animal.getVetMessage());
         
-        lblPhoto.setIcon(animal.getPhotoIcon());
-        
+        if (animal.getPhoto()!=null){
+            String path = Paths.get(animal.getPhoto()).toAbsolutePath().toString();
+            ImageIcon icon = seticon(path, null);
+            lblPhoto.setIcon(icon);
+        }
+
         populateTable();
         
-
     }
+    
+    public ImageIcon seticon(String m, byte[] image){
+        
+        ImageIcon i = null;
+        
+        if (m != null) {
+            i = new ImageIcon(m);
+        } else {
+            i = new ImageIcon(image);
+        }
+
+        Image img1 = i.getImage();
+        Image img2 = img1.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        ImageIcon img = new ImageIcon(img2);
+        return img;
+    }
+    
 
     private void populateTable() {
 

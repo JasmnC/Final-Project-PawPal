@@ -9,7 +9,15 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.security.auth.login.AccountException;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
@@ -38,9 +46,8 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
     private Network network;
     private EcoSystem ecosystem;
     private UserAccount userAccount;
-    byte[] image;
-    String imagepath="";
-    ImageIcon animalImage;
+    private ImageIcon animalImage;
+    private File imageFile;
     
     public RegistorAnimalJPanel(JPanel workArea, UserAccount userAccount, AnimalShelterEnterprise enterprise) {
         initComponents();
@@ -89,7 +96,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnSaveAnimalActionPerformed(evt);
             }
         });
-        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 380, 88, -1));
+        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 88, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +151,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnUploadAnimalPhotoActionPerformed(evt);
             }
         });
-        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
+        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, -1, -1));
         add(txtAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 217, -1));
 
         buttonGroupGender.add(rbtnMale);
@@ -164,7 +171,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             }
         });
         add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 210, 180));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 200, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAnimalActionPerformed
@@ -188,6 +195,31 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             animal.setSex(sex);
             animal.setWeight(weight);
             animal.setPhotoIcon(animalImage);
+
+            if (!txtAnimalPhoto.getText().isEmpty()){
+                Path path = copyImageAndReturnPath(animal);
+                animal.setPhoto(path.toString());
+            }
+            
+            
+//            Path from = Paths.get(imageFile.toURI());
+//            System.out.println(from);
+//            Path to = Paths.get("AnimalPhoto/"+animal.getManager().getEnterprise()+
+//                    animal.getId()).toAbsolutePath();
+//            System.out.println(to);
+//            CopyOption[] options = new CopyOption[]{
+//                StandardCopyOption.REPLACE_EXISTING,
+//                StandardCopyOption.COPY_ATTRIBUTES
+//            };
+//            
+//            try {
+//                Files.copy(from, to, options);
+//            } catch (IOException ex) {
+//                Logger.getLogger(RegistorAnimalJPanel.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            
+            
+            
             
             // create work request
             AnimalManagerRequest request = new AnimalManagerRequest();
@@ -202,7 +234,6 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
             } 
         
         
-        
         JOptionPane.showMessageDialog(this, "New Animal Saved.","Information",JOptionPane.INFORMATION_MESSAGE);
         txtAnimalArea.setText("");
         txtAnimalName.setText("");
@@ -211,24 +242,9 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         txtAnimalArea.setText("");
         txtAnimalPhoto.setText("");
         jLabel1.setIcon(null);
-        
+                
         
     }//GEN-LAST:event_btnSaveAnimalActionPerformed
-    
-    public ImageIcon seticon(String m, byte[] image){
-        
-        if (m != null) {
-            animalImage = new ImageIcon(m);
-        } else {
-            animalImage = new ImageIcon(image);
-        }
-
-        Image img1 = animalImage.getImage();
-        Image img2 = img1.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon i = new ImageIcon(img2);
-        animalImage = i;
-        return i;
-    }
     
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         
@@ -244,19 +260,20 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
     private void btnUploadAnimalPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadAnimalPhotoActionPerformed
         JFileChooser pic = new JFileChooser();
         pic.setCurrentDirectory(new File("animal photo"));
-        
-        FileNameExtensionFilter filer = new FileNameExtensionFilter("All pic", "png", "jpg", "jpeg");
+
+        FileNameExtensionFilter filer = new FileNameExtensionFilter("All Pictures", "png", "jpg", "jpeg");
         pic.addChoosableFileFilter(filer);
-        
+
         int a = pic.showOpenDialog(null);
-        if(a==JFileChooser.APPROVE_OPTION){
-           File f=pic.getSelectedFile();
-           String p = f.getAbsolutePath();
-           txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
-           ImageIcon i = seticon(p, null);
-           animalImage = i;
-           jLabel1.setIcon(animalImage);
-          
+        if (a == JFileChooser.APPROVE_OPTION) {
+            File file = pic.getSelectedFile();
+            String path = file.getAbsolutePath();
+            imageFile = file;
+            
+            txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
+            ImageIcon i = seticon(path, null);
+            animalImage = i;
+            jLabel1.setIcon(animalImage);
         }
 
     }//GEN-LAST:event_btnUploadAnimalPhotoActionPerformed
@@ -307,4 +324,43 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         }
         return null;
     } 
+
+
+    public ImageIcon seticon(String m, byte[] image){
+        
+        if (m != null) {
+            animalImage = new ImageIcon(m);
+        } else {
+            animalImage = new ImageIcon(image);
+        }
+
+        Image img1 = animalImage.getImage();
+        Image img2 = img1.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon i = new ImageIcon(img2);
+        animalImage = i;
+        return i;
+    }
+    
+    public Path copyImageAndReturnPath(Animal animal){
+        
+        Path from = Paths.get(imageFile.toURI());
+        
+        String suffix = from.toString().split("\\.")[1];
+        
+        Path to = Paths.get("AnimalPhoto/"+animal.getEnterprise()+ "_"
+                + animal.getId() + "." + suffix);
+        CopyOption[] options = new CopyOption[]{
+            StandardCopyOption.REPLACE_EXISTING,
+            StandardCopyOption.COPY_ATTRIBUTES
+        };
+
+        try {
+            Files.copy(from, to, options);
+        } catch (IOException ex) {
+            Logger.getLogger(RegistorAnimalJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return to;
+    }
+    
 }
