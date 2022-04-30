@@ -98,7 +98,7 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 77, 659, 169));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 77, 860, 170));
 
         btnComplete.setText("Complete");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
                 btnCompleteActionPerformed(evt);
             }
         });
-        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(615, 264, -1, -1));
+        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, -1, -1));
 
         lblRequestOrigin.setText("from: Animal Register Organization");
         add(lblRequestOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(497, 43, -1, -1));
