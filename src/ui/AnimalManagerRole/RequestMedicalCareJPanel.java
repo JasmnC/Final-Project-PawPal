@@ -57,6 +57,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRequestVet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N
         btnRequestVet.setText("Request Vet");
@@ -65,9 +66,12 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                 btnRequestVetActionPerformed(evt);
             }
         });
+        add(btnRequestVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 193, -1, -1));
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage.setText("Message:");
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 117, -1, -1));
+        add(txtSendMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 149, 217, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -75,41 +79,11 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 33, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Send Medical Care Request to Vet");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRequestVet)
-                    .addComponent(lblMessage)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTitle))
-                    .addComponent(txtSendMedicalCareMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(446, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblTitle))
-                .addGap(55, 55, 55)
-                .addComponent(lblMessage)
-                .addGap(18, 18, 18)
-                .addComponent(txtSendMedicalCareMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRequestVet)
-                .addContainerGap(286, Short.MAX_VALUE))
-        );
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 38, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestVetActionPerformed

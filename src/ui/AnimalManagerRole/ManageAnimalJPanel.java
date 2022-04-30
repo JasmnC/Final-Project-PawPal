@@ -66,6 +66,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         btnViewDetial = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblAnimalManagerWorkArea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,15 +96,19 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblAnimalManagerWorkArea);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 97, 659, 169));
+
         btnAssignAnimalToMe.setText("Assign to me");
         btnAssignAnimalToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignAnimalToMeActionPerformed(evt);
             }
         });
+        add(btnAssignAnimalToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 272, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Manage Animal");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 43, -1, -1));
 
         btnViewDetial.setText("View Animal Detail");
         btnViewDetial.addActionListener(new java.awt.event.ActionListener() {
@@ -111,38 +116,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 btnViewDetialActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblTitle)
-                            .addGap(0, 566, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(btnAssignAnimalToMe)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnViewDetial))))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(lblTitle)
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssignAnimalToMe)
-                    .addComponent(btnViewDetial))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 272, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignAnimalToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignAnimalToMeActionPerformed

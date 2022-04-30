@@ -83,9 +83,12 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         tblAdoptionRequests = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 231, 231));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAuthorizationStatus.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAuthorizationStatus.setText("Authorization Status:");
+        add(lblAuthorizationStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 35, -1, -1));
+        add(txtAuthorizationStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 163, -1));
 
         tblAnimalList.setBackground(new java.awt.Color(255, 238, 238));
         tblAnimalList.setModel(new javax.swing.table.DefaultTableModel(
@@ -116,8 +119,12 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblAnimalList);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 138, 659, 115));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 74, 659, -1));
+
         lblAnimalSelection.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAnimalSelection.setText("Animal Selection");
+        add(lblAnimalSelection, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 104, -1, -1));
 
         btnViewDetails.setBackground(new java.awt.Color(128, 80, 80));
         btnViewDetails.setForeground(new java.awt.Color(238, 238, 238));
@@ -127,6 +134,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
                 btnViewDetailsActionPerformed(evt);
             }
         });
+        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 271, -1, -1));
 
         btnSendRequest.setBackground(new java.awt.Color(255, 161, 161));
         btnSendRequest.setForeground(new java.awt.Color(238, 238, 238));
@@ -136,9 +144,12 @@ public class AdopterWorkArea extends javax.swing.JPanel {
                 btnSendRequestActionPerformed(evt);
             }
         });
+        add(btnSendRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(529, 271, -1, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 318, 659, -1));
 
         lblAdoptionRequest.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAdoptionRequest.setText("Your Adoption Request");
+        add(lblAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 348, -1, -1));
 
         tblAdoptionRequests.setBackground(new java.awt.Color(255, 238, 238));
         tblAdoptionRequests.setModel(new javax.swing.table.DefaultTableModel(
@@ -169,62 +180,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblAdoptionRequests);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAdoptionRequest)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnViewDetails)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnSendRequest))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblAnimalSelection)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblAuthorizationStatus)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(txtAuthorizationStatus)
-                                            .addGap(346, 346, 346))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAuthorizationStatus)
-                    .addComponent(txtAuthorizationStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblAnimalSelection)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSendRequest)
-                    .addComponent(btnViewDetails))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblAdoptionRequest)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(503, Short.MAX_VALUE))
-        );
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 382, 659, 115));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed

@@ -65,9 +65,11 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         btnAssign = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 237, 252));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Process Adopter Account Authorization Request");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 43, -1, -1));
 
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -99,6 +101,8 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 77, 659, 169));
+
         btnApprove.setBackground(new java.awt.Color(204, 255, 204));
         btnApprove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_approved.png"))); // NOI18N
         btnApprove.setText("Approve");
@@ -107,8 +111,10 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
                 btnApproveActionPerformed(evt);
             }
         });
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(629, 264, -1, -1));
 
         lblRequestOrigin.setText("from: Adopter Origanization");
+        add(lblRequestOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 43, -1, -1));
 
         btnAssign.setBackground(new java.awt.Color(204, 255, 204));
         btnAssign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_assign.png"))); // NOI18N
@@ -118,41 +124,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAssign)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnApprove))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(lblTitle)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblRequestOrigin))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(78, 78, 78))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(lblRequestOrigin))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnApprove)
-                    .addComponent(btnAssign))
-                .addContainerGap())
-        );
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 264, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed

@@ -55,6 +55,7 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         requestVolunteerJButton.setText("Request Volunteer");
         requestVolunteerJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +63,7 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
                 requestVolunteerJButtonActionPerformed(evt);
             }
         });
+        add(requestVolunteerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 161, 140, -1));
 
         registerAnimalJButton.setText("Register Animal");
         registerAnimalJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,37 +71,11 @@ public class AnimalRegistorWorkAreaJPanel extends javax.swing.JPanel {
                 registerAnimalJButtonActionPerformed(evt);
             }
         });
+        add(registerAnimalJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 114, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Animal Registor Work Area");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 287, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(54, 54, 54)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(requestVolunteerJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(registerAnimalJButton)
-                        .addComponent(lblTitle))
-                    .addContainerGap(55, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(67, 67, 67)
-                    .addComponent(lblTitle)
-                    .addGap(31, 31, 31)
-                    .addComponent(registerAnimalJButton)
-                    .addGap(18, 18, 18)
-                    .addComponent(requestVolunteerJButton)
-                    .addContainerGap(68, Short.MAX_VALUE)))
-        );
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 67, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestVolunteerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestVolunteerJButtonActionPerformed

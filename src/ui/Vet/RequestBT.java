@@ -100,6 +100,8 @@ public class RequestBT extends javax.swing.JPanel {
         icon = new javax.swing.JLabel();
         lblMessageTitle = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         btnRequestBT.setFont(new java.awt.Font("新細明體", 1, 11)); // NOI18N
         btnRequestBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N
         btnRequestBT.setText("Request");
@@ -108,9 +110,12 @@ public class RequestBT extends javax.swing.JPanel {
                 btnRequestBTActionPerformed(evt);
             }
         });
+        add(btnRequestBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 374, -1, -1));
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage.setText("Message:");
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 343, -1, -1));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 336, 217, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -118,9 +123,11 @@ public class RequestBT extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Send Behavioral Therapy Request");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 53, -1, -1));
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,69 +157,14 @@ public class RequestBT extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 87, 623, 171));
+
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet2BT.png"))); // NOI18N
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 270, -1, -1));
 
         lblMessageTitle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessageTitle.setText("Create New Request");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(icon)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnRequestBT, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(lblMessage)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
-                                        .addComponent(lblMessageTitle))))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(191, 191, 191)
-                                    .addComponent(lblTitle)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(91, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addGap(18, 18, 18)
-                .addComponent(lblTitle)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(icon))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(lblMessageTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMessage)
-                            .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRequestBT)))
-                .addContainerGap(182, Short.MAX_VALUE))
-        );
+        add(lblMessageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed
