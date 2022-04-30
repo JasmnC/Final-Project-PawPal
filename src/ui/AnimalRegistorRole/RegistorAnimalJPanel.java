@@ -79,7 +79,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         rbtnFemale = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(212, 255, 224));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSaveAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N

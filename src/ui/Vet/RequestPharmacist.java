@@ -106,6 +106,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         icon = new javax.swing.JLabel();
         lblMessageTitle = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(212, 238, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRequestTest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N

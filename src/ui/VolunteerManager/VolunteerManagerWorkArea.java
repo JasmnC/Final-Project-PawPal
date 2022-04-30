@@ -69,6 +69,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         cmbVolunteer = new javax.swing.JComboBox();
         lblRequestOrigin = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 254, 199));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

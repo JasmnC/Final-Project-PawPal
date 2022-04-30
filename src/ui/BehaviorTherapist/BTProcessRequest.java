@@ -77,6 +77,7 @@ public class BTProcessRequest extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         lblResult = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(181, 255, 232));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBack.setText("<< Back");
