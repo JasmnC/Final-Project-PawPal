@@ -131,20 +131,20 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
             WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
             if (request.getReceiver() == userAccount) {
                 if (request.getStatus().equalsIgnoreCase("Approved")) {
-                    JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
+                    JOptionPane.showMessageDialog(this, "Request already completed. Please select another one.","Warning",JOptionPane.WARNING_MESSAGE);
                     return;
                 } else {
                     request.setStatus("Approved");
-                    JOptionPane.showMessageDialog(null, "Account approved");
+                    JOptionPane.showMessageDialog(this, "Account approved", "Infornation",JOptionPane.INFORMATION_MESSAGE);
                     populateTable();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "This request is not assign to you.", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "This request is not assign to you.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }   
         
@@ -158,7 +158,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
             if (request.getStatus().equalsIgnoreCase("Approved")) {
-                JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
+                JOptionPane.showMessageDialog(this, "Request already completed. Please select another one.","Warning",JOptionPane.INFORMATION_MESSAGE);
                 return;
             } else {
                 request.setReceiver(userAccount);
@@ -167,7 +167,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please choose a request to assign to yourself", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please choose a request to assign to yourself", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 

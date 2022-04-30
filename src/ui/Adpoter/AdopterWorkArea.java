@@ -193,7 +193,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
             
             for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
                 if (request.getAnimal() == selectedAnimal){
-                    JOptionPane.showMessageDialog(null, "Your have sent requst for this animal.\nPlease refer to request history for application result.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Your have sent requst for this animal.\nPlease refer to request history for application result.", "Warning", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
             }
@@ -206,11 +206,11 @@ public class AdopterWorkArea extends javax.swing.JPanel {
             
             network.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
-            JOptionPane.showMessageDialog(null, "Adotion request has been sent. Please wait for the result.");
+            JOptionPane.showMessageDialog(this, "Adotion request has been sent. Please wait for the result.","Information",JOptionPane.INFORMATION_MESSAGE);
             populateRequestTable();
             
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a row first", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a row first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
                 
@@ -230,7 +230,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
             layout.next(workArea);
             
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a row first", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a row first", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         
 

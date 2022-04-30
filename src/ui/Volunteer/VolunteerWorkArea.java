@@ -99,6 +99,7 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
 
+
         btnComplete.setText("Complete");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +107,7 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
             }
         });
         add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 500, -1, -1));
+
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_volunteer.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, -1, -1));
@@ -119,15 +121,15 @@ public class VolunteerWorkArea extends javax.swing.JPanel {
             
             VolunteerRequest selectedRequest = (VolunteerRequest) tblWorkRequests.getValueAt(selectedRow, 0);
             if (selectedRequest.getStatus().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.");
+                JOptionPane.showMessageDialog(this, "Request already completed. Please select another one.","Warning",JOptionPane.WARNING_MESSAGE);
                 return;
             } else {
                 selectedRequest.setStatus("Completed");
-                JOptionPane.showMessageDialog(null, "Request completed!", "Information",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Request completed!", "Information",JOptionPane.INFORMATION_MESSAGE);
                 populateTable();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }  
         

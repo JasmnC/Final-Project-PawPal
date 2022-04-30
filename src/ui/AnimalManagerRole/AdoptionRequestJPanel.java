@@ -151,14 +151,14 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         int selectedRow = tblAnimalAdoptionWorkQueue.getSelectedRow();
 
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first");
+            JOptionPane.showMessageDialog(this, "Please select a row first","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
         
         if (request.getStatus().equals("Rejected")){
-            JOptionPane.showMessageDialog(null, "This request has been rejected", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "This request has been rejected", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -168,6 +168,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         for (WorkRequest wr : userAccount.getWorkQueue().getWorkRequestList()){
             if (wr instanceof AnimalManagerRequest && wr.getAnimal() == request.getAnimal()){
                 wr.setStatus("Adopted");
+                JOptionPane.showMessageDialog(this, "Request approved!", "Information", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         populateRequestTable();        

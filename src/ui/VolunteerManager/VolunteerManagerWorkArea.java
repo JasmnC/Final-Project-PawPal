@@ -128,18 +128,18 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         int selectedRow = tblWorkRequests.getSelectedRow();
 
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please choose a request first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         VolunteerRequest selectedRequest = (VolunteerRequest) tblWorkRequests.getValueAt(selectedRow, 0);
         if (selectedRequest.getStatus().equals("Completed")) {
-            JOptionPane.showMessageDialog(null, "Request already completed. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Request already completed. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         if (selectedRequest.getStatus().equals("Assigned")) {
-            JOptionPane.showMessageDialog(null, "This request has assigned volunteer. Please select another request.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "This request has assigned volunteer. Please select another request.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -148,7 +148,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
                 VolunteerRequest vr = (VolunteerRequest)request;
                 if (vr.getAssignedVolunteer() == selectedVolunteer 
                 && !request.getStatus().equals("Completed")){
-                JOptionPane.showMessageDialog(null, "This volunteer is not available. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "This volunteer is not available. Please select another one.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
                 }
             }
@@ -158,7 +158,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         selectedRequest.setAssignedVolunteer(selectedVolunteer);
         selectedRequest.setStatus("Assigned");
         selectedVolunteer.getWorkQueue().getWorkRequestList().add(selectedRequest);
-        JOptionPane.showMessageDialog(null, "Volunteer Assigned","Information",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Volunteer Assigned","Information",JOptionPane.INFORMATION_MESSAGE);
         populateTable();
                          
     }//GEN-LAST:event_btnAssignActionPerformed

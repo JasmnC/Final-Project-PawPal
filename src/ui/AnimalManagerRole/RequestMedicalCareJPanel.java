@@ -90,7 +90,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
         
         String requestVetMessage = txtSendMedicalCareMessage.getText();
         if(requestVetMessage.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter something to send.");
+            JOptionPane.showMessageDialog(this, "Please enter something to send.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -103,7 +103,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
         network.getWorkQueue().getWorkRequestList().add(request);
         animal.getWorkQueue().getWorkRequestList().add(request);
         
-        JOptionPane.showMessageDialog(null, "Medical Request sent");
+        JOptionPane.showMessageDialog(this, "Medical Request sent","Information",JOptionPane.INFORMATION_MESSAGE);
         txtSendMedicalCareMessage.setText("");
         
     }//GEN-LAST:event_btnRequestVetActionPerformed

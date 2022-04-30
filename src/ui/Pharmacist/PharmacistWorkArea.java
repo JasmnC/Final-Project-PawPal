@@ -159,7 +159,7 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
             if (request.getStatus().equalsIgnoreCase("Processed")) {
-                JOptionPane.showMessageDialog(null, "Request already processed.");
+                JOptionPane.showMessageDialog(this, "Request already processed.","Warning",JOptionPane.WARNING_MESSAGE);
                 return;
             } else if (request.getStatus().equalsIgnoreCase("Completed")) {
                 JOptionPane.showMessageDialog(this, "Request already closed.", "Thank you!", JOptionPane.INFORMATION_MESSAGE);
@@ -171,7 +171,7 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a request.");
+            JOptionPane.showMessageDialog(this, "Please select a request.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -181,17 +181,17 @@ public class PharmacistWorkArea extends javax.swing.JPanel {
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
    int selectedRow = tblWorkRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from table before proceeding");
+            JOptionPane.showMessageDialog(this, "Please select a row from table before proceeding","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         PharmacistWorkRequest request = (PharmacistWorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
          if (request.getReceiver() != userAccount) {
-            JOptionPane.showMessageDialog(null, "This request is not assign to you.");
+            JOptionPane.showMessageDialog(this, "This request is not assign to you.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         PharmacistWorkRequest btwr = (PharmacistWorkRequest) tblWorkRequests.getValueAt(selectedRow, 0);
         if (btwr.getStatus().equalsIgnoreCase("Completed")) {
-            JOptionPane.showMessageDialog(null, "Request already completed.");
+            JOptionPane.showMessageDialog(this, "Request already completed.","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
 

@@ -176,7 +176,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
 
           String message = txtMessage.getText();
         if (message.equals("") || message.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter something to send.", "information", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please enter something to send.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         PharmacistWorkRequest request = new PharmacistWorkRequest();
@@ -188,7 +188,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         network.getWorkQueue().getWorkRequestList().add(request);
         userAccount.getWorkQueue().getWorkRequestList().add(request);
 
-        JOptionPane.showMessageDialog(null, "Pharmaceutical Therapy Request sent");
+        JOptionPane.showMessageDialog(this, "Pharmaceutical Therapy Request sent","Information",JOptionPane.INFORMATION_MESSAGE);
         populatePtTable();
         txtMessage.setText("");
         /**

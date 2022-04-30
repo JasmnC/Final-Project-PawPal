@@ -183,7 +183,7 @@ public class RequestBT extends javax.swing.JPanel {
         network.getWorkQueue().getWorkRequestList().add(request);
         userAccount.getWorkQueue().getWorkRequestList().add(request);
 
-        JOptionPane.showMessageDialog(null, "Behavior Therapy Request sent");
+        JOptionPane.showMessageDialog(this, "Behavior Therapy Request sent","Information",JOptionPane.INFORMATION_MESSAGE);
         populateBtTable();
         txtMessage.setText("");
         /**
