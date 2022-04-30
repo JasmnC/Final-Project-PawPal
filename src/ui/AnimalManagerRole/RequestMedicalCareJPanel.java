@@ -66,12 +66,12 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                 btnRequestVetActionPerformed(evt);
             }
         });
-        add(btnRequestVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 193, -1, -1));
+        add(btnRequestVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
 
-        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessage.setText("Message:");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 117, -1, -1));
-        add(txtSendMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 149, 217, -1));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+        add(txtSendMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 450, 50));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

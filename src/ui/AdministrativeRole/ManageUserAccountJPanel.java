@@ -166,29 +166,29 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 cmbOrgActionPerformed(evt);
             }
         });
-        add(cmbOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, 242, -1));
+        add(cmbOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 485, 242, -1));
 
         lblEmployee.setText("Organization:");
-        add(lblEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
+        add(lblEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, -1, -1));
 
         lblRole.setText("Role:");
-        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, -1, -1));
+        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 530, -1, -1));
 
         cmbRoles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(cmbRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 242, -1));
 
         lblCreateUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCreateUser.setText("New User:");
-        add(lblCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+        add(lblCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, 40));
 
         lblOrganizationPicker.setText("Network:");
         add(lblOrganizationPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
 
         lblOrganization.setText("Enterprise:");
-        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, -1, -1));
+        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 445, -1, -1));
 
         lblUserName.setText("User Name:");
-        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, -1, -1));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
@@ -211,28 +211,28 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 txtUserNameActionPerformed(evt);
             }
         });
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 255, -1));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 300, -1));
 
         pwdUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwdUserActionPerformed(evt);
             }
         });
-        add(pwdUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 255, -1));
+        add(pwdUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 300, -1));
 
         btnCreateUser.setBackground(new java.awt.Color(245, 245, 255));
         btnCreateUser.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         btnCreateUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
-        btnCreateUser.setText("Create");
+        btnCreateUser.setText("Create User");
         btnCreateUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateUserActionPerformed(evt);
             }
         });
-        add(btnCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, -1, -1));
+        add(btnCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 510, -1, -1));
 
         lblPassword.setText("Password:");
-        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
+        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed

@@ -110,12 +110,12 @@ public class RequestBT extends javax.swing.JPanel {
                 btnRequestBTActionPerformed(evt);
             }
         });
-        add(btnRequestBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, -1, -1));
+        add(btnRequestBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 455, -1, -1));
 
-        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessage.setText("Message:");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, -1, -1));
-        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 217, -1));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 400, 40));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -160,11 +160,11 @@ public class RequestBT extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 250));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet2BT.png"))); // NOI18N
-        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, -1, -1));
 
-        lblMessageTitle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessageTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessageTitle.setText("Create New Request");
-        add(lblMessageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, -1, -1));
+        add(lblMessageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed

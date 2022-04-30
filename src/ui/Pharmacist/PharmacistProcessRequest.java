@@ -80,12 +80,12 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 185, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
 
-        lblResult.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblResult.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblResult.setText("Result:");
-        add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 100, -1, -1));
-        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 123, 294, 56));
+        add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 450, 50));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

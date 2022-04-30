@@ -108,11 +108,11 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         lblOrganizationList1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblOrganizationList1.setText("New Network:");
-        add(lblOrganizationList1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, -1, -1));
+        add(lblOrganizationList1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
 
         lblEmployeeName.setText("Name:");
-        add(lblEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, -1, -1));
-        add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 201, -1));
+        add(lblEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 445, -1, -1));
+        add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, 360, -1));
 
         btnCreateNetwork.setBackground(new java.awt.Color(245, 245, 255));
         btnCreateNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -123,7 +123,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnCreateNetworkActionPerformed(evt);
             }
         });
-        add(btnCreateNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, -1, -1));
+        add(btnCreateNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNetworkActionPerformed

@@ -92,7 +92,7 @@ public class BTProcessRequest extends javax.swing.JPanel {
                 txtResultsActionPerformed(evt);
             }
         });
-        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 118, 279, 56));
+        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 450, 50));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Result Submission");
@@ -105,11 +105,11 @@ public class BTProcessRequest extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 192, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
 
-        lblResult.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblResult.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblResult.setText("Result:");
-        add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 98, -1, -1));
+        add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

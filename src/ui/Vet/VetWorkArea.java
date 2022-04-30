@@ -150,7 +150,7 @@ public class VetWorkArea extends javax.swing.JPanel {
         add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 500, -1, -1));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet.png"))); // NOI18N
-        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed

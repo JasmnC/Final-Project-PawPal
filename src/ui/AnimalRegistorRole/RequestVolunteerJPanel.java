@@ -79,12 +79,12 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                 btnRequestVolunteerActionPerformed(evt);
             }
         });
-        add(btnRequestVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
+        add(btnRequestVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, -1));
 
-        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessage.setText("Message:");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, -1, -1));
-        add(txtRequestVolunteerMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 223, -1));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+        add(txtRequestVolunteerMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 250, 50));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

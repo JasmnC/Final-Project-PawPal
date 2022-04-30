@@ -130,7 +130,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 cmbEnterpriseActionPerformed(evt);
             }
         });
-        add(cmbEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 167, -1));
+        add(cmbEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 250, -1));
 
         lblEnterpriseList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEnterpriseList.setText("Enterprise List:");
@@ -159,7 +159,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 txtNameActionPerformed(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 167, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 250, -1));
 
         lblEnterpriseName.setText("Enterprise Name:");
         add(lblEnterpriseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, -1, -1));
