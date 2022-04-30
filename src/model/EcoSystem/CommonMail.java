@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Kunjan
+ * @author ariel
  */
 public class CommonMail {
     
@@ -26,14 +26,15 @@ public class CommonMail {
         String password = "info5100";
 
         Properties properties = System.getProperties();
-        String host = "smtp.gmail.com";
 
-        properties.put("mail.smtp.starttls.enable", "true");
-
-        properties.put("mail.smtp.ssl.trust", host);
+        properties.put("mail.smtp.auth", "true");   //Enable authentication
+        properties.put("mail.smtp.starttls.enable", "true");   //Set TLS encryption enabled
+        
+        properties.put("mail.smtp.host", "smtp.gmail.com");  //set SMTP host
         properties.put("mail.smtp.user", from);
         properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.ssl.trust", "*");
+
 
         Session session = Session.getDefaultInstance(properties);
 
@@ -44,7 +45,7 @@ public class CommonMail {
             message.setSubject(subject);
             message.setText(text);
             Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, password);
+            transport.connect("smtp.gmail.com", from, password);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
             System.out.println("Sent message successfully....");

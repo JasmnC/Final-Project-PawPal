@@ -138,7 +138,7 @@ public class AdoptionManagerWorkArea extends javax.swing.JPanel {
                     populateTable();
                     JOptionPane.showMessageDialog(this, "Account approved", "Infornation", JOptionPane.INFORMATION_MESSAGE);
                     String subject = "Account activation";
-                    String content = "Dear Adopter, your PawPal account: " + request.getSender() + " has been activated. \nYou can check your status through your credentials. \nThank you!";
+                    String content = "Dear Adopter, \nyour PawPal account: [" + request.getSender() + "] has been activated. You can check your status through your credentials. \nThank you!";
                     CommonMail.sendEmailMessage(request.getSender().getEmailId(), subject, content);
                 }
             } else {
