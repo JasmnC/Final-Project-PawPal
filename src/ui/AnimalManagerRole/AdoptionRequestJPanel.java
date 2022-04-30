@@ -56,7 +56,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             Object[] row = new Object[5];
             row[0] = request;
             row[1] = request.getSender();
-            row[2] = request.getSender().getName();
+            row[2] = request.getSender().getEmailId();
             row[3] = request.getSender().getOrgainization();
             row[4] = request.getStatus();
             
