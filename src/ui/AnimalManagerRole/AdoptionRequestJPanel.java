@@ -155,15 +155,19 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
 
         AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
 
+        if (request.getStatus().equals("Approved")) {
+            JOptionPane.showMessageDialog(this, "This request has been adopted!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         if (request.getStatus().equals("Rejected")) {
             JOptionPane.showMessageDialog(this, "This request has been rejected", "Warning", JOptionPane.WARNING_MESSAGE);
-            String subject = "Your Adoption Request is Rejected";
-            String content = "Dear Adopter, \nWe are sorry to inform you that your adoption request is rejected. You can check the status through your credentials. \nThank you.";
-            CommonMail.sendEmailMessage(request.getSender().getEmailId(), subject, content);
             return;
         }
 
         request.setStatus("Approved");
+        JOptionPane.showMessageDialog(this, "Request approved!", "Information", JOptionPane.INFORMATION_MESSAGE);
+        populateRequestTable();
         request.getAnimal().setAdoptor(request.getSender());
         String subject = "Your Adoption Request is Approved";
         String content = "Dear Adopter, \nCongratulations! Your adoption request is approved. You can check the status through your credentials. \nThank you!";
@@ -172,10 +176,10 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         for (WorkRequest wr : userAccount.getWorkQueue().getWorkRequestList()) {
             if (wr instanceof AnimalManagerRequest && wr.getAnimal() == request.getAnimal()) {
                 wr.setStatus("Adopted");
-                JOptionPane.showMessageDialog(this, "Request approved!", "Information", JOptionPane.INFORMATION_MESSAGE);
+                //     JOptionPane.showMessageDialog(this, "Request approved!", "Information", JOptionPane.INFORMATION_MESSAGE);
             }
+
         }
-        populateRequestTable();
 
     }//GEN-LAST:event_btnApproveAnimalAdoptionRequestActionPerformed
 
@@ -184,13 +188,28 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         int selectedRow = tblAnimalAdoptionWorkQueue.getSelectedRow();
 
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first");
+            JOptionPane.showMessageDialog(this, "Please select a row first");
             return;
         }
 
         AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
+
+        if (request.getStatus().equals("Approved")) {
+            JOptionPane.showMessageDialog(this, "This request has been adopted!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (request.getStatus().equals("Rejected")) {
+            JOptionPane.showMessageDialog(this, "This request has been rejected!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         request.setStatus("Rejected");
+        JOptionPane.showMessageDialog(this, "Request rejected!", "Infomation", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
+        String subject = "Your Adoption Request is Rejected";
+        String content = "Dear Adopter, \nWe are sorry to inform you that your adoption request is rejected. You can check the status through your credentials. \nThank you.";
+        CommonMail.sendEmailMessage(request.getSender().getEmailId(), subject, content);
 
     }//GEN-LAST:event_btnRejectAnimalAdoptionRequestActionPerformed
 

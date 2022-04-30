@@ -62,29 +62,29 @@ public class RequestPharmacist extends javax.swing.JPanel {
     }
 
     public void populatePtTable() {
-        
+
         DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
         model.setRowCount(0);
-        for (WorkRequest phrequest : userAccount.getWorkQueue().getWorkRequestList()) {
-            if (phrequest instanceof MedCareRequest || phrequest instanceof PharmacistWorkRequest) {
-                if (phrequest.getAnimal() == animal) {
-                    Object[] row = new Object[model.getColumnCount()];
-                    row[0] = phrequest;
-                    row[1] = phrequest.getAnimal().getId();
-                    row[2] = phrequest.getReceiver();
-                    row[3] = phrequest.getStatus();
-                    if (phrequest instanceof MedCareRequest) {
-                        String result = ((MedCareRequest) phrequest).getVetResult();
-                        row[4] = result == null ? "Waiting" : result;
-                    } else if (phrequest instanceof PharmacistWorkRequest) {
-                        String result = ((PharmacistWorkRequest) phrequest).getResult();
-                        row[4] = result == null ? "Waiting" : result;
-                    }
-                    model.addRow(row);
+        for (WorkRequest phrequest : animal.getWorkQueue().getWorkRequestList()) {
+            if (phrequest instanceof PharmacistWorkRequest) {
+
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = phrequest;
+                row[1] = phrequest.getAnimal().getId();
+                row[2] = phrequest.getReceiver();
+                row[3] = phrequest.getStatus();
+                if (phrequest instanceof MedCareRequest) {
+                    String result = ((MedCareRequest) phrequest).getVetResult();
+                    row[4] = result == null ? "Waiting" : result;
+                } else if (phrequest instanceof PharmacistWorkRequest) {
+                    String result = ((PharmacistWorkRequest) phrequest).getResult();
+                    row[4] = result == null ? "Waiting" : result;
                 }
+                model.addRow(row);
+
             }
         }
-        
+
     }
 
     /**
@@ -175,7 +175,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
 
-          String message = txtMessage.getText();
+        String message = txtMessage.getText();
         if (message.equals("") || message.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter something to send.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -187,9 +187,9 @@ public class RequestPharmacist extends javax.swing.JPanel {
         request.setAnimal(animal);
 
         enterprise.getWorkQueue().getWorkRequestList().add(request);
-        userAccount.getWorkQueue().getWorkRequestList().add(request);
+        animal.getWorkQueue().getWorkRequestList().add(request);
 
-        JOptionPane.showMessageDialog(this, "Pharmaceutical Therapy Request sent","Information",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Pharmaceutical Therapy Request sent", "Information", JOptionPane.INFORMATION_MESSAGE);
         populatePtTable();
         txtMessage.setText("");
         /**
@@ -199,7 +199,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
          * (VetAnimalDetail) component; CardLayout layout = (CardLayout)
          * userProcessContainer.getLayout();
          * layout.previous(userProcessContainer); populatePtTable();
-*
+         *
          */
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
