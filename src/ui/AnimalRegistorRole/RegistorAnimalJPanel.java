@@ -80,6 +80,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSaveAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnSaveAnimal.setText("Save");
@@ -88,6 +89,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnSaveAnimalActionPerformed(evt);
             }
         });
+        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 347, 88, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -95,18 +97,25 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 33, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Register Animal");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 112, -1));
+        add(txtAnimalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 96, 217, -1));
 
         lblMessage5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage5.setText("Name:");
+        add(lblMessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 103, -1, -1));
+        add(txtAnimalArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 128, 217, -1));
 
         lblMessage6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage6.setText("Area:");
+        add(lblMessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 135, -1, -1));
 
         lblMessage7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage7.setText("Sex:");
+        add(lblMessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 160, -1, -1));
 
         txtAnimalWeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,12 +127,15 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 txtAnimalWeightKeyPressed(evt);
             }
         });
+        add(txtAnimalWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 218, 217, -1));
 
         lblMessage8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage8.setText("Weight:");
+        add(lblMessage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 225, -1, -1));
 
         lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage12.setText("Photo:");
+        add(lblMessage12, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 276, -1, -1));
 
         btnUploadAnimalPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_addPhoto.png"))); // NOI18N
         btnUploadAnimalPhoto.setText("Upload");
@@ -132,6 +144,8 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnUploadAnimalPhotoActionPerformed(evt);
             }
         });
+        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 265, -1, -1));
+        add(txtAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 269, 217, -1));
 
         buttonGroupGender.add(rbtnMale);
         rbtnMale.setText("Male");
@@ -140,6 +154,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 rbtnMaleActionPerformed(evt);
             }
         });
+        add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 160, -1, -1));
 
         buttonGroupGender.add(rbtnFemale);
         rbtnFemale.setText("Female");
@@ -148,85 +163,8 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 rbtnFemaleActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblMessage5)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblMessage7)
-                            .addComponent(lblMessage6)
-                            .addComponent(lblMessage8)
-                            .addComponent(lblMessage12))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAnimalArea, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                            .addComponent(rbtnMale)
-                            .addComponent(rbtnFemale)
-                            .addComponent(txtAnimalWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                            .addComponent(txtAnimalPhoto))))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUploadAnimalPhoto)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSaveAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(125, 125, 125))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(btnBack)
-                .addGap(18, 18, 18)
-                .addComponent(lblTitle)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMessage5)
-                            .addComponent(txtAnimalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMessage6)
-                            .addComponent(txtAnimalArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnMale)
-                            .addComponent(lblMessage7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnFemale)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMessage8)
-                            .addComponent(txtAnimalWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMessage12)
-                    .addComponent(txtAnimalPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUploadAnimalPhoto))
-                .addGap(46, 46, 46)
-                .addComponent(btnSaveAnimal)
-                .addGap(218, 218, 218))
-        );
+        add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 189, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 101, 159, 143));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAnimalActionPerformed
