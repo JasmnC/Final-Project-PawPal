@@ -34,7 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         ecoSystem = db4oUtil.retrieveEcoSystem();
-        setSize(1000, 625);
+        setSize(1000, 675);
 
         initLoginScreen();
 

@@ -8,6 +8,9 @@ import ui.AnimalManagerRole.*;
 import ui.AnimalRegistorRole.*;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -75,7 +78,7 @@ public class ViewAnimalDetailJPanel extends javax.swing.JPanel {
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_view.PNG"))); // NOI18N
-        lblTitle.setText("On Going Animal");
+        lblTitle.setText(" Animal Detail");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
         txtAnimalName.setEnabled(false);
@@ -133,7 +136,9 @@ public class ViewAnimalDetailJPanel extends javax.swing.JPanel {
         lblMessage11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage11.setText("Pharmacy Feedback:");
         add(lblMessage11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 120, -1));
-        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 209, 218));
+
+        lblPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_noimage.png"))); // NOI18N
+        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 200, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -174,8 +179,28 @@ public class ViewAnimalDetailJPanel extends javax.swing.JPanel {
         txtAnimalMessageFromPharmacy.setText(animal.getPharmacyMessage());
         txtAnimalMessageFromVet.setText(animal.getVetMessage());
         
-        lblPhoto.setIcon(animal.getPhotoIcon());
+        if (animal.getPhoto()!=null){
+            String path = Paths.get(animal.getPhoto()).toAbsolutePath().toString();
+            ImageIcon icon = seticon(path, null);
+            lblPhoto.setIcon(icon);
+        }
                 
+    }
+    
+    public ImageIcon seticon(String m, byte[] image){
+        
+        ImageIcon i = null;
+        
+        if (m != null) {
+            i = new ImageIcon(m);
+        } else {
+            i = new ImageIcon(image);
+        }
+
+        Image img1 = i.getImage();
+        Image img2 = img1.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        ImageIcon img = new ImageIcon(img2);
+        return img;
     }
 
 }

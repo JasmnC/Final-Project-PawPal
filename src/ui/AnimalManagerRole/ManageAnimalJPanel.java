@@ -96,7 +96,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblAnimalManagerWorkArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 890, 350));
 
         btnAssignAnimalToMe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_assign.png"))); // NOI18N
         btnAssignAnimalToMe.setText("Assign to me");
@@ -105,11 +105,12 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 btnAssignAnimalToMeActionPerformed(evt);
             }
         });
-        add(btnAssignAnimalToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 500, -1, -1));
+        add(btnAssignAnimalToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 120, 40));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Manage Animal");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1000, -1));
 
         btnViewDetial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_view.PNG"))); // NOI18N
         btnViewDetial.setText("View Detail");
@@ -118,7 +119,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 btnViewDetialActionPerformed(evt);
             }
         });
-        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 500, -1, -1));
+        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignAnimalToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignAnimalToMeActionPerformed

@@ -264,17 +264,17 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         FileNameExtensionFilter filer = new FileNameExtensionFilter("All Pictures", "png", "jpg", "jpeg");
         pic.addChoosableFileFilter(filer);
 
-        int a = pic.showOpenDialog(null);
-        if (a == JFileChooser.APPROVE_OPTION) {
-            File file = pic.getSelectedFile();
-            String path = file.getAbsolutePath();
-            imageFile = file;
-            
-            txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
-            ImageIcon i = seticon(path, null);
-            animalImage = i;
-            jLabel1.setIcon(animalImage);
-        }
+        int a = pic.showOpenDialog(this);
+//        if (a == JFileChooser.APPROVE_OPTION) {
+//            File file = pic.getSelectedFile();
+//            String path = file.getAbsolutePath();
+//            imageFile = file;
+//            
+//            txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
+//            ImageIcon i = seticon(path, null);
+//            animalImage = i;
+//            jLabel1.setIcon(animalImage);
+//        }
 
     }//GEN-LAST:event_btnUploadAnimalPhotoActionPerformed
 
