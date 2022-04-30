@@ -18,7 +18,7 @@ public class UserAccount {
     
     private String username;
     private String password;
-    private String name;
+    private String emailId;
     private Role role;
     private Network network;
     private Enterprise enterprise;
@@ -45,13 +45,13 @@ public class UserAccount {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getEmailId() {
+        return emailId;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }    
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
     
     public Role getRole() {
         return role;
