@@ -96,7 +96,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnSaveAnimalActionPerformed(evt);
             }
         });
-        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 380, 88, -1));
+        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 88, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +151,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnUploadAnimalPhotoActionPerformed(evt);
             }
         });
-        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
+        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, -1, -1));
         add(txtAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 217, -1));
 
         buttonGroupGender.add(rbtnMale);
@@ -170,13 +170,8 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 rbtnFemaleActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
-        add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 189, -1, -1));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 101, 160, 160));
-=======
         add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 210, 180));
->>>>>>> 9daad8c042f5354981f269d4cc005ab4ac2f5da9
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 200, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAnimalActionPerformed
