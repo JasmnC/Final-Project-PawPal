@@ -84,7 +84,7 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
 
         jPanel_ourService.setBackground(new java.awt.Color(224, 227, 255));
         jPanel_ourService.setLayout(new java.awt.BorderLayout());
-        add(jPanel_ourService, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 110, 400, 300));
+        add(jPanel_ourService, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 400, 300));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
