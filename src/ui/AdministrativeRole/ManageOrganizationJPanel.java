@@ -97,7 +97,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             tblOrganizations.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 160, 480, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 250));
 
         btnAdd.setBackground(new java.awt.Color(245, 245, 255));
         btnAdd.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -108,7 +108,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 btnAddActionPerformed(evt);
             }
         });
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 355, 187, -1));
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 510, 187, -1));
 
         cmbOrganizations.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbOrganizations.addActionListener(new java.awt.event.ActionListener() {
@@ -116,10 +116,10 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 cmbOrganizationsActionPerformed(evt);
             }
         });
-        add(cmbOrganizations, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 302, -1));
+        add(cmbOrganizations, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 302, -1));
 
         lblSelectOrgType.setText("Select Organization Type:");
-        add(lblSelectOrgType, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 294, -1, -1));
+        add(lblSelectOrgType, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
@@ -128,23 +128,23 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 23, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_organization.png"))); // NOI18N
         lblTitle.setText("Manage Organizations");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 24, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, 30));
 
         lblOrganizationList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblOrganizationList.setText("Organization List:");
-        add(lblOrganizationList, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 134, -1, -1));
+        add(lblOrganizationList, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
         lblOrganizationAdd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblOrganizationAdd.setText("Add Organization:");
-        add(lblOrganizationAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 270, -1, -1));
+        add(lblOrganizationAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, -1, -1));
 
         lblOrganizationPicker.setText("Select Network:");
-        add(lblOrganizationPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 68, -1, -1));
+        add(lblOrganizationPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, 30));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 cmbNetworkListActionPerformed(evt);
             }
         });
-        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 64, 231, -1));
+        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 231, 40));
 
         cmbEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEnterpriseList.addActionListener(new java.awt.event.ActionListener() {
@@ -160,20 +160,20 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 cmbEnterpriseListActionPerformed(evt);
             }
         });
-        add(cmbEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 95, 231, -1));
+        add(cmbEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 231, 40));
 
         lblOrganizationPicker1.setText("Select Enterprise:");
-        add(lblOrganizationPicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 99, -1, -1));
+        add(lblOrganizationPicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, 30));
 
         lblOrganizationName.setText("Organization Name:");
-        add(lblOrganizationName, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 328, -1, -1));
+        add(lblOrganizationName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, -1, -1));
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 323, 302, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, 302, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed

@@ -72,15 +72,15 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 36, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_enterprise.png"))); // NOI18N
         lblTitle.setText("Manage Enterprise");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 37, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
         lblSelectNetwork.setText("Select Network:");
-        add(lblSelectNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 87, -1, -1));
+        add(lblSelectNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 cmbNetworkListActionPerformed(evt);
             }
         });
-        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 83, 231, -1));
+        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 231, -1));
 
         tblEnterprises.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,7 +122,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             tblEnterprises.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 142, 480, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 250));
 
         cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEnterprise.addActionListener(new java.awt.event.ActionListener() {
@@ -130,18 +130,18 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 cmbEnterpriseActionPerformed(evt);
             }
         });
-        add(cmbEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 278, 167, -1));
+        add(cmbEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 167, -1));
 
         lblEnterpriseList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEnterpriseList.setText("Enterprise List:");
-        add(lblEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 116, -1, -1));
+        add(lblEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
         lblAdd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblAdd.setText("Add Enterprise:");
-        add(lblAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 252, -1, -1));
+        add(lblAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
 
         lblSelectEnterpriseType.setText("Select Enterprise Type:");
-        add(lblSelectEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 282, -1, -1));
+        add(lblSelectEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
 
         btnAdd.setBackground(new java.awt.Color(245, 245, 255));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
@@ -151,7 +151,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 btnAddActionPerformed(evt);
             }
         });
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 343, 141, -1));
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 500, 141, -1));
 
         txtName.setBackground(new java.awt.Color(245, 245, 255));
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -159,10 +159,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 txtNameActionPerformed(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 311, 167, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 167, -1));
 
         lblEnterpriseName.setText("Enterprise Name:");
-        add(lblEnterpriseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 316, -1, -1));
+        add(lblEnterpriseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed

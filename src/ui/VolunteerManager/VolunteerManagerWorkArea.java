@@ -66,13 +66,12 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         lblVolunteer = new javax.swing.JLabel();
         cmbVolunteer = new javax.swing.JComboBox();
         lblRequestOrigin = new javax.swing.JLabel();
-        lblRequestOrigin1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Assign Volunteer to Volunteer Request");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 43, -1, -1));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setText("Assign Volunteer");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,7 +101,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 77, 659, 169));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
 
         btnAssign.setText("Assign");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
@@ -110,19 +109,16 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 252, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, -1, -1));
 
         lblVolunteer.setText("Volunteer:");
-        add(lblVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 257, -1, -1));
+        add(lblVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 525, -1, -1));
 
         cmbVolunteer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 253, 174, -1));
+        add(cmbVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 520, 420, -1));
 
         lblRequestOrigin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_volunteer.png"))); // NOI18N
-        add(lblRequestOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 252, -1, -1));
-
-        lblRequestOrigin1.setText("from: Animal Register Organization");
-        add(lblRequestOrigin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 53, -1, -1));
+        add(lblRequestOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -173,7 +169,6 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
     private javax.swing.JComboBox cmbVolunteer;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRequestOrigin;
-    private javax.swing.JLabel lblRequestOrigin1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblVolunteer;
     private javax.swing.JTable tblWorkRequests;

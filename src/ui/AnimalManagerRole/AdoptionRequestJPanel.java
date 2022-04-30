@@ -113,27 +113,29 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblAnimalAdoptionWorkQueue);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 85, 659, 169));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
 
+        btnApproveAnimalAdoptionRequest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_approved.png"))); // NOI18N
         btnApproveAnimalAdoptionRequest.setText("Approve");
         btnApproveAnimalAdoptionRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveAnimalAdoptionRequestActionPerformed(evt);
             }
         });
-        add(btnApproveAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 260, -1, -1));
+        add(btnApproveAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Adoption Request");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 43, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
+        btnRejectAnimalAdoptionRequest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_reject.png"))); // NOI18N
         btnRejectAnimalAdoptionRequest.setText("Reject");
         btnRejectAnimalAdoptionRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRejectAnimalAdoptionRequestActionPerformed(evt);
             }
         });
-        add(btnRejectAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 260, 96, -1));
+        add(btnRejectAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 500, 96, -1));
 
         btnBack1.setText("<< Back");
         btnBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +143,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                 btnBack1ActionPerformed(evt);
             }
         });
-        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(622, 38, -1, -1));
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveAnimalAdoptionRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveAnimalAdoptionRequestActionPerformed

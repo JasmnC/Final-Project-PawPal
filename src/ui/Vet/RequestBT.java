@@ -110,12 +110,12 @@ public class RequestBT extends javax.swing.JPanel {
                 btnRequestBTActionPerformed(evt);
             }
         });
-        add(btnRequestBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 374, -1, -1));
+        add(btnRequestBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, -1, -1));
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage.setText("Message:");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 343, -1, -1));
-        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 336, 217, -1));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, -1, -1));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 217, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -123,11 +123,11 @@ public class RequestBT extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Send Behavioral Therapy Request");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 53, -1, -1));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setText("Request Behavioral Therapy");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,14 +157,14 @@ public class RequestBT extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 87, 623, 171));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 250));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet2BT.png"))); // NOI18N
-        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 270, -1, -1));
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
 
         lblMessageTitle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessageTitle.setText("Create New Request");
-        add(lblMessageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 310, -1, -1));
+        add(lblMessageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBTActionPerformed

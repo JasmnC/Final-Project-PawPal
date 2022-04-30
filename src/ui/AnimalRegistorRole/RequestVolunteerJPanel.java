@@ -79,12 +79,12 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                 btnRequestVolunteerActionPerformed(evt);
             }
         });
-        add(btnRequestVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 342, -1, -1));
+        add(btnRequestVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage.setText("Message:");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 278, -1, -1));
-        add(txtRequestVolunteerMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 304, 223, -1));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, -1, -1));
+        add(txtRequestVolunteerMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 223, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -92,11 +92,11 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 33, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Send Volunteer Request");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 38, -1, -1));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setText("Request Volunteer");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
         tblSentVolunteerRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,7 +126,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblSentVolunteerRequest);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 91, 659, 169));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 250));
     }// </editor-fold>//GEN-END:initComponents
     public void populateVolunteerRequestTable(){
         DefaultTableModel model = (DefaultTableModel) tblSentVolunteerRequest.getModel();
