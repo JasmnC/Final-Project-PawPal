@@ -63,7 +63,7 @@ public class BTWorkArea extends javax.swing.JPanel {
     public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
         model.setRowCount(0);
-        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()) {
             if (request instanceof BTWorkRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = request;

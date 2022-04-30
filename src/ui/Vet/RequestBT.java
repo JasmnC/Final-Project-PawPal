@@ -59,25 +59,25 @@ public class RequestBT extends javax.swing.JPanel {
 
         DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
         model.setRowCount(0);
-        for (WorkRequest btrequest : userAccount.getWorkQueue().getWorkRequestList()) {
-            if (btrequest instanceof MedCareRequest || btrequest instanceof BTWorkRequest) {
-                if (btrequest.getAnimal().getId() == animal.getId()) {
-                    Object[] row = new Object[model.getColumnCount()];
-                    row[0] = btrequest;
-                    row[1] = btrequest.getAnimal().getId();
-                    row[2] = btrequest.getReceiver();
-                    row[3] = btrequest.getStatus();
-                    if (btrequest instanceof MedCareRequest) {
-                        String result = ((MedCareRequest) btrequest).getVetResult();
-                        row[4] = result == null ? "Waiting" : result;
-                    } else if (btrequest instanceof BTWorkRequest) {
-                        String result = ((BTWorkRequest) btrequest).getResult();
-                        row[4] = result == null ? "Waiting" : result;
-                    }
-                    model.addRow(row);
+        for (WorkRequest btrequest : animal.getWorkQueue().getWorkRequestList()) {
+            if (btrequest instanceof BTWorkRequest) {
+
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = btrequest;
+                row[1] = btrequest.getAnimal().getId();
+                row[2] = btrequest.getReceiver();
+                row[3] = btrequest.getStatus();
+                if (btrequest instanceof MedCareRequest) {
+                    String result = ((MedCareRequest) btrequest).getVetResult();
+                    row[4] = result == null ? "Waiting" : result;
+                } else if (btrequest instanceof BTWorkRequest) {
+                    String result = ((BTWorkRequest) btrequest).getResult();
+                    row[4] = result == null ? "Waiting" : result;
                 }
+                model.addRow(row);
+
             }
-        
+
         }
     }
 
@@ -181,10 +181,10 @@ public class RequestBT extends javax.swing.JPanel {
         request.setStatus("Pending");
         request.setAnimal(animal);
 
-        network.getWorkQueue().getWorkRequestList().add(request);
-        userAccount.getWorkQueue().getWorkRequestList().add(request);
+        enterprise.getWorkQueue().getWorkRequestList().add(request);
+        animal.getWorkQueue().getWorkRequestList().add(request);
 
-        JOptionPane.showMessageDialog(this, "Behavior Therapy Request sent","Information",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Behavior Therapy Request sent", "Information", JOptionPane.INFORMATION_MESSAGE);
         populateBtTable();
         txtMessage.setText("");
         /**
