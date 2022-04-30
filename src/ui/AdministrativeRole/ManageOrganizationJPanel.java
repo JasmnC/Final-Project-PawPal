@@ -108,7 +108,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 btnAddActionPerformed(evt);
             }
         });
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 510, 187, -1));
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 510, -1, -1));
 
         cmbOrganizations.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbOrganizations.addActionListener(new java.awt.event.ActionListener() {
@@ -116,10 +116,10 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 cmbOrganizationsActionPerformed(evt);
             }
         });
-        add(cmbOrganizations, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 302, -1));
+        add(cmbOrganizations, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, 250, -1));
 
         lblSelectOrgType.setText("Select Organization Type:");
-        add(lblSelectOrgType, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, -1, -1));
+        add(lblSelectOrgType, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 445, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
@@ -140,11 +140,11 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         add(lblOrganizationList, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
         lblOrganizationAdd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblOrganizationAdd.setText("Add Organization:");
-        add(lblOrganizationAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, -1, -1));
+        lblOrganizationAdd.setText("New Organization:");
+        add(lblOrganizationAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
 
         lblOrganizationPicker.setText("Select Network:");
-        add(lblOrganizationPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, 30));
+        add(lblOrganizationPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 405, -1, -1));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 cmbNetworkListActionPerformed(evt);
             }
         });
-        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 231, 40));
+        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 230, -1));
 
         cmbEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEnterpriseList.addActionListener(new java.awt.event.ActionListener() {
@@ -160,20 +160,20 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 cmbEnterpriseListActionPerformed(evt);
             }
         });
-        add(cmbEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 231, 40));
+        add(cmbEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 230, -1));
 
         lblOrganizationPicker1.setText("Select Enterprise:");
-        add(lblOrganizationPicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, 30));
+        add(lblOrganizationPicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 445, -1, -1));
 
         lblOrganizationName.setText("Organization Name:");
-        add(lblOrganizationName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, -1, -1));
+        add(lblOrganizationName, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, -1, -1));
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, 302, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 470, 250, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed

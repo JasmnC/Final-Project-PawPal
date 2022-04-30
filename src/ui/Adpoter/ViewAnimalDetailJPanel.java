@@ -79,54 +79,61 @@ public class ViewAnimalDetailJPanel extends javax.swing.JPanel {
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
         txtAnimalName.setEnabled(false);
-        add(txtAnimalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 217, -1));
+        add(txtAnimalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 217, -1));
 
         lblMessage5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage5.setText("Name:");
-        add(lblMessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, -1));
+        add(lblMessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 120, -1));
 
         txtAnimalArea.setEnabled(false);
-        add(txtAnimalArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 217, -1));
+        add(txtAnimalArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 217, -1));
 
         lblMessage6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage6.setText("Area:");
-        add(lblMessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
+        add(lblMessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 120, -1));
 
         txtAnimalSex.setEnabled(false);
-        add(txtAnimalSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 217, -1));
+        add(txtAnimalSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 217, -1));
 
         lblMessage7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage7.setText("Sex:");
-        add(lblMessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
+        add(lblMessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 120, -1));
 
         txtAnimalWeight.setEnabled(false);
-        add(txtAnimalWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 217, -1));
+        add(txtAnimalWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 217, -1));
 
         lblMessage8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage8.setText("Weight:");
-        add(lblMessage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, -1, -1));
+        add(lblMessage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 120, -1));
 
         txtAnimalMessageFromBehaviorTharapipst.setEnabled(false);
-        add(txtAnimalMessageFromBehaviorTharapipst, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 217, -1));
+        add(txtAnimalMessageFromBehaviorTharapipst, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 217, -1));
 
         lblMessage9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage9.setText("Behavior Check:");
-        add(lblMessage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, -1, -1));
+        add(lblMessage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 120, -1));
 
         txtAnimalMessageFromVet.setEnabled(false);
-        add(txtAnimalMessageFromVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 217, -1));
+        add(txtAnimalMessageFromVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 217, -1));
 
         lblMessage10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage10.setText("Vet Feedback:");
-        add(lblMessage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
+        add(lblMessage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 120, -1));
 
         txtAnimalMessageFromPharmacy.setEnabled(false);
-        add(txtAnimalMessageFromPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 217, -1));
+        add(txtAnimalMessageFromPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 217, -1));
 
         lblMessage11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMessage11.setText("Pharmacy Feedback:");
-        add(lblMessage11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
-        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 209, 218));
+        add(lblMessage11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 120, -1));
+        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 209, 218));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

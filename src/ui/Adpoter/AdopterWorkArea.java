@@ -87,8 +87,8 @@ public class AdopterWorkArea extends javax.swing.JPanel {
 
         lblAuthorizationStatus.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAuthorizationStatus.setText("Authorization Status:");
-        add(lblAuthorizationStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
-        add(txtAuthorizationStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 163, -1));
+        add(lblAuthorizationStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+        add(txtAuthorizationStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 45, 163, -1));
 
         tblAnimalList.setBackground(new java.awt.Color(255, 238, 238));
         tblAnimalList.setModel(new javax.swing.table.DefaultTableModel(
