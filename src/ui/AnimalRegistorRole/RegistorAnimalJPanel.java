@@ -184,7 +184,6 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         }else{
             // create Animal
             Animal animal = enterprise.getAnimalDirectory().createAnimal(txtAnimalName.getText());
-            //創動物在directory，傳進work request
             animal.setArea(area);
             animal.setSex(sex);
             animal.setWeight(weight);
@@ -217,16 +216,17 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveAnimalActionPerformed
     
     public ImageIcon seticon(String m, byte[] image){
-        if(m!=null){
-            animalImage=new ImageIcon(m);
-        }else{
-            animalImage=new ImageIcon(image);
-        }
         
-        Image img1=animalImage.getImage();
-        Image img2=img1.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon i=new ImageIcon(img2);
-        animalImage=i;
+        if (m != null) {
+            animalImage = new ImageIcon(m);
+        } else {
+            animalImage = new ImageIcon(image);
+        }
+
+        Image img1 = animalImage.getImage();
+        Image img2 = img1.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon i = new ImageIcon(img2);
+        animalImage = i;
         return i;
     }
     
@@ -238,7 +238,6 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         AnimalRegistorWorkAreaJPanel arwajp = (AnimalRegistorWorkAreaJPanel) component;
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
-
 
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -254,7 +253,9 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
            File f=pic.getSelectedFile();
            String p = f.getAbsolutePath();
            txtAnimalPhoto.setText(pic.getSelectedFile().getAbsolutePath());
-           jLabel1.setIcon(seticon(p, null));
+           ImageIcon i = seticon(p, null);
+           animalImage = i;
+           jLabel1.setIcon(animalImage);
           
         }
 
