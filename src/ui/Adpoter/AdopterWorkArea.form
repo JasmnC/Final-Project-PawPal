@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="ec" green="ec" red="fe" type="rgb"/>
+      <Color blue="e7" green="e7" red="ff" type="rgb"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -170,7 +170,10 @@
     <Component class="javax.swing.JButton" name="btnViewDetails">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="ff" type="rgb"/>
+          <Color blue="50" green="50" red="80" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ee" green="ee" red="ee" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="View Animal Details"/>
       </Properties>
@@ -181,7 +184,10 @@
     <Component class="javax.swing.JButton" name="btnSendRequest">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="ff" type="rgb"/>
+          <Color blue="a1" green="a1" red="ff" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ee" green="ee" red="ee" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Send Adoption Request"/>
       </Properties>

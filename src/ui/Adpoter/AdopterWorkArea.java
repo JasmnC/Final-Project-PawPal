@@ -82,7 +82,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAdoptionRequests = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(254, 236, 236));
+        setBackground(new java.awt.Color(255, 231, 231));
 
         lblAuthorizationStatus.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAuthorizationStatus.setText("Authorization Status:");
@@ -119,7 +119,8 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         lblAnimalSelection.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAnimalSelection.setText("Animal Selection");
 
-        btnViewDetails.setBackground(new java.awt.Color(255, 153, 153));
+        btnViewDetails.setBackground(new java.awt.Color(128, 80, 80));
+        btnViewDetails.setForeground(new java.awt.Color(238, 238, 238));
         btnViewDetails.setText("View Animal Details");
         btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +128,8 @@ public class AdopterWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnSendRequest.setBackground(new java.awt.Color(255, 153, 153));
+        btnSendRequest.setBackground(new java.awt.Color(255, 161, 161));
+        btnSendRequest.setForeground(new java.awt.Color(238, 238, 238));
         btnSendRequest.setText("Send Adoption Request");
         btnSendRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
