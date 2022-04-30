@@ -4,7 +4,6 @@
  */
 package ui.AnimalManagerRole;
 
-
 import model.UserAccount.UserAccount;
 import model.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -13,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Animal.Animal;
 import model.Animal.AnimalDirectory;
+import model.EcoSystem.CommonMail;
 import model.Enterprise.AnimalShelterEnterprise;
 import model.Enterprise.Enterprise;
 import model.Network.Network;
@@ -30,42 +30,40 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
     private AnimalShelterEnterprise enterprise;
     private Network network;
     private Animal animal;
-    
+
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
     public AdoptionRequestJPanel(JPanel workArea, UserAccount account, Animal animal, AnimalShelterEnterprise enterprise, Network network) {
         initComponents();
-        
+
         this.workArea = workArea;
         this.userAccount = account;
         this.enterprise = enterprise;
         this.network = network;
         this.animal = animal;
-        
+
         populateRequestTable();
     }
 
-    
-    public void populateRequestTable(){
+    public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) tblAnimalAdoptionWorkQueue.getModel();
-        
+
         model.setRowCount(0);
-        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()){
-            if(request instanceof AdoptionRequest && request.getAnimal() == animal){
-            Object[] row = new Object[5];
-            row[0] = request;
-            row[1] = request.getSender();
-            row[2] = request.getSender().getEmailId();
-            row[3] = request.getSender().getOrgainization();
-            row[4] = request.getStatus();
-            
-            model.addRow(row);
+        for (WorkRequest request : network.getWorkQueue().getWorkRequestList()) {
+            if (request instanceof AdoptionRequest && request.getAnimal() == animal) {
+                Object[] row = new Object[5];
+                row[0] = request;
+                row[1] = request.getSender();
+                row[2] = request.getSender().getEmailId();
+                row[3] = request.getSender().getOrgainization();
+                row[4] = request.getStatus();
+
+                model.addRow(row);
             }
         }
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -147,47 +145,53 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveAnimalAdoptionRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveAnimalAdoptionRequestActionPerformed
-        
+
         int selectedRow = tblAnimalAdoptionWorkQueue.getSelectedRow();
 
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row first","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a row first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
-        
-        if (request.getStatus().equals("Rejected")){
+
+        if (request.getStatus().equals("Rejected")) {
             JOptionPane.showMessageDialog(this, "This request has been rejected", "Warning", JOptionPane.WARNING_MESSAGE);
+            String subject = "Your Adoption Request is Rejected";
+            String content = "Dear Adopter, \nWe are sorry to inform you that your adoption request is rejected. You can check the status through your credentials. \nThank you.";
+            CommonMail.sendEmailMessage(request.getSender().getEmailId(), subject, content);
             return;
         }
-        
+
         request.setStatus("Approved");
         request.getAnimal().setAdoptor(request.getSender());
-        
-        for (WorkRequest wr : userAccount.getWorkQueue().getWorkRequestList()){
-            if (wr instanceof AnimalManagerRequest && wr.getAnimal() == request.getAnimal()){
+        String subject = "Your Adoption Request is Approved";
+        String content = "Dear Adopter, \nCongratulations! Your adoption request is approved. You can check the status through your credentials. \nThank you!";
+        CommonMail.sendEmailMessage(request.getSender().getEmailId(), subject, content);
+
+        for (WorkRequest wr : userAccount.getWorkQueue().getWorkRequestList()) {
+            if (wr instanceof AnimalManagerRequest && wr.getAnimal() == request.getAnimal()) {
                 wr.setStatus("Adopted");
                 JOptionPane.showMessageDialog(this, "Request approved!", "Information", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        populateRequestTable();        
-        
+        populateRequestTable();
+
     }//GEN-LAST:event_btnApproveAnimalAdoptionRequestActionPerformed
 
     private void btnRejectAnimalAdoptionRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectAnimalAdoptionRequestActionPerformed
-        
+
         int selectedRow = tblAnimalAdoptionWorkQueue.getSelectedRow();
 
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row first");
             return;
         }
-        
+
         AdoptionRequest request = (AdoptionRequest) tblAnimalAdoptionWorkQueue.getValueAt(selectedRow, 0);
         request.setStatus("Rejected");
         populateRequestTable();
-        
+
     }//GEN-LAST:event_btnRejectAnimalAdoptionRequestActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
