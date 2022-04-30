@@ -70,6 +70,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         tblSentVolunteerRequest = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRequestVolunteer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N
         btnRequestVolunteer.setText("Request");
@@ -78,9 +79,12 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                 btnRequestVolunteerActionPerformed(evt);
             }
         });
+        add(btnRequestVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 342, -1, -1));
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage.setText("Message:");
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 278, -1, -1));
+        add(txtRequestVolunteerMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 304, 223, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -88,9 +92,11 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 33, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Send Volunteer Request");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 38, -1, -1));
 
         tblSentVolunteerRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,43 +126,7 @@ public class RequestVolunteerJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblSentVolunteerRequest);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(btnBack)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRequestVolunteer)
-                            .addComponent(lblMessage)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRequestVolunteerMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblTitle))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtRequestVolunteerMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRequestVolunteer)
-                .addGap(137, 137, 137))
-        );
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 91, 659, 169));
     }// </editor-fold>//GEN-END:initComponents
     public void populateVolunteerRequestTable(){
         DefaultTableModel model = (DefaultTableModel) tblSentVolunteerRequest.getModel();

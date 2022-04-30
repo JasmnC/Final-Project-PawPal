@@ -63,6 +63,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         lblEnterpriseName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(224, 227, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
@@ -71,12 +72,15 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 36, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_enterprise.png"))); // NOI18N
         lblTitle.setText("Manage Enterprise");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 37, -1, -1));
 
         lblSelectNetwork.setText("Select Network:");
+        add(lblSelectNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 87, -1, -1));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +88,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 cmbNetworkListActionPerformed(evt);
             }
         });
+        add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 83, 231, -1));
 
         tblEnterprises.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,20 +122,26 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             tblEnterprises.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 142, 480, 92));
+
         cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEnterpriseActionPerformed(evt);
             }
         });
+        add(cmbEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 278, 167, -1));
 
         lblEnterpriseList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEnterpriseList.setText("Enterprise List:");
+        add(lblEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 116, -1, -1));
 
         lblAdd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblAdd.setText("Add Enterprise:");
+        add(lblAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 252, -1, -1));
 
         lblSelectEnterpriseType.setText("Select Enterprise Type:");
+        add(lblSelectEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 282, -1, -1));
 
         btnAdd.setBackground(new java.awt.Color(245, 245, 255));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
@@ -140,6 +151,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 btnAddActionPerformed(evt);
             }
         });
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 343, 141, -1));
 
         txtName.setBackground(new java.awt.Color(245, 245, 255));
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -147,68 +159,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 txtNameActionPerformed(evt);
             }
         });
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 311, 167, -1));
 
         lblEnterpriseName.setText("Enterprise Name:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(29, 29, 29)
-                        .addComponent(lblTitle))
-                    .addComponent(lblAdd)
-                    .addComponent(lblEnterpriseList)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSelectNetwork)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblSelectEnterpriseType)
-                                .addComponent(lblEnterpriseName))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtName)
-                                .addComponent(cmbEnterprise, 0, 167, Short.MAX_VALUE)))))
-                .addContainerGap(273, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblTitle))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbNetworkList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSelectNetwork))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblEnterpriseList)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblAdd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSelectEnterpriseType)
-                    .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEnterpriseName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAdd)
-                .addContainerGap(133, Short.MAX_VALUE))
-        );
+        add(lblEnterpriseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 316, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed

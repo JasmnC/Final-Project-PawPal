@@ -83,6 +83,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         btnBack1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblAnimalAdoptionWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,15 +113,19 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblAnimalAdoptionWorkQueue);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 85, 659, 169));
+
         btnApproveAnimalAdoptionRequest.setText("Approve");
         btnApproveAnimalAdoptionRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveAnimalAdoptionRequestActionPerformed(evt);
             }
         });
+        add(btnApproveAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 260, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setText("Adoption Request");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 43, -1, -1));
 
         btnRejectAnimalAdoptionRequest.setText("Reject");
         btnRejectAnimalAdoptionRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +133,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                 btnRejectAnimalAdoptionRequestActionPerformed(evt);
             }
         });
+        add(btnRejectAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 260, 96, -1));
 
         btnBack1.setText("<< Back");
         btnBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -135,43 +141,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                 btnBack1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnApproveAnimalAdoptionRequest)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRejectAnimalAdoptionRequest)))
-                .addGap(80, 80, 80))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApproveAnimalAdoptionRequest, btnRejectAnimalAdoptionRequest});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(btnBack1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnApproveAnimalAdoptionRequest)
-                    .addComponent(btnRejectAnimalAdoptionRequest))
-                .addContainerGap())
-        );
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(622, 38, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveAnimalAdoptionRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveAnimalAdoptionRequestActionPerformed

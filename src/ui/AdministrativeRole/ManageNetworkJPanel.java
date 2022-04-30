@@ -53,10 +53,12 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         btnCreateNetwork = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(224, 227, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_network.png"))); // NOI18N
         lblTitle.setText("Manage Network");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 34, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
@@ -65,6 +67,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 33, -1, -1));
 
         tblNetwork.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,13 +100,19 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             tblNetwork.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 114, 346, 186));
+
         lblEmployeeList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEmployeeList.setText("Network List:");
+        add(lblEmployeeList, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 88, -1, -1));
 
         lblOrganizationList1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblOrganizationList1.setText("New Network:");
+        add(lblOrganizationList1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 312, -1, -1));
 
         lblEmployeeName.setText("Name:");
+        add(lblEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 349, -1, -1));
+        add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 344, 201, -1));
 
         btnCreateNetwork.setBackground(new java.awt.Color(245, 245, 255));
         btnCreateNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -114,52 +123,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnCreateNetworkActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmployeeList)
-                    .addComponent(lblOrganizationList1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCreateNetwork)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEmployeeName)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(253, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblTitle))
-                .addGap(26, 26, 26)
-                .addComponent(lblEmployeeList)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblOrganizationList1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmployeeName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCreateNetwork)
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
+        add(btnCreateNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 376, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNetworkActionPerformed
