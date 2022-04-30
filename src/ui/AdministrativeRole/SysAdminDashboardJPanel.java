@@ -75,11 +75,12 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 36, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_dashboard.png"))); // NOI18N
         lblTitle.setText("Dashboard");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 41, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         jPanel_ourService.setBackground(new java.awt.Color(224, 227, 255));
         jPanel_ourService.setLayout(new java.awt.BorderLayout());

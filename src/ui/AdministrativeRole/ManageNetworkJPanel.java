@@ -55,10 +55,10 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(224, 227, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_network.png"))); // NOI18N
         lblTitle.setText("Manage Network");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 34, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(245, 245, 255));
         btnBack.setText("<< Back");
@@ -67,7 +67,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 33, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         tblNetwork.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,7 +100,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             tblNetwork.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 114, 346, 186));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 250));
 
         lblEmployeeList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEmployeeList.setText("Network List:");
@@ -108,11 +108,11 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         lblOrganizationList1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblOrganizationList1.setText("New Network:");
-        add(lblOrganizationList1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 312, -1, -1));
+        add(lblOrganizationList1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
 
         lblEmployeeName.setText("Name:");
-        add(lblEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 349, -1, -1));
-        add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 344, 201, -1));
+        add(lblEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 445, -1, -1));
+        add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, 360, -1));
 
         btnCreateNetwork.setBackground(new java.awt.Color(245, 245, 255));
         btnCreateNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -123,7 +123,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnCreateNetworkActionPerformed(evt);
             }
         });
-        add(btnCreateNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 376, -1, -1));
+        add(btnCreateNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNetworkActionPerformed

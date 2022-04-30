@@ -10,7 +10,7 @@ import model.Animal.Animal;
 
 /**
  *
- * @author anitachen
+ * @author ariel
  */
 public abstract class WorkRequest {
 
@@ -21,8 +21,9 @@ public abstract class WorkRequest {
     private Date requestDate;
     private Date resolveDate;
     private Animal animal;
-    
-    public WorkRequest(){
+    private String userEmailId;
+
+    public WorkRequest() {
         requestDate = new Date();
     }
 
@@ -81,11 +82,21 @@ public abstract class WorkRequest {
     public void setAnimal(Animal animal) {
         this.animal = animal;
     }
+
+    
+    
+    public String getUserEmailId() {
+        return userEmailId;
+    }
+
+    public void setUserEmailId(String userEmailId) {
+        this.userEmailId = userEmailId;
+    }
+
     
     @Override
-    
-    public String toString(){
+    public String toString() {
         return this.message;
     }
-            
+
 }

@@ -56,7 +56,7 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(218, 255, 199));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRequestVet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N
@@ -66,12 +66,12 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                 btnRequestVetActionPerformed(evt);
             }
         });
-        add(btnRequestVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 193, -1, -1));
+        add(btnRequestVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
 
-        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessage.setText("Message:");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 117, -1, -1));
-        add(txtSendMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 149, 217, -1));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+        add(txtSendMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 450, 50));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -79,11 +79,11 @@ public class RequestMedicalCareJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 33, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblTitle.setText("Send Medical Care Request to Vet");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 38, -1, -1));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setText("Request Medical Care");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestVetActionPerformed

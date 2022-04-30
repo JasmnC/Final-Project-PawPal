@@ -86,7 +86,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         rbtnFemale = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(212, 255, 224));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSaveAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
@@ -96,7 +96,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnSaveAnimalActionPerformed(evt);
             }
         });
-        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 347, 88, -1));
+        add(btnSaveAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 380, 88, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -104,25 +104,25 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 33, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Register Animal");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 112, -1));
-        add(txtAnimalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 96, 217, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+        add(txtAnimalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 217, -1));
 
         lblMessage5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage5.setText("Name:");
-        add(lblMessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 103, -1, -1));
-        add(txtAnimalArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 128, 217, -1));
+        add(lblMessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
+        add(txtAnimalArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 217, -1));
 
         lblMessage6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage6.setText("Area:");
-        add(lblMessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 135, -1, -1));
+        add(lblMessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 240, -1, -1));
 
         lblMessage7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage7.setText("Sex:");
-        add(lblMessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 160, -1, -1));
+        add(lblMessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
 
         txtAnimalWeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,15 +134,15 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 txtAnimalWeightKeyPressed(evt);
             }
         });
-        add(txtAnimalWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 218, 217, -1));
+        add(txtAnimalWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 217, -1));
 
         lblMessage8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage8.setText("Weight:");
-        add(lblMessage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 225, -1, -1));
+        add(lblMessage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 325, -1, -1));
 
         lblMessage12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMessage12.setText("Photo:");
-        add(lblMessage12, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 276, -1, -1));
+        add(lblMessage12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, -1, -1));
 
         btnUploadAnimalPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_addPhoto.png"))); // NOI18N
         btnUploadAnimalPhoto.setText("Upload");
@@ -151,8 +151,8 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 btnUploadAnimalPhotoActionPerformed(evt);
             }
         });
-        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 265, -1, -1));
-        add(txtAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 269, 217, -1));
+        add(btnUploadAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
+        add(txtAnimalPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 217, -1));
 
         buttonGroupGender.add(rbtnMale);
         rbtnMale.setText("Male");
@@ -161,7 +161,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 rbtnMaleActionPerformed(evt);
             }
         });
-        add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 160, -1, -1));
+        add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
 
         buttonGroupGender.add(rbtnFemale);
         rbtnFemale.setText("Female");
@@ -170,8 +170,13 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
                 rbtnFemaleActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 189, -1, -1));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 101, 160, 160));
+=======
+        add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 210, 180));
+>>>>>>> 9daad8c042f5354981f269d4cc005ab4ac2f5da9
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAnimalActionPerformed

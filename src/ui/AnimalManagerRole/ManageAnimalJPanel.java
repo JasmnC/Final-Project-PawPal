@@ -65,7 +65,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         btnViewDetial = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(218, 255, 199));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblAnimalManagerWorkArea.setModel(new javax.swing.table.DefaultTableModel(
@@ -96,27 +96,29 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblAnimalManagerWorkArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 97, 659, 169));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
 
+        btnAssignAnimalToMe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_assign.png"))); // NOI18N
         btnAssignAnimalToMe.setText("Assign to me");
         btnAssignAnimalToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignAnimalToMeActionPerformed(evt);
             }
         });
-        add(btnAssignAnimalToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 272, -1, -1));
+        add(btnAssignAnimalToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 500, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Manage Animal");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 43, -1, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
-        btnViewDetial.setText("View Animal Detail");
+        btnViewDetial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_view.PNG"))); // NOI18N
+        btnViewDetial.setText("View Detail");
         btnViewDetial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewDetialActionPerformed(evt);
             }
         });
-        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 272, -1, -1));
+        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 500, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignAnimalToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignAnimalToMeActionPerformed
