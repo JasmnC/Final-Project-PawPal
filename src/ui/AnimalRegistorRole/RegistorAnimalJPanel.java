@@ -203,7 +203,7 @@ public class RegistorAnimalJPanel extends javax.swing.JPanel {
         
         
         
-        JOptionPane.showMessageDialog(null, "New Animal Saved.");
+        JOptionPane.showMessageDialog(this, "New Animal Saved.");
         txtAnimalArea.setText("");
         txtAnimalName.setText("");
         buttonGroupGender.clearSelection();
