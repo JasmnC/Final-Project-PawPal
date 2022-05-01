@@ -123,7 +123,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnCreateNetworkActionPerformed(evt);
             }
         });
-        add(btnCreateNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, -1, -1));
+        add(btnCreateNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNetworkActionPerformed

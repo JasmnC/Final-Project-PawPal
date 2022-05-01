@@ -6,6 +6,7 @@
 package ui.Adpoter;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +20,9 @@ import model.Organization.AdopterOrganization;
 import model.Organization.Organization;
 import model.UserAccount.UserAccount;
 import model.WorkQueue.AdoptionRequest;
+import model.WorkQueue.BTWorkRequest;
+import model.WorkQueue.MedCareRequest;
+import model.WorkQueue.PharmacistWorkRequest;
 import model.WorkQueue.WorkRequest;
 
 /**
@@ -270,11 +274,21 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblAnimalList.getModel();
         model.setRowCount(0);
         
+        
         for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
             if (e instanceof AnimalShelterEnterprise){
                 for (Animal a : ((AnimalShelterEnterprise) e).getAnimalDirectory().getAnimalList()){
-                    if (a.getAdoptor() == null && a.getManager() != null){
-                        
+                    if (a.getAdoptor() == null && a.getManager() != null){ 
+                        ArrayList<WorkRequest> list = new ArrayList<WorkRequest>();
+                        for (WorkRequest request : a.getWorkQueue().getWorkRequestList()){
+                            if ((request instanceof MedCareRequest && !request.getStatus().equalsIgnoreCase("Completed"))
+                                    || (request instanceof PharmacistWorkRequest && !request.getStatus().equalsIgnoreCase("Completed"))
+                                    || (request instanceof BTWorkRequest && !request.getStatus().equalsIgnoreCase("Completed"))){
+                                list.add(request);
+                            }
+                        }
+                        if(list.isEmpty()){
+                            
                         Object[] row = new Object[5];
                         row[0] = a;
                         row[1] = a.getSex();
@@ -282,7 +296,10 @@ public class AdopterWorkArea extends javax.swing.JPanel {
                         row[3] = a.getManager();
                         row[4] = a.getManager().getEnterprise();
 
-                        model.addRow(row);
+                        model.addRow(row);    
+                            
+                        }
+                       
                     }        
                 }
             }

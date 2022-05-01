@@ -93,7 +93,7 @@ public class BTProcessRequest extends javax.swing.JPanel {
                 txtResultsActionPerformed(evt);
             }
         });
-        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 450, 50));
+        add(txtResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 440, 40));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Result Submission");
@@ -106,7 +106,7 @@ public class BTProcessRequest extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 130, 40));
 
         lblResult.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblResult.setText("Result:");

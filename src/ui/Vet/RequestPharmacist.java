@@ -109,6 +109,7 @@ public class RequestPharmacist extends javax.swing.JPanel {
         setBackground(new java.awt.Color(212, 238, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnRequestTest.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         btnRequestTest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_send.png"))); // NOI18N
         btnRequestTest.setText("Request");
         btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
@@ -116,12 +117,12 @@ public class RequestPharmacist extends javax.swing.JPanel {
                 btnRequestTestActionPerformed(evt);
             }
         });
-        add(btnRequestTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 455, -1, -1));
+        add(btnRequestTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, -1, 40));
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessage.setText("Message: ");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
-        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 400, 40));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, 40));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 400, 40));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

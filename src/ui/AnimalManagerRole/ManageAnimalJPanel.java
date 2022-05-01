@@ -105,7 +105,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 btnAssignAnimalToMeActionPerformed(evt);
             }
         });
-        add(btnAssignAnimalToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 120, 40));
+        add(btnAssignAnimalToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 160, 40));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -119,7 +119,7 @@ public class ManageAnimalJPanel extends javax.swing.JPanel {
                 btnViewDetialActionPerformed(evt);
             }
         });
-        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 120, 40));
+        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 160, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignAnimalToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignAnimalToMeActionPerformed

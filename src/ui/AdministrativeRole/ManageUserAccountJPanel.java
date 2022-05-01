@@ -211,14 +211,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 txtUserNameActionPerformed(evt);
             }
         });
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 300, -1));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 340, -1));
 
         pwdUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwdUserActionPerformed(evt);
             }
         });
-        add(pwdUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 300, -1));
+        add(pwdUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 340, -1));
 
         btnCreateUser.setBackground(new java.awt.Color(245, 245, 255));
         btnCreateUser.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -229,7 +229,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 btnCreateUserActionPerformed(evt);
             }
         });
-        add(btnCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 510, -1, -1));
+        add(btnCreateUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 520, -1, -1));
 
         lblPassword.setText("Password:");
         add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, -1, -1));

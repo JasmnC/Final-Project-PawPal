@@ -144,6 +144,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         add(lblSelectEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
 
         btnAdd.setBackground(new java.awt.Color(245, 245, 255));
+        btnAdd.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_add.png"))); // NOI18N
         btnAdd.setText("Create Enterprise");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {

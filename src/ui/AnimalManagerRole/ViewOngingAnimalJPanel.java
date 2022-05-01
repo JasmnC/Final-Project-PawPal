@@ -155,7 +155,7 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
                 btnAnimalManagerRequestMedicalCareActionPerformed(evt);
             }
         });
-        add(btnAnimalManagerRequestMedicalCare, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, -1, -1));
+        add(btnAnimalManagerRequestMedicalCare, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, -1, 40));
 
         tblAnimalManagerWorkArea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,16 +196,18 @@ public class ViewOngingAnimalJPanel extends javax.swing.JPanel {
 
         lblMedicalCareMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMedicalCareMessage.setText("Message:");
-        add(lblMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
-        add(txtSendMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 475, 400, 40));
+        add(lblMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, -1, 40));
+        add(txtSendMedicalCareMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 400, 40));
 
+        viewAdoptionRequestJButton.setBackground(new java.awt.Color(0, 102, 0));
+        viewAdoptionRequestJButton.setForeground(new java.awt.Color(233, 233, 233));
         viewAdoptionRequestJButton.setText("View Adoption Request");
         viewAdoptionRequestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAdoptionRequestJButtonActionPerformed(evt);
             }
         });
-        add(viewAdoptionRequestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 178, -1));
+        add(viewAdoptionRequestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 470, 178, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
