@@ -111,12 +111,12 @@ public class RequestBT extends javax.swing.JPanel {
                 btnRequestBTActionPerformed(evt);
             }
         });
-        add(btnRequestBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 455, -1, -1));
+        add(btnRequestBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, -1, 40));
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMessage.setText("Message:");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
-        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 400, 40));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, 40));
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 400, 40));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

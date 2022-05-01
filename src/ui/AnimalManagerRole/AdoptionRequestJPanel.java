@@ -120,7 +120,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                 btnApproveAnimalAdoptionRequestActionPerformed(evt);
             }
         });
-        add(btnApproveAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, -1, -1));
+        add(btnApproveAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 120, 40));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("Adoption Request");
@@ -133,7 +133,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                 btnRejectAnimalAdoptionRequestActionPerformed(evt);
             }
         });
-        add(btnRejectAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 500, 96, -1));
+        add(btnRejectAnimalAdoptionRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 480, 120, 40));
 
         btnBack1.setText("<< Back");
         btnBack1.addActionListener(new java.awt.event.ActionListener() {

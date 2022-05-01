@@ -139,7 +139,7 @@ public class VetWorkArea extends javax.swing.JPanel {
                 btnAssignToMeActionPerformed(evt);
             }
         });
-        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 490, 150, -1));
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 490, 150, 40));
 
         btnViewDetial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_view.PNG"))); // NOI18N
         btnViewDetial.setText("View Detail");
@@ -148,7 +148,7 @@ public class VetWorkArea extends javax.swing.JPanel {
                 btnViewDetialActionPerformed(evt);
             }
         });
-        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 490, 150, -1));
+        add(btnViewDetial, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 490, 150, 40));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_vet.png"))); // NOI18N
         add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, -1));

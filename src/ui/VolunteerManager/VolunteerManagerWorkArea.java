@@ -104,7 +104,7 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 890, 350));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 890, 310));
 
         btnAssign.setText("Assign");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
@@ -112,13 +112,13 @@ public class VolunteerManagerWorkArea extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, -1, 30));
 
         lblVolunteer.setText("Volunteer:");
-        add(lblVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 525, -1, -1));
+        add(lblVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, -1, 30));
 
         cmbVolunteer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 520, 420, -1));
+        add(cmbVolunteer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 420, 30));
 
         lblRequestOrigin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_volunteer.png"))); // NOI18N
         add(lblRequestOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));

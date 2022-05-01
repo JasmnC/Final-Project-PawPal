@@ -74,7 +74,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageEnterpriseActionPerformed(evt);
             }
         });
-        add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 184, -1));
+        add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 184, -1));
 
         btnManageOrganization.setBackground(new java.awt.Color(245, 245, 255));
         btnManageOrganization.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_organization.png"))); // NOI18N
@@ -84,7 +84,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageOrganizationActionPerformed(evt);
             }
         });
-        add(btnManageOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 184, -1));
+        add(btnManageOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 184, -1));
 
         btnManageUsers.setBackground(new java.awt.Color(245, 245, 255));
         btnManageUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_role.png"))); // NOI18N
@@ -94,7 +94,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageUsersActionPerformed(evt);
             }
         });
-        add(btnManageUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 184, -1));
+        add(btnManageUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 184, -1));
 
         btnViewDashboard.setBackground(new java.awt.Color(245, 245, 255));
         btnViewDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_dashboard.png"))); // NOI18N
@@ -104,7 +104,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnViewDashboardActionPerformed(evt);
             }
         });
-        add(btnViewDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 184, -1));
+        add(btnViewDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 184, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUsersActionPerformed
