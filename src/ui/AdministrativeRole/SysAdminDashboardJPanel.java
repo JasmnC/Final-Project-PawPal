@@ -14,7 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Animal.Animal;
 import model.EcoSystem.EcoSystem;
+import model.Enterprise.AnimalShelterEnterprise;
 import model.Enterprise.Enterprise;
 import model.Network.Network;
 import model.WorkQueue.AdoptionRequest;
@@ -39,6 +41,7 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
     Network network;
     Enterprise enterprise;
     JFreeChart barChart;
+    Animal animal;
 
     /**
      * Creates new form ManageOrganizationJPanel
@@ -48,7 +51,8 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecosystem;
 
-        populateBar();
+        populateOurServices();
+        populateAdoption();
 
     }
 
@@ -63,6 +67,7 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
 
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        jPanel_adoption = new javax.swing.JPanel();
         jPanel_ourService = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(224, 227, 255));
@@ -82,9 +87,13 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
         lblTitle.setText("Dashboard");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
+        jPanel_adoption.setBackground(new java.awt.Color(224, 227, 255));
+        jPanel_adoption.setLayout(new java.awt.BorderLayout());
+        add(jPanel_adoption, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 400, 300));
+
         jPanel_ourService.setBackground(new java.awt.Color(224, 227, 255));
         jPanel_ourService.setLayout(new java.awt.BorderLayout());
-        add(jPanel_ourService, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 400, 300));
+        add(jPanel_ourService, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 400, 300));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -96,11 +105,12 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JPanel jPanel_adoption;
     private javax.swing.JPanel jPanel_ourService;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 
-    private void populateBar() {
+    private void populateOurServices() {
         ArrayList<AdoptionRequest> adoptionRequests = new ArrayList<>();
         ArrayList<MedCareRequest> medCareRequests = new ArrayList<>();
         ArrayList<VolunteerRequest> volunteerRequests = new ArrayList<>();
@@ -119,16 +129,16 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
                 }
             }
         }
-                for (Network nw : ecoSystem.getNetworkList()) {
-        for(Enterprise e: nw.getEnterpriseDirectory().getEnterpriseList()){
-            for(WorkRequest wr : e.getWorkQueue().getWorkRequestList()){
-                        if (wr instanceof AnimalManagerRequest) {
-            animalManagerRequests.add((AnimalManagerRequest) wr);
-        }
-            }
-        }
-        //  network> Enterprise > = animal shelter > request = amreq
+        for (Network nw : ecoSystem.getNetworkList()) {
+            for (Enterprise e : nw.getEnterpriseDirectory().getEnterpriseList()) {
+                for (WorkRequest wr : e.getWorkQueue().getWorkRequestList()) {
+                    if (wr instanceof AnimalManagerRequest) {
+                        animalManagerRequests.add((AnimalManagerRequest) wr);
+                    }
                 }
+            }
+            //  network> Enterprise > = animal shelter > request = amreq
+        }
 
         workReqMap.put("Adoption Services", adoptionRequests.size());
         workReqMap.put("Medical Care Services", medCareRequests.size());
@@ -149,6 +159,41 @@ public class SysAdminDashboardJPanel extends javax.swing.JPanel {
             dataset.setValue(r, workReqMap.get(r));
         }
         return dataset;
+    }
+
+    private void populateAdoption() {
+        ArrayList<Animal> adopted = new ArrayList<>();
+        ArrayList<Animal> notadopted = new ArrayList<>();
+//        ArrayList<MedCareRequest> medCareRequests = new ArrayList<>();
+//        ArrayList<VolunteerRequest> volunteerRequests = new ArrayList<>();
+//        ArrayList<AnimalManagerRequest> animalManagerRequests = new ArrayList<>();
+
+        Map<String, Integer> workReqMap = new HashMap<>();
+        for (Network nw : ecoSystem.getNetworkList()) {
+            for (Enterprise e : nw.getEnterpriseDirectory().getEnterpriseList()) {
+                if (e instanceof AnimalShelterEnterprise) {
+                    for (Animal a : ((AnimalShelterEnterprise) e).getAnimalDirectory().getAnimalList()) {
+                        if (a.getAdoptor() != null) {
+                            adopted.add(a);
+                        }
+                        notadopted.add(a);
+                    }
+                }
+
+            }
+
+        }
+
+        workReqMap.put("Adopted", adopted.size());
+        workReqMap.put("Not adopted", notadopted.size());
+
+        barChart = ChartFactory.createPieChart("Animal Adoption Rate", createDataset(workReqMap), true, true, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        jPanel_adoption.removeAll();
+        jPanel_adoption.add(chartPanel, BorderLayout.CENTER);
+        jPanel_adoption.validate();
+
     }
 
 }
