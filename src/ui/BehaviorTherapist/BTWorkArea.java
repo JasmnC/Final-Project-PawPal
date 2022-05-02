@@ -125,10 +125,6 @@ public class BTWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
         if (tblWorkRequests.getColumnModel().getColumnCount() > 0) {
-            tblWorkRequests.getColumnModel().getColumn(0).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(1).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(2).setResizable(false);
-            tblWorkRequests.getColumnModel().getColumn(3).setResizable(false);
             tblWorkRequests.getColumnModel().getColumn(4).setResizable(false);
             tblWorkRequests.getColumnModel().getColumn(5).setResizable(false);
         }
