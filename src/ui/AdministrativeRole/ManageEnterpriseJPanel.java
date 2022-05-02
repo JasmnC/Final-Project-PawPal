@@ -152,7 +152,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 btnAddActionPerformed(evt);
             }
         });
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 500, 141, -1));
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(771, 500, 170, -1));
 
         txtName.setBackground(new java.awt.Color(245, 245, 255));
         txtName.addActionListener(new java.awt.event.ActionListener() {

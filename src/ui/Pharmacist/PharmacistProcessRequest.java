@@ -81,7 +81,7 @@ public class PharmacistProcessRequest extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 130, 40));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 160, 40));
 
         lblResult.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblResult.setText("Result:");
