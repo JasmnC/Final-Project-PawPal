@@ -172,6 +172,23 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         String subject = "Your Adoption Request is Approved";
         String content = "Dear Adopter, \nCongratulations! Your adoption request is approved. You can check the status through your credentials. \nThank you!";
         CommonMail.sendEmailMessage(request.getSender().getEmailId(), subject, content);
+        
+        for (WorkRequest otherRequest : network.getWorkQueue().getWorkRequestList()){
+            if (otherRequest instanceof AdoptionRequest
+                    && otherRequest != request
+                    && otherRequest.getAnimal() == request.getAnimal()
+                    && otherRequest.getStatus().equals("Pending Review")){
+                otherRequest.setStatus("Rejected");
+                String rejectsubject = "Your Adoption Request is Rejected";
+                String rejectcontent = "Dear Adopter, \nWe are sorry to inform you that your adoption request is rejected. You can check the status through your credentials. \nThank you.";
+                CommonMail.sendEmailMessage(otherRequest.getSender().getEmailId(), rejectsubject, rejectcontent);
+            }
+        }
+        
+        populateRequestTable();
+
+        
+        
 
         for (WorkRequest wr : userAccount.getWorkQueue().getWorkRequestList()) {
             if (wr instanceof AnimalManagerRequest && wr.getAnimal() == request.getAnimal()) {
@@ -180,6 +197,8 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             }
 
         }
+        
+        
 
     }//GEN-LAST:event_btnApproveAnimalAdoptionRequestActionPerformed
 
