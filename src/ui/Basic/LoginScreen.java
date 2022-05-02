@@ -39,8 +39,6 @@ public class LoginScreen extends javax.swing.JPanel {
         this.db4oUtil = dB4OUtil;
 
         populateNetworkCombo();
-        populateEnterpriseCombo();
-        populateOrganizationCombo();
 
 //        System.out.println(ecoSystem.getSystemAdmin().getUsername());
 //        System.out.println(ecoSystem.getSystemAdmin().getPassword());
@@ -158,6 +156,11 @@ public class LoginScreen extends javax.swing.JPanel {
         add(lblNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, 30));
 
         cmbNetworkList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbNetworkList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNetworkListActionPerformed(evt);
+            }
+        });
         add(cmbNetworkList, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 180, 30));
 
         lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -321,6 +324,9 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void cmbEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseListActionPerformed
         // TODO add your handling code here:
+        
+        populateOrganizationCombo();
+        
     }//GEN-LAST:event_cmbEnterpriseListActionPerformed
 
     private void cmbOrganizationListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationListActionPerformed
@@ -334,6 +340,13 @@ public class LoginScreen extends javax.swing.JPanel {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void cmbNetworkListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkListActionPerformed
+        // TODO add your handling code here:
+        
+        populateEnterpriseCombo();
+        
+    }//GEN-LAST:event_cmbNetworkListActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -395,15 +408,15 @@ public class LoginScreen extends javax.swing.JPanel {
         cmbOrganizationList.removeAllItems();
 
         Network network = (Network) cmbNetworkList.getSelectedItem();
+        Enterprise enterprise = (Enterprise) cmbEnterpriseList.getSelectedItem();
 
-        if (network != null) {
-            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
-                    if (o instanceof AdopterOrganization) {
-                        cmbOrganizationList.addItem(o);
-                    }
-                };
+        if (network != null && enterprise!= null) {
+            for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                if (o instanceof AdopterOrganization) {
+                    cmbOrganizationList.addItem(o);
+                }
             }
+            
         }
 
     }

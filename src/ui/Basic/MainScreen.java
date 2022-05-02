@@ -139,9 +139,9 @@ public class MainScreen extends javax.swing.JPanel {
 //        System.out.println(ecoSystem);
         dB4OUtil.storeEcoSystem(ecoSystem);
        
-        mainWorkArea.remove(this);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-        layout.previous(mainWorkArea);
+        mainWorkArea.add("LoginScreen", new LoginScreen(mainWorkArea, ecoSystem, dB4OUtil));
+        layout.next(mainWorkArea);
 
     }//GEN-LAST:event_btnLogOutActionPerformed
 
