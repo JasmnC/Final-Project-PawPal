@@ -71,6 +71,11 @@ The purpose of our system is to make sure the animal is healthy both mentally an
  - Volunteer
     
 ### Service Structures
+![The UML Model](https://github.com/JasmnC/Final-Project-PawPal/blob/master/UML.png)
+
+### Extra Feature Highlights
+ - Sending Emails
+ - Generating Dashboard
 
 
 ## Getting Start
